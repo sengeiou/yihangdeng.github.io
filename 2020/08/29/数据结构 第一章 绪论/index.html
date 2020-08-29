@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>数据结构 第一章 绪论 | yhdblog</title>
+    <meta name="description" content="数据结构的起源早期认知人们都把计算机理解为数值计算工具。解决问题方式如下  分析问题 抽像其数据模型 设计数据模型对应算法 编写程序  实际环境可现实中，更多的不是解决数值问题，而解决非数值型问题需要一些更加有效的科学手段(比如表、树图等数据结构) 因此数据结构的学科定义为：研究非数值计算的程序设计问题中的操作对象，以及操作对象之间的关系和操作本身等相关问题的学科。 基本概念和术语数据数据的基本概">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构 第一章 绪论">
+<meta property="og:url" content="http://yoursite.com/2020/08/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/index.html">
+<meta property="og:site_name" content="yhdblog">
+<meta property="og:description" content="数据结构的起源早期认知人们都把计算机理解为数值计算工具。解决问题方式如下  分析问题 抽像其数据模型 设计数据模型对应算法 编写程序  实际环境可现实中，更多的不是解决数值问题，而解决非数值型问题需要一些更加有效的科学手段(比如表、树图等数据结构) 因此数据结构的学科定义为：研究非数值计算的程序设计问题中的操作对象，以及操作对象之间的关系和操作本身等相关问题的学科。 基本概念和术语数据数据的基本概">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-29T14:03:32.000Z">
+<meta property="article:modified_time" content="2020-08-29T14:08:47.232Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="技术积累">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/yihangdeng" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="/images/avatar.jpg" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">yhdeng</h2>
+            <h3 id="title" class="hidden xl:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Zhaoqing, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            数据结构 第一章 绪论
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/08/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/" class="article-date">
+	  <time datetime="2020-08-29T14:03:32.000Z" itemprop="datePublished">Aug 29</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>, <a class="article-tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/08/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="数据结构的起源"><a href="#数据结构的起源" class="headerlink" title="数据结构的起源"></a>数据结构的起源</h1><h2 id="早期认知"><a href="#早期认知" class="headerlink" title="早期认知"></a>早期认知</h2><p>人们都把计算机理解为<strong>数值计算工具</strong>。解决问题方式如下</p>
+<ol>
+<li>分析问题</li>
+<li>抽像其数据模型</li>
+<li>设计数据模型对应算法</li>
+<li>编写程序</li>
+</ol>
+<h2 id="实际环境"><a href="#实际环境" class="headerlink" title="实际环境"></a>实际环境</h2><p>可现实中，更多的<strong>不是解决数值问题</strong>，而解决非数值型问题需要一些<strong>更加有效的科学手段</strong>(<strong>比如表、树图等数据结构</strong>)</p>
+<p>因此数据结构的学科定义为：研究<strong>非数值计算</strong>的程序设计问题中的<strong>操作对象</strong>，以及操作<strong>对象之间的关系</strong>和<strong>操作本身</strong>等相关问题的学科。</p>
+<h1 id="基本概念和术语"><a href="#基本概念和术语" class="headerlink" title="基本概念和术语"></a>基本概念和术语</h1><h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><h3 id="数据的基本概念"><a href="#数据的基本概念" class="headerlink" title="数据的基本概念"></a>数据的基本概念</h3><p>数据：是描述客观事物的<strong>符号</strong>，是计算机中<strong>可操作</strong>的对象，是<strong>能被计算机识别</strong>，并<strong>能够输入</strong>给计算机<strong>处理</strong>的<strong>符号集合</strong>。</p>
+<blockquote>
+<p>比如编程所用到的数据类型，还包括字符、声音、图像、视频等<br>这里所描述的数据，其实就是符号</p>
+</blockquote>
+<h3 id="数据的基本特性"><a href="#数据的基本特性" class="headerlink" title="数据的基本特性"></a>数据的基本特性</h3><ul>
+<li><strong>可输入</strong>到计算机中</li>
+<li>能被<strong>计算机程序处理</strong></li>
+</ul>
+<h2 id="数据元素"><a href="#数据元素" class="headerlink" title="数据元素"></a>数据元素</h2><p>数据元素：<strong>组成数据</strong>的，有一定<strong>意义</strong>的基本单位，在及算你中通常作为整体处理。也被称为<strong>记录</strong>。</p>
+<blockquote>
+<p><del>比如，人类这个种类中，人就是数据元素</del></p>
+</blockquote>
+<h2 id="数据项"><a href="#数据项" class="headerlink" title="数据项"></a>数据项</h2><p>数据项：一个数据元素可以由若干个数据项组成。</p>
+<blockquote>
+<p>比如人这样的数据元素，可以有眼、耳、口、鼻，姓名、年龄、性别这些数据项</p>
+</blockquote>
+<ul>
+<li><strong>数据项</strong>是<strong>数据</strong>的最小单位</li>
+<li>在研究数据结构问题时，<strong>数据元素</strong>才是数据结构中建立数据模型的着眼点。</li>
+</ul>
+<h2 id="数据对象"><a href="#数据对象" class="headerlink" title="数据对象"></a>数据对象</h2><p>数据对象：是<strong>性质相同</strong>的数据元素的集合，是数据的子集。</p>
+<h2 id="小结-待验证"><a href="#小结-待验证" class="headerlink" title="小结(待验证)"></a>小结(待验证)</h2><ul>
+<li>数据：就是符号，数值型和非数值型集合</li>
+<li>数据元素：组成数据有意义的基本单位，即java中的“<strong>类</strong>”</li>
+<li>数据项：组成数据元素的基本单位，即类里面的“<strong>属性</strong>”</li>
+<li>数据对象：是<strong>数据</strong>的子集。即类里面的“<strong>对象/实例</strong>”</li>
+</ul>
+<hr>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>数据结构：是相互之间存在一种或多种特定关系的数据元素的集合。</p>
+<blockquote>
+<ul>
+<li>结构，简单来说就是关系，比如分子结构，就是描述组成分子的<strong>原子</strong>之间的排序组合方式  </li>
+<li>对于数据结构来说，组成数据的基本单位就是<strong>数据元素</strong>(类)/数据对象。</li>
+<li>研究数据元素之间存在的特定关系，我们把这就关系，称为结构，即数据结构</li>
+</ul>
+</blockquote>
+<p>编写一个“好”的程序，必须分析待处理<strong>对象的特性</strong>及其**<em>各处理对象之间存在的关系**</em>这就是研究数据结构的意义所在。</p>
+<blockquote>
+<p>“分析待处理对象的特性”，即以前接触高级语言的“面向对象编程”<br>博主如今缺乏的，即是学习“各处理对象之间存在的关系”</p>
+</blockquote>
+<h1 id="关系即结构"><a href="#关系即结构" class="headerlink" title="关系即结构"></a>关系即结构</h1><h2 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h2><p>逻辑结构：是指数据对象中数据元素之间的相互关系，也是今后讨论的重点。主要类型包含如下</p>
+<ul>
+<li>集合结果</li>
+<li>线性结构</li>
+<li>树形结构</li>
+<li>图像结构</li>
+</ul>
+<h3 id="集合结构"><a href="#集合结构" class="headerlink" title="集合结构"></a>集合结构</h3><p>集合结构：集合结构中的数据元素除了<strong>同一个集合</strong>外，它们之间没有其他关系。</p>
+<blockquote>
+<p>它们相互平等，唯一且共同的属性就是“<strong>同属一个集合</strong>”，类似数学的集合，形如“鱼塘”</p>
+</blockquote>
+<h3 id="线性结构"><a href="#线性结构" class="headerlink" title="线性结构"></a>线性结构</h3><p>线性结构：线性结构中的数据元素之间是<strong>一对一</strong>的关系，类似“<strong>火车，项链</strong>”。</p>
+<h3 id="树形结构"><a href="#树形结构" class="headerlink" title="树形结构"></a>树形结构</h3><p>树形结构：树形结构中的数据元素之间存在一种<strong>一对多</strong>的的层次关系。形如“<strong>大树</strong>”分支。</p>
+<h3 id="图形结构"><a href="#图形结构" class="headerlink" title="图形结构"></a>图形结构</h3><p>图像结构：图形结构的数据元素是<strong>多对多</strong>的关系，类似“<strong>人际关系</strong>”，交错复杂。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>用示意图表示数据的逻辑结构时，要注意两点</p>
+<ul>
+<li>将每一个<strong>数据元素</strong>看做一个<strong>结点</strong>，用<strong>圆圈</strong>表示</li>
+<li>元素之间的逻辑关系用结点之间的连线表示，如果这个关系是<strong>有方向</strong>的，需要用<strong>带箭头</strong>的连线表示</li>
+</ul>
+<hr>
+<h2 id="物理结构-存储结构"><a href="#物理结构-存储结构" class="headerlink" title="物理结构/存储结构"></a>物理结构/存储结构</h2><p>物理结构：是指数据的逻辑结构在计算机中的存储形式。</p>
+<blockquote>
+<ul>
+<li>即数据元素如何存储到计算机的存储器中，这里的存储器主要针对<strong>内存</strong>而言 </li>
+<li>数据的存储结构应正确反映数据元素之间的逻辑关系，这才是重点  </li>
+</ul>
+</blockquote>
+<p><strong>存储结构形式有两种：顺序存储和链式存储</strong></p>
+<h3 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h3><p>顺序存储结构：是把数据元素存放在<strong>地址连续</strong>的存储单元里。此时，其数据间的<strong>逻辑关系和物理关系是一致</strong>的。</p>
+<blockquote>
+<p>形如理想状态下的<strong>排队</strong>，又如编程中的<strong>数组</strong>存储机制<br>当你需要创建长度为9的int的数组时，计算机首先在内存中找到片空地，并且以某个地址值为首地址，按照整型所占位置的大小乘9，依次开辟一段<strong>连续的空间</strong></p>
+</blockquote>
+<h3 id="链式存储结构"><a href="#链式存储结构" class="headerlink" title="链式存储结构"></a>链式存储结构</h3><p>链式存储结构：是把数据元素存放在<strong>任意的存储单元</strong>里，而这组存储单元可以是连续的，也可以是不连续的。</p>
+<blockquote>
+<p>形如去银行、医院等地方，设置了“<strong>叫号排序</strong>”的机制。<br>实际，把变量的地址存储在一个指针变量中，通过指针变量找到对应的数据</p>
+</blockquote>
+<h2 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>逻辑结构是面向问题的，而物理结构就是面向计算机的</li>
+<li>顺序存储：连续开辟-按序对应</li>
+<li>链式存储：任意开辟-叫号对应</li>
+</ul>
+<h1 id="抽象数据类型"><a href="#抽象数据类型" class="headerlink" title="抽象数据类型"></a>抽象数据类型</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p><strong>数据类型</strong>：是指一组<strong>性质相同</strong>的值的集合,及定义在此集合上的<strong>一些操作</strong>的总称。</p>
+<blockquote>
+<p>在计算机中，内存也不是无限大的，计算机的研究者们就考虑，要对数据类型进行分类，分出多种数据类型来适合各种不同的计算条件差异，同时节省内存</p>
+</blockquote>
+<p>C语言中数据类型可以分为两类</p>
+<ul>
+<li><strong>原子类型</strong>：不可以再分解的基本类型，例如整型、浮点型、字符型等。</li>
+<li><strong>结构类型</strong>：由若干种数据类型组合而成，是可再分解。如整型数组由若干整型数据组成的</li>
+</ul>
+<h2 id="抽象数据类型-1"><a href="#抽象数据类型-1" class="headerlink" title="抽象数据类型"></a>抽象数据类型</h2><h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p>抽象：抽象是指抽取出事物具有的普遍性的本质。即抽出<strong>问题的特征</strong>而忽略非本质的细节。</p>
+<h3 id="抽象数据类型-2"><a href="#抽象数据类型-2" class="headerlink" title="抽象数据类型"></a>抽象数据类型</h3><p>抽象数据类型(Abstract Data Type，ADT)：是指一个<strong>数学模型</strong>及定义在该模型上的<strong>一组操作</strong>。</p>
+<blockquote>
+<ol>
+<li>抽象数据类型不仅仅指那些已经定义并实现的数据类型(int、char等)，还可以是计算机编程者在设计软件程序时<strong>自己定义的数据类型</strong>，即如同高级语言的即“<strong>类</strong>”一样。而“及定义在该模型上的一组操作”即如同定义类，及其基本“<strong>方法</strong>”</li>
+<li>比如，无论在PC、平版电脑、只能手机上都拥有“整数”这个类型，那么可以说“整型”其实就是一个抽象的数据类型，而且“<strong>抽象</strong>”<strong>的意义</strong>在于数据类型的<strong>数学抽象特征</strong>。</li>
+</ol>
+</blockquote>
+<p><strong>抽象数据类型</strong>体现了程序设计中，<strong>问题分解、抽线、信息隐藏</strong>的特性。</p>
+<h3 id="抽象数据类型的标准格式"><a href="#抽象数据类型的标准格式" class="headerlink" title="抽象数据类型的标准格式"></a>抽象数据类型的标准格式</h3><pre><code>ADT 抽象数据类型名
+Data
+    数据元素之间逻辑关系的定义
+Operation
+    操作1
+        初始条件
+        操作结构描述
+    操作2
+        ...
+
+endADT</code></pre>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h1 id="作者建议研读方法"><a href="#作者建议研读方法" class="headerlink" title="作者建议研读方法"></a>作者建议研读方法</h1><ul>
+<li>复习c语言的基础知识。</li>
+<li>第一遍阅读，建议从头至尾进行通读。</li>
+<li>阅读时，摘抄/笔记是非常好的习惯。“最淡的墨水也胜于最强的记忆”</li>
+<li><strong>阅读每一章时，特别是阅读****<em>算法的推导过程</em></strong>，<strong>一定要在电脑中运行代码和进行调试，设置断点和逐行执行，参照书的讲解，观察变量的变化情况来理解算法的编写原理</strong>。</li>
+<li>阅读完每一章时，一定要在<strong>理解基础上</strong>记忆一些<strong>关键东西</strong>，最佳效果就是不看书也可以一点不错的默写相关的算法。</li>
+<li>阅读完每一章时，一定要适当练习。</li>
+<li>在之后的学习或工作中，尽量把学到的数据结构和算法<strong>运用</strong>到现实开发中。</li>
+</ul>
+<h1 id="《大话数据树结构》初读后有感"><a href="#《大话数据树结构》初读后有感" class="headerlink" title="《大话数据树结构》初读后有感"></a>《大话数据树结构》初读后有感</h1><h2 id="教材和自学读物，所面向的读者是完全不同的"><a href="#教材和自学读物，所面向的读者是完全不同的" class="headerlink" title="教材和自学读物，所面向的读者是完全不同的"></a>教材和自学读物，所面向的读者是完全不同的</h2><h3 id="教材特性"><a href="#教材特性" class="headerlink" title="教材特性"></a>教材特性</h3><ol>
+<li>好的教材应试是<strong>提纲挈领、重点突出</strong>。</li>
+<li>一定要<strong>留出思考空间</strong>，否则就没必要再听老师上课了。教材很多内容的讲解都是由<strong>老师</strong>在课堂上完成的。</li>
+<li>教材中必定有<strong>练习、课后习题、思考题等</strong>，而这些大多可以通过老师来解答。<blockquote>
+<p>比如我们中学时的语文、数学课本，很薄的一本书通常要用一个学期、甚至一年的时间来学，这就是因为它们是教材而不是自学读物。如果小说,可能一两天就读完了。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="读物——隔空交流的介质"><a href="#读物——隔空交流的介质" class="headerlink" title="读物——隔空交流的介质"></a>读物——隔空交流的介质</h2><h3 id="作者角度"><a href="#作者角度" class="headerlink" title="作者角度"></a>作者角度</h3><ol>
+<li>作者认为，读者拿到的虽然只是一本没有表情、不会说话的书，但其实也是在隔空与另一个朋友交流。</li>
+<li>人与人的交流不可能只是就事论事，一定会有情感的沟通，这种情感如果能产生共鸣、达成互信，就会让沟通的事情本身更容易理解和接受。</li>
+</ol>
+<h3 id="博主理解"><a href="#博主理解" class="headerlink" title="博主理解"></a>博主理解</h3><ol>
+<li>读物本是以内容第一为原则。但其作者的表诉方式，引用，感受等情感会附带许多作者本人的价值观。即情感交流，也是阅读的影响之一。</li>
+<li>对于技术类读物，除技术内外，最明显的就是学习读者的编书方式，从编书结构从而建立更全面，深刻，有效的知识的架构。<blockquote>
+<p>如本书最明显的其中一个特征就是会对每一个小知识群进行小结提炼。这也会影响到我摘抄笔记的录入结构。</p>
+</blockquote>
+</li>
+</ol>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/08/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/">http://yoursite.com/2020/08/29/数据结构 第一章 绪论/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="toc-number">1.</span> <span class="toc-text">数据结构的起源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A9%E6%9C%9F%E8%AE%A4%E7%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">早期认知</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.</span> <span class="toc-text">实际环境</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD"><span class="toc-number">2.</span> <span class="toc-text">基本概念和术语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE"><span class="toc-number">2.1.</span> <span class="toc-text">数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.1.</span> <span class="toc-text">数据的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">2.1.2.</span> <span class="toc-text">数据的基本特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="toc-number">2.2.</span> <span class="toc-text">数据元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A1%B9"><span class="toc-number">2.3.</span> <span class="toc-text">数据项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.4.</span> <span class="toc-text">数据对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93-%E5%BE%85%E9%AA%8C%E8%AF%81"><span class="toc-number">2.5.</span> <span class="toc-text">小结(待验证)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.6.</span> <span class="toc-text">数据结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%8D%B3%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">关系即结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">逻辑结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.1.</span> <span class="toc-text">集合结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.2.</span> <span class="toc-text">线性结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.3.</span> <span class="toc-text">树形结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.4.</span> <span class="toc-text">图形结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.1.5.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84-%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.</span> <span class="toc-text">物理结构&#x2F;存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.1.</span> <span class="toc-text">顺序存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.2.</span> <span class="toc-text">链式存储结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="toc-number">3.3.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">抽象数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.1.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-1"><span class="toc-number">4.2.</span> <span class="toc-text">抽象数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1"><span class="toc-number">4.2.1.</span> <span class="toc-text">抽象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-2"><span class="toc-number">4.2.2.</span> <span class="toc-text">抽象数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%A0%87%E5%87%86%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.2.3.</span> <span class="toc-text">抽象数据类型的标准格式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E8%80%85%E5%BB%BA%E8%AE%AE%E7%A0%94%E8%AF%BB%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">作者建议研读方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8A%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E6%A0%91%E7%BB%93%E6%9E%84%E3%80%8B%E5%88%9D%E8%AF%BB%E5%90%8E%E6%9C%89%E6%84%9F"><span class="toc-number">7.</span> <span class="toc-text">《大话数据树结构》初读后有感</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%99%E6%9D%90%E5%92%8C%E8%87%AA%E5%AD%A6%E8%AF%BB%E7%89%A9%EF%BC%8C%E6%89%80%E9%9D%A2%E5%90%91%E7%9A%84%E8%AF%BB%E8%80%85%E6%98%AF%E5%AE%8C%E5%85%A8%E4%B8%8D%E5%90%8C%E7%9A%84"><span class="toc-number">7.1.</span> <span class="toc-text">教材和自学读物，所面向的读者是完全不同的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%99%E6%9D%90%E7%89%B9%E6%80%A7"><span class="toc-number">7.1.1.</span> <span class="toc-text">教材特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E7%89%A9%E2%80%94%E2%80%94%E9%9A%94%E7%A9%BA%E4%BA%A4%E6%B5%81%E7%9A%84%E4%BB%8B%E8%B4%A8"><span class="toc-number">7.2.</span> <span class="toc-text">读物——隔空交流的介质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E8%80%85%E8%A7%92%E5%BA%A6"><span class="toc-number">7.2.1.</span> <span class="toc-text">作者角度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%9A%E4%B8%BB%E7%90%86%E8%A7%A3"><span class="toc-number">7.2.2.</span> <span class="toc-text">博主理解</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>
