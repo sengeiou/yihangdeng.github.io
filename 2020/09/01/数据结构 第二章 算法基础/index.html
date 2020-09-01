@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>数据结构 第二章 算法基础 | yhdblog</title>
+    <meta name="description" content="读物：《大话数据结构》：https:&#x2F;&#x2F;book.douban.com&#x2F;subject&#x2F;6424904&#x2F; 印次：2020年5月第25次印刷(2020.5重印)  大纲 算法的定义 算法的特性 算法设计的要求 算法效率的度量方法 函数的渐进增长 算法时间复杂度 算法空间复杂度 最坏情况与平均情况  算法的定义算法：算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构 第二章 算法基础">
+<meta property="og:url" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="yhdblog">
+<meta property="og:description" content="读物：《大话数据结构》：https:&#x2F;&#x2F;book.douban.com&#x2F;subject&#x2F;6424904&#x2F; 印次：2020年5月第25次印刷(2020.5重印)  大纲 算法的定义 算法的特性 算法设计的要求 算法效率的度量方法 函数的渐进增长 算法时间复杂度 算法空间复杂度 最坏情况与平均情况  算法的定义算法：算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-01T03:40:32.000Z">
+<meta property="article:modified_time" content="2020-09-01T03:40:16.170Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="技术积累">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/yihangdeng" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="/images/avatar.jpg" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">yhdeng</h2>
+            <h3 id="title" class="hidden xl:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Zhaoqing, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            数据结构 第二章 算法基础
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/09/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" class="article-date">
+	  <time datetime="2020-09-01T03:40:32.000Z" itemprop="datePublished">Sep 1</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>, <a class="article-tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/09/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <ul>
+<li><strong>读物</strong>：《大话数据结构》：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/">https://book.douban.com/subject/6424904/</a></li>
+<li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
+</ul>
+<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ol>
+<li><strong>算法的定义</strong></li>
+<li><strong>算法的特性</strong></li>
+<li><strong>算法设计的要求</strong></li>
+<li><strong>算法效率的度量方法</strong></li>
+<li><strong>函数的渐进增长</strong></li>
+<li><strong>算法时间复杂度</strong></li>
+<li><strong>算法空间复杂度</strong></li>
+<li><strong>最坏情况与平均情况</strong></li>
+</ol>
+<h1 id="算法的定义"><a href="#算法的定义" class="headerlink" title="算法的定义"></a>算法的定义</h1><p>算法：算法是解决特定问题<strong>求解步骤的描述</strong>，在计算机中表现为<strong>指令的有限序列</strong>，并且每条指令表示一个或多个操作。</p>
+<h1 id="算法的特性"><a href="#算法的特性" class="headerlink" title="算法的特性"></a>算法的特性</h1><p>算法具有的五个基本特性：<strong>输入、输出、有穷性、确定性、可行性</strong>。</p>
+<h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><ul>
+<li>算法具有<strong>零个或多个</strong>输入。</li>
+<li>算法至少<strong>有一个或多个</strong>输出。</li>
+</ul>
+<h2 id="有穷性"><a href="#有穷性" class="headerlink" title="有穷性"></a>有穷性</h2><ol>
+<li>算法在执行有限步骤之后，自动结束而<strong>不会出现无限循环</strong>。</li>
+<li>每一个步骤在<strong>可接受的时间</strong>内完成。即实际意义。</li>
+</ol>
+<h2 id="确定性"><a href="#确定性" class="headerlink" title="确定性"></a>确定性</h2><p>确定性：算法的每一步骤都具有<strong>确定的含义，不会出现二义性</strong>，类似函数。</p>
+<h2 id="可行性"><a href="#可行性" class="headerlink" title="可行性"></a>可行性</h2><ul>
+<li>算法的每一步都必须是<strong>可行的</strong>，也就是说，每一步都能够通过执行有限次数完成。</li>
+<li>可行性意味着算法<strong>可转换为程序上机运行</strong>。</li>
+</ul>
+<h1 id="算法设计的要求"><a href="#算法设计的要求" class="headerlink" title="算法设计的要求"></a>算法设计的要求</h1><p>算法设计的要求包含：<strong>正确性、可读性、健壮性、时间效率高和存储量低</strong>。</p>
+<h2 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h2><p>正确性：算法的正确性是指算法至少应该具有<strong>输入、输出和加工处理无歧义性、能正确反映问题的需求、能够得到问题的正确答案</strong>。大体分为以下<strong>四个层次</strong>：</p>
+<ul>
+<li><p><strong>没有语法错误</strong></p>
+</li>
+<li><p>对于<strong>合法</strong>的输入数据能够产生<strong>满足要求的输出结果</strong></p>
+</li>
+<li><p>对于<strong>非法</strong>的输入数据能够得出<strong>满足规格说明的结果</strong></p>
+</li>
+<li><p>对于精心选择的，甚至刁难的测试数据都有满足要求的输出结构。</p>
+<blockquote>
+<p>一般情况下，我们把层次3作为一个算法是否正确的标准</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="可读性"><a href="#可读性" class="headerlink" title="可读性"></a>可读性</h2><p>可读性：算法设计的另一个目的是为了<strong>便于阅读、理解和交流</strong>。</p>
+<h2 id="健壮性"><a href="#健壮性" class="headerlink" title="健壮性"></a>健壮性</h2><p>健壮性：当<strong>输入数据不合法</strong>时，算法也能做出相关处理，而<strong>不是</strong>产生<strong>异常或莫名奇妙</strong>的结果。</p>
+<h2 id="时间效率高和存储量低"><a href="#时间效率高和存储量低" class="headerlink" title="时间效率高和存储量低"></a>时间效率高和存储量低</h2><p>设计算法应该尽量满足时间效率高和存储量(占用内存与外部硬盘存储空间)低的需求。</p>
+<h1 id="算法效率的度量方法"><a href="#算法效率的度量方法" class="headerlink" title="算法效率的度量方法"></a>算法效率的度量方法</h1><p><strong>ps</strong>：这里指的效率大都是指算法的<strong>执行时间</strong>。</p>
+<h2 id="事后统计方法"><a href="#事后统计方法" class="headerlink" title="事后统计方法"></a>事后统计方法</h2><p>事后统计方法：这种方法主要是通过事先<strong>设计好的测试程序和数据</strong>，利用计算机<strong>计时器</strong>对不同算法编制的程序的运行时间进行比较，从而确定算法效率的高低。  </p>
+<p>但这种方法显然存在很大的缺陷：</p>
+<ul>
+<li>必须依据算法事先编制对应的测试程序，费时费力，工作量可能翻倍。</li>
+<li>计时器的计时效果比较依赖计算机硬件和软件等环境因素。</li>
+<li>算法的测试数据设计困难。</li>
+</ul>
+<h2 id="事前分析估算方法"><a href="#事前分析估算方法" class="headerlink" title="事前分析估算方法"></a>事前分析估算方法</h2><p>事前分析估算方法：在计算机程序<strong>编程前</strong>，依据统计方法对算法提前进行估算。</p>
+<p>事前分析一个程序在计算机运行所消耗的时间取决于下列因素：</p>
+<ol>
+<li>算法采用的策略、方法。</li>
+<li>编译产生的代码质量。</li>
+<li>问题的输入规模。</li>
+<li>机器执行指令的速度。</li>
+</ol>
+<p><strong>结论</strong>：</p>
+<ul>
+<li><p>一个程序的运行时间，<strong>依赖于</strong>算法的<strong>好坏</strong>和问题的**输入规模(输入变量的值)**。</p>
+</li>
+<li><p>测定运行时间最可靠的方法就是依据输入规模计算语句的<strong>执行次数</strong>。</p>
+<blockquote>
+<p>执行次数，也成为基本操作数量，记作 f(n)，n表示输入规模。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="函数的渐进增长"><a href="#函数的渐进增长" class="headerlink" title="函数的渐进增长"></a>函数的渐进增长</h1><p><strong>ps</strong>：判断两个算法效率的高低，会存在因不同量级的输入规模而得出相反的结果。</p>
+<blockquote>
+<p>因此给出定义，输入规模n在没有限制的情况下，只要<strong>超过一个数值N</strong>，这个函数就<strong>总是</strong>大于另一个函数，我们称函数是渐进增长快的。</p>
+</blockquote>
+<p>函数渐进增长：<strong>给定两个函数f(n)和g(n)，如果存在一个整数N，使得对于所有的n&gt;N，f(n)总是比g(n)大，那么，我们说f(n)的增长渐进快于g(n)。</strong></p>
+<hr>
+<p><strong>结论</strong>：判断一个算法的效率时，函数中的<strong>常数</strong>和其他<strong>次要项</strong>常常可以<strong>忽略</strong>，而**更应该关注主项(最高阶项)**的阶数。</p>
+<h1 id="算法时间复杂度"><a href="#算法时间复杂度" class="headerlink" title="算法时间复杂度"></a>算法时间复杂度</h1><h2 id="时间复杂度的定义"><a href="#时间复杂度的定义" class="headerlink" title="时间复杂度的定义"></a>时间复杂度的定义</h2><p><strong>算法时间复杂度</strong>，记作T(n)=O(f(n))，通过大写<strong>O( )**来体现时间复杂度的记法，也称之为</strong>大O记法**。</p>
+<blockquote>
+<p><strong>在进行算法分析时，语句总的执行次数T(n)是关于问题规模n的函数，进而分析T(n)随n的变化情况并确定T(n)的数量级。算法的时间复杂度，也就是算法的时间量度，记作：T(n)= O(f(n))。它表示随问题规模n的增大，算法执行时间的增长率和f(n)的增长率相同，称作算法的渐近时间复杂度，简称为时间复杂度。其中f(n)是问题规模n的某个函数。</strong>   </p>
+</blockquote>
+<h2 id="推导大O阶方法"><a href="#推导大O阶方法" class="headerlink" title="推导大O阶方法"></a>推导大O阶方法</h2><ol>
+<li><p>写出每一条语句的执行次数。</p>
+</li>
+<li><p>把所有语句的执行次数相加并且进行基本的数学化简。</p>
+<hr>
+</li>
+<li><p>用<strong>常数1</strong>取代运行时间中的所有<strong>加法常数</strong>。</p>
+</li>
+<li><p>只保留<strong>最高阶项</strong>。</p>
+</li>
+<li><p>若最高阶项存在且不是1，则去除与<strong>这个项相乘的常数</strong>。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int i,j;				&#x2F;&#x2F;执行1次</span><br><span class="line">for(i &#x3D; 0; i &lt; n; i++)&#123;			&#x2F;&#x2F;执行n次</span><br><span class="line">	for(j &#x3D; i; j &lt; n; j++)&#123;</span><br><span class="line">		&#x2F;*时间复杂度O(1)的程序步骤序列*&#x2F;</span><br><span class="line">       		&#x2F;&#x2F;执行n-2次...n-1,n,执行1次</span><br><span class="line">        	&#x2F;&#x2F;执行n-2次...n-1,n,执行1次</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line">printf(&quot;end&quot;);				&#x2F;&#x2F;执行1次</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>总执行次数为：1+n+(n-1)+(n-2)+…+1 + 1= n(n+1)/2 +2 = n<sup>2</sup>/2+n/2 + 2</li>
+<li>去除常数： n<sup>2</sup>/2+n/2</li>
+<li>保留最高阶项： n<sup>2</sup>/2</li>
+<li>最高阶项存在且不等于1，去除相乘常数：n<sup>2</sup>，即最终时间复杂度为 O(n<sup>2</sup>)</li>
+</ul>
+<blockquote>
+<ul>
+<li>可看作等差数列求和：na<sub>1</sub> + n(n-1)/2 * d</li>
+<li>首项a<sub>1</sub>=1，公差d=1，项数n=n</li>
+</ul>
+</blockquote>
+<h2 id="常见时间复杂度"><a href="#常见时间复杂度" class="headerlink" title="常见时间复杂度"></a>常见时间复杂度</h2><table>
+<thead>
+<tr>
+<th align="center">阶</th>
+<th align="center">非正式术语</th>
+<th align="center">常见结构</th>
+<th align="center">例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">O(1)</td>
+<td align="center">常数阶</td>
+<td align="center">顺序结构、无循环分支结构</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">O(n)</td>
+<td align="center">线性阶</td>
+<td align="center">无内嵌循环结构</td>
+<td align="center">2n+3</td>
+</tr>
+<tr>
+<td align="center">O(n<sup>2</sup>)</td>
+<td align="center">平方阶</td>
+<td align="center">二层内嵌循环结构</td>
+<td align="center">3n<sup>2</sup>+2n+1</td>
+</tr>
+<tr>
+<td align="center">O(log n)</td>
+<td align="center">对数阶</td>
+<td align="center">非1线性增长的循环索引</td>
+<td align="center">log<sub>2</sub>n+20</td>
+</tr>
+<tr>
+<td align="center">O(n log n)</td>
+<td align="center">nlog n阶</td>
+<td align="center"></td>
+<td align="center">2n+3nlog<sub>2</sub>n</td>
+</tr>
+<tr>
+<td align="center">O(n<sup>3</sup>)</td>
+<td align="center">立方阶</td>
+<td align="center">三层内嵌循环</td>
+<td align="center">n<sup>3</sup>+2</td>
+</tr>
+<tr>
+<td align="center">2<sup>n</sup></td>
+<td align="center">指数阶</td>
+<td align="center"></td>
+<td align="center">2<sup>n</sup></td>
+</tr>
+</tbody></table>
+<p><strong>对数阶补充说明</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int count &#x3D;1;</span><br><span class="line">while(count &lt; n)&#123;</span><br><span class="line">	count &#x3D; count * 2;</span><br><span class="line">	&#x2F;*时间复杂度O(1)的程序步骤序列*&#x2F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>每次count乘2之后，就距离n更接近一分，而需要乘多少次？接需要执行多少次，才能跳出循环？</li>
+<li>把需要乘的次数设为x，则2<sup>x</sup>=n，得到执行次数x=log<sub>2</sub>n</li>
+</ul>
+<h1 id="算法的空间复杂度"><a href="#算法的空间复杂度" class="headerlink" title="算法的空间复杂度"></a>算法的空间复杂度</h1><p>空间复杂度：<strong>算法的空间复杂度即算法所需的存储空间，记作：S(n)=O(f(n)**，此时n为问题的规模，f(n)为语句关于n所占</strong>存储空间函数**。</p>
+<blockquote>
+<ul>
+<li>当不用限定词地使用“复杂度”，则通常指时间复杂度。</li>
+<li>时间复杂度和空间复杂度一般情况下可以相互转换。</li>
+</ul>
+</blockquote>
+<h1 id="最坏情况与平均情况"><a href="#最坏情况与平均情况" class="headerlink" title="最坏情况与平均情况"></a>最坏情况与平均情况</h1><p>最坏情况：即一个算法存在的最低执行效率情况。</p>
+<ul>
+<li>在应用中，最坏情况是一种重要的需求，通常，除非特别指定，提及的<strong>运行时间</strong>都是指<strong>最坏情况</strong>的运行时间</li>
+<li>平均运行时间是所有情况中最有意义的，它属于<strong>期望</strong>的运行时间。</li>
+</ul>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">http://yoursite.com/2020/09/01/数据结构 第二章 算法基础/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">1.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">算法的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">算法的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">3.1.</span> <span class="toc-text">输入与输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E7%A9%B7%E6%80%A7"><span class="toc-number">3.2.</span> <span class="toc-text">有穷性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="toc-number">3.3.</span> <span class="toc-text">确定性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%A1%8C%E6%80%A7"><span class="toc-number">3.4.</span> <span class="toc-text">可行性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%A6%81%E6%B1%82"><span class="toc-number">4.</span> <span class="toc-text">算法设计的要求</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="toc-number">4.1.</span> <span class="toc-text">正确性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%AF%BB%E6%80%A7"><span class="toc-number">4.2.</span> <span class="toc-text">可读性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%A5%E5%A3%AE%E6%80%A7"><span class="toc-number">4.3.</span> <span class="toc-text">健壮性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%95%88%E7%8E%87%E9%AB%98%E5%92%8C%E5%AD%98%E5%82%A8%E9%87%8F%E4%BD%8E"><span class="toc-number">4.4.</span> <span class="toc-text">时间效率高和存储量低</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87%E7%9A%84%E5%BA%A6%E9%87%8F%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">算法效率的度量方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%90%8E%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">5.1.</span> <span class="toc-text">事后统计方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%89%8D%E5%88%86%E6%9E%90%E4%BC%B0%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-number">5.2.</span> <span class="toc-text">事前分析估算方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E6%B8%90%E8%BF%9B%E5%A2%9E%E9%95%BF"><span class="toc-number">6.</span> <span class="toc-text">函数的渐进增长</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">7.</span> <span class="toc-text">算法时间复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">7.1.</span> <span class="toc-text">时间复杂度的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E5%A4%A7O%E9%98%B6%E6%96%B9%E6%B3%95"><span class="toc-number">7.2.</span> <span class="toc-text">推导大O阶方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">7.3.</span> <span class="toc-text">常见时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">8.</span> <span class="toc-text">算法的空间复杂度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%9D%8F%E6%83%85%E5%86%B5%E4%B8%8E%E5%B9%B3%E5%9D%87%E6%83%85%E5%86%B5"><span class="toc-number">9.</span> <span class="toc-text">最坏情况与平均情况</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>
