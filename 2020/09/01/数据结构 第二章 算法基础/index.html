@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
     <title>数据结构 第二章 算法基础 | yhdblog</title>
-    <meta name="description" content="读物：《大话数据结构》：https:&#x2F;&#x2F;book.douban.com&#x2F;subject&#x2F;6424904&#x2F; 印次：2020年5月第25次印刷(2020.5重印)  大纲 算法的定义 算法的特性 算法设计的要求 算法效率的度量方法 函数的渐进增长 算法时间复杂度 算法空间复杂度 最坏情况与平均情况  算法的定义算法：算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一">
+    <meta name="description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 算法的定义 算法的特性 算法设计的要求 算法效率的度量方法 函数的渐进增长 算法时间复杂度 算法空间复杂度 最坏情况与平均情况  算法的定义算法：算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作。 算法的特性算法具有的五个基本特性：输入、输出、有穷性、确定性、可行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构 第二章 算法基础">
 <meta property="og:url" content="http://yoursite.com/2020/09/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="yhdblog">
-<meta property="og:description" content="读物：《大话数据结构》：https:&#x2F;&#x2F;book.douban.com&#x2F;subject&#x2F;6424904&#x2F; 印次：2020年5月第25次印刷(2020.5重印)  大纲 算法的定义 算法的特性 算法设计的要求 算法效率的度量方法 函数的渐进增长 算法时间复杂度 算法空间复杂度 最坏情况与平均情况  算法的定义算法：算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一">
+<meta property="og:description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 算法的定义 算法的特性 算法设计的要求 算法效率的度量方法 函数的渐进增长 算法时间复杂度 算法空间复杂度 最坏情况与平均情况  算法的定义算法：算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作。 算法的特性算法具有的五个基本特性：输入、输出、有穷性、确定性、可行">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-01T03:40:32.000Z">
-<meta property="article:modified_time" content="2020-09-01T03:40:16.170Z">
+<meta property="article:modified_time" content="2020-09-01T09:23:58.082Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="技术积累">
 <meta property="article:tag" content="数据结构">
@@ -210,7 +210,7 @@
         </header>
         <div class="marked-body article-body">
             <ul>
-<li><strong>读物</strong>：《大话数据结构》：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/">https://book.douban.com/subject/6424904/</a></li>
+<li><strong>读物</strong>：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/">《大话数据结构》</a></li>
 <li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
 </ul>
 <h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ol>
@@ -306,7 +306,7 @@
 <li><p>若最高阶项存在且不是1，则去除与<strong>这个项相乘的常数</strong>。</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int i,j;				&#x2F;&#x2F;执行1次</span><br><span class="line">for(i &#x3D; 0; i &lt; n; i++)&#123;			&#x2F;&#x2F;执行n次</span><br><span class="line">	for(j &#x3D; i; j &lt; n; j++)&#123;</span><br><span class="line">		&#x2F;*时间复杂度O(1)的程序步骤序列*&#x2F;</span><br><span class="line">       		&#x2F;&#x2F;执行n-2次...n-1,n,执行1次</span><br><span class="line">        	&#x2F;&#x2F;执行n-2次...n-1,n,执行1次</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line">printf(&quot;end&quot;);				&#x2F;&#x2F;执行1次</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i,j;				<span class="comment">//执行1次</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)&#123;			<span class="comment">//执行n次</span></span><br><span class="line">	<span class="keyword">for</span>(j = i; j &lt; n; j++)&#123;</span><br><span class="line">		<span class="comment">/*时间复杂度O(1)的程序步骤序列*/</span></span><br><span class="line">       		<span class="comment">//执行n-2次...n-1,n,执行1次</span></span><br><span class="line">        	<span class="comment">//执行n-2次...n-1,n,执行1次</span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;end&quot;</span>);				<span class="comment">//执行1次</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>总执行次数为：1+n+(n-1)+(n-2)+…+1 + 1= n(n+1)/2 +2 = n<sup>2</sup>/2+n/2 + 2</li>
@@ -372,21 +372,23 @@
 <td align="center">2<sup>n</sup></td>
 </tr>
 </tbody></table>
+<p>常用时间复杂度所耗费得时间从小到大依次是：</p>
+<p><strong>O(1) &lt; O(log⁡n) &lt; O(n) &lt; O(nlog⁡n) &lt; O(n<sup>2</sup>) &lt; O(n<sup>3</sup>) &lt; O(an) &lt; O(n!) &lt; O(n<sup>n</sup>) </strong></p>
 <p><strong>对数阶补充说明</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int count &#x3D;1;</span><br><span class="line">while(count &lt; n)&#123;</span><br><span class="line">	count &#x3D; count * 2;</span><br><span class="line">	&#x2F;*时间复杂度O(1)的程序步骤序列*&#x2F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count =<span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(count &lt; n)&#123;</span><br><span class="line">	count = count * <span class="number">2</span>;</span><br><span class="line">	<span class="comment">/*时间复杂度O(1)的程序步骤序列*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>每次count乘2之后，就距离n更接近一分，而需要乘多少次？接需要执行多少次，才能跳出循环？</li>
 <li>把需要乘的次数设为x，则2<sup>x</sup>=n，得到执行次数x=log<sub>2</sub>n</li>
 </ul>
-<h1 id="算法的空间复杂度"><a href="#算法的空间复杂度" class="headerlink" title="算法的空间复杂度"></a>算法的空间复杂度</h1><p>空间复杂度：<strong>算法的空间复杂度即算法所需的存储空间，记作：S(n)=O(f(n)**，此时n为问题的规模，f(n)为语句关于n所占</strong>存储空间函数**。</p>
+<h1 id="算法的空间复杂度"><a href="#算法的空间复杂度" class="headerlink" title="算法的空间复杂度"></a>算法的空间复杂度</h1><p>空间复杂度：算法的空间复杂度即<strong>算法所需的存储空间</strong>，记作：<strong>S(n)=O(f(n)，</strong>此时n为问题的规模，f(n)为语句关于n所占<strong>存储空间函数</strong>。</p>
 <blockquote>
 <ul>
 <li>当不用限定词地使用“复杂度”，则通常指时间复杂度。</li>
 <li>时间复杂度和空间复杂度一般情况下可以相互转换。</li>
 </ul>
 </blockquote>
-<h1 id="最坏情况与平均情况"><a href="#最坏情况与平均情况" class="headerlink" title="最坏情况与平均情况"></a>最坏情况与平均情况</h1><p>最坏情况：即一个算法存在的最低执行效率情况。</p>
+<h1 id="最坏情况与平均情况"><a href="#最坏情况与平均情况" class="headerlink" title="最坏情况与平均情况"></a>最坏情况与平均情况</h1><p>最坏情况：即一个算法存在的<strong>最低执行效率</strong>情况。</p>
 <ul>
 <li>在应用中，最坏情况是一种重要的需求，通常，除非特别指定，提及的<strong>运行时间</strong>都是指<strong>最坏情况</strong>的运行时间</li>
 <li>平均运行时间是所有情况中最有意义的，它属于<strong>期望</strong>的运行时间。</li>
