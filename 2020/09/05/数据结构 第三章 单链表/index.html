@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>数据结构 第三章 单链表 | yhdblog</title>
+    <meta name="description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 线性表链式存储结构定义 单链表的创建  线性表链式存储结构定义基本概念为保持线性结构“前驱后继，一对一”逻辑结构前提下，同时避免顺序存储结构中对相邻关系的依赖性。链式结构，除了要存数据元素信息外，还要存储它的后继元素的存储地址。  数据域：存储数据元素信息的域 指针域：存储直接后继位置的域，其中存储的信息称做指">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构 第三章 单链表">
+<meta property="og:url" content="http://yoursite.com/2020/09/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%8D%95%E9%93%BE%E8%A1%A8/index.html">
+<meta property="og:site_name" content="yhdblog">
+<meta property="og:description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 线性表链式存储结构定义 单链表的创建  线性表链式存储结构定义基本概念为保持线性结构“前驱后继，一对一”逻辑结构前提下，同时避免顺序存储结构中对相邻关系的依赖性。链式结构，除了要存数据元素信息外，还要存储它的后继元素的存储地址。  数据域：存储数据元素信息的域 指针域：存储直接后继位置的域，其中存储的信息称做指">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD.png">
+<meta property="article:published_time" content="2020-09-05T14:38:32.000Z">
+<meta property="article:modified_time" content="2020-09-05T14:38:32.898Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="技术积累">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD.png">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/yihangdeng" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="/images/avatar.jpg" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">yhdeng</h2>
+            <h3 id="title" class="hidden xl:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Zhaoqing, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            数据结构 第三章 单链表
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/09/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%8D%95%E9%93%BE%E8%A1%A8/" class="article-date">
+	  <time datetime="2020-09-05T14:38:32.000Z" itemprop="datePublished">Sep 5</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>, <a class="article-tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/09/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%8D%95%E9%93%BE%E8%A1%A8/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <ul>
+<li><strong>读物</strong>：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/">《大话数据结构》</a></li>
+<li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
+</ul>
+<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ol>
+<li><strong>线性表链式存储结构定义</strong></li>
+<li><strong>单链表的创建</strong></li>
+</ol>
+<h1 id="线性表链式存储结构定义"><a href="#线性表链式存储结构定义" class="headerlink" title="线性表链式存储结构定义"></a>线性表链式存储结构定义</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>为<strong>保持线性结构“前驱后继，一对一”逻辑结构</strong>前提下，同时<strong>避免</strong>顺序存储结构中对<strong>相邻关系的依赖性</strong>。链式结构，除了要存<strong>数据元素信息</strong>外，还要存储它的<strong>后继元素</strong>的存储<strong>地址</strong>。</p>
+<ul>
+<li><strong>数据域</strong>：存储<strong>数据</strong>元素信息的域</li>
+<li><strong>指针域</strong>：存储<strong>直接后继位置</strong>的域，其中存储的信息称做<strong>指针或链</strong></li>
+<li><strong>结点(Node)：数据域和指针域</strong>组成数据元素a<sub>i</sub>的存储映像</li>
+<li><strong>链表</strong>：由n个结点链成的一个链表</li>
+<li><strong>单链表</strong>：链表中的<strong>每个结点</strong>只包含<strong>一个指针域</strong></li>
+</ul>
+<p>单链表正是通过每个结点的<strong>指针域</strong>将线性表的数据元素按其逻辑次序链接在一起，如图所示：</p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD.png" alt="链式存储结构"></p>
+<h2 id="线性表链式存储结构代码描述"><a href="#线性表链式存储结构代码描述" class="headerlink" title="线性表链式存储结构代码描述"></a>线性表链式存储结构代码描述</h2><ol>
+<li>相关规定，线性链表的<strong>最后一个结点</strong>为“<strong>空</strong>”(用NULL或“^”符号表示)</li>
+<li><strong>头结点</strong>：在单链表的<strong>第一个结点</strong>前附设的一个结点，<strong>指针域指向第一个结点</strong>，若指针域为“<strong>空</strong>”，表示<strong>线性表为空</strong></li>
+</ol>
+<blockquote>
+<p>头结点主要作用是为便于对链表进行统一操作，头结点的数据域可不存储信息，或者存储线性表长度等附加信息。</p>
+</blockquote>
+<h2 id="单链表的定义"><a href="#单链表的定义" class="headerlink" title="单链表的定义"></a>单链表的定义</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//线性表的单链表存储结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">	ElemType data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;Node;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">LinkList</span>;</span><span class="comment">//定义LinkList，指针变量的typedef</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p><strong><code>typedef struct Node &#123;...&#125;Node;</code></strong>中的Node同名对象(实例)<strong>Node</strong>的作用：常用于为sizeof()函数传参。</p>
+</li>
+<li><p><strong><code>typedef struct Node *LinkList;</code></strong> <strong>语法</strong>理解：如<code>typedef int Status;</code> ‘<strong>Status</strong>‘等价于<strong>int</strong>，在这里可以看作类似变量的声明，即</p>
+<p>声明一个int类型变量Status <code>int Status</code>，而<code>int *Status</code>表示定义一个int型的<strong>指针变量</strong>。同样类比在typedef中，”*<strong>**”表示typedef的对象是Node **结构体的指针变量</strong>，即LinkList 等价于 <strong><code>struct Node *linkList;</code></strong> (不过写法上确实有点新颖，有点融合着写)</p>
+</li>
+</ol>
+<h1 id="单链表的创建"><a href="#单链表的创建" class="headerlink" title="单链表的创建"></a>单链表的创建</h1><h2 id="单链表的初始化-空表的建立"><a href="#单链表的初始化-空表的建立" class="headerlink" title="单链表的初始化(空表的建立)"></a>单链表的初始化(空表的建立)</h2><h3 id="InitList"><a href="#InitList" class="headerlink" title="InitList"></a>InitList</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始化顺序线性表 */</span></span><br><span class="line"><span class="function">Status <span class="title">InitList</span><span class="params">(LinkList *L)</span> </span>&#123; </span><br><span class="line">    *L=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); <span class="comment">/* 产生头结点(向内存申请一个结点的空间),并使L指向此头结点 */</span></span><br><span class="line">    <span class="keyword">if</span>(!(*L)) 	<span class="comment">/* 存储分配失败 */</span></span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">    (*L)-&gt;next=<span class="literal">NULL</span>;	 <span class="comment">/* 指针域为空 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>malloc</strong>函数：<code>void *malloc(long NumBytes)</code>向内存申请NumBytes个字节的空间，并返回了指向这块内存的指针。若分配失败，则返回一个空指针(NULL）</li>
+<li><strong>LinkList *L</strong>形参的理解：<ol>
+<li><code>Status InitList(LinkList *L)</code>注意，此时传入形参L已是<strong>二级指针</strong>。</li>
+<li>一级指针于二级指针，</li>
+</ol>
+</li>
+</ol>
+<h2 id="单链表的整表创建"><a href="#单链表的整表创建" class="headerlink" title="单链表的整表创建"></a>单链表的整表创建</h2><h3 id="CreateListHead"><a href="#CreateListHead" class="headerlink" title="CreateListHead"></a>CreateListHead</h3><p>头插法</p>
+<h3 id="CreateListTail"><a href="#CreateListTail" class="headerlink" title="CreateListTail"></a>CreateListTail</h3><p>尾插法</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/09/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%8D%95%E9%93%BE%E8%A1%A8/">http://yoursite.com/2020/09/05/数据结构 第三章 单链表/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">1.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">线性表链式存储结构定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%BB%A3%E7%A0%81%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.2.</span> <span class="toc-text">线性表链式存储结构代码描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.3.</span> <span class="toc-text">单链表的定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">单链表的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-%E7%A9%BA%E8%A1%A8%E7%9A%84%E5%BB%BA%E7%AB%8B"><span class="toc-number">3.1.</span> <span class="toc-text">单链表的初始化(空表的建立)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InitList"><span class="toc-number">3.1.1.</span> <span class="toc-text">InitList</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%95%B4%E8%A1%A8%E5%88%9B%E5%BB%BA"><span class="toc-number">3.2.</span> <span class="toc-text">单链表的整表创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CreateListHead"><span class="toc-number">3.2.1.</span> <span class="toc-text">CreateListHead</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CreateListTail"><span class="toc-number">3.2.2.</span> <span class="toc-text">CreateListTail</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>
