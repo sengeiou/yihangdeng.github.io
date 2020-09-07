@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
     <title>数据结构 第三章 单链表 | yhdblog</title>
-    <meta name="description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 线性表链式存储结构定义 单链表的创建 单链表的读取 单链表的插入和删除  线性表链式存储结构定义基本概念为保持线性结构“前驱后继，一对一”逻辑结构前提下，同时避免顺序存储结构中对相邻关系的依赖性。链式结构，除了要存数据元素信息外，还要存储它的后继元素的存储地址。  数据域：存储数据元素信息的域 指针域：存储直接">
+    <meta name="description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 线性表链式存储结构定义 单链表的创建 单链表的读取 单链表的插入和删除 总结  线性表链式存储结构定义基本概念为保持线性结构“前驱后继，一对一”逻辑结构前提下，同时避免顺序存储结构中对相邻关系的依赖性。链式结构，除了要存数据元素信息外，还要存储它的后继元素的存储地址。  数据域：存储数据元素信息的域 指针域：存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构 第三章 单链表">
 <meta property="og:url" content="http://yoursite.com/2020/09/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%8D%95%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="yhdblog">
-<meta property="og:description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 线性表链式存储结构定义 单链表的创建 单链表的读取 单链表的插入和删除  线性表链式存储结构定义基本概念为保持线性结构“前驱后继，一对一”逻辑结构前提下，同时避免顺序存储结构中对相邻关系的依赖性。链式结构，除了要存数据元素信息外，还要存储它的后继元素的存储地址。  数据域：存储数据元素信息的域 指针域：存储直接">
+<meta property="og:description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 线性表链式存储结构定义 单链表的创建 单链表的读取 单链表的插入和删除 总结  线性表链式存储结构定义基本概念为保持线性结构“前驱后继，一对一”逻辑结构前提下，同时避免顺序存储结构中对相邻关系的依赖性。链式结构，除了要存数据元素信息外，还要存储它的后继元素的存储地址。  数据域：存储数据元素信息的域 指针域：存">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD.png">
 <meta property="article:published_time" content="2020-09-05T14:38:32.000Z">
-<meta property="article:modified_time" content="2020-09-06T13:56:47.071Z">
+<meta property="article:modified_time" content="2020-09-07T13:02:28.168Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="技术积累">
 <meta property="article:tag" content="数据结构">
@@ -220,6 +220,7 @@
 <li><strong>单链表的创建</strong></li>
 <li><strong>单链表的读取</strong></li>
 <li><strong>单链表的插入和删除</strong></li>
+<li><strong>总结</strong></li>
 </ol>
 <h1 id="线性表链式存储结构定义"><a href="#线性表链式存储结构定义" class="headerlink" title="线性表链式存储结构定义"></a>线性表链式存储结构定义</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>为<strong>保持线性结构“前驱后继，一对一”逻辑结构</strong>前提下，同时<strong>避免</strong>顺序存储结构中对<strong>相邻关系的依赖性</strong>。链式结构，除了要存<strong>数据元素信息</strong>外，还要存储它的<strong>后继元素</strong>的存储<strong>地址</strong>。</p>
 <ul>
@@ -247,7 +248,8 @@
 <p>声明一个int类型变量Status <code>int Status</code>，而<code>int *Status</code>表示定义一个int型的<strong>指针变量</strong>。同样类比在typedef中，<strong>“*”</strong>表示typedef的对象是Node <strong>结构体的指针变量</strong>，即LinkList 等价于 <strong><code>struct Node *linkList;</code></strong> (不过写法上确实有点新颖，有点融合着写)</p>
 </li>
 </ol>
-<h1 id="单链表的创建"><a href="#单链表的创建" class="headerlink" title="单链表的创建"></a>单链表的创建</h1><h2 id="单链表的初始化-空表的建立"><a href="#单链表的初始化-空表的建立" class="headerlink" title="单链表的初始化(空表的建立)"></a>单链表的初始化(空表的建立)</h2><h3 id="InitList"><a href="#InitList" class="headerlink" title="InitList"></a>InitList</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始化顺序线性表 */</span></span><br><span class="line"><span class="function">Status <span class="title">InitList</span><span class="params">(LinkList *L)</span> </span>&#123; </span><br><span class="line">    *L=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); <span class="comment">/* 产生头结点(向内存申请一个结点的空间),并使L指向此头结点 */</span></span><br><span class="line">    <span class="keyword">if</span>(!(*L)) 	<span class="comment">/* 存储分配失败 */</span></span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">    (*L)-&gt;next=<span class="literal">NULL</span>;	 <span class="comment">/* 指针域为空 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="单链表的创建"><a href="#单链表的创建" class="headerlink" title="单链表的创建"></a>单链表的创建</h1><h2 id="单链表的初始化"><a href="#单链表的初始化" class="headerlink" title="单链表的初始化"></a>单链表的初始化</h2><p>单链表的初始化，即空表的建立</p>
+<h3 id="InitList"><a href="#InitList" class="headerlink" title="InitList"></a>InitList</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始化顺序线性表 */</span></span><br><span class="line"><span class="function">Status <span class="title">InitList</span><span class="params">(LinkList *L)</span> </span>&#123; </span><br><span class="line">    *L=(LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); <span class="comment">/* 产生头结点(向内存申请一个结点的空间),并使L指向此头结点 */</span></span><br><span class="line">    <span class="keyword">if</span>(!(*L)) 	<span class="comment">/* 存储分配失败 */</span></span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">    (*L)-&gt;next=<span class="literal">NULL</span>;	 <span class="comment">/* 指针域为空 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li><p><strong>malloc</strong>函数：<code>void *malloc(long NumBytes)</code>向<strong>内存</strong>申请NumBytes个字节的空间，并返回了指向这块内存的指针。若分配失败，则返回一个空指针(NULL）,如系统空间不足等失败情况。使用malloc函数需注意如下几点：</p>
@@ -267,7 +269,7 @@
 </li>
 </ol>
 <ol start="2">
-<li><p><strong>LinkList *L</strong>形参的理解：</p>
+<li><p>LinkList *L<strong>形参的理解</strong>：</p>
 <ul>
 <li><p><code>Status InitList(LinkList *L)</code>注意，此时传入形参L已是<strong>二级指针</strong>(指针的指针)。</p>
 </li>
@@ -286,7 +288,7 @@
 </li>
 </ol>
 <ol start="2">
-<li><p>LinkList *L二级指针的用处：<br><strong>回归目的本身，很明确。即想要<code>LinkList L;</code>这个指针变量L最终指向通过malloc函数申请空间后返回的地址值</strong>(即地址的赋值)。理应<code>L=malloc(sizeof(Node));</code>即可，从一条语句操作上是完全正确的，类型也是一致的。<strong>但</strong>问题在于如今想要<strong>通过调用函数且把L作为实参传入修改其地址值</strong>。这样的前提下，若只传入想要修改内容类型的本身(这里就是指针变量/一级指针)，安装<strong>值传递</strong>原则是<strong>达不到效果</strong>的，代码如下所示：</p>
+<li><p>LinkList *L<strong>二级指针的用处</strong>：<br><strong>回归目的本身，很明确。即想要<code>LinkList L;</code>这个指针变量L最终指向通过malloc函数申请空间后返回的地址值</strong>(即地址的赋值)。理应<code>L=malloc(sizeof(Node));</code>即可，从一条语句操作上是完全正确的，类型也是一致的。<strong>但</strong>问题在于如今想要<strong>通过调用函数且把L作为实参传入修改其地址值</strong>。这样的前提下，若只传入想要修改内容类型的本身(这里就是指针变量/一级指针)，安装<strong>值传递</strong>原则是<strong>达不到效果</strong>的，代码如下所示：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">InitList</span><span class="params">(LinkList L)</span> </span>&#123; <span class="comment">//形参修改成一级指针</span></span><br><span class="line">	L = (LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); </span><br><span class="line">	<span class="keyword">if</span> (!(L)) 	</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	L-&gt;next = <span class="literal">NULL</span>;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	LinkList L = <span class="literal">NULL</span>;</span><br><span class="line">	InitList(L);</span><br><span class="line">	<span class="keyword">if</span> (L == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;L=NULL&quot;</span>);<span class="comment">//最终L还是NULL被打印出来，没有被改变</span></span><br><span class="line">	getchar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>“想要<strong>通过调用函数</strong>去改变传入<strong>实参的内容</strong>，则需要<strong>至少传入欲修改参数类型基础上的一级指针</strong>”</strong>，即先要修改指针值本身，则至少需要传入该参数类型上的一级指针，即指针的指针，这就是<code>Status InitList(LinkList L) &#123;...&#125; </code>二级指针形参的意义。</p>
@@ -333,8 +335,88 @@
 <li><p><strong><code>r = p;</code></strong>功能是，注意这里<strong>没有真正修改了地址值</strong>，而是局部变量顺应循环设计的<strong>循环变换</strong>，变换内容是<strong>将最新插入的结点成为下次循环的尾结点</strong>。</p>
 </li>
 </ul>
-<h2 id="单链表的整表删除"><a href="#单链表的整表删除" class="headerlink" title="单链表的整表删除"></a>单链表的整表删除</h2><h1 id="单链表的读取"><a href="#单链表的读取" class="headerlink" title="单链表的读取"></a>单链表的读取</h1><p>思路：</p>
-<h1 id="单链表的插入和删除"><a href="#单链表的插入和删除" class="headerlink" title="单链表的插入和删除"></a>单链表的插入和删除</h1>
+<h2 id="单链表的整表删除"><a href="#单链表的整表删除" class="headerlink" title="单链表的整表删除"></a>单链表的整表删除</h2><p><strong>思路</strong>：</p>
+<ol>
+<li>声明一结点p和q；</li>
+<li>将第一个结点赋值给p；</li>
+<li>循环：<ul>
+<li>将下一个结点赋值给q；</li>
+<li>释放p；</li>
+<li>将q赋值给p</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始条件：顺序线性表L已存在。操作结果：将L重置为空表 */</span></span><br><span class="line"><span class="function">Status <span class="title">ClearList</span><span class="params">(LinkList *L)</span></span>&#123; </span><br><span class="line">	LinkList p,q;</span><br><span class="line">	p=(*L)-&gt;next;           <span class="comment">/*  p指向第一个结点 */</span></span><br><span class="line">	<span class="keyword">while</span>(p)&#123;               <span class="comment">/*  没到表尾 */</span></span><br><span class="line">		q=p-&gt;next;</span><br><span class="line">		<span class="built_in">free</span>(p);</span><br><span class="line">		p=q;</span><br><span class="line">	&#125;</span><br><span class="line">	(*L)-&gt;next=<span class="literal">NULL</span>;        <span class="comment">/* 头结点指针域为空 */</span></span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>free函数，它的作用就是让系统回收一个Node结点，释放内存。</p>
+<h1 id="单链表的读取"><a href="#单链表的读取" class="headerlink" title="单链表的读取"></a>单链表的读取</h1><h2 id="GetElem"><a href="#GetElem" class="headerlink" title="GetElem"></a>GetElem</h2><p>思路：</p>
+<ol>
+<li>声明一个LinkList p，指向链表的<strong>第一个结点</strong>(查询不查头结点)。</li>
+<li>设置计时器变量 j，并初始化为1，通过<strong>重新数数</strong>的方式找到序号位置。</li>
+<li>当j&lt;i时，遍历链表，让p的**指针向后移动**，称为<strong>“工作指针后移”</strong>，计时器j累加1.</li>
+<li>若到链表末尾p为空，则说明第i个结点不存在。</li>
+<li>否则查找成功，返回结点p的数据。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始条件：顺序线性表L已存在，1≤i≤ListLength(L) */</span></span><br><span class="line"><span class="comment">/* 操作结果：用e返回L中第i个数据元素的值 */</span></span><br><span class="line"><span class="function">Status <span class="title">GetElem</span><span class="params">(LinkList L,<span class="keyword">int</span> i,ElemType *e)</span></span>&#123;</span><br><span class="line">    <span class="comment">//--------------查询部分---------------</span></span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	LinkList p;			<span class="comment">/* 声明一结点p */</span></span><br><span class="line">	p = L-&gt;next;		<span class="comment">/* 让p指向链表L的第一个结点 */</span></span><br><span class="line">	j = <span class="number">1</span>;				<span class="comment">/*  j为计数器 */</span></span><br><span class="line">	<span class="keyword">while</span> (p &amp;&amp; j&lt;i)&#123;  	<span class="comment">/* p不为空或者计数器j还没有等于i时，循环继续 */</span></span><br><span class="line">		p = p-&gt;next;  	<span class="comment">/* 让p指向下一个结点 */</span></span><br><span class="line">		++j;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> ( !p || j&gt;i ) 	<span class="comment">//注意这里是 大于 &gt; 符号</span></span><br><span class="line">		<span class="keyword">return</span> ERROR;  <span class="comment">/*  第i个元素不存在 */</span></span><br><span class="line">     <span class="comment">//--------------查询部分---------------</span></span><br><span class="line">	*e = p-&gt;data;   <span class="comment">/*  取第i个元素的数据 */</span></span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>链式存储<strong>没有表长</strong>，更加没有序号。事先不知循环次数，只能设置计数器，使用while循环解决;</li>
+<li>最坏情况复杂度是O(n);</li>
+</ul>
+<h1 id="单链表的插入和删除"><a href="#单链表的插入和删除" class="headerlink" title="单链表的插入和删除"></a>单链表的插入和删除</h1><h2 id="ListInsert"><a href="#ListInsert" class="headerlink" title="ListInsert"></a>ListInsert</h2><p>思路：</p>
+<ol>
+<li>按照插入原理，首先需定位到<strong>i -1 **结点位置，即插入位置的</strong>前继结点**，调整GetElem函数查询部分代码即可；</li>
+<li>创建<strong>空节点s</strong>，并把数据元素e填充到数据域；</li>
+<li>插入原理(单链表插入标准语句)：<strong><code>s-&gt;next = p-&gt;next;   P-&gt;next=s;</code></strong>；</li>
+<li>返回成功；</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始条件：顺序线性表L已存在,1≤i≤ListLength(L)， */</span></span><br><span class="line"><span class="comment">/* 操作结果：在L中第i个位置之前插入新的数据元素e，L的长度加1 */</span></span><br><span class="line"><span class="function">Status <span class="title">ListInsert</span><span class="params">(LinkList *L,<span class="keyword">int</span> i,ElemType e)</span></span>&#123; </span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	LinkList p,s;</span><br><span class="line">	p = *L;   </span><br><span class="line">	j = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (p &amp;&amp; j &lt; i)&#123;     <span class="comment">/* 寻找第i-1个结点 */</span></span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">		++j;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">if</span> (!p || j &gt; i) </span><br><span class="line">		<span class="keyword">return</span> ERROR;   <span class="comment">/* 第i个元素不存在 */</span></span><br><span class="line">	s = (LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));  <span class="comment">/*  生成新结点(C语言标准函数) */</span></span><br><span class="line">	s-&gt;data = e;  </span><br><span class="line">	s-&gt;next = p-&gt;next;      <span class="comment">/* 将p的后继结点赋值给s的后继  */</span></span><br><span class="line">	p-&gt;next = s;          <span class="comment">/* 将s赋值给p的后继 */</span></span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>要点</strong>：</p>
+<ul>
+<li>ListInsert函数巧妙将p赋值为<strong>头结点地址</strong><code>p = *L;</code>来实现定位<strong>i - 1</strong>结点位置功能(插入位置的前继结点)。有别于GetElem函数<code>p = (*L)-&gt;next;</code>。</li>
+<li>插入原理：新结点的指针域通过<strong>修改i - 1结点的后继节点指向</strong>完成结点的插入。</li>
+<li>插入原理的两条语句<strong>不能颠倒执行顺序</strong>。</li>
+</ul>
+<h2 id="ListDelete"><a href="#ListDelete" class="headerlink" title="ListDelete"></a>ListDelete</h2><p><strong>思路</strong>：</p>
+<ol>
+<li>按照删除原理，同样需定位到<strong>i -1 **结点位置，并且</strong>不能删除头结点**；</li>
+<li>定位成功后，创建一个用于临时存放的节点指针q，将欲删除的节点p-&gt;next赋值给q；</li>
+<li>将q节点中的数据赋值给e，作为返回；</li>
+<li>释放q节点；</li>
+<li>返回成功；</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始条件：顺序线性表L已存在，1≤i≤ListLength(L) */</span></span><br><span class="line"><span class="comment">/* 操作结果：删除L的第i个数据元素，并用e返回其值，L的长度减1 */</span></span><br><span class="line"><span class="function">Status <span class="title">ListDelete</span><span class="params">(LinkList *L,<span class="keyword">int</span> i,ElemType *e)</span> </span>&#123; </span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	LinkList p,q;</span><br><span class="line">	p = *L;</span><br><span class="line">	j = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (p-&gt;next &amp;&amp; j &lt; i)&#123;	<span class="comment">/* 遍历寻找第i个元素 */</span></span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!(p-&gt;next) || j &gt; i) </span><br><span class="line">	    <span class="keyword">return</span> ERROR;           <span class="comment">/* 第i个元素不存在 */</span></span><br><span class="line">	q = p-&gt;next;</span><br><span class="line">	p-&gt;next = q-&gt;next;			<span class="comment">/* 将q的后继赋值给p的后继 */</span></span><br><span class="line">	*e = q-&gt;data;               <span class="comment">/* 将q结点中的数据给e */</span></span><br><span class="line">	<span class="built_in">free</span>(q);                    <span class="comment">/* 让系统回收此结点，释放内存 */</span></span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>要点</strong>：</p>
+<ul>
+<li>有别于GetElem与ListInsert函数while或if条件<code>p</code>，ListDelete函数的条件改为<code>p-&gt;next</code>。<ul>
+<li>GetElem条件判断<code>p</code>是否为NULL，是因为p的初始值就定义成 <code>p = (*)L-&gt;next</code>，不存在对头结点操作的可能性;</li>
+<li>ListInsert条件判断<code>p</code>是否为NULL，是因为插入数据是<strong>允许空表插入</strong>;</li>
+<li>ListDelete条件判断<code>p</code>是否为NULL，是因为删除<strong>不允许空表删除</strong>。</li>
+</ul>
+</li>
+<li>与整表删除要点一致，均需要通过一个变量<code>q</code>去记录将要删除的结点地址，不然会丢失地址，造成内存泄漏。</li>
+</ul>
+<h2 id="插入和删除复杂度分析"><a href="#插入和删除复杂度分析" class="headerlink" title="插入和删除复杂度分析"></a>插入和删除复杂度分析</h2><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="单链表各方法实现思路"><a href="#单链表各方法实现思路" class="headerlink" title="单链表各方法实现思路"></a>单链表各方法实现思路</h2><h2 id="不同操作中指针类型的要求"><a href="#不同操作中指针类型的要求" class="headerlink" title="不同操作中指针类型的要求"></a>不同操作中指针类型的要求</h2><h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p>形参传递永远是<strong>值传递</strong>(临时变量)，想要<strong>通过调用函数</strong>去改变传入<strong>实参的内容</strong>必须：</p>
+<ol>
+<li><strong>至少传入欲修改参数类型基础上的一级指针</strong></li>
+<li><strong>并</strong>通过<strong>“*” 调用实体内容进行修改</strong>。</li>
+</ol>
+<h3 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h3><ul>
+<li>当<strong>传值</strong>时，只可以引用值而<strong>不可以改变值</strong>，</li>
+<li>当你<strong>传指针</strong>时，只可以改变指针所指的内容，<strong>不可以改变指针本身</strong></li>
+<li>但<strong>传指针的指针</strong>时，即可以改变指针<strong>所指的内容</strong>，又<strong>可以改变指针本身</strong></li>
+</ul>
+<hr>
+<ul>
+<li><strong>初始化链表</strong>需要用<strong>二级指针</strong>；</li>
+<li><strong>销毁链表</strong>(头结点也销毁)需要用到<strong>二级指针</strong>；</li>
+<li><strong>插入、删除、遍历、清空</strong>结点用<strong>一级指针</strong>即可；</li>
+</ul>
+<h2 id="单链表结构与顺序存储结构优缺点"><a href="#单链表结构与顺序存储结构优缺点" class="headerlink" title="单链表结构与顺序存储结构优缺点"></a>单链表结构与顺序存储结构优缺点</h2>
         </div>
         
 <blockquote class="copyright">
@@ -359,7 +441,7 @@
     <div class="toc-sidebar">
         <nav id="toc" class="article-toc">
             <h3 class="toc-title">Catalogue</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">1.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">线性表链式存储结构定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%BB%A3%E7%A0%81%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.2.</span> <span class="toc-text">线性表链式存储结构代码描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.3.</span> <span class="toc-text">单链表的定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">单链表的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96-%E7%A9%BA%E8%A1%A8%E7%9A%84%E5%BB%BA%E7%AB%8B"><span class="toc-number">3.1.</span> <span class="toc-text">单链表的初始化(空表的建立)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InitList"><span class="toc-number">3.1.1.</span> <span class="toc-text">InitList</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%95%B4%E8%A1%A8%E5%88%9B%E5%BB%BA"><span class="toc-number">3.2.</span> <span class="toc-text">单链表的整表创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CreateListHead"><span class="toc-number">3.2.1.</span> <span class="toc-text">CreateListHead</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CreateListTail"><span class="toc-number">3.2.2.</span> <span class="toc-text">CreateListTail</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%95%B4%E8%A1%A8%E5%88%A0%E9%99%A4"><span class="toc-number">3.3.</span> <span class="toc-text">单链表的整表删除</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E8%AF%BB%E5%8F%96"><span class="toc-number">4.</span> <span class="toc-text">单链表的读取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4"><span class="toc-number">5.</span> <span class="toc-text">单链表的插入和删除</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">1.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">线性表链式存储结构定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%BB%A3%E7%A0%81%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.2.</span> <span class="toc-text">线性表链式存储结构代码描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.3.</span> <span class="toc-text">单链表的定义</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">单链表的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">单链表的初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InitList"><span class="toc-number">3.1.1.</span> <span class="toc-text">InitList</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%95%B4%E8%A1%A8%E5%88%9B%E5%BB%BA"><span class="toc-number">3.2.</span> <span class="toc-text">单链表的整表创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CreateListHead"><span class="toc-number">3.2.1.</span> <span class="toc-text">CreateListHead</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CreateListTail"><span class="toc-number">3.2.2.</span> <span class="toc-text">CreateListTail</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%95%B4%E8%A1%A8%E5%88%A0%E9%99%A4"><span class="toc-number">3.3.</span> <span class="toc-text">单链表的整表删除</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E8%AF%BB%E5%8F%96"><span class="toc-number">4.</span> <span class="toc-text">单链表的读取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GetElem"><span class="toc-number">4.1.</span> <span class="toc-text">GetElem</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4"><span class="toc-number">5.</span> <span class="toc-text">单链表的插入和删除</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ListInsert"><span class="toc-number">5.1.</span> <span class="toc-text">ListInsert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ListDelete"><span class="toc-number">5.2.</span> <span class="toc-text">ListDelete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">5.3.</span> <span class="toc-text">插入和删除复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E5%90%84%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-number">6.1.</span> <span class="toc-text">单链表各方法实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E4%B8%AD%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%A6%81%E6%B1%82"><span class="toc-number">6.2.</span> <span class="toc-text">不同操作中指针类型的要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-number">6.2.1.</span> <span class="toc-text">原理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%EF%BC%9A"><span class="toc-number">6.2.2.</span> <span class="toc-text">结论：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84%E4%B8%8E%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">6.3.</span> <span class="toc-text">单链表结构与顺序存储结构优缺点</span></a></li></ol></li></ol>
         </nav>
     </div>
 </aside>
