@@ -13,7 +13,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD.png">
 <meta property="article:published_time" content="2020-09-05T14:38:32.000Z">
-<meta property="article:modified_time" content="2020-09-07T13:02:28.168Z">
+<meta property="article:modified_time" content="2020-09-08T08:26:07.341Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="技术积累">
 <meta property="article:tag" content="数据结构">
@@ -304,7 +304,7 @@
 </li>
 </ol>
 <h2 id="单链表的整表创建"><a href="#单链表的整表创建" class="headerlink" title="单链表的整表创建"></a>单链表的整表创建</h2><p>单链表的整表创建又分为<strong>“头插法”，“尾插法”</strong>两种。</p>
-<h3 id="CreateListHead"><a href="#CreateListHead" class="headerlink" title="CreateListHead"></a>CreateListHead</h3><p><strong>“头插法”</strong>即生成<strong>新结点永远只和头结点“交易”，“后来却先到”，把NULL不断后移</strong></p>
+<h3 id="CreateListHead"><a href="#CreateListHead" class="headerlink" title="CreateListHead"></a>CreateListHead</h3><p><strong>“头插法”</strong>即生成<strong>新结点永远只和头结点“交易”，“后到却排头”，把NULL不断后移</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*  随机产生n个元素的值，建立带表头结点的单链线性表L（头插法） */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateListHead</span><span class="params">(LinkList *L, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	LinkList p;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	srand(time(<span class="number">0</span>));                         <span class="comment">/* 初始化(修改)随机数种子 */</span></span><br><span class="line">	*L = (LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">	(*L)-&gt;next = <span class="literal">NULL</span>;                      <span class="comment">/*  先建立一个带头结点的单链表 */</span></span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">		p = (LinkList)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); <span class="comment">/*  生成新结点 */</span></span><br><span class="line">		p-&gt;data = rand()%<span class="number">100</span>+<span class="number">1</span>;             <span class="comment">/*  随机生成100以内的数字填充数据域 */</span></span><br><span class="line">        </span><br><span class="line">		p-&gt;next = (*L)-&gt;next;    </span><br><span class="line">		(*L)-&gt;next = p;						<span class="comment">/*  插入到表头 */</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol>
@@ -400,10 +400,26 @@
 </li>
 <li>与整表删除要点一致，均需要通过一个变量<code>q</code>去记录将要删除的结点地址，不然会丢失地址，造成内存泄漏。</li>
 </ul>
-<h2 id="插入和删除复杂度分析"><a href="#插入和删除复杂度分析" class="headerlink" title="插入和删除复杂度分析"></a>插入和删除复杂度分析</h2><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="单链表各方法实现思路"><a href="#单链表各方法实现思路" class="headerlink" title="单链表各方法实现思路"></a>单链表各方法实现思路</h2><h2 id="不同操作中指针类型的要求"><a href="#不同操作中指针类型的要求" class="headerlink" title="不同操作中指针类型的要求"></a>不同操作中指针类型的要求</h2><h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p>形参传递永远是<strong>值传递</strong>(临时变量)，想要<strong>通过调用函数</strong>去改变传入<strong>实参的内容</strong>必须：</p>
+<h2 id="插入和删除复杂度分析"><a href="#插入和删除复杂度分析" class="headerlink" title="插入和删除复杂度分析"></a>插入和删除复杂度分析</h2><ul>
+<li>当<strong>不知第i个结点指针位置</strong>(首次插入/删除)，时间复杂度为<strong>O(n)</strong>；</li>
+<li>若需要在i个位置插入若干个结点，则<strong>除了第一次外其余结点</strong>插入或删除的时间复杂度为<strong>O(1)</strong>；</li>
+</ul>
+<p>结论：<strong>插入或删除数据越频繁的操作，单链表的效率优势就越明显</strong>。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="单链表各方法实现思路"><a href="#单链表各方法实现思路" class="headerlink" title="单链表各方法实现思路"></a>单链表各方法实现思路</h2><ul>
+<li><strong>GetEelm</strong>：<strong>计数器</strong> + <strong>while循环匹配</strong> + <strong>工作指针后移</strong> <code>p-&gt;next = p</code>;；</li>
+<li><strong>ListInsert</strong> / <strong>CreateListHead</strong>：均采用了插入的方法，`s-&gt;next=p-&gt;next;  p-&gt;next=s;；</li>
+<li><strong>ListInsert</strong>/ <strong>ListDelete</strong>：均需要定位到欲操作位置的<strong>前继结点</strong>，通过初始赋值头结点地址<code>p=(*L)</code>；</li>
+<li><strong>ListDelete</strong>：<ul>
+<li><strong>“绕指针删除”</strong><code>q=p-&gt;next; p-&gt;next=q-&gt;next;</code>；</li>
+<li>ListDelete / <strong>ClearList</strong>：均需将欲删除结点用另一个变量暂存后再删除，不然会丢失地址，造成内存泄漏；</li>
+</ul>
+</li>
+<li><strong>CreateListTail</strong> / <strong>ClearList</strong>：同样在循环内通过局部变量直接交换节点地址实现，节点操作按序进行(从前到后)，如尾插法<code>r-&gt;next=p; r =p;</code>或整表删除<code>q=p-&gt;next; free(p); p=q;</code></li>
+</ul>
+<h2 id="不同操作中指针类型的要求"><a href="#不同操作中指针类型的要求" class="headerlink" title="不同操作中指针类型的要求"></a>不同操作中指针类型的要求</h2><h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p>形参传递永远是<strong>值传递</strong>(临时变量)，想要<strong>通过调用函数</strong>去改变传入<strong>实参的内容</strong>必须：</p>
 <ol>
 <li><strong>至少传入欲修改参数类型基础上的一级指针</strong></li>
-<li><strong>并</strong>通过<strong>“*” 调用实体内容进行修改</strong>。</li>
+<li>*<em>通过<strong>“</em>” 调用实体内容进行修改</strong>。</li>
 </ol>
 <h3 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h3><ul>
 <li>当<strong>传值</strong>时，只可以引用值而<strong>不可以改变值</strong>，</li>
@@ -416,7 +432,39 @@
 <li><strong>销毁链表</strong>(头结点也销毁)需要用到<strong>二级指针</strong>；</li>
 <li><strong>插入、删除、遍历、清空</strong>结点用<strong>一级指针</strong>即可；</li>
 </ul>
-<h2 id="单链表结构与顺序存储结构优缺点"><a href="#单链表结构与顺序存储结构优缺点" class="headerlink" title="单链表结构与顺序存储结构优缺点"></a>单链表结构与顺序存储结构优缺点</h2>
+<h2 id="单链表结构与顺序存储结构优缺点"><a href="#单链表结构与顺序存储结构优缺点" class="headerlink" title="单链表结构与顺序存储结构优缺点"></a>单链表结构与顺序存储结构优缺点</h2><table>
+<thead>
+<tr>
+<th>存储结构</th>
+<th align="left">存储分配方式</th>
+<th align="left">时间性能</th>
+<th align="center">空间性能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顺序存储</td>
+<td align="left">连续存储单元</td>
+<td align="left">查找：O(1)，插删：O(n)</td>
+<td align="center">需预定分配存储空间，而大小不好掌握</td>
+</tr>
+<tr>
+<td>链式存储</td>
+<td align="left">任意存储单元</td>
+<td align="left">查找：O(n)，插删：O(n) 或 O(1)</td>
+<td align="center">无需事先预定，内存有空间即可，不限数量</td>
+</tr>
+</tbody></table>
+<ul>
+<li>若线性表需要<strong>频繁查找</strong>且<strong>很少进行插入和删除操作</strong>，宜采用<strong>顺序存储结构</strong>；<ul>
+<li>如用户注册的个人信息，除了注册时插入数据外，绝大多数都是读取而且</li>
+</ul>
+</li>
+<li>若线性表需要<strong>频繁增加和删除</strong>，宜采用<strong>链式存储结构</strong>；<ul>
+<li>如游戏中玩家的武器装备仓库列表等</li>
+</ul>
+</li>
+</ul>
+
         </div>
         
 <blockquote class="copyright">
