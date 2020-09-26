@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>冒泡排序 | yhdblog</title>
+    <meta name="description" content="冒泡排序分析  每一轮交替比较把最值往**后排(下沉)**，能得出参与这次轮次所有数中的最值 首次交替次数：最后一个数无需交替比较。即循环下标结构 for(j &#x3D; 0;j &lt; len - 1; j ++ )   接下来继续开始若干次从头开始的交替，逐一把“第2最值”，“第3最值”…排到最后(下沉) 剩余轮次交替次数：每一次交替比较后的最值无需参与下一次交替比较，剩下轮次的交替比较次数呈递减1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="冒泡排序">
+<meta property="og:url" content="http://yoursite.com/2020/09/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:site_name" content="yhdblog">
+<meta property="og:description" content="冒泡排序分析  每一轮交替比较把最值往**后排(下沉)**，能得出参与这次轮次所有数中的最值 首次交替次数：最后一个数无需交替比较。即循环下标结构 for(j &#x3D; 0;j &lt; len - 1; j ++ )   接下来继续开始若干次从头开始的交替，逐一把“第2最值”，“第3最值”…排到最后(下沉) 剩余轮次交替次数：每一次交替比较后的最值无需参与下一次交替比较，剩下轮次的交替比较次数呈递减1">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E5%8A%A8%E6%80%81%E7%A4%BA%E6%84%8F%E5%9B%BE.gif">
+<meta property="article:published_time" content="2020-09-25T13:42:32.000Z">
+<meta property="article:modified_time" content="2020-09-26T01:23:59.406Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E5%8A%A8%E6%80%81%E7%A4%BA%E6%84%8F%E5%9B%BE.gif">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/yihangdeng" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="/images/avatar.jpg" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">yhdeng</h2>
+            <h3 id="title" class="hidden xl:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Zhaoqing, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            冒泡排序
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/09/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" class="article-date">
+	  <time datetime="2020-09-25T13:42:32.000Z" itemprop="datePublished">Sep 25</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/09/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="冒泡排序分析"><a href="#冒泡排序分析" class="headerlink" title="冒泡排序分析"></a>冒泡排序分析</h1><p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E5%8A%A8%E6%80%81%E7%A4%BA%E6%84%8F%E5%9B%BE.gif" alt="冒泡排序"></p>
+<ol>
+<li>每一轮交替比较把最值往**后排(下沉)**，能得出参与这次轮次所有数中的最值<ul>
+<li>首次交替次数：最后一个数无需交替比较。即循环下标结构 for(j = 0;<strong>j &lt; len - 1</strong>; j ++ )</li>
+</ul>
+</li>
+<li>接下来继续开始若干次从头开始的交替，逐一把“第2最值”，“第3最值”…排到最后(下沉)<ul>
+<li>剩余轮次交替次数：每一次交替比较后的最值无需参与下一次交替比较，剩下轮次的交替比较次数呈<strong>递减1状态</strong></li>
+<li>总比较轮次：每一个数都需走一遍轮次。，最后交替(数组最前的数)只需一个轮次完成，即总论次为：<strong>len - 1</strong></li>
+</ul>
+</li>
+</ol>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><h2 id="理论支持"><a href="#理论支持" class="headerlink" title="理论支持"></a>理论支持</h2><p>每一轮交替比较把最值往**后排(下沉)**，能得出参与这次轮次所有数当中的最值</p>
+<h2 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h2><ol>
+<li><p>把最值往<strong>后排(下沉)</strong></p>
+<ul>
+<li>从大到小，降序，后排下沉最小值，a[ j ] &lt; a[ j + 1 ]</li>
+<li>从小到大，升序，后排下沉最大值，a[ j ] &gt; a[ j + 1 ]</li>
+</ul>
+</li>
+<li><p>数组内部比较交替次数：</p>
+<ul>
+<li>首次比较交替次数：<strong>len - 1</strong>    即<code>for(j = 0;j &lt; len - 1;j++)</code></li>
+<li>剩下轮次比较交替次数：<strong>每经一个轮次，交替比较次数减1</strong></li>
+</ul>
+</li>
+<li><p>整个完整排序的比较轮次：最后交替比较两个数(数组最前的两个数)只需一个轮次完成，<strong>len - 1</strong>。  </p>
+</li>
+</ol>
+<h2 id="代码表示"><a href="#代码表示" class="headerlink" title="代码表示"></a>代码表示</h2><ol>
+<li>比较轮次属于<strong>外循环</strong>：<strong>len - 1</strong></li>
+<li>内部比较交替次数属于<strong>内循环</strong>：(首次)<strong>len - 1</strong>，(剩余)<strong>每一轮次，次数减1</strong></li>
+<li>从大到小，降序，则后排下沉最小值(a[j] 到 a[j + 1])比较</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//外循环：比较轮次</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; len - <span class="number">1</span>;i++)&#123;		<span class="comment">//数组遍历写法 i = 0; i &lt; len; i++ 正常遍历，len-1则少一次</span></span><br><span class="line">    <span class="comment">//内循环：交替比较次数，递减1通过i增1来实现</span></span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>;j &lt; len - <span class="number">1</span> - i;j++)&#123;</span><br><span class="line">        <span class="comment">//实现从大到小，降序，后排下沉最小值，a[ j ] &lt; a[ j + 1 ]</span></span><br><span class="line">        <span class="keyword">if</span>(a[j] &lt; a[j + <span class="number">1</span>])<span class="comment">//边界分析：i = 0，判断上溢d = j + 1，因为“&lt;”，所以j = (len-1) - 1，所以d = len - 1(没上溢)</span></span><br><span class="line">            <span class="comment">//交换位置</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h1><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/66768445">https://zhuanlan.zhihu.com/p/66768445</a></p>
+</blockquote>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/09/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">http://yoursite.com/2020/09/25/冒泡排序/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">冒泡排序分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">总结：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E6%94%AF%E6%8C%81"><span class="toc-number">2.1.</span> <span class="toc-text">理论支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%83%A8%E5%88%86"><span class="toc-number">2.2.</span> <span class="toc-text">核心部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.3.</span> <span class="toc-text">代码表示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">时间复杂度分析</span></a></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>

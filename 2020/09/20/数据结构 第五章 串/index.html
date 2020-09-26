@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html  lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>数据结构 第五章 串 | yhdblog</title>
+    <meta name="description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲串的定义*串(String)：是由零个或多个字符组成的有限序列，又名叫字符串。  记为：s &#x3D; “a1a2a3…an(n ≥0)” 串中的字符数目n称为串的长度 零个字符串称为空串(null string)即，“ ‘’” ” 序列即相邻字符之间存在前驱后继关系 主串与子串：串中任意个数的连续字符组成的子序列称为该">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构 第五章 串">
+<meta property="og:url" content="http://yoursite.com/2020/09/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E4%B8%B2/index.html">
+<meta property="og:site_name" content="yhdblog">
+<meta property="og:description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲串的定义*串(String)：是由零个或多个字符组成的有限序列，又名叫字符串。  记为：s &#x3D; “a1a2a3…an(n ≥0)” 串中的字符数目n称为串的长度 零个字符串称为空串(null string)即，“ ‘’” ” 序列即相邻字符之间存在前驱后继关系 主串与子串：串中任意个数的连续字符组成的子序列称为该">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-20T09:12:32.000Z">
+<meta property="article:modified_time" content="2020-09-23T06:21:34.122Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="技术积累">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/yihangdeng" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="/images/avatar.jpg" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">yhdeng</h2>
+            <h3 id="title" class="hidden xl:block">Student &amp; Coder</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Zhaoqing, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">Home</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">Archives</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">Tags</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">Repository</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            数据结构 第五章 串
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/09/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E4%B8%B2/" class="article-date">
+	  <time datetime="2020-09-20T09:12:32.000Z" itemprop="datePublished">Sep 20</time>
+	</a>
+</span>
+
+                
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>, <a class="article-tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/09/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E4%B8%B2/#comments" class="article-comment-link">
+                        Comments
+                    </a>
+                </span>
+                
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <ul>
+<li><strong>读物</strong>：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/">《大话数据结构》</a></li>
+<li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
+</ul>
+<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><h1 id="串的定义"><a href="#串的定义" class="headerlink" title="串的定义*"></a>串的定义*</h1><p><strong>串(String)：</strong>是由<strong>零个或多个字符</strong>组成的<strong>有限</strong>序列，又名叫<strong>字符串</strong>。</p>
+<ul>
+<li>记为：<strong>s = “a<sub>1</sub>a<sub>2</sub>a<sub>3</sub>…a<sub>n</sub>(n ≥0)”</strong></li>
+<li>串中的<strong>字符数目n</strong>称为<strong>串的长度</strong></li>
+<li><strong>零</strong>个字符串称为<strong>空串</strong>(null string)即，“<strong> ‘’” </strong>”</li>
+<li><strong>序列</strong>即相邻字符之间存在<strong>前驱后继</strong>关系</li>
+<li><strong>主串与子串</strong>：串中<strong>任意个数</strong>的<strong>连续</strong>字符组成的<strong>子序列</strong>称为该串(<strong>主串</strong>)的子串</li>
+</ul>
+<h1 id="串的比较"><a href="#串的比较" class="headerlink" title="串的比较"></a>串的比较</h1><h2 id="常用字符标准编码"><a href="#常用字符标准编码" class="headerlink" title="常用字符标准编码"></a>常用字符标准编码</h2><ul>
+<li><strong>标准ASCII编码</strong>：用<strong>7位</strong>二进制数表示<strong>128个字符</strong> (可表示英语为主的语言)</li>
+<li><strong>扩展ASCII编码</strong>：用<strong>8位</strong>二进制数表示<strong>256个字符</strong> (可表示英语为主的语言和<strong>特殊字符</strong>)</li>
+<li><strong>Unicode编码</strong>：用<strong>16位</strong>二进制表示<strong>2<sup>16</sup>个字符，约6.5万多个字符</strong>(足以表示<strong>全世界成百上千种语言和文字</strong>)</li>
+</ul>
+<h2 id="比较原则"><a href="#比较原则" class="headerlink" title="比较原则"></a>比较原则</h2><p>字符串的比较在计算机中取决于<strong>挨个字母</strong>的<strong>前后顺序</strong>，<strong>靠后</strong>的字母比<strong>靠前</strong>的字母要大。如“silly” &lt; “stupid”</p>
+<p>存在字符串 s 与 t，若 s &gt; t，则存在如下两种情况：</p>
+<ol>
+<li>情况1：“单纯地<strong>多出字母</strong>(包含关系)，则多出字母的字符常大”。如：“happy” &gt; “hap”，单纯多出“py”</li>
+<li>情况2：“无包含关系，则<strong>挨个字母比较顺序</strong>，靠后比靠前大”。如：“happy” &gt; “happen”，匹配到第5个字母‘y’ &gt; ‘e’</li>
+</ol>
+<h1 id="串的抽象数据类型"><a href="#串的抽象数据类型" class="headerlink" title="串的抽象数据类型"></a>串的抽象数据类型</h1><p>“串”从<strong>逻辑结构</strong>上和线性表很相似，但<strong>基本操作</strong>，串<strong>更倾向于查找子串位置，替换子串等</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ADT 串(<span class="built_in">string</span>)</span><br><span class="line">Data</span><br><span class="line">    串中元素仅由一个字符组成，相邻元素具有前驱和后继关系。</span><br><span class="line">Operation</span><br><span class="line">    StrAssign(T, *chars):        生成一个其值等于字符串常量chars的串T。</span><br><span class="line">    StrCopy(T, S):               串S存在，由串S复制得串T。</span><br><span class="line">    ClearString(S):              串S存在，将串清空。</span><br><span class="line">    StringEmpty(S):              若串S为空，返回<span class="literal">true</span>，否则返回<span class="literal">false</span>。</span><br><span class="line">    StrLength(S):                返回串S的元素个数，即串的长度。</span><br><span class="line">    StrCompare(S, T):            若S&gt;T，返回值&gt;<span class="number">0</span>，若S=T，返回<span class="number">0</span>，若S&lt;T，返回值&lt;<span class="number">0</span>。</span><br><span class="line">    Concat(T, S1, S2):           用T返回由S1和S2联接而成的新串。</span><br><span class="line">    SubString(Sub, S, pos, len): 串S存在，<span class="number">1</span>≤pos≤StrLength(S)，</span><br><span class="line">                                 且<span class="number">0</span>≤len≤StrLength(S)-pos+<span class="number">1</span>，用Sub返</span><br><span class="line">                                 回串S的第pos个字符起长度为len的子串。</span><br><span class="line">    Index(S, T, pos):            串S和T存在，T是非空串，<span class="number">1</span>≤pos≤StrLength(S)。</span><br><span class="line">                                 若主串S中存在和串T值相同的子串，则返回它在主串S中</span><br><span class="line">                                 第pos个字符之后第一次出现的位置，否则返回<span class="number">0</span>。</span><br><span class="line">    Replace(S, T, V):            串S、T和V存在，T是非空串。用V替换主串S中出现的所有</span><br><span class="line">                                 与T相等的不重叠的子串。</span><br><span class="line">    StrInsert(S, pos, T):        串S和T存在，<span class="number">1</span>≤pos≤StrLength(S)+<span class="number">1</span>。</span><br><span class="line">                                 在串S的第pos个字符之前插入串T。</span><br><span class="line">    StrDelete(S, pos, len):      串S存在，<span class="number">1</span>≤pos≤StrLength(S)-len+<span class="number">1</span>。</span><br><span class="line">                                 从串S中删除第pos个字符起长度为len的子串。</span><br><span class="line">endADT</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="串的存储结构"><a href="#串的存储结构" class="headerlink" title="串的存储结构"></a>串的存储结构</h1><h2 id="串的顺序存储结构"><a href="#串的顺序存储结构" class="headerlink" title="串的顺序存储结构"></a>串的顺序存储结构</h2><ul>
+<li>串的顺序存储结构一般用<strong>定长数组</strong>来定义</li>
+<li>一般将<strong>串的长度值</strong>保存数组下标<strong>0</strong>处，有的也可存储在<strong>最后一个下标位置</strong>，或在串值后添加<strong>结束标记字符</strong>如“\0”(数据结构面向人，一般与日常数数顺序为主)</li>
+<li>对于串的基本操作，串值得存储空间常常需要在执行过程中<strong>动态变化</strong>，常用计算机</li>
+</ul>
+<h2 id="串的链式存储结构"><a href="#串的链式存储结构" class="headerlink" title="串的链式存储结构"></a>串的链式存储结构</h2><p>记住，一切能用数学公式或字母来形式化的东西，都是为了辅助我们更好的表述，它是无二义的，请不要害怕它。</p>
+<p>我们不一定从数学公式中直接理解</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/09/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E4%B8%B2/">http://yoursite.com/2020/09/20/数据结构 第五章 串/</a></p>
+    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">Catalogue</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">1.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%B2%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">串的定义*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%B2%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">3.</span> <span class="toc-text">串的比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E6%A0%87%E5%87%86%E7%BC%96%E7%A0%81"><span class="toc-number">3.1.</span> <span class="toc-text">常用字符标准编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E5%8E%9F%E5%88%99"><span class="toc-number">3.2.</span> <span class="toc-text">比较原则</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%B2%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">串的抽象数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%B2%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">串的存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">5.1.</span> <span class="toc-text">串的顺序存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">5.2.</span> <span class="toc-text">串的链式存储结构</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a target="_blank" rel="noopener" href="https://twitter.com/example">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>
