@@ -16,8 +16,10 @@
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D03.jpg">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D04.jpg">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D05.jpg">
+<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp%E4%BC%98%E5%8C%961.jpg">
+<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp%E4%BC%98%E5%8C%962.jpg">
 <meta property="article:published_time" content="2020-09-25T09:12:32.000Z">
-<meta property="article:modified_time" content="2020-10-13T01:47:05.097Z">
+<meta property="article:modified_time" content="2020-10-24T14:09:20.450Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="技术积累">
 <meta property="article:tag" content="数据结构">
@@ -305,14 +307,19 @@
 </li>
 </ul>
 <h2 id="优化理解版"><a href="#优化理解版" class="headerlink" title="优化理解版"></a>优化理解版</h2><p>《数据结构》从概念到C++的实现，王红梅。P104，通过增加空间复杂度O(1)，引入start变量单独存放子串匹配位置</p>
-<h1 id="KMP模式匹配算法"><a href="#KMP模式匹配算法" class="headerlink" title="KMP模式匹配算法"></a>KMP模式匹配算法</h1><h2 id="KMP匹配算法原理"><a href="#KMP匹配算法原理" class="headerlink" title="KMP匹配算法原理"></a>KMP匹配算法原理</h2><ol>
-<li>充分利用每一次匹配反馈的逻辑，使主串不再回溯，让子串回溯到最大重复字符串，直至匹配成功</li>
-</ol>
-<p>原因：</p>
+<h1 id="KMP模式匹配算法"><a href="#KMP模式匹配算法" class="headerlink" title="KMP模式匹配算法"></a>KMP模式匹配算法</h1><h2 id="KMP匹配算法原理"><a href="#KMP匹配算法原理" class="headerlink" title="KMP匹配算法原理"></a>KMP匹配算法原理</h2><p>KMP算法核心可总结为两句话：“<strong>因为不同所以不同，跳过不同。因为相同所以相同，跳过相同</strong>！”</p>
 <ol>
-<li>出现不匹配字符前的子串一定与主串匹配，只需从不匹配处继续主串的匹配即可，若子串内有子串出现重复，则匹配过的主串有可能在重复中符合匹配，所以需从子串最大重复串开始继续匹配主串</li>
+<li><p>“<strong>因为不同所以不同，跳过不同</strong>”：若存在子串字符互不相同部分，当出现主串字符匹配不了时，则无需BF完全回溯，因为BF回溯后的下一个主子串匹配肯定也是不同的。因此我们应让下次匹配<strong>跳到子串首字符(除首字符位置)下一次出现的位置。</strong></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp%E4%BC%98%E5%8C%961.jpg" alt="kmp"></p>
+</li>
 </ol>
-<h2 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h2><h3 id="next数组含义"><a href="#next数组含义" class="headerlink" title="next数组含义"></a>next数组含义</h3><h3 id="next数组的计算"><a href="#next数组的计算" class="headerlink" title="next数组的计算"></a>next数组的计算</h3><h3 id="next-数组代码实现"><a href="#next-数组代码实现" class="headerlink" title="next 数组代码实现"></a>next 数组代码实现</h3><h1 id="KMP模式匹配算法改进"><a href="#KMP模式匹配算法改进" class="headerlink" title="KMP模式匹配算法改进"></a>KMP模式匹配算法改进</h1><p>记住，一切能用数学公式或字母来形式化的东西，都是为了辅助我们更好的表述，它是无二义的，请不要害怕它。</p>
+<ol>
+<li><p>“<strong>因为相同所以相同，跳过相同</strong>”：当子串与主串出现不匹配时，靠近不匹配处的若干字符在字符前缀部分出现过，则不应该仅跳到重复字符(下一次出现位置)的首字符，而是跳过包括这一段相同部分。，即应该跳到(新的匹配位置)于后缀部分相同的前缀部分的下一个位置。</p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp%E4%BC%98%E5%8C%962.jpg" alt="KMP"></p>
+</li>
+</ol>
+<h2 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h2><h3 id="next数组含义"><a href="#next数组含义" class="headerlink" title="next数组含义"></a>next数组含义</h3><p>k = 子串下标 = 前缀长度</p>
+<h3 id="next数组的计算"><a href="#next数组的计算" class="headerlink" title="next数组的计算"></a>next数组的计算</h3><h3 id="next-数组代码实现"><a href="#next-数组代码实现" class="headerlink" title="next 数组代码实现"></a>next 数组代码实现</h3><h1 id="KMP模式匹配算法改进"><a href="#KMP模式匹配算法改进" class="headerlink" title="KMP模式匹配算法改进"></a>KMP模式匹配算法改进</h1><p>记住，一切能用数学公式或字母来形式化的东西，都是为了辅助我们更好的表述，它是无二义的，请不要害怕它。</p>
 <p>我们不一定从数学公式中直接理解</p>
 
         </div>
