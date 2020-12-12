@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp%E4%BC%98%E5%8C%961.jpg">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp%E4%BC%98%E5%8C%962.jpg">
 <meta property="article:published_time" content="2020-09-25T09:12:32.000Z">
-<meta property="article:modified_time" content="2020-10-24T14:09:20.450Z">
+<meta property="article:modified_time" content="2020-11-23T14:37:40.266Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="技术积累">
 <meta property="article:tag" content="数据结构">
@@ -316,6 +316,8 @@
 <ol>
 <li><p>“<strong>因为相同所以相同，跳过相同</strong>”：当子串与主串出现不匹配时，靠近不匹配处的若干字符在字符前缀部分出现过，则不应该仅跳到重复字符(下一次出现位置)的首字符，而是跳过包括这一段相同部分。，即应该跳到(新的匹配位置)于后缀部分相同的前缀部分的下一个位置。</p>
 <p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp%E4%BC%98%E5%8C%962.jpg" alt="KMP"></p>
+<p>此时，next数组的含义就是记录若当前字符出现不匹配，则需下次开始匹配的位置——重复部分的下一个位置的下标</p>
+<p>快速</p>
 </li>
 </ol>
 <h2 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h2><h3 id="next数组含义"><a href="#next数组含义" class="headerlink" title="next数组含义"></a>next数组含义</h3><p>k = 子串下标 = 前缀长度</p>
