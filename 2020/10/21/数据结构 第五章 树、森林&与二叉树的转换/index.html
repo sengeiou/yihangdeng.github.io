@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%91%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91.gif">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A3%AE%E6%9E%97%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%A0%91.jpg">
 <meta property="article:published_time" content="2020-10-21T07:16:32.000Z">
-<meta property="article:modified_time" content="2020-10-27T06:23:09.933Z">
+<meta property="article:modified_time" content="2021-01-13T14:48:49.987Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="技术积累">
 <meta property="article:tag" content="数据结构">
@@ -223,7 +223,7 @@
 <li><strong>去线</strong>：对于树中<strong>每个结点</strong>，<strong>只保留 firstchild</strong>的连线，其余均删除</li>
 <li><strong>层次调整</strong>： <ol>
 <li>文字概述：以<strong>原树结构</strong>为基准，从根结点开始，<strong>第一个孩子</strong>为根结点的<strong>左孩子</strong>，而其余兄弟结点(以原树结构为基准)均为<strong>这个左孩子的右孩子(孙子…反之一直右下衍生)</strong></li>
-<li>图形化理解：从上到下以<strong>原树为基准</strong>每个子树<strong>除第一个孩子</strong>为<strong>左孩子外</strong>，其余均为<strong>右孩子</strong><ul>
+<li>图形化理解：从上到下以<strong>原树为基准</strong>每个子树<strong>除第一个孩子</strong>为<strong>左孩子外</strong>，其余均为<strong>这个左孩子的右孩子延续</strong><ul>
 <li>红色为根节点</li>
 <li>蓝色为根节点下第一个孩子</li>
 <li>绿色为<strong>以原树基准</strong>的非首孩子的其他孩子</li>
@@ -240,7 +240,7 @@
 <li><strong>去线</strong>：去除所有结点的<strong>右孩子</strong>结点的连线</li>
 <li>层次调整：外貌调整</li>
 </ol>
-<h2 id="森林转换为二叉树"><a href="#森林转换为二叉树" class="headerlink" title="森林转换为二叉树"></a>森林转换为二叉树</h2><p>“<strong>森林变树，孩连根</strong>”</p>
+<h2 id="森林转换为二叉树"><a href="#森林转换为二叉树" class="headerlink" title="森林转换为二叉树"></a>森林转换为二叉树</h2><p>“<strong>森林变树，依次连根</strong>”</p>
 <ol>
 <li>把森林的<strong>每颗树</strong>都转换为<strong>二叉树</strong></li>
 <li>第一颗树不动，其余树依次为上一课树的<strong>根节点的右孩子</strong>。</li>
