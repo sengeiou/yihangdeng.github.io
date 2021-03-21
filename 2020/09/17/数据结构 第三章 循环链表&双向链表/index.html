@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
     <title>数据结构 第三章 循环链表&双向链表 | yhdblog</title>
-    <meta name="description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲  循环链表 双向链表 小结  循环链表 基本概念 单循环链表(circular linked)： 将单链表的终端结点指针端口由空指针改为指向头结点，是整个单链表形成一个环。   相对单链表，循环链表可以实现从任意一个结点出发，可访问到链表的全部结点的操作。 为了方便操作，循环链表为空链表时，头结点的指针域也“循">
+    <meta name="description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 循环链表 双向链表 小结  循环链表基本概念单循环链表(circular linked)： 将单链表的终端结点指针端口由空指针改为指向头结点，是整个单链表形成一个环。     相对单链表，循环链表可以实现从任意一个结点出发，可访问到链表的全部结点的操作。 为了方便操作，循环链表为空链表时，头结点的指针域也“循环">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构 第三章 循环链表&amp;双向链表">
 <meta property="og:url" content="http://yoursite.com/2020/09/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8&%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="yhdblog">
-<meta property="og:description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲  循环链表 双向链表 小结  循环链表 基本概念 单循环链表(circular linked)： 将单链表的终端结点指针端口由空指针改为指向头结点，是整个单链表形成一个环。   相对单链表，循环链表可以实现从任意一个结点出发，可访问到链表的全部结点的操作。 为了方便操作，循环链表为空链表时，头结点的指针域也“循">
+<meta property="og:description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 循环链表 双向链表 小结  循环链表基本概念单循环链表(circular linked)： 将单链表的终端结点指针端口由空指针改为指向头结点，是整个单链表形成一个环。     相对单链表，循环链表可以实现从任意一个结点出发，可访问到链表的全部结点的操作。 为了方便操作，循环链表为空链表时，头结点的指针域也“循环">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8-%E5%A4%B4%E7%BB%93%E7%82%B9.png">
@@ -218,44 +218,40 @@
 <li><strong>读物</strong>：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/">《大话数据结构》</a></li>
 <li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
 </ul>
-<h1 id="大纲">大纲</h1>
-<ol>
+<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ol>
 <li><strong>循环链表</strong></li>
 <li><strong>双向链表</strong></li>
 <li><strong>小结</strong></li>
 </ol>
-<h1 id="循环链表">循环链表</h1>
-<h2 id="基本概念">基本概念</h2>
-<p><strong>单循环链表(circular linked)：</strong> 将单链表的<strong>终端结点指针端口</strong>由空指针改为<strong>指向头结点</strong>，是整个单链表形成一个<strong>环</strong>。</p>
+<h1 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>单循环链表(circular linked)：</strong> 将单链表的<strong>终端结点指针端口</strong>由空指针改为<strong>指向头结点</strong>，是整个单链表形成一个<strong>环</strong>。  </p>
 <p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="循环链表"></p>
 <ul>
 <li>相对单链表，<strong>循环链表</strong>可以实现<strong>从任意一个结点出发，可访问到链表的全部结点</strong>的操作。</li>
 <li>为了方便操作，循环链表<strong>为空链表</strong>时，<strong>头结点的指针域也“循环”地指向自己</strong>。如下图所示：</li>
 </ul>
 <p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8-%E5%A4%B4%E7%BB%93%E7%82%B9.png" alt="头结点"></p>
-<h2 id="实际应用">实际应用</h2>
-<p>​	而实际应用中，很多操作是在表的<strong>首或尾</strong>两端进行。传统单链表使用的头指针在<strong>首部</strong>操作时间复杂度为O(1)，<strong>而尾部操作时间复杂度则为O(n)</strong>。 此时，不设置头结点，而是<strong>借助&quot;循环&quot;本身的特性</strong>，通过设置<strong>终端结点的尾指针(rear)</strong>，实现对<strong>首尾的高效操作</strong>。</p>
+<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><p>​    而实际应用中，很多操作是在表的<strong>首或尾</strong>两端进行。传统单链表使用的头指针在<strong>首部</strong>操作时间复杂度为O(1)，<strong>而尾部操作时间复杂度则为O(n)</strong>。 此时，不设置头结点，而是<strong>借助”循环”本身的特性</strong>，通过设置<strong>终端结点的尾指针(rear)**，实现对</strong>首尾的高效操作**。  </p>
 <ul>
 <li>对于终端结点复杂度即为O(1)，对于头结点即<code>rear-&gt;next</code>，头指针即<code>rear-&gt;next-&gt;next</code>，复杂度均为O(1)</li>
 <li>循环链表没有增加任何存储量，仅对链接方式稍作改变，因此<strong>基本操作的实现与链表相似</strong>。如<strong>ListLength、GetElem、LocateElem等</strong>这些操作<strong>只要设计一个方向</strong>的指针即可，另一个指针多了也不能提供什么帮助。</li>
 </ul>
-<h2 id="合并循环链表">合并循环链表</h2>
-<p>通过尾指针链接两个循环链表</p>
+<h2 id="合并循环链表"><a href="#合并循环链表" class="headerlink" title="合并循环链表"></a>合并循环链表</h2><p>通过尾指针链接两个循环链表</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = rearA-&gt;next;	<span class="comment">/* 保存A表的头结点*/</span>                    </span><br><span class="line">rearA-&gt;next = rearB-&gt;next-&gt;next;    <span class="comment">/*将本是指向B表的第一个结点（不是头结点） */</span></span><br><span class="line">								<span class="comment">/* 赋值给reaA-&gt;next，即*/</span></span><br><span class="line">q = rearB-&gt;next; </span><br><span class="line">rearB-&gt;next = p;  <span class="comment">/* 将原A表的头结点赋值给rearB-&gt;next，即③ */</span></span><br><span class="line"><span class="built_in">free</span>(q);   <span class="comment">/* 释放q*/</span></span><br></pre></td></tr></table></figure>
-<h1 id="双向链表">双向链表</h1>
-<h2 id="定义及其初始化">定义及其初始化</h2>
-<p><strong>双向链表(double linked list)</strong>：是在单链表的每个结点中，在设置一个指向其<strong>前驱结点</strong>的指针域。定义如下：</p>
+
+
+
+<h1 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h1><h2 id="定义及其初始化"><a href="#定义及其初始化" class="headerlink" title="定义及其初始化"></a>定义及其初始化</h2><p><strong>双向链表(double linked list)**：是在单链表的每个结点中，在设置一个指向其</strong>前驱结点**的指针域。定义如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*线性表的双向链表存储结构*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DulNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DulNode</span> *<span class="title">prior</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DulNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;DulNode,*DuLinkList;</span><br></pre></td></tr></table></figure>
-<h2 id="双链表的插入">双链表的插入</h2>
-<p>相对于单链表的插入操作，双链表的插入需要<strong>修改4个指针</strong>。关键修改代码如下(在结点p的后面插入一个新结点s)：</p>
+
+<h2 id="双链表的插入"><a href="#双链表的插入" class="headerlink" title="双链表的插入"></a>双链表的插入</h2><p>相对于单链表的插入操作，双链表的插入需要<strong>修改4个指针</strong>。关键修改代码如下(在结点p的后面插入一个新结点s)：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s-&gt;prior = p;</span><br><span class="line">s-&gt;next = p-&gt;next;</span><br><span class="line">p-&gt;next-&gt;prior = s;</span><br><span class="line">p-&gt;next = s;</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E6%8F%92%E5%85%A5.jpg" alt="双向链表的插入"></p>
-<h2 id="双链表的删除">双链表的删除</h2>
-<p>因为有两个指针域，在指向调整上更加灵活。<strong>若p指向待删除结点</strong>，则删除的关键代码部分如下(<strong>未被验证</strong>)：</p>
+<h2 id="双链表的删除"><a href="#双链表的删除" class="headerlink" title="双链表的删除"></a>双链表的删除</h2><p>因为有两个指针域，在指向调整上更加灵活。<strong>若p指向待删除结点</strong>，则删除的关键代码部分如下(<strong>未被验证</strong>)：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p-&gt;prior-&gt;next = p-&gt;next;</span><br><span class="line">p-&gt;next-&gt;prior = p-&gt;prior;</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4.png" alt="双向链表的删除"></p>
-<h1 id="小结">小结</h1>
-<ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
 <li>双向链表先对于单链表来说，<strong>更加复杂</strong>，对于<strong>对于插入和删除</strong>时，需要歌外注意</li>
 <li>双向链表有<strong>两个指针域</strong>，因此<strong>空间上占用略多一些</strong></li>
 <li>由于双向链表有<strong>良好的对称性</strong>，使得对某个结点的<strong>前后结点操作</strong>带来了方便</li>

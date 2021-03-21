@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
     <title>数据库原理 第一章 绪论 | yhdblog</title>
-    <meta name="description" content="绪论  数据库基本概念  数据（data）：描述事物的符号记录称为数据 数据库（DB，DataBase）：长期存储在计算机内、有组织的、可共享的大量数据的集合 数据库管理系统（DBMS，Data Base Management System）：用于科学高效地存取、维护数据的计算机基础软件，是一个大小复杂的软件系统(如操作系统般)。其最主要的功能如下：  数据定义功能（DDL，Data Defini">
+    <meta name="description" content="绪论 数据库基本概念 数据（data）：描述事物的符号记录称为数据 数据库（DB，DataBase）：长期存储在计算机内、有组织的、可共享的大量数据的集合 数据库管理系统（DBMS，Data Base Management System）：用于科学高效地存取、维护数据的计算机基础软件，是一个大小复杂的软件系统(如操作系统般)。其最主要的功能如下： 数据定义功能（DDL，Data Definitio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库原理 第一章 绪论">
 <meta property="og:url" content="http://yoursite.com/2020/10/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/index.html">
 <meta property="og:site_name" content="yhdblog">
-<meta property="og:description" content="绪论  数据库基本概念  数据（data）：描述事物的符号记录称为数据 数据库（DB，DataBase）：长期存储在计算机内、有组织的、可共享的大量数据的集合 数据库管理系统（DBMS，Data Base Management System）：用于科学高效地存取、维护数据的计算机基础软件，是一个大小复杂的软件系统(如操作系统般)。其最主要的功能如下：  数据定义功能（DDL，Data Defini">
+<meta property="og:description" content="绪论 数据库基本概念 数据（data）：描述事物的符号记录称为数据 数据库（DB，DataBase）：长期存储在计算机内、有组织的、可共享的大量数据的集合 数据库管理系统（DBMS，Data Base Management System）：用于科学高效地存取、维护数据的计算机基础软件，是一个大小复杂的软件系统(如操作系统般)。其最主要的功能如下： 数据定义功能（DDL，Data Definitio">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA.png">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.jpg">
@@ -214,91 +214,67 @@
             </p>
         </header>
         <div class="marked-body article-body">
-            <h1 id="绪论">绪论</h1>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA.png" alt=""></p>
-<h2 id="数据库基本概念">数据库基本概念</h2>
-<ol>
+            <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA.png"></p>
+<h2 id="数据库基本概念"><a href="#数据库基本概念" class="headerlink" title="数据库基本概念"></a>数据库基本概念</h2><ol>
 <li><strong>数据</strong>（data）：描述事物的<strong>符号记录</strong>称为<strong>数据</strong></li>
 <li><strong>数据库</strong>（<strong>DB</strong>，DataBase）：长期存储在计算机内、有组织的、可共享的<strong>大量数据的集合</strong></li>
-<li><strong>数据库管理系统</strong>（<strong>DBMS</strong>，Data Base Management System）：用于科学高效地<strong>存取、维护数据</strong>的<strong>计算机基础软件</strong>，是一个大小复杂的<strong>软件系统</strong>(如操作系统般)。其<strong>最主要的功能</strong>如下：
-<ul>
+<li><strong>数据库管理系统</strong>（<strong>DBMS</strong>，Data Base Management System）：用于科学高效地<strong>存取、维护数据</strong>的<strong>计算机基础软件</strong>，是一个大小复杂的<strong>软件系统</strong>(如操作系统般)。其<strong>最主要的功能</strong>如下：<ul>
 <li><strong>数据定义功能</strong>（<strong>DDL</strong>，Data Definition Language）：如对<strong>库、表、字段等</strong>数据对象的定义(创建,修改,删除等)</li>
 <li><strong>数据操纵功能</strong>（<strong>DML</strong>，Data Manipulation Language）：对<strong>数据</strong>的<strong>增删改查</strong>等操作</li>
 </ul>
 </li>
 <li><strong>数据库系统</strong>（<strong>DBS</strong>，DataBase System）：DB + DBMS(相关tool) + Program + DBA组成的存储、管理、处理和维护数据的系统</li>
 </ol>
-<h2 id="数据模型">数据模型</h2>
-<ol>
-<li>
-<p><strong>两类数据模型</strong>：<strong>概念模型</strong>(信息模型)、<strong>逻辑模型与物理模型</strong></p>
+<h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><ol>
+<li><p><strong>两类数据模型</strong>：<strong>概念模型</strong>(信息模型)、<strong>逻辑模型与物理模型</strong></p>
 <ul>
-<li>
-<p><strong>概念模型</strong>：以<strong>用户角度</strong>对数据进行信息建模，不依赖于具体DBMS，是<strong>概念级的模型</strong>。其他相关概念如下：</p>
+<li><p><strong>概念模型</strong>：以<strong>用户角度</strong>对数据进行信息建模，不依赖于具体DBMS，是<strong>概念级的模型</strong>。其他相关概念如下：</p>
 <ul>
-<li>
-<p>实体(entity)：<strong>客观存在且相互区别</strong>的事物。<strong>如，一条具体的信息，类对象的一个实例</strong></p>
+<li><p>实体(entity)：<strong>客观存在且相互区别</strong>的事物。<strong>如，一条具体的信息，类对象的一个实例</strong></p>
 </li>
-<li>
-<p>实体型(entity type)：用实体名及其属性名的集合来<strong>抽象</strong>同类实体。<strong>如，面向对象中的类</strong></p>
+<li><p>实体型(entity type)：用实体名及其属性名的集合来<strong>抽象</strong>同类实体。<strong>如，面向对象中的类</strong></p>
 </li>
-<li>
-<p>实体集(entity set)：同类型的<strong>实体</strong>的<strong>集合</strong>，<strong>如全体学生，一些对象的集合、表等</strong></p>
+<li><p>实体集(entity set)：同类型的<strong>实体</strong>的<strong>集合</strong>，<strong>如全体学生，一些对象的集合、表等</strong></p>
 </li>
-<li>
-<p>属性(attribute)：实体具有的<strong>某一特性</strong>。<strong>如，数据表中的字段/列</strong></p>
+<li><p>属性(attribute)：实体具有的<strong>某一特性</strong>。<strong>如，数据表中的字段/列</strong></p>
 </li>
-<li>
-<p>码(key)：<strong>唯一标识实体</strong>的<strong>属性集</strong>，(注意是属性<strong>集</strong>)</p>
+<li><p>码(key)：<strong>唯一标识实体</strong>的<strong>属性集</strong>，(注意是属性<strong>集</strong>)</p>
 </li>
-<li>
-<p>联系(relationship)：现实世界中，实体(型/集)与实体(型/集)之间的联系，一般有<strong>一对一，一对多，多对多</strong>的联系</p>
-<p><strong>联系的定义与判断</strong>：在A实体集内<strong>取1个实体</strong>，而这个实体能在B实体集内对应多个实体。则称为一对多，其他类型联系以此类推。</p>
+<li><p>联系(relationship)：现实世界中，实体(型/集)与实体(型/集)之间的联系，一般有<strong>一对一，一对多，多对多</strong>的联系</p>
+<p>   <strong>联系的定义与判断</strong>：在A实体集内<strong>取1个实体</strong>，而这个实体能在B实体集内对应多个实体。则称为一对多，其他类型联系以此类推。  </p>
 </li>
-<li>
-<p>E - R模型：概念模型的最常用的表示方法为<strong>实体-联系方法</strong>(Entity-Relationship approach)，也称E-R模型，用E-R图描述。具体设计与实现在“概念结构设计篇”讲解</p>
+<li><p>E - R模型：概念模型的最常用的表示方法为<strong>实体-联系方法</strong>(Entity-Relationship approach)，也称E-R模型，用E-R图描述。具体设计与实现在“概念结构设计篇”讲解  </p>
 </li>
 </ul>
 </li>
-<li>
-<p><strong>逻辑模型与物理模型</strong>：以<strong>计算机系统角度</strong>对数据的建模，由DBMS。常见逻辑模型如<strong>层次、网状、关系、面向对象等模型</strong>。</p>
+<li><p><strong>逻辑模型与物理模型</strong>：以<strong>计算机系统角度</strong>对数据的建模，由DBMS。常见逻辑模型如<strong>层次、网状、关系、面向对象等模型</strong>。</p>
 </li>
 </ul>
 </li>
-<li>
-<p><strong>模型之间的关系</strong></p>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.jpg" alt=""></p>
+<li><p><strong>模型之间的关系</strong></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.jpg"></p>
 </li>
-<li>
-<p><strong>数据模型的组成要素</strong>：数据模型由<strong>数据结构</strong>(对象的组成与对象间的联系)、<strong>数据操作</strong>(增删改查)、<strong>数据完整性约束条件</strong>(确保数据的完整性)组成。<strong>任何数据模型都需考虑的三个因素</strong>。</p>
+<li><p><strong>数据模型的组成要素</strong>：数据模型由<strong>数据结构</strong>(对象的组成与对象间的联系)、<strong>数据操作</strong>(增删改查)、<strong>数据完整性约束条件</strong>(确保数据的完整性)组成。<strong>任何数据模型都需考虑的三个因素</strong>。</p>
 </li>
 </ol>
-<h2 id="数据库系统结构">数据库系统结构</h2>
+<h2 id="数据库系统结构"><a href="#数据库系统结构" class="headerlink" title="数据库系统结构"></a>数据库系统结构</h2><ol>
+<li><p><strong>基本概念</strong></p>
 <ol>
-<li>
-<p><strong>基本概念</strong></p>
-<ol>
-<li>
-<p><strong>型</strong>（type）：某一类数据的结构与属性的说明。如类的定义</p>
+<li><p><strong>型</strong>（type）：某一类数据的结构与属性的说明。如类的定义</p>
 </li>
-<li>
-<p><strong>值</strong>（value）：值是型的具体赋值。如某一个类的实体对象(实例)</p>
+<li><p><strong>值</strong>（value）：值是型的具体赋值。如某一个类的实体对象(实例)</p>
 <hr>
 </li>
-<li>
-<p><strong>模式</strong>（schema）：是指<strong>数据库</strong>全体数据的逻辑<strong>结构</strong>和特征的描述，属于“<strong>型</strong>”的层次，<strong>相对稳定</strong></p>
+<li><p><strong>模式</strong>（schema）：是指<strong>数据库</strong>全体数据的逻辑<strong>结构</strong>和特征的描述，属于“<strong>型</strong>”的层次，<strong>相对稳定</strong></p>
 </li>
-<li>
-<p><strong>实例</strong>（instance）：模式对应的一个<strong>具体值</strong>称为<strong>实例</strong>，<strong>相对变动</strong></p>
+<li><p><strong>实例</strong>（instance）：模式对应的一个<strong>具体值</strong>称为<strong>实例</strong>，<strong>相对变动</strong></p>
 <p>注意，这里“一个具体值”不是只有一个值，而是一个模式的值，即刻整个数据库的数据。</p>
 </li>
 </ol>
 </li>
-<li>
-<p><strong>二级映像下的三级结构</strong>：由<strong>模式对外</strong>(应用程序)，<strong>对内</strong>(数据存储)分别进行了<strong>模式映像</strong>。从而产生了两个<strong>二级映像</strong>，即<strong>外模式</strong>与<strong>内模式</strong>。</p>
+<li><p><strong>二级映像下的三级结构</strong>：由<strong>模式对外</strong>(应用程序)，<strong>对内</strong>(数据存储)分别进行了<strong>模式映像</strong>。从而产生了两个<strong>二级映像</strong>，即<strong>外模式</strong>与<strong>内模式</strong>。</p>
 <ol>
-<li><strong>三级结构</strong>：<strong>外模式，模式，内模式</strong>统称数据库三级模式的结构
-<ul>
+<li><strong>三级结构</strong>：<strong>外模式，模式，内模式</strong>统称数据库三级模式的结构<ul>
 <li><strong>模式</strong>：具体概念不再赘述，<strong>强调模式是所有用户的公共数据视图</strong></li>
 <li><strong>外模式</strong>：又名子模式、用户模式。它是<strong>数据库用户</strong>(开发者与最终用户)能够<strong>看见与使用</strong>的<strong>局部数据</strong>的逻辑结构和特征的描述**</li>
 <li><strong>内模式</strong>：又称为存储模式，<strong>一个数据库只有一个内模式</strong>，<strong>是数据在数据库内部的组织方式的描述</strong></li>
@@ -309,8 +285,7 @@
 <p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F%E7%BB%93%E6%9E%84(yhd).jpg" alt="三级模式"></p>
 </li>
 </ol>
-<h2 id="数据库系统组成">数据库系统组成</h2>
-<p>​	数据库系统由：<strong>硬件平台及数据库</strong>，<strong>软件</strong>，<strong>人员</strong>(数据库管理人员)(<strong>DBA</strong>，DataBase Administrator)组成。</p>
+<h2 id="数据库系统组成"><a href="#数据库系统组成" class="headerlink" title="数据库系统组成"></a>数据库系统组成</h2><p>​    数据库系统由：<strong>硬件平台及数据库</strong>，<strong>软件</strong>，<strong>人员</strong>(数据库管理人员)(<strong>DBA</strong>，DataBase Administrator)组成。</p>
 
         </div>
         
