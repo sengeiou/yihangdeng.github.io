@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
     <title>Hexo在Gitee平台部署过程 | yhdblog</title>
-    <meta name="description" content="前提 已经安装hexo，并且能够通过hexo d命令推送到GitHub实现远程推送。  实现方案具体可参考《基于Hexo框架的博客搭建及其GitHub部署》   已经注册Gitee账号并且绑定手机。   Gitee新建仓库 新建仓库时名称最好是保持跟你注册时的个人空间地址是一样的。因为这样你就不会生成二级域名了。如果不跟注册时的个人空间地址一样的话，到时候自己的网站就会有二级域名的存在了。 输入仓">
+    <meta name="description" content="前提   已经安装hexo，并且能够通过hexo d命令推送到GitHub实现远程推送。  实现方案具体可参考《基于Hexo框架的博客搭建及其GitHub部署》    已经注册Gitee账号并且绑定手机。   Gitee新建仓库  新建仓库时名称最好是保持跟你注册时的个人空间地址是一样的。因为这样你就不会生成二级域名了。如果不跟注册时的个人空间地址一样的话，到时候自己的网站就会有二级域名的存在了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo在Gitee平台部署过程">
 <meta property="og:url" content="http://yoursite.com/2020/08/29/Hexo%E5%9C%A8Gitee%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="yhdblog">
-<meta property="og:description" content="前提 已经安装hexo，并且能够通过hexo d命令推送到GitHub实现远程推送。  实现方案具体可参考《基于Hexo框架的博客搭建及其GitHub部署》   已经注册Gitee账号并且绑定手机。   Gitee新建仓库 新建仓库时名称最好是保持跟你注册时的个人空间地址是一样的。因为这样你就不会生成二级域名了。如果不跟注册时的个人空间地址一样的话，到时候自己的网站就会有二级域名的存在了。 输入仓">
+<meta property="og:description" content="前提   已经安装hexo，并且能够通过hexo d命令推送到GitHub实现远程推送。  实现方案具体可参考《基于Hexo框架的博客搭建及其GitHub部署》    已经注册Gitee账号并且绑定手机。   Gitee新建仓库  新建仓库时名称最好是保持跟你注册时的个人空间地址是一样的。因为这样你就不会生成二级域名了。如果不跟注册时的个人空间地址一样的话，到时候自己的网站就会有二级域名的存在了。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83gitee%E5%88%9B%E5%BB%BA2.jpg">
 <meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83gitee-Page%E6%9C%8D%E5%8A%A1.jpg">
@@ -215,21 +215,26 @@
             </p>
         </header>
         <div class="marked-body article-body">
-            <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><ol>
-<li><p>已经安装hexo，并且能够通过<code>hexo d</code>命令推送到GitHub实现远程推送。</p>
+            <h1 id="前提">前提</h1>
+<ol>
+<li>
+<p>已经安装hexo，并且能够通过<code>hexo d</code>命令推送到GitHub实现远程推送。</p>
 <blockquote>
 <p>实现方案具体可参考<a target="_blank" rel="noopener" href="https://yihangdeng.gitee.io/2020/08/28/%E5%9F%BA%E4%BA%8EHexo%E6%A1%86%E6%9E%B6%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%85%B6GitHub%E9%83%A8%E7%BD%B2/">《基于Hexo框架的博客搭建及其GitHub部署》</a></p>
 </blockquote>
 </li>
-<li><p>已经注册Gitee账号并且绑定手机。</p>
+<li>
+<p>已经注册Gitee账号并且绑定手机。</p>
 </li>
 </ol>
-<h1 id="Gitee新建仓库"><a href="#Gitee新建仓库" class="headerlink" title="Gitee新建仓库"></a>Gitee新建仓库</h1><ul>
+<h1 id="Gitee新建仓库">Gitee新建仓库</h1>
+<ul>
 <li>新建仓库时名称最好是保持跟你注册时的<strong>个人空间地址</strong>是一样的。因为这样你就不会生成二级域名了。如果不跟注册时的<em>个人空间地址</em>一样的话，到时候自己的网站就会有二级域名的存在了。</li>
 <li>输入仓库名称与路径后会在“<strong>归属</strong>”一栏下生成一个<strong>仓库链接</strong>，记录下来为之后的_config.yml文件配置做准备</li>
 </ul>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83gitee%E5%88%9B%E5%BB%BA2.jpg"></p>
-<h1 id="config-yml文件配置"><a href="#config-yml文件配置" class="headerlink" title="_config.yml文件配置"></a>_config.yml文件配置</h1><p>修改配置文件中<strong>repo</strong> 属性为：{<strong>仓库地址</strong>} <strong>.git</strong></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83gitee%E5%88%9B%E5%BB%BA2.jpg" alt=""></p>
+<h1 id="config-yml文件配置">_config.yml文件配置</h1>
+<p>修改配置文件中<strong>repo</strong> 属性为：{<strong>仓库地址</strong>} <strong>.git</strong></p>
 <blockquote>
 <ul>
 <li>仓库地址在创建仓库的时候会显示，或者在刚创建完的时候浏览器的url就是仓库地址</li>
@@ -237,20 +242,21 @@
 </ul>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;one-command-deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: &#39;git&#39;</span><br><span class="line">  repo:  &#123;仓库地址&#125;.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>repo:  <a target="_blank" rel="noopener" href="https://gitee.com/yihangdeng/yihangdeng.git">https://gitee.com/yihangdeng/yihangdeng.git</a></p>
 </blockquote>
 <p>修改配置保存后，可以像推送到GitHub上那样，通过<code>hexo d</code>命令上传到gitee。刷新gitee仓库查看是否有内容</p>
-<h1 id="开启仓库page服务"><a href="#开启仓库page服务" class="headerlink" title="开启仓库page服务"></a>开启仓库page服务</h1><p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83gitee-Page%E6%9C%8D%E5%8A%A1.jpg"></p>
+<h1 id="开启仓库page服务">开启仓库page服务</h1>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83gitee-Page%E6%9C%8D%E5%8A%A1.jpg" alt=""></p>
 <p>进入页面后直接点击<strong>启动</strong>即可。</p>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83giteePage%E5%90%AF%E5%8A%A8.jpg"></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83giteePage%E5%90%AF%E5%8A%A8.jpg" alt=""></p>
 <p>启动完成后会生成<strong>网站地址</strong>，这个网站地址就是访问你博客的地址。</p>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83gitee-Page%E5%9C%B0%E5%9D%80.jpg"></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/hexo%E5%8F%91%E5%B8%83gitee-Page%E5%9C%B0%E5%9D%80.jpg" alt=""></p>
 <ul>
 <li>gitee page 只有付费版才能自动更新，免费版只能手动点击 “设置” 中的更新按钮，来更新部署。</li>
 </ul>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<h1 id="参考链接">参考链接</h1>
+<ul>
 <li>gitee：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chaojilaoshi/p/13266271.html">https://www.cnblogs.com/chaojilaoshi/p/13266271.html</a></li>
 <li>gitee：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5014133ba61a">https://www.jianshu.com/p/5014133ba61a</a></li>
 <li>page更新：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6460df84a099">https://www.jianshu.com/p/6460df84a099</a></li>
