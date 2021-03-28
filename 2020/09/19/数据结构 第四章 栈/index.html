@@ -1,220 +1,204 @@
 <!DOCTYPE html>
-<html  lang="en" >
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
-    <title>数据结构 第四章 栈 | yhdblog</title>
-    <meta name="description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 栈的定义 栈的抽线数据类型 栈的顺序存储结构 栈的链式存储结构 小结 栈的应用  栈的定义栈的定义如下：  栈(stack)如同弹夹一样，先进后出，后进先出(Last In First Out，LIFO)的特性。 栈而且是限定仅在表尾(栈顶)进行插入和删除的线性表。  相关术语如下：  栈顶(top)：允许插入">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据结构 第四章 栈">
-<meta property="og:url" content="http://yoursite.com/2020/09/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%A0%88/index.html">
-<meta property="og:site_name" content="yhdblog">
-<meta property="og:description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 栈的定义 栈的抽线数据类型 栈的顺序存储结构 栈的链式存储结构 小结 栈的应用  栈的定义栈的定义如下：  栈(stack)如同弹夹一样，先进后出，后进先出(Last In First Out，LIFO)的特性。 栈而且是限定仅在表尾(栈顶)进行插入和删除的线性表。  相关术语如下：  栈顶(top)：允许插入">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89.png">
-<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89.jpg">
-<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E9%80%92%E5%BD%92%E7%9A%84%E5%88%86%E6%9E%90.png">
-<meta property="article:published_time" content="2020-09-19T12:01:32.000Z">
-<meta property="article:modified_time" content="2020-11-10T12:10:54.635Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="技术积累">
-<meta property="article:tag" content="数据结构">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89.png">
-
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
     
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-
-    
-<link rel="stylesheet" href="/css/common.min.css">
-
-
-
-    
-    
-    
-    
-        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
-    
-    
-    
-<link rel="stylesheet" href="/css/iconfont.min.css">
-
-    
+    <title>
+        
+            数据结构 第四章 栈 |
+        
+        Keep Theme
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
 
-    <body>
-        <header class="header header-fixture">
-    <div class="profile-search-wrap flex sm:block">
-        
-        
-        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
-            <a id="avatar" role="link" href="https://github.com/yihangdeng" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
-                <img src="/images/avatar.jpg" class="rounded-full" alt="avatar">
-            </a>
-            <h2 id="name" class="hidden lg:block">yhdeng</h2>
-            <h3 id="title" class="hidden xl:block">Student &amp; Coder</h3>
-            
-            <small id="location" class="hidden lg:block">
-                <i class="iconfont icon-map-icon"></i>
-                Zhaoqing, China
-            </small>
-            
-        </div>
-        
-        
-<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
-    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
-        <div class="input-group table bg-gray-100 lg:bg-white w-full">
-            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
-            <span class="table-cell">
-                <button name="search tigger button" disabled>
-                    <i class="iconfont icon-search m-2"></i>
-                </button>
-            </span>
-        </div>
-    </form>
-        
-<script id="search-teamplate" type="text/html" data-path="/content.json">
-    <div>
-        <div class="search-header bg-gray-400">
-            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
-        </div>
-        <div class="search-result bg-gray-200">
-            {{#each searchPosts}}
-            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
-                <i class="iconfont icon-file"></i>
-                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
-                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
-            </a>
-            {{/each}}
-        </div>
-    </div>
-</script>
 
-</div>
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-
-        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
-            <i class="iconfont icon-hamburger"></i>
-        </button>
-    </div>
-    <nav id="menu-nav" class="hidden sm:flex flex-col">
-        
-        
-            <div class="menu-item menu-home" role="menuitem">
-                <a href="/.">
-                    <i class="iconfont icon-home" aria-hidden="true"></i>
-                    <span class="menu-title">Home</span>
-                </a>
-            </div>
-        
-        
-            <div class="menu-item menu-archives" role="menuitem">
-                <a href="/archives">
-                    <i class="iconfont icon-archive" aria-hidden="true"></i>
-                    <span class="menu-title">Archives</span>
-                </a>
-            </div>
-        
-        
-            <div class="menu-item menu-tags" role="menuitem">
-                <a href="/tags">
-                    <i class="iconfont icon-tag" aria-hidden="true"></i>
-                    <span class="menu-title">Tags</span>
-                </a>
-            </div>
-        
-        
-            <div class="menu-item menu-repository" role="menuitem">
-                <a href="/repository">
-                    <i class="iconfont icon-project" aria-hidden="true"></i>
-                    <span class="menu-title">Repository</span>
-                </a>
-            </div>
-        
-        
-<div class="social-links flex sm:flex-col lg:hidden mt-5">
-    
-        <span class="social-item text-center">
-            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
-                <i class="iconfont social-icon icon-github"></i>
-                <span class="menu-title hidden lg:inline">menu.github</span>
-            </a>
-        </span>
-    
-        <span class="social-item text-center">
-            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
-                <i class="iconfont social-icon icon-telegram"></i>
-                <span class="menu-title hidden lg:inline">menu.telegram</span>
-            </a>
-        </span>
-    
-        <span class="social-item text-center">
-            <a target="_blank" rel="noopener" href="https://twitter.com/example">
-                <i class="iconfont social-icon icon-twitter"></i>
-                <span class="menu-title hidden lg:inline">menu.twitter</span>
-            </a>
-        </span>
-    
-        <span class="social-item text-center">
-            <a href="/atom.xml">
-                <i class="iconfont social-icon icon-rss"></i>
-                <span class="menu-title hidden lg:inline">menu.rss</span>
-            </a>
-        </span>
     
 </div>
 
 
-    </nav>
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Keep Theme
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
 </header>
 
-        <section class="main-section">
-            
-    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
-    
 
-    <article class="content article article-archives article-type-list" itemscope="">
-        <header class="article-header">
-            
-    
-        <h1 class="article-title text-lg" itemprop="name">
-            数据结构 第四章 栈
-        </h1>
-    
+        </div>
 
+        <div class="page-main-content-middle">
 
-
-            <p class="article-meta mb-3 text-xs">
-                <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2020/09/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%A0%88/" class="article-date">
-	  <time datetime="2020-09-19T12:01:32.000Z" itemprop="datePublished">Sep 19</time>
-	</a>
-</span>
+            <div class="main-content">
 
                 
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
 
-                
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>, <a class="article-tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
-  </span>
+        <div class="article-title">
+            <span class="title-hover-animation">数据结构 第四章 栈</span>
+        </div>
 
-
-                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
-                    <a href="/2020/09/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%A0%88/#comments" class="article-comment-link">
-                        Comments
-                    </a>
-                </span>
-                
-
-            </p>
-        </header>
-        <div class="marked-body article-body">
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Keep Team</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-09-19 20:01:32
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
             <ul>
-<li><strong>读物</strong>：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/">《大话数据结构》</a></li>
+                
+                    <li>
+                        <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/">技术积累</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <ul>
+<li><strong>读物</strong>：<a class="link"   target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/" >《大话数据结构》<i class="fas fa-external-link-alt"></i></a></li>
 <li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
 </ul>
 <h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ol>
@@ -238,7 +222,12 @@
 <li><strong>进栈/压栈/入栈(push)</strong>：栈的元素插入操作</li>
 <li><strong>出栈/弹栈(pop)</strong>：栈的元素删除操作</li>
 </ul>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89.png" alt="栈的定义"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89.png"
+                      alt="栈的定义"
+                ></p>
 <p><del>进栈出栈变化形式</del></p>
 <h1 id="栈的抽象数据类型"><a href="#栈的抽象数据类型" class="headerlink" title="栈的抽象数据类型"></a>栈的抽象数据类型</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ADT 栈(<span class="built_in">stack</span>)</span><br><span class="line">Data</span><br><span class="line">    同线性表。元素具有相同的类型，相邻元素具有前驱和后继的关系。</span><br><span class="line">Operation</span><br><span class="line">    InitStack(*S)：初始化操作，建立一个空栈S</span><br><span class="line">    DestroyStack(*S)：若栈存在，则销毁它</span><br><span class="line">    ClearStack(*S)：将栈清空</span><br><span class="line">    StackEmpty(S)：若栈为空，返回<span class="literal">true</span>，否则返回<span class="literal">false</span></span><br><span class="line">    GetTop(*S,e)：若栈存在且非空，用e返回S的栈顶元素</span><br><span class="line">    Push(*S,e)：若栈S存在，插入新元素e到栈S中，并成为栈顶元素</span><br><span class="line">    Pop(*S,*e)：删除栈S中的顶栈元素，并用e返回其值</span><br><span class="line">    StackLength(S)：返回栈S的元素个数</span><br><span class="line">endADT</span><br></pre></td></tr></table></figure>
 
@@ -316,7 +305,12 @@
 <li>栈顶指针(<strong>top</strong>) = <strong>NULL</strong>时，表示<strong>空栈</strong></li>
 </ul>
 <p>栈的链式存储结构定义如下：</p>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89.jpg" alt="栈的链式存储结构"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89.jpg"
+                      alt="栈的链式存储结构"
+                ></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类似单链表的结构定义：LinkStackPtr(Ptr，Pointer Recod 表指针含义)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">StackNode</span>&#123;</span></span><br><span class="line"></span><br><span class="line">	SElemType data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">StackNode</span> *<span class="title">next</span>;</span></span><br><span class="line"></span><br><span class="line">&#125;StackNode,*LinkStackPtr;</span><br><span class="line"></span><br><span class="line"><span class="comment">//再创建一个top结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkStack</span> &#123;</span></span><br><span class="line">	LinkStackPtr top;<span class="comment">//每一个结点是否被定义为头结点</span></span><br><span class="line">	<span class="keyword">int</span> count;<span class="comment">//链的长度</span></span><br><span class="line">&#125;LinkStack;</span><br></pre></td></tr></table></figure>
 
 <h2 id="链栈的进栈操作"><a href="#链栈的进栈操作" class="headerlink" title="链栈的进栈操作"></a>链栈的进栈操作</h2><p><strong>思路</strong>：</p>
@@ -364,7 +358,12 @@
 <li>将实际问题的递归规律<strong>通过数学函数表示</strong>出来(完成递归函数的百分之80)</li>
 <li>将数学函数<strong>通过代码</strong>的形式表达出来</li>
 </ol>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E9%80%92%E5%BD%92%E7%9A%84%E5%88%86%E6%9E%90.png" alt="递归"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E9%80%92%E5%BD%92%E7%9A%84%E5%88%86%E6%9E%90.png"
+                      alt="递归"
+                ></p>
 <p>通过递归的方式实现代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*斐波那契的递归函数*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fbi</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( i &lt; <span class="number">2</span> )</span><br><span class="line">		<span class="keyword">return</span> i == <span class="number">0</span> ? <span class="number">0</span> : <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">return</span> Fbi(i - <span class="number">1</span>) + Fbi(i - <span class="number">2</span>);  <span class="comment">/* 这里Fbi就是函数自己，等于在调用自己 */</span></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">40</span>;i++)  </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, Fbi(i));  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -433,83 +432,211 @@
 </blockquote>
 
         </div>
+
         
-<blockquote class="copyright">
-    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/09/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%A0%88/">http://yoursite.com/2020/09/19/数据结构 第四章 栈/</a></p>
-    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
-</blockquote>
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/09/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E9%98%9F%E5%88%97/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">数据结构 第四章 队列</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/09/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8&amp;%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">数据结构 第三章 循环链表&amp;双向链表</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
 
 
-    </article>
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Keep Team</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
     
-    <section id="comments">
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
         
-    </section>
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
 
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">大纲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">栈的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">栈的抽象数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">栈的顺序存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.1.</span> <span class="nav-text">顺序栈的结构定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E6%A0%88-amp-%E5%87%BA%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="nav-number">4.2.</span> <span class="nav-text">进栈&amp;出栈操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Push"><span class="nav-number">4.2.1.</span> <span class="nav-text">Push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop"><span class="nav-number">4.2.2.</span> <span class="nav-text">pop</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E6%A0%88%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4"><span class="nav-number">4.3.</span> <span class="nav-text">两栈共享空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">4.3.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88"><span class="nav-number">4.3.2.</span> <span class="nav-text">设计方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%9B%8F%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4%E7%BB%93%E6%9E%84"><span class="nav-number">4.3.3.</span> <span class="nav-text">两盏共享空间结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E5%86%85%E5%85%83%E7%B4%A0%E5%AD%98%E5%82%A8%E7%8A%B6%E6%80%81"><span class="nav-number">4.3.4.</span> <span class="nav-text">栈内元素存储状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4%E4%B8%8B%E7%9A%84%E8%BF%9B%E6%A0%88-amp-%E5%87%BA%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="nav-number">4.3.5.</span> <span class="nav-text">共享空间下的进栈&amp;出栈操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#push"><span class="nav-number">4.3.5.1.</span> <span class="nav-text">push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pop-1"><span class="nav-number">4.3.5.2.</span> <span class="nav-text">pop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">4.3.5.3.</span> <span class="nav-text">时间复杂度分析</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">栈的链式存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E8%BF%9B%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="nav-number">5.1.</span> <span class="nav-text">链栈的进栈操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E5%87%BA%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="nav-number">5.2.</span> <span class="nav-text">链栈的出栈操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">栈的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-1"><span class="nav-number">7.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E9%80%92%E5%BD%92"><span class="nav-number">7.2.</span> <span class="nav-text">栈的应用——递归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">7.2.1.</span> <span class="nav-text">递归的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.2.2.</span> <span class="nav-text">斐波那契数列的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95"><span class="nav-number">7.2.2.1.</span> <span class="nav-text">常规迭代方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.2.2.2.</span> <span class="nav-text">递归方式实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E5%9C%A8%E9%80%92%E5%BD%92%E9%87%8C%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">7.2.3.</span> <span class="nav-text">栈在递归里的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="nav-number">7.3.</span> <span class="nav-text">栈的应用——四则运算表达式求值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E9%80%86%E6%B3%A2%E5%85%B0-%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-number">7.3.1.</span> <span class="nav-text">后缀表达式(逆波兰)法定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">7.3.2.</span> <span class="nav-text">栈的应用——中缀表达式转后缀表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">7.3.3.</span> <span class="nav-text">栈的应用——后缀表达式的计算</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 
 </main>
 
 
-<aside style="" id="sidebar" class="aside aside-fixture">
-    <div class="toc-sidebar">
-        <nav id="toc" class="article-toc">
-            <h3 class="toc-title">Catalogue</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">1.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">栈的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">栈的抽象数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">栈的顺序存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="toc-number">4.1.</span> <span class="toc-text">顺序栈的结构定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E6%A0%88-amp-%E5%87%BA%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="toc-number">4.2.</span> <span class="toc-text">进栈&amp;出栈操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Push"><span class="toc-number">4.2.1.</span> <span class="toc-text">Push</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop"><span class="toc-number">4.2.2.</span> <span class="toc-text">pop</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E6%A0%88%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4"><span class="toc-number">4.3.</span> <span class="toc-text">两栈共享空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">4.3.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88"><span class="toc-number">4.3.2.</span> <span class="toc-text">设计方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%9B%8F%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4%E7%BB%93%E6%9E%84"><span class="toc-number">4.3.3.</span> <span class="toc-text">两盏共享空间结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E5%86%85%E5%85%83%E7%B4%A0%E5%AD%98%E5%82%A8%E7%8A%B6%E6%80%81"><span class="toc-number">4.3.4.</span> <span class="toc-text">栈内元素存储状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4%E4%B8%8B%E7%9A%84%E8%BF%9B%E6%A0%88-amp-%E5%87%BA%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="toc-number">4.3.5.</span> <span class="toc-text">共享空间下的进栈&amp;出栈操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#push"><span class="toc-number">4.3.5.1.</span> <span class="toc-text">push</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pop-1"><span class="toc-number">4.3.5.2.</span> <span class="toc-text">pop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">4.3.5.3.</span> <span class="toc-text">时间复杂度分析</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">栈的链式存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E8%BF%9B%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="toc-number">5.1.</span> <span class="toc-text">链栈的进栈操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E5%87%BA%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="toc-number">5.2.</span> <span class="toc-text">链栈的出栈操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">小结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">栈的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80-1"><span class="toc-number">7.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E9%80%92%E5%BD%92"><span class="toc-number">7.2.</span> <span class="toc-text">栈的应用——递归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">7.2.1.</span> <span class="toc-text">递归的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.2.2.</span> <span class="toc-text">斐波那契数列的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95"><span class="toc-number">7.2.2.1.</span> <span class="toc-text">常规迭代方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.2.2.2.</span> <span class="toc-text">递归方式实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E5%9C%A8%E9%80%92%E5%BD%92%E9%87%8C%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">7.2.3.</span> <span class="toc-text">栈在递归里的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="toc-number">7.3.</span> <span class="toc-text">栈的应用——四则运算表达式求值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E9%80%86%E6%B3%A2%E5%85%B0-%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="toc-number">7.3.1.</span> <span class="toc-text">后缀表达式(逆波兰)法定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">7.3.2.</span> <span class="toc-text">栈的应用——中缀表达式转后缀表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="toc-number">7.3.3.</span> <span class="toc-text">栈的应用——后缀表达式的计算</span></a></li></ol></li></ol></li></ol>
-        </nav>
-    </div>
-</aside>
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
 
 
 
+    <script src="/js/code-copy.js"></script>
 
 
-        </section>
-        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+
+    <script src="/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
     
-    <div class="footer-social-links">
-        
-            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
-                <i class="iconfont icon-github"></i>
-            </a>
-        
-            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
-                <i class="iconfont icon-telegram"></i>
-            </a>
-        
-            <a target="_blank" rel="noopener" href="https://twitter.com/example">
-                <i class="iconfont icon-twitter"></i>
-            </a>
-        
-            <a href="/atom.xml">
-                <i class="iconfont icon-rss"></i>
-            </a>
-        
-    </div>
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
     
-    
-</footer>
-
-        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
-        <div id="search-view-container" class="hidden shadow-xl"></div>
-        
-<script src="/js/dom-event.min.js"></script>
-
-<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
-
-
-<script src="/js/search.min.js"></script>
+</div>
 
 
 
-    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
-    
-<script src="/js/light-gallery.min.js"></script>
-
-
-
-
-
-    </body>
+</body>
 </html>

@@ -1,744 +1,811 @@
 <!DOCTYPE html>
-<html  lang="en" >
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
-    <title>yhdblog</title>
-    <meta property="og:type" content="website">
-<meta property="og:title" content="yhdblog">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="yhdblog">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
     
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-
-    
-<link rel="stylesheet" href="/css/common.min.css">
-
-
-
-    
-    
-    
-<link rel="stylesheet" href="/css/iconfont.min.css">
-
-    
+    <title>
+        
+        Keep Theme
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
 
-    <body>
-        <header class="header header-fixture">
-    <div class="profile-search-wrap flex sm:block">
-        
-        
-        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
-            <a id="avatar" role="link" href="https://github.com/yihangdeng" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
-                <img src="/images/avatar.jpg" class="rounded-full" alt="avatar">
-            </a>
-            <h2 id="name" class="hidden lg:block">yhdeng</h2>
-            <h3 id="title" class="hidden xl:block">Student &amp; Coder</h3>
-            
-            <small id="location" class="hidden lg:block">
-                <i class="iconfont icon-map-icon"></i>
-                Zhaoqing, China
-            </small>
-            
-        </div>
-        
-        
-<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
-    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
-        <div class="input-group table bg-gray-100 lg:bg-white w-full">
-            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
-            <span class="table-cell">
-                <button name="search tigger button" disabled>
-                    <i class="iconfont icon-search m-2"></i>
-                </button>
-            </span>
-        </div>
-    </form>
-        
-<script id="search-teamplate" type="text/html" data-path="/content.json">
-    <div>
-        <div class="search-header bg-gray-400">
-            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
-        </div>
-        <div class="search-result bg-gray-200">
-            {{#each searchPosts}}
-            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
-                <i class="iconfont icon-file"></i>
-                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
-                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
-            </a>
-            {{/each}}
-        </div>
-    </div>
-</script>
 
-</div>
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-
-        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
-            <i class="iconfont icon-hamburger"></i>
-        </button>
-    </div>
-    <nav id="menu-nav" class="hidden sm:flex flex-col">
-        
-        
-            <div class="menu-item menu-home" role="menuitem">
-                <a href="/.">
-                    <i class="iconfont icon-home" aria-hidden="true"></i>
-                    <span class="menu-title">Home</span>
-                </a>
-            </div>
-        
-        
-            <div class="menu-item menu-archives" role="menuitem">
-                <a href="/archives">
-                    <i class="iconfont icon-archive" aria-hidden="true"></i>
-                    <span class="menu-title">Archives</span>
-                </a>
-            </div>
-        
-        
-            <div class="menu-item menu-tags" role="menuitem">
-                <a href="/tags">
-                    <i class="iconfont icon-tag" aria-hidden="true"></i>
-                    <span class="menu-title">Tags</span>
-                </a>
-            </div>
-        
-        
-            <div class="menu-item menu-repository" role="menuitem">
-                <a href="/repository">
-                    <i class="iconfont icon-project" aria-hidden="true"></i>
-                    <span class="menu-title">Repository</span>
-                </a>
-            </div>
-        
-        
-<div class="social-links flex sm:flex-col lg:hidden mt-5">
-    
-        <span class="social-item text-center">
-            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
-                <i class="iconfont social-icon icon-github"></i>
-                <span class="menu-title hidden lg:inline">menu.github</span>
-            </a>
-        </span>
-    
-        <span class="social-item text-center">
-            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
-                <i class="iconfont social-icon icon-telegram"></i>
-                <span class="menu-title hidden lg:inline">menu.telegram</span>
-            </a>
-        </span>
-    
-        <span class="social-item text-center">
-            <a target="_blank" rel="noopener" href="https://twitter.com/example">
-                <i class="iconfont social-icon icon-twitter"></i>
-                <span class="menu-title hidden lg:inline">menu.twitter</span>
-            </a>
-        </span>
-    
-        <span class="social-item text-center">
-            <a href="/atom.xml">
-                <i class="iconfont social-icon icon-rss"></i>
-                <span class="menu-title hidden lg:inline">menu.rss</span>
-            </a>
-        </span>
     
 </div>
 
 
-    </nav>
-</header>
+<main class="page-container">
 
-        <section class="main-section">
-            <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
-    <div class="content article-list">
     
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
+        <div class="first-screen-container flex-center fade-in-down-animation">
+    <div class="content flex-center">
+        <div class="description">
+            Keep writing and Keep loving.
+        </div>
         
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2021/03/27/%E8%80%83%E8%AF%95%E7%BD%91%E6%B2%B9%E7%8C%B4%E4%BB%A3%E7%A0%81/">考试网油猴代码</a>
-        </h1>
-    
-
-
-
     </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2021/03/27/%E8%80%83%E8%AF%95%E7%BD%91%E6%B2%B9%E7%8C%B4%E4%BB%A3%E7%A0%81/" class="article-date">
-	  <time datetime="2021-03-27T09:16:32.000Z" itemprop="datePublished">Mar 27</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/%E5%A8%B1%E4%B9%90/" rel="tag">娱乐</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/27/%E8%80%83%E8%AF%95%E7%BD%91%E6%B2%B9%E7%8C%B4%E4%BB%A3%E7%A0%81/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2021/03/24/javaWeb/">javaWeb</a>
-        </h1>
-    
-
-
-
-    </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2021/03/24/javaWeb/" class="article-date">
-	  <time datetime="2021-03-24T11:54:32.000Z" itemprop="datePublished">Mar 24</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/javaWeb/" rel="tag">javaWeb</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/24/javaWeb/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2021/03/23/html&css&js&jq&xml%E5%85%A5%E9%97%A8/">html&amp;css&amp;js&amp;jq&amp;xml入门</a>
-        </h1>
-    
-
-
-
-    </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2021/03/23/html&css&js&jq&xml%E5%85%A5%E9%97%A8/" class="article-date">
-	  <time datetime="2021-03-23T11:54:32.000Z" itemprop="datePublished">Mar 23</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>, <a class="article-tag-none-link" href="/tags/css/" rel="tag">css</a>, <a class="article-tag-none-link" href="/tags/html/" rel="tag">html</a>, <a class="article-tag-none-link" href="/tags/jQuery/" rel="tag">jQuery</a>, <a class="article-tag-none-link" href="/tags/xml/" rel="tag">xml</a>, <a class="article-tag-none-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/23/html&css&js&jq&xml%E5%85%A5%E9%97%A8/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2021/03/21/Mybatis/">Mybatis</a>
-        </h1>
-    
-
-
-
-    </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2021/03/21/Mybatis/" class="article-date">
-	  <time datetime="2021-03-21T01:52:32.000Z" itemprop="datePublished">Mar 21</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/ORM%E6%A1%86%E6%9E%B6/" rel="tag">ORM框架</a>, <a class="article-tag-none-link" href="/tags/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/" rel="tag">应用框架</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/21/Mybatis/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2021/03/20/Maven/">Maven</a>
-        </h1>
-    
-
-
-
-    </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2021/03/20/Maven/" class="article-date">
-	  <time datetime="2021-03-20T13:22:32.000Z" itemprop="datePublished">Mar 20</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>, <a class="article-tag-none-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/20/Maven/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2021/03/14/%E4%B8%AA%E4%BA%BA%E7%94%B5%E5%AD%90%E6%96%87%E6%A1%A3/">个人电子文档</a>
-        </h1>
-    
-
-
-
-    </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2021/03/14/%E4%B8%AA%E4%BA%BA%E7%94%B5%E5%AD%90%E6%96%87%E6%A1%A3/" class="article-date">
-	  <time datetime="2021-03-14T13:11:32.000Z" itemprop="datePublished">Mar 14</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/%E4%B8%AA%E4%BA%BA%E6%96%87%E6%A1%A3/" rel="tag">个人文档</a>, <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/14/%E4%B8%AA%E4%BA%BA%E7%94%B5%E5%AD%90%E6%96%87%E6%A1%A3/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2021/03/04/JavaSE%E6%A0%B8%E5%BF%83%E7%A7%AF%E7%B4%AF/">JavaSE核心积累</a>
-        </h1>
-    
-
-
-
-    </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2021/03/04/JavaSE%E6%A0%B8%E5%BF%83%E7%A7%AF%E7%B4%AF/" class="article-date">
-	  <time datetime="2021-03-04T03:40:32.000Z" itemprop="datePublished">Mar 4</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/JavaSE/" rel="tag">JavaSE</a>, <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/04/JavaSE%E6%A0%B8%E5%BF%83%E7%A7%AF%E7%B4%AF/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2020/12/12/video%20interface%20set/">video interface set</a>
-        </h1>
-    
-
-
-
-    </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2020/12/12/video%20interface%20set/" class="article-date">
-	  <time datetime="2020-12-12T11:41:32.000Z" itemprop="datePublished">Dec 12</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/%E5%A8%B1%E4%B9%90/" rel="tag">娱乐</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/12/video%20interface%20set/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2020/10/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库原理 第二章 关系数据库</a>
-        </h1>
-    
-
-
-
-    </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2020/10/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
-	  <time datetime="2020-10-30T10:38:32.000Z" itemprop="datePublished">Oct 30</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/SQL/" rel="tag">SQL</a>, <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>, <a class="article-tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/10/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
-        <article class="article border-b border-solid border-gray-200">
-    <div class="article-header mb-4 mt-5">
-        
-    
-        <h1 itemprop="name">
-            <a class="article-title text-lg" href="/2020/10/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/">数据库原理 第一章 绪论</a>
-        </h1>
-    
-
-
-
-    </div>
-    
-    <p class="article-meta mb-3 text-xs">
-        <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2020/10/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/" class="article-date">
-	  <time datetime="2020-10-28T11:57:32.000Z" itemprop="datePublished">Oct 28</time>
-	</a>
-</span>
-
-        
-
-        
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/SQL/" rel="tag">SQL</a>, <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>, <a class="article-tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
-  </span>
-
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/10/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/#comments" class="article-comment-link">Comments</a></span>
-        
-
-    </p>
-
-</article>
-
-    
 </div>
 
     
-<nav class="pagination bottom-0 px-5 mb-3 absolute w-full inset-x-0" data-stick-bottom>
-    <div class="flex justify-between leading-tight">
-        <span class="pager">
-            
-                <button class="prev disabled">
-                    <a href="#">
-                        <i class="iconfont icon-angle-left"></i>
-                        Prev
-                    </a>
-                </button>
-            
-            
-                <button class="next">
-                    <a href="/page/2/">
-                        Next
-                        <i class="iconfont icon-angle-right"></i>
-                    </a>
-                </button>
-            
-        </span>
-        <div class="total-article bar-right">Page 1 of 3</div>
-    </div>
-</nav>
 
+    <div class="page-main-content">
 
-</main>
-<aside style="" id="sidebar" class="aside aside-fixture">
-    <div class="widgets">
-        
-            
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
 
-        
-            
-    <div class="widget">
-        <h3 class="widget-title">
-            Tags
-        </h3>
-        <div class="widget-body">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORM%E6%A1%86%E6%9E%B6/" rel="tag">ORM框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaWeb/" rel="tag">javaWeb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xml/" rel="tag">xml</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E6%96%87%E6%A1%A3/" rel="tag">个人文档</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A8%B1%E4%B9%90/" rel="tag">娱乐</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/" rel="tag">应用框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">环境搭建</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a><span class="tag-list-count">1</span></li></ul>
+    <div class="header-content has-first-screen">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Keep Theme
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class="active"
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
         </div>
     </div>
 
-
-        
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
             
-    <div class="widget">
-        
-        <h3 class="widget-title">Tag Cloud</h3>
-        
-        <div class="widget-body tagcloud">
-            <a href="/tags/Gitee/" style="font-size: 13px;">Gitee</a> <a href="/tags/Hexo/" style="font-size: 13.17px;">Hexo</a> <a href="/tags/JavaSE/" style="font-size: 13px;">JavaSE</a> <a href="/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/tags/ORM%E6%A1%86%E6%9E%B6/" style="font-size: 13px;">ORM框架</a> <a href="/tags/SQL/" style="font-size: 13.67px;">SQL</a> <a href="/tags/css/" style="font-size: 13px;">css</a> <a href="/tags/html/" style="font-size: 13px;">html</a> <a href="/tags/jQuery/" style="font-size: 13px;">jQuery</a> <a href="/tags/javaWeb/" style="font-size: 13px;">javaWeb</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/xml/" style="font-size: 13px;">xml</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%96%87%E6%A1%A3/" style="font-size: 13px;">个人文档</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13px;">前端</a> <a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 13.17px;">娱乐</a> <a href="/tags/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/" style="font-size: 13px;">应用框架</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" style="font-size: 14px;">技术积累</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.5px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.83px;">数据结构</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 13.33px;">环境搭建</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13.17px;">算法</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" style="font-size: 13px;">项目构建</a>
-        </div>
-    </div>
-
-
-        
-            
-    <div class="widget">
-        <h3 class="widget-title">Archive</h3>
-        <div class="widget-body">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">4</span></li></ul>
-        </div>
-    </div>
-
-
-        
-            
-<div class="widget">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget-body">
-        <ul class="recent-post-list list-unstyled">
-            
-                <li>
-                    <div class="recent-post">
-                        <p class="item-category">
-                            
-                        </p>
-                        <p class="item-title">
-                            <a href="/2021/03/27/%E8%80%83%E8%AF%95%E7%BD%91%E6%B2%B9%E7%8C%B4%E4%BB%A3%E7%A0%81/" class="title">考试网油猴代码</a>
-                        </p>
-                        <p class="item-date">
-                            <time datetime="2021-03-27T09:16:32.000Z" itemprop="datePublished">2021-03-27</time>
-                        </p>
-                    </div>
+                <li class="drawer-menu-item flex-center">
+                    <a class="active"
+                       href="/">HOME</a>
                 </li>
             
-                <li>
-                    <div class="recent-post">
-                        <p class="item-category">
-                            
-                        </p>
-                        <p class="item-title">
-                            <a href="/2021/03/24/javaWeb/" class="title">javaWeb</a>
-                        </p>
-                        <p class="item-date">
-                            <time datetime="2021-03-24T11:54:32.000Z" itemprop="datePublished">2021-03-24</time>
-                        </p>
-                    </div>
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
                 </li>
             
-                <li>
-                    <div class="recent-post">
-                        <p class="item-category">
-                            
-                        </p>
-                        <p class="item-title">
-                            <a href="/2021/03/23/html&css&js&jq&xml%E5%85%A5%E9%97%A8/" class="title">html&amp;css&amp;js&amp;jq&amp;xml入门</a>
-                        </p>
-                        <p class="item-date">
-                            <time datetime="2021-03-23T11:54:32.000Z" itemprop="datePublished">2021-03-23</time>
-                        </p>
-                    </div>
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
                 </li>
             
-                <li>
-                    <div class="recent-post">
-                        <p class="item-category">
-                            
-                        </p>
-                        <p class="item-title">
-                            <a href="/2021/03/21/Mybatis/" class="title">Mybatis</a>
-                        </p>
-                        <p class="item-date">
-                            <time datetime="2021-03-21T01:52:32.000Z" itemprop="datePublished">2021-03-21</time>
-                        </p>
-                    </div>
-                </li>
-            
-                <li>
-                    <div class="recent-post">
-                        <p class="item-category">
-                            
-                        </p>
-                        <p class="item-title">
-                            <a href="/2021/03/20/Maven/" class="title">Maven</a>
-                        </p>
-                        <p class="item-date">
-                            <time datetime="2021-03-20T13:22:32.000Z" itemprop="datePublished">2021-03-20</time>
-                        </p>
-                    </div>
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
                 </li>
             
         </ul>
     </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="home-content-container fade-in-down-animation">
+    <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/03/27/%E8%80%83%E8%AF%95%E7%BD%91%E6%B2%B9%E7%8C%B4%E4%BB%A3%E7%A0%81/">
+                        考试网油猴代码
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950// ==UserScript==// @name         ...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Mar 27 2021 17:16:32 GMT+0800">2021-03-27</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%A8%B1%E4%B9%90/">娱乐</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2021/03/27/%E8%80%83%E8%AF%95%E7%BD%91%E6%B2%B9%E7%8C%B4%E4%BB%A3%E7%A0%81/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/03/24/javaWeb/">
+                        javaWeb
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        [TOC]
+Dom4j解析技术dom4j 是优秀的第三方解析XML类库。需要使用 dom4j 就需要到 dom4j 官网下载 dom4j 的 jar 包。具体操作可以查看官方文档，或者下载离线jar包后查看离线帮助文档，如下
+
+Dom4j编程步骤
+添...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Mar 24 2021 19:54:32 GMT+0800">2021-03-24</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/javaWeb/">javaWeb</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2021/03/24/javaWeb/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/03/23/html&css&js&jq&xml%E5%85%A5%E9%97%A8/">
+                        html&amp;css&amp;js&amp;jq&amp;xml入门
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        [TOC]
+HTML基本规范123456789101112131415&lt;!DOCTYPE html&gt;&lt;!-- 约束,声明 --&gt;&lt;!-- html标签表示html的开始   lang=&quot;zh_CN&quot;表...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Mar 23 2021 19:54:32 GMT+0800">2021-03-23</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/xml/">xml</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/html/">html</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/css/">css</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/JavaScript/">JavaScript</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/jQuery/">jQuery</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2021/03/23/html&css&js&jq&xml%E5%85%A5%E9%97%A8/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/03/21/Mybatis/">
+                        Mybatis
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        [TOC]
+基本历史原是Apache的一个开源项目iBatis, 2010年6月这 个项目由Apache Software Foundation 迁移到了 Google Code，随着开发团队转投Google Code 旗下， iBatis3.x正式...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun Mar 21 2021 09:52:32 GMT+0800">2021-03-21</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/">应用框架</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/ORM%E6%A1%86%E6%9E%B6/">ORM框架</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2021/03/21/Mybatis/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/03/20/Maven/">
+                        Maven
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        导言：生产环境下开发不再是一个项目一个工程，而是每一个模块创建一个工程，而多个模块整合在一起就需要 使用到像 Maven 这样的构建工具。
+[TOC]
+现今项目开发问题
+project - package 结构的不足
+若一个项目就是一个工程，当项目非...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Mar 20 2021 21:22:32 GMT+0800">2021-03-20</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/">技术积累</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/">项目构建</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2021/03/20/Maven/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/03/14/%E4%B8%AA%E4%BA%BA%E7%94%B5%E5%AD%90%E6%96%87%E6%A1%A3/">
+                        个人电子文档
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        tips：不可在线浏览，需复制链接下载回本地，修改后缀后访问pdf文件
+
+C语言：复制链接
+计算机网络：复制链接
+数据库原理：复制链接
+
+
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun Mar 14 2021 21:11:32 GMT+0800">2021-03-14</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/">技术积累</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%96%87%E6%A1%A3/">个人文档</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2021/03/14/%E4%B8%AA%E4%BA%BA%E7%94%B5%E5%AD%90%E6%96%87%E6%A1%A3/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/03/04/JavaSE%E6%A0%B8%E5%BF%83%E7%A7%AF%E7%B4%AF/">
+                        JavaSE核心积累
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        JavaSE核心积累
+
+[TOC]
+
+常用DOS命令
+快速进入特定路径下的命令窗体：在拟进入文件路径的地址栏中直接输入cmd
+复制与黏贴
+win7：任意位置右键“标记”，选中要复制的内容，再点击右键，剪贴板里面了
+win10：左键直接选中，然后右键单...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Thu Mar 04 2021 11:40:32 GMT+0800">2021-03-04</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/">技术积累</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/JavaSE/">JavaSE</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2021/03/04/JavaSE%E6%A0%B8%E5%BF%83%E7%A7%AF%E7%B4%AF/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2020/12/12/video%20interface%20set/">
+                        video interface set
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Dec 12 2020 19:41:32 GMT+0800">2020-12-12</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%A8%B1%E4%B9%90/">娱乐</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2020/12/12/video%20interface%20set/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2020/10/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        数据库原理 第二章 关系数据库
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        关系数据库
+基本概念
+定义：关系数据库是采用关系模型的数据库系统，而关系模型的数据结构(数据模型三部曲之一)就是关系本身。即现实世界的实体与实体间的联系都用关系来表示，其逻辑结构表现为一张二维表
+相关术语：
+
+
+
+
+关系术语
+一般表格术语
+
+
+
+关系...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Oct 30 2020 18:38:32 GMT+0800">2020-10-30</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/SQL/">SQL</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/">技术积累</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2020/10/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2020/10/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/">
+                        数据库原理 第一章 绪论
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        绪论
+数据库基本概念
+数据（data）：描述事物的符号记录称为数据
+数据库（DB，DataBase）：长期存储在计算机内、有组织的、可共享的大量数据的集合
+数据库管理系统（DBMS，Data Base Management System）：用于科学高...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Oct 28 2020 19:57:32 GMT+0800">2020-10-28</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/SQL/">SQL</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/">技术积累</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2020/10/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%20%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BB%AA%E8%AE%BA/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+    </ul>
+
+    <div class="home-paginator">
+        <div class="paginator">
+    
+
+    
+        <a class="next btn"
+           href="/page/2/"
+        >Next</a>
+    
+</div>
+
+    </div>
 </div>
 
 
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Keep Team</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
         
     </div>
-</aside>
-
-
-        </section>
-        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
-    
-    <div class="footer-social-links">
-        
-            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
-                <i class="iconfont icon-github"></i>
-            </a>
-        
-            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
-                <i class="iconfont icon-telegram"></i>
-            </a>
-        
-            <a target="_blank" rel="noopener" href="https://twitter.com/example">
-                <i class="iconfont icon-twitter"></i>
-            </a>
-        
-            <a href="/atom.xml">
-                <i class="iconfont icon-rss"></i>
-            </a>
-        
-    </div>
-    
-    
 </footer>
 
-        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
-        <div id="search-view-container" class="hidden shadow-xl"></div>
-        
-<script src="/js/dom-event.min.js"></script>
+        </div>
+    </div>
 
-<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
-
-
-<script src="/js/search.min.js"></script>
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
     
-<script src="/js/light-gallery.min.js"></script>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
 
 
 
 
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
 
-    </body>
+
+    <script src="/js/local-search.js"></script>
+
+
+
+    <script src="/js/code-copy.js"></script>
+
+
+
+    <script src="/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
 </html>

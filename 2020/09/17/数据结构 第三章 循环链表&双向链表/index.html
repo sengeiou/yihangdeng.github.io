@@ -1,221 +1,204 @@
 <!DOCTYPE html>
-<html  lang="en" >
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
-    <title>数据结构 第三章 循环链表&双向链表 | yhdblog</title>
-    <meta name="description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 循环链表 双向链表 小结  循环链表基本概念单循环链表(circular linked)： 将单链表的终端结点指针端口由空指针改为指向头结点，是整个单链表形成一个环。     相对单链表，循环链表可以实现从任意一个结点出发，可访问到链表的全部结点的操作。 为了方便操作，循环链表为空链表时，头结点的指针域也“循环">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据结构 第三章 循环链表&amp;双向链表">
-<meta property="og:url" content="http://yoursite.com/2020/09/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8&%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/index.html">
-<meta property="og:site_name" content="yhdblog">
-<meta property="og:description" content="读物：《大话数据结构》 印次：2020年5月第25次印刷(2020.5重印)  大纲 循环链表 双向链表 小结  循环链表基本概念单循环链表(circular linked)： 将单链表的终端结点指针端口由空指针改为指向头结点，是整个单链表形成一个环。     相对单链表，循环链表可以实现从任意一个结点出发，可访问到链表的全部结点的操作。 为了方便操作，循环链表为空链表时，头结点的指针域也“循环">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8-%E5%A4%B4%E7%BB%93%E7%82%B9.png">
-<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E6%8F%92%E5%85%A5.jpg">
-<meta property="og:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4.png">
-<meta property="article:published_time" content="2020-09-17T09:12:32.000Z">
-<meta property="article:modified_time" content="2020-10-11T12:25:04.610Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="技术积累">
-<meta property="article:tag" content="数据结构">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Keep Team">
     
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-
-    
-<link rel="stylesheet" href="/css/common.min.css">
-
-
-
-    
-    
-    
-    
-        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
-    
-    
-    
-<link rel="stylesheet" href="/css/iconfont.min.css">
-
-    
+    <title>
+        
+            数据结构 第三章 循环链表&amp;双向链表 |
+        
+        Keep Theme
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
 
-    <body>
-        <header class="header header-fixture">
-    <div class="profile-search-wrap flex sm:block">
-        
-        
-        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
-            <a id="avatar" role="link" href="https://github.com/yihangdeng" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
-                <img src="/images/avatar.jpg" class="rounded-full" alt="avatar">
-            </a>
-            <h2 id="name" class="hidden lg:block">yhdeng</h2>
-            <h3 id="title" class="hidden xl:block">Student &amp; Coder</h3>
-            
-            <small id="location" class="hidden lg:block">
-                <i class="iconfont icon-map-icon"></i>
-                Zhaoqing, China
-            </small>
-            
-        </div>
-        
-        
-<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
-    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
-        <div class="input-group table bg-gray-100 lg:bg-white w-full">
-            <input id="search-input" type="text" placeholder="Search" class="inline-block w-full bg-gray-100 lg:bg-white">
-            <span class="table-cell">
-                <button name="search tigger button" disabled>
-                    <i class="iconfont icon-search m-2"></i>
-                </button>
-            </span>
-        </div>
-    </form>
-        
-<script id="search-teamplate" type="text/html" data-path="/content.json">
-    <div>
-        <div class="search-header bg-gray-400">
-            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="Search" type="text">
-        </div>
-        <div class="search-result bg-gray-200">
-            {{#each searchPosts}}
-            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
-                <i class="iconfont icon-file"></i>
-                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
-                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
-            </a>
-            {{/each}}
-        </div>
-    </div>
-</script>
 
-</div>
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-
-        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
-            <i class="iconfont icon-hamburger"></i>
-        </button>
-    </div>
-    <nav id="menu-nav" class="hidden sm:flex flex-col">
-        
-        
-            <div class="menu-item menu-home" role="menuitem">
-                <a href="/.">
-                    <i class="iconfont icon-home" aria-hidden="true"></i>
-                    <span class="menu-title">Home</span>
-                </a>
-            </div>
-        
-        
-            <div class="menu-item menu-archives" role="menuitem">
-                <a href="/archives">
-                    <i class="iconfont icon-archive" aria-hidden="true"></i>
-                    <span class="menu-title">Archives</span>
-                </a>
-            </div>
-        
-        
-            <div class="menu-item menu-tags" role="menuitem">
-                <a href="/tags">
-                    <i class="iconfont icon-tag" aria-hidden="true"></i>
-                    <span class="menu-title">Tags</span>
-                </a>
-            </div>
-        
-        
-            <div class="menu-item menu-repository" role="menuitem">
-                <a href="/repository">
-                    <i class="iconfont icon-project" aria-hidden="true"></i>
-                    <span class="menu-title">Repository</span>
-                </a>
-            </div>
-        
-        
-<div class="social-links flex sm:flex-col lg:hidden mt-5">
-    
-        <span class="social-item text-center">
-            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
-                <i class="iconfont social-icon icon-github"></i>
-                <span class="menu-title hidden lg:inline">menu.github</span>
-            </a>
-        </span>
-    
-        <span class="social-item text-center">
-            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
-                <i class="iconfont social-icon icon-telegram"></i>
-                <span class="menu-title hidden lg:inline">menu.telegram</span>
-            </a>
-        </span>
-    
-        <span class="social-item text-center">
-            <a target="_blank" rel="noopener" href="https://twitter.com/example">
-                <i class="iconfont social-icon icon-twitter"></i>
-                <span class="menu-title hidden lg:inline">menu.twitter</span>
-            </a>
-        </span>
-    
-        <span class="social-item text-center">
-            <a href="/atom.xml">
-                <i class="iconfont social-icon icon-rss"></i>
-                <span class="menu-title hidden lg:inline">menu.rss</span>
-            </a>
-        </span>
     
 </div>
 
 
-    </nav>
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Keep Theme
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
 </header>
 
-        <section class="main-section">
-            
-    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
-    
 
-    <article class="content article article-archives article-type-list" itemscope="">
-        <header class="article-header">
-            
-    
-        <h1 class="article-title text-lg" itemprop="name">
-            数据结构 第三章 循环链表&amp;双向链表
-        </h1>
-    
+        </div>
 
+        <div class="page-main-content-middle">
 
-
-            <p class="article-meta mb-3 text-xs">
-                <span class="article-date">
-    <i class="iconfont icon-calendar-check"></i>
-	<a href="/2020/09/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8&%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" class="article-date">
-	  <time datetime="2020-09-17T09:12:32.000Z" itemprop="datePublished">Sep 17</time>
-	</a>
-</span>
+            <div class="main-content">
 
                 
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
 
-                
-    <span class="article-tags">
-    <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/" rel="tag">技术积累</a>, <a class="article-tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
-  </span>
+        <div class="article-title">
+            <span class="title-hover-animation">数据结构 第三章 循环链表&amp;双向链表</span>
+        </div>
 
-
-                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
-                    <a href="/2020/09/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8&%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/#comments" class="article-comment-link">
-                        Comments
-                    </a>
-                </span>
-                
-
-            </p>
-        </header>
-        <div class="marked-body article-body">
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Keep Team</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-09-17 17:12:32
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
             <ul>
-<li><strong>读物</strong>：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/">《大话数据结构》</a></li>
+                
+                    <li>
+                        <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/">技术积累</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <ul>
+<li><strong>读物</strong>：<a class="link"   target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/" >《大话数据结构》<i class="fas fa-external-link-alt"></i></a></li>
 <li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
 </ul>
 <h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ol>
@@ -224,12 +207,22 @@
 <li><strong>小结</strong></li>
 </ol>
 <h1 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>单循环链表(circular linked)：</strong> 将单链表的<strong>终端结点指针端口</strong>由空指针改为<strong>指向头结点</strong>，是整个单链表形成一个<strong>环</strong>。  </p>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="循环链表"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png"
+                      alt="循环链表"
+                ></p>
 <ul>
 <li>相对单链表，<strong>循环链表</strong>可以实现<strong>从任意一个结点出发，可访问到链表的全部结点</strong>的操作。</li>
 <li>为了方便操作，循环链表<strong>为空链表</strong>时，<strong>头结点的指针域也“循环”地指向自己</strong>。如下图所示：</li>
 </ul>
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8-%E5%A4%B4%E7%BB%93%E7%82%B9.png" alt="头结点"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8-%E5%A4%B4%E7%BB%93%E7%82%B9.png"
+                      alt="头结点"
+                ></p>
 <h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><p>​    而实际应用中，很多操作是在表的<strong>首或尾</strong>两端进行。传统单链表使用的头指针在<strong>首部</strong>操作时间复杂度为O(1)，<strong>而尾部操作时间复杂度则为O(n)</strong>。 此时，不设置头结点，而是<strong>借助”循环”本身的特性</strong>，通过设置<strong>终端结点的尾指针(rear)**，实现对</strong>首尾的高效操作**。  </p>
 <ul>
 <li>对于终端结点复杂度即为O(1)，对于头结点即<code>rear-&gt;next</code>，头指针即<code>rear-&gt;next-&gt;next</code>，复杂度均为O(1)</li>
@@ -246,11 +239,21 @@
 <h2 id="双链表的插入"><a href="#双链表的插入" class="headerlink" title="双链表的插入"></a>双链表的插入</h2><p>相对于单链表的插入操作，双链表的插入需要<strong>修改4个指针</strong>。关键修改代码如下(在结点p的后面插入一个新结点s)：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s-&gt;prior = p;</span><br><span class="line">s-&gt;next = p-&gt;next;</span><br><span class="line">p-&gt;next-&gt;prior = s;</span><br><span class="line">p-&gt;next = s;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E6%8F%92%E5%85%A5.jpg" alt="双向链表的插入"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E6%8F%92%E5%85%A5.jpg"
+                      alt="双向链表的插入"
+                ></p>
 <h2 id="双链表的删除"><a href="#双链表的删除" class="headerlink" title="双链表的删除"></a>双链表的删除</h2><p>因为有两个指针域，在指向调整上更加灵活。<strong>若p指向待删除结点</strong>，则删除的关键代码部分如下(<strong>未被验证</strong>)：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p-&gt;prior-&gt;next = p-&gt;next;</span><br><span class="line">p-&gt;next-&gt;prior = p-&gt;prior;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4.png" alt="双向链表的删除"></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4.png"
+                      alt="双向链表的删除"
+                ></p>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
 <li>双向链表先对于单链表来说，<strong>更加复杂</strong>，对于<strong>对于插入和删除</strong>时，需要歌外注意</li>
 <li>双向链表有<strong>两个指针域</strong>，因此<strong>空间上占用略多一些</strong></li>
@@ -259,83 +262,211 @@
 </ul>
 
         </div>
+
         
-<blockquote class="copyright">
-    <p><strong>Link to this article : </strong><a class="permalink" href="http://yoursite.com/2020/09/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8&amp;%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">http://yoursite.com/2020/09/17/数据结构 第三章 循环链表&amp;双向链表/</a></p>
-    <p><strong>This article is available under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a> License</strong></p>
-</blockquote>
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/09/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%A0%88/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">数据结构 第四章 栈</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/09/17/mysql%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">mysql基础总结</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
 
 
-    </article>
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Keep Team</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
     
-    <section id="comments">
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
         
-    </section>
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
 
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">大纲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">循环链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">实际应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E5%B9%B6%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="nav-number">2.3.</span> <span class="nav-text">合并循环链表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="nav-number">3.</span> <span class="nav-text">双向链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%85%B6%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.1.</span> <span class="nav-text">定义及其初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5"><span class="nav-number">3.2.</span> <span class="nav-text">双链表的插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4"><span class="nav-number">3.3.</span> <span class="nav-text">双链表的删除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 
 </main>
 
 
-<aside style="" id="sidebar" class="aside aside-fixture">
-    <div class="toc-sidebar">
-        <nav id="toc" class="article-toc">
-            <h3 class="toc-title">Catalogue</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">1.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-number">2.</span> <span class="toc-text">循环链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">实际应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-number">2.3.</span> <span class="toc-text">合并循环链表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="toc-number">3.</span> <span class="toc-text">双向链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%85%B6%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">定义及其初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5"><span class="toc-number">3.2.</span> <span class="toc-text">双链表的插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4"><span class="toc-number">3.3.</span> <span class="toc-text">双链表的删除</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">小结</span></a></li></ol>
-        </nav>
-    </div>
-</aside>
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
 
 
 
+    <script src="/js/code-copy.js"></script>
 
 
-        </section>
-        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+
+    <script src="/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
     
-    <div class="footer-social-links">
-        
-            <a target="_blank" rel="noopener" href="https://github.com/yihangdeng">
-                <i class="iconfont icon-github"></i>
-            </a>
-        
-            <a target="_blank" rel="noopener" href="https://t.me/fengkx">
-                <i class="iconfont icon-telegram"></i>
-            </a>
-        
-            <a target="_blank" rel="noopener" href="https://twitter.com/example">
-                <i class="iconfont icon-twitter"></i>
-            </a>
-        
-            <a href="/atom.xml">
-                <i class="iconfont icon-rss"></i>
-            </a>
-        
-    </div>
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
     
-    
-</footer>
-
-        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
-        <div id="search-view-container" class="hidden shadow-xl"></div>
-        
-<script src="/js/dom-event.min.js"></script>
-
-<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
-
-
-<script src="/js/search.min.js"></script>
+</div>
 
 
 
-    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
-    
-<script src="/js/light-gallery.min.js"></script>
-
-
-
-
-
-    </body>
+</body>
 </html>
