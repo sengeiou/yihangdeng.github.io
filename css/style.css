@@ -11,8 +11,8 @@
   --selection-color: #0075eb;
   --shadow-color: rgba(0,0,0,0.2);
   --shadow-hover-color: rgba(0,0,0,0.28);
-  --scrollbar-color: rgba(200,200,200,0.6);
-  --scroll-bar-bg-color: #f0f0f0;
+  --scrollbar-color: #585865;
+  --scroll-bar-bg-color: #e6e6e6;
   --link-color: #484853;
   --copyright-info-color: #c03;
   --avatar-background-color: #06c;
@@ -32,8 +32,8 @@
     --selection-color: #0075eb;
     --shadow-color: rgba(0,0,0,0.2);
     --shadow-hover-color: rgba(0,0,0,0.28);
-    --scrollbar-color: rgba(200,200,200,0.6);
-    --scroll-bar-bg-color: #f0f0f0;
+    --scrollbar-color: #585865;
+    --scroll-bar-bg-color: #e6e6e6;
     --link-color: #484853;
     --copyright-info-color: #c03;
     --avatar-background-color: #06c;
@@ -75,8 +75,8 @@
   --selection-color: #0075eb;
   --shadow-color: rgba(0,0,0,0.2);
   --shadow-hover-color: rgba(0,0,0,0.28);
-  --scrollbar-color: rgba(200,200,200,0.6);
-  --scroll-bar-bg-color: #f0f0f0;
+  --scrollbar-color: #585865;
+  --scroll-bar-bg-color: #e6e6e6;
   --link-color: #484853;
   --copyright-info-color: #c03;
   --avatar-background-color: #06c;
@@ -237,8 +237,8 @@
   transition-timing-function: ease, ease, ease, ease;
 }
 *::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   transition: all 0.2s ease;
 }
 *::-webkit-scrollbar-thumb {
@@ -549,8 +549,8 @@ button {
   --selection-color: #0075eb;
   --shadow-color: rgba(0,0,0,0.2);
   --shadow-hover-color: rgba(0,0,0,0.28);
-  --scrollbar-color: rgba(200,200,200,0.6);
-  --scroll-bar-bg-color: #f0f0f0;
+  --scrollbar-color: #585865;
+  --scroll-bar-bg-color: #e6e6e6;
   --link-color: #484853;
   --copyright-info-color: #c03;
   --avatar-background-color: #06c;
@@ -570,8 +570,8 @@ button {
     --selection-color: #0075eb;
     --shadow-color: rgba(0,0,0,0.2);
     --shadow-hover-color: rgba(0,0,0,0.28);
-    --scrollbar-color: rgba(200,200,200,0.6);
-    --scroll-bar-bg-color: #f0f0f0;
+    --scrollbar-color: #585865;
+    --scroll-bar-bg-color: #e6e6e6;
     --link-color: #484853;
     --copyright-info-color: #c03;
     --avatar-background-color: #06c;
@@ -613,8 +613,8 @@ button {
   --selection-color: #0075eb;
   --shadow-color: rgba(0,0,0,0.2);
   --shadow-hover-color: rgba(0,0,0,0.28);
-  --scrollbar-color: rgba(200,200,200,0.6);
-  --scroll-bar-bg-color: #f0f0f0;
+  --scrollbar-color: #585865;
+  --scroll-bar-bg-color: #e6e6e6;
   --link-color: #484853;
   --copyright-info-color: #c03;
   --avatar-background-color: #06c;
