@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="yhd">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             数据结构 第四章 栈 |
         
-        MyBlog
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
 
     <link rel="shortcut icon" href="/images/logo.svg">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
@@ -29,8 +31,6 @@
 
 <body>
 <div class="progress-bar-container">
-    
-        <span class="scroll-progress-bar"></span>
     
 
     
@@ -49,7 +49,7 @@
     <div class="header-content">
         <div class="left">
             <a class="logo-title" href="/">
-                MyBlog
+                Keep Theme
             </a>
         </div>
 
@@ -70,14 +70,6 @@
                                href="/archives"
                             >
                                 ARCHIVES
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                TAGS
                             </a>
                         </li>
                     
@@ -112,11 +104,6 @@
                        href="/archives">ARCHIVES</a>
                 </li>
             
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">TAGS</a>
-                </li>
-            
         </ul>
     </div>
 
@@ -142,11 +129,11 @@
         
             <div class="article-header">
                 <div class="avatar">
-                    <img src="/images/avatar.jpg">
+                    <img src="/images/avatar.svg">
                 </div>
                 <div class="info">
                     <div class="author">
-                        <span class="name">yhd</span>
+                        <span class="name">Keep Team</span>
                         
                             <span class="author-label">Lv3</span>
                         
@@ -177,10 +164,6 @@
     
     
     
-    
-        <span class="article-pv article-meta-item">
-            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
     
 </div>
 
@@ -215,12 +198,7 @@
 <li><strong>进栈/压栈/入栈(push)</strong>：栈的元素插入操作</li>
 <li><strong>出栈/弹栈(pop)</strong>：栈的元素删除操作</li>
 </ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89.png"
-                      alt="栈的定义"
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89.png" alt="栈的定义"></p>
 <p><del>进栈出栈变化形式</del></p>
 <h1 id="栈的抽象数据类型"><a href="#栈的抽象数据类型" class="headerlink" title="栈的抽象数据类型"></a>栈的抽象数据类型</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ADT 栈(<span class="built_in">stack</span>)</span><br><span class="line">Data</span><br><span class="line">    同线性表。元素具有相同的类型，相邻元素具有前驱和后继的关系。</span><br><span class="line">Operation</span><br><span class="line">    InitStack(*S)：初始化操作，建立一个空栈S</span><br><span class="line">    DestroyStack(*S)：若栈存在，则销毁它</span><br><span class="line">    ClearStack(*S)：将栈清空</span><br><span class="line">    StackEmpty(S)：若栈为空，返回<span class="literal">true</span>，否则返回<span class="literal">false</span></span><br><span class="line">    GetTop(*S,e)：若栈存在且非空，用e返回S的栈顶元素</span><br><span class="line">    Push(*S,e)：若栈S存在，插入新元素e到栈S中，并成为栈顶元素</span><br><span class="line">    Pop(*S,*e)：删除栈S中的顶栈元素，并用e返回其值</span><br><span class="line">    StackLength(S)：返回栈S的元素个数</span><br><span class="line">endADT</span><br></pre></td></tr></table></figure>
 
@@ -298,12 +276,7 @@
 <li>栈顶指针(<strong>top</strong>) = <strong>NULL</strong>时，表示<strong>空栈</strong></li>
 </ul>
 <p>栈的链式存储结构定义如下：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89.jpg"
-                      alt="栈的链式存储结构"
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89.jpg" alt="栈的链式存储结构"></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类似单链表的结构定义：LinkStackPtr(Ptr，Pointer Recod 表指针含义)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">StackNode</span>&#123;</span></span><br><span class="line"></span><br><span class="line">	SElemType data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">StackNode</span> *<span class="title">next</span>;</span></span><br><span class="line"></span><br><span class="line">&#125;StackNode,*LinkStackPtr;</span><br><span class="line"></span><br><span class="line"><span class="comment">//再创建一个top结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkStack</span> &#123;</span></span><br><span class="line">	LinkStackPtr top;<span class="comment">//每一个结点是否被定义为头结点</span></span><br><span class="line">	<span class="keyword">int</span> count;<span class="comment">//链的长度</span></span><br><span class="line">&#125;LinkStack;</span><br></pre></td></tr></table></figure>
 
 <h2 id="链栈的进栈操作"><a href="#链栈的进栈操作" class="headerlink" title="链栈的进栈操作"></a>链栈的进栈操作</h2><p><strong>思路</strong>：</p>
@@ -351,12 +324,7 @@
 <li>将实际问题的递归规律<strong>通过数学函数表示</strong>出来(完成递归函数的百分之80)</li>
 <li>将数学函数<strong>通过代码</strong>的形式表达出来</li>
 </ol>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E9%80%92%E5%BD%92%E7%9A%84%E5%88%86%E6%9E%90.png"
-                      alt="递归"
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E9%80%92%E5%BD%92%E7%9A%84%E5%88%86%E6%9E%90.png" alt="递归"></p>
 <p>通过递归的方式实现代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*斐波那契的递归函数*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fbi</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( i &lt; <span class="number">2</span> )</span><br><span class="line">		<span class="keyword">return</span> i == <span class="number">0</span> ? <span class="number">0</span> : <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">return</span> Fbi(i - <span class="number">1</span>) + Fbi(i - <span class="number">2</span>);  <span class="comment">/* 这里Fbi就是函数自己，等于在调用自己 */</span></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">40</span>;i++)  </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, Fbi(i));  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -427,23 +395,6 @@
         </div>
 
         
-            <div class="post-copyright-info">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li>Post title：数据结构 第四章 栈</li>
-        <li>Post author：yhd</li>
-        <li>Create time：2020-09-19 20:01:32</li>
-        <li>
-            Post link：https://keep.xpoet.cn/2020/09/19/数据结构 第四章 栈/
-        </li>
-        <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
-        </li>
-    </ul>
-</div>
-
-            </div>
-        
 
         
             <div class="article-nav">
@@ -500,25 +451,11 @@
             
               <span>2020</span>&nbsp;-&nbsp;
             
-            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">yhd</a>
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Keep Team</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    <span id="busuanzi_container_site_uv">
-                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv">
-                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
         <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.2</a>
         </div>
         
     </div>
@@ -532,10 +469,6 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
-        
-            <li class="tools-item page-aside-toggle">
-                <i class="fas fa-outdent"></i>
-            </li>
         
 
         <!-- go comment -->
@@ -569,6 +502,10 @@
         
 
         
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
 
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
@@ -580,24 +517,11 @@
             <i class="fas fa-cog fa-spin"></i>
         </li>
         
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
     </ul>
 </div>
 
     </div>
 
-    
-        <aside class="page-aside">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">大纲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">栈的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">栈的抽象数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">栈的顺序存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E6%A0%88%E7%9A%84%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="nav-number">4.1.</span> <span class="nav-text">顺序栈的结构定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E6%A0%88-amp-%E5%87%BA%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="nav-number">4.2.</span> <span class="nav-text">进栈&amp;出栈操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Push"><span class="nav-number">4.2.1.</span> <span class="nav-text">Push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop"><span class="nav-number">4.2.2.</span> <span class="nav-text">pop</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E6%A0%88%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4"><span class="nav-number">4.3.</span> <span class="nav-text">两栈共享空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">4.3.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88"><span class="nav-number">4.3.2.</span> <span class="nav-text">设计方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%9B%8F%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4%E7%BB%93%E6%9E%84"><span class="nav-number">4.3.3.</span> <span class="nav-text">两盏共享空间结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E5%86%85%E5%85%83%E7%B4%A0%E5%AD%98%E5%82%A8%E7%8A%B6%E6%80%81"><span class="nav-number">4.3.4.</span> <span class="nav-text">栈内元素存储状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4%E4%B8%8B%E7%9A%84%E8%BF%9B%E6%A0%88-amp-%E5%87%BA%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="nav-number">4.3.5.</span> <span class="nav-text">共享空间下的进栈&amp;出栈操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#push"><span class="nav-number">4.3.5.1.</span> <span class="nav-text">push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pop-1"><span class="nav-number">4.3.5.2.</span> <span class="nav-text">pop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">4.3.5.3.</span> <span class="nav-text">时间复杂度分析</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">栈的链式存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E8%BF%9B%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="nav-number">5.1.</span> <span class="nav-text">链栈的进栈操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%A0%88%E7%9A%84%E5%87%BA%E6%A0%88%E6%93%8D%E4%BD%9C"><span class="nav-number">5.2.</span> <span class="nav-text">链栈的出栈操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">栈的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-1"><span class="nav-number">7.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E9%80%92%E5%BD%92"><span class="nav-number">7.2.</span> <span class="nav-text">栈的应用——递归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">7.2.1.</span> <span class="nav-text">递归的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.2.2.</span> <span class="nav-text">斐波那契数列的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95"><span class="nav-number">7.2.2.1.</span> <span class="nav-text">常规迭代方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.2.2.2.</span> <span class="nav-text">递归方式实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E5%9C%A8%E9%80%92%E5%BD%92%E9%87%8C%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">7.2.3.</span> <span class="nav-text">栈在递归里的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="nav-number">7.3.</span> <span class="nav-text">栈的应用——四则运算表达式求值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E9%80%86%E6%B3%A2%E5%85%B0-%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-number">7.3.1.</span> <span class="nav-text">后缀表达式(逆波兰)法定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">7.3.2.</span> <span class="nav-text">栈的应用——中缀表达式转后缀表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">7.3.3.</span> <span class="nav-text">栈的应用——后缀表达式的计算</span></a></li></ol></li></ol></li></ol>
-    </div>
-</div>
-        </aside>
     
 
     <div class="image-viewer-container">
@@ -640,23 +564,29 @@
 
 
 
-<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+    
+<script src="/js/local-search.js"></script>
 
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
 
 
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts">
-    
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
 

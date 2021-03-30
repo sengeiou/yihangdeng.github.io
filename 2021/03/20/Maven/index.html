@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="yhd">
+    <meta name="author" content="Keep Team">
     
     <title>
         
             Maven |
         
-        MyBlog
+        Keep Theme
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
 
     <link rel="shortcut icon" href="/images/logo.svg">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
@@ -29,8 +31,6 @@
 
 <body>
 <div class="progress-bar-container">
-    
-        <span class="scroll-progress-bar"></span>
     
 
     
@@ -49,7 +49,7 @@
     <div class="header-content">
         <div class="left">
             <a class="logo-title" href="/">
-                MyBlog
+                Keep Theme
             </a>
         </div>
 
@@ -70,14 +70,6 @@
                                href="/archives"
                             >
                                 ARCHIVES
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                TAGS
                             </a>
                         </li>
                     
@@ -112,11 +104,6 @@
                        href="/archives">ARCHIVES</a>
                 </li>
             
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">TAGS</a>
-                </li>
-            
         </ul>
     </div>
 
@@ -142,11 +129,11 @@
         
             <div class="article-header">
                 <div class="avatar">
-                    <img src="/images/avatar.jpg">
+                    <img src="/images/avatar.svg">
                 </div>
                 <div class="info">
                     <div class="author">
-                        <span class="name">yhd</span>
+                        <span class="name">Keep Team</span>
                         
                             <span class="author-label">Lv3</span>
                         
@@ -177,10 +164,6 @@
     
     
     
-    
-        <span class="article-pv article-meta-item">
-            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
     
 </div>
 
@@ -230,22 +213,12 @@
 <li>官网</li>
 </ul>
 <h2 id="检查JAVA-HOME环境变量"><a href="#检查JAVA-HOME环境变量" class="headerlink" title="检查JAVA_HOME环境变量"></a>检查JAVA_HOME环境变量</h2><p>maven也是java编写的程序,所以运行是也需要java的虚拟机</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-检查JAVAHOME图示.png"
-                      style="zoom:130%;" /
-                >
+<img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-检查JAVAHOME图示.png" style="zoom:130%;" />
 
 <h2 id="解压Maven核心程序"><a href="#解压Maven核心程序" class="headerlink" title="解压Maven核心程序"></a>解压Maven核心程序</h2><p>建议解压到一个非中文没有空格的目录下</p>
 <h2 id="配置Maven环境变量"><a href="#配置Maven环境变量" class="headerlink" title="配置Maven环境变量"></a>配置Maven环境变量</h2><ol>
 <li><p><strong>新增MAVEN_HOME或者是M2_HOME</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F1.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F1.png"></p>
 <blockquote>
 <p> 以前Maven的版本配置的变量为M2_HOME,为了向下兼容低版本,所以可以配置为M2_HOME,而且配置M2_HOME可以防止一些奇怪的错误)</p>
 </blockquote>
@@ -253,21 +226,11 @@
 </ol>
 <ul>
 <li><p><strong>添加PATH的环境变量</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F2.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F2.png"></p>
 </li>
 </ul>
 <h2 id="检查配置结果"><a href="#检查配置结果" class="headerlink" title="检查配置结果"></a>检查配置结果</h2><p><code>mvn -v</code></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F3.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F3.png"></p>
 <h1 id="约定目录结构"><a href="#约定目录结构" class="headerlink" title="约定目录结构"></a>约定目录结构</h1><h2 id="约定目录结构的意义"><a href="#约定目录结构的意义" class="headerlink" title="约定目录结构的意义"></a>约定目录结构的意义</h2><ul>
 <li><p>maven要负责我们这个项目的<strong>自动化</strong>构建，以编译为例,maven要想进行<strong>自动编译</strong>，至少需要知道java源文件保存在哪里。可采取两种方式</p>
 <ol>
@@ -283,12 +246,7 @@
 <h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>关键：工程名—&gt;src，pom.xml，<em>target</em></p>
 <p>​            src—&gt;main，test</p>
 <p>​            main/test —&gt; java、resources</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%BA%A6%E5%AE%9A%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%BA%A6%E5%AE%9A%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png"></p>
 <h1 id="Maven常用命令"><a href="#Maven常用命令" class="headerlink" title="Maven常用命令"></a>Maven常用命令</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
 <li><p><strong>注意</strong>：执行与<strong>构建过程相关</strong>的Maven命令，<strong>必须进入</strong>pom.xml 所在的目录。</p>
 <blockquote>
@@ -332,12 +290,7 @@
 <li><p>找到<code>&lt;localRepository&gt;</code>标签，若在注释内，请去除注释使其生效。路径设置必须设置到能看到如下图示文件内容为止</p>
 <ol>
 <li><p>例如：应将路径配置成：<code>&lt;localRepository&gt;D:/ManageTools/maven/repository&lt;/localRepository&gt;</code></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E4%BF%AE%E6%94%B9%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E4%BF%AE%E6%94%B9%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93.png"></p>
 </li>
 </ol>
 </li>
@@ -405,12 +358,7 @@
 <ol>
 <li><p><strong>私服</strong>：搭建在局域网环境中，为<strong>局域网</strong>范围内的所有Maven工程服务</p>
 <p>以Nexus这个Maven仓库管理器来表示私服的工工作流程</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93.png"></p>
 </li>
 </ol>
 </li>
@@ -479,12 +427,7 @@
 </tbody></table>
 <ul>
 <li><p><strong>从开发和运行这两个阶段理解compile 和 provided 的区别</strong> </p>
-<p><strong><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-compile-provided.png"
-                     
-                ></strong></p>
+<p><strong><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-compile-provided.png"></strong></p>
 </li>
 </ul>
 </li>
@@ -492,12 +435,7 @@
 <ol start="3">
 <li>对于自己开发的Maven工程，要使用<code>mvn install</code>命令安装后就可以进入仓库。执行后产生如下文件</li>
 </ol>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-MVN-INSTALL.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-MVN-INSTALL.png"></p>
 <h2 id="依赖的传递性"><a href="#依赖的传递性" class="headerlink" title="依赖的传递性"></a>依赖的传递性</h2><p>tips：依赖的深入特性，首次学习建议先浏览 <strong>Eclipse中使用Maven</strong></p>
 <p><strong>注意</strong>：这里描述的是工程三层结构，即一个应用工程，包含多个功能模块，每个功能模块都是一个eclipse project</p>
 <h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><p>eclipse项目中存在：A项目模块 —依赖—&gt; B项目模块 —依赖—&gt; C项目模块</p>
@@ -517,12 +455,7 @@
 <h2 id="依赖的排除"><a href="#依赖的排除" class="headerlink" title="依赖的排除"></a>依赖的排除</h2><p>依赖的排除相当于依赖传递的反操作</p>
 <ol>
 <li><p><strong>依赖排除使用场景</strong>：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320172733.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320172733.png"></p>
 </li>
 <li><p><strong>添加依赖排除标签</strong>：假定当前项目的依赖是由上层的直接依赖HelloFriend项目传递过来的，则排除指定依赖操作如下</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.atguigu.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>HelloFriend<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">type</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 依赖排除标签 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -533,12 +466,7 @@
 </ol>
 <h2 id="依赖的原则"><a href="#依赖的原则" class="headerlink" title="依赖的原则"></a>依赖的原则</h2><h3 id="路径最短者优先原则"><a href="#路径最短者优先原则" class="headerlink" title="路径最短者优先原则"></a>路径最短者优先原则</h3><ol>
 <li><p><strong>情景</strong>：若某个项目模块受到来自两个项目模块的同jar包不同版本依赖。因为某些特殊的原因，HelloFriend使用了非Hello传递下来的jar包版本，而使用了其他的一个版本。此时MakeFreidens则会同时接收啊斗HelloFriend与Hello传递下来的不同的两个版本</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320173556.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320173556.png"></p>
 <ol start="2">
 <li><strong>就近原则</strong>：maven对这种原则默认使用就近原则，因此MakeFriends最终受到传递的是 1.2.14版本</li>
 </ol>
@@ -546,24 +474,14 @@
 </ol>
 <h3 id="路径相同时先声明者优先"><a href="#路径相同时先声明者优先" class="headerlink" title="路径相同时先声明者优先"></a>路径相同时先声明者优先</h3><ol>
 <li><p>情景：路径相同时，如下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320174044.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320174044.png"></p>
 </li>
 <li><p><strong>先声明者优先</strong>：先声明指的是dependency标签的声明顺序。即MakerFriends依赖HelloFriende与OurFriends的一个相对声明顺序</p>
 </li>
 </ol>
 <h2 id="统一管理依赖版本"><a href="#统一管理依赖版本" class="headerlink" title="统一管理依赖版本"></a>统一管理依赖版本</h2><ol>
 <li><p>场景：这里对Spring各个jar包的依赖版本都是4.0.0如果需要统一升级为4.1.1，怎么办？手动逐一修改不可靠。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320174632.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320174632.png"></p>
 </li>
 <li><p><strong>使用properties标签</strong>：</p>
 <ol>
@@ -649,20 +567,10 @@
 <li><p>Maven插件的设置： Window-&gt;Preferences-&gt;Maven</p>
 <ol>
 <li><p><strong>installations</strong> : 指定Maven核心程序的位置。默认是插件自带的Maven程序，一般改为我们自己解压的那个。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-ECLIPSE%E8%AE%BE%E7%BD%AE1.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-ECLIPSE%E8%AE%BE%E7%BD%AE1.png"></p>
 </li>
 <li><p><strong>user settings</strong> : 指定Maven核心程序中 conf/settings.xml 文件的位置，进而获取本地仓库的位</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-ECLIPSE%E8%AE%BE%E7%BD%AE2.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/Maven-ECLIPSE%E8%AE%BE%E7%BD%AE2.png"></p>
 </li>
 </ol>
 </li>
@@ -671,28 +579,13 @@
 <li><p>创建Maven版的Java工程 </p>
 </li>
 <li><p>创建时勾选上 Create a simple project(skip archetype selection) ，然后点击 next</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320153058.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320153058.png"></p>
 </li>
 <li><p>输入前三行基本信息后，点击finish 即可创建</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320153432.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320153432.png"></p>
 </li>
 <li><p>创建的Maven工程格式如下，</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320153635.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320153635.png"></p>
 </li>
 <li><p>编写的java源程序放在，名为<code>src/main/java</code>的目录下，即上图的第二行</p>
 </li>
@@ -710,20 +603,10 @@
 </ol>
 <h2 id="执行Maven命令"><a href="#执行Maven命令" class="headerlink" title="执行Maven命令"></a>执行Maven命令</h2><ol>
 <li><p>选中Maven工程中的pom.xml文件，右键Run As，则有一系列命令列出，点击即可执行某种命令</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320154447.png"
-                      style="zoom:80%;" /
-                >
+<img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320154447.png" style="zoom:80%;" />
 </li>
 <li><p>若在Run As 中没有找到想要执行的命令如上图中没有编译命令，则点击 Run As 列表中含三个点的命令<code>Maven build...</code>直接在Goals：中输入命令执行即可</p>
-<img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320155101.png"
-                      style="zoom:80%;" /
-                >
+<img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320155101.png" style="zoom:80%;" />
 
 </li>
 </ol>
@@ -751,12 +634,7 @@
 <li><strong>方式1</strong>：传统的项目导入方式，前提是必须是在eclipse中创建的项目(普通项目或maven项目)，即必须包含eclipse认可为java项目的.settings、.classpath、.project等文件</li>
 <li><strong>方式2</strong>：通用的maven项目导入，只要maven项目含pom.xml文件即可</li>
 </ol>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320161647.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320161647.png"></p>
 <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>​    解决无法进行依赖传递的jar包版本统一问题。例如score为test的junit。由于test范围的依赖不能传递，所以必然会分散在各个模块工程中，很容易造成版本不一致。 </p>
 <ul>
 <li><p>如下情况</p>
@@ -769,12 +647,7 @@
 <h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><p>​    将Junit依赖统一提取到“父”工程中，在子工程中声明Junit依赖是不指定版本，以父工程中统一设定的为准。同时也便于修改。 </p>
 <ol>
 <li><p>创建一个<strong>新的</strong>Maven工程作为<strong>父工程</strong>。注意：<strong>打包的方式pom</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320202115.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320202115.png"></p>
 <p>对应自动生成配置文件信息如下所示</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.test.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -782,12 +655,7 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子工程中声明父工程 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 1. 使用parent标签进行对父工程的引用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 2. 将父工程中的坐标信息复制过来 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.atguigu.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>Parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 3. 设置以当前文件为基准的父工程pom.xml文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../Parent/pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 同级--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将子工程的坐标中与父工程坐标中重复的内容删除，报出以下错误信息的内容均删除即可</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320203510.png"
-                     
-                ></p>
+<p><img src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210320203510.png"></p>
 </li>
 <li><p>在父工程中添加统一的junit的依赖</p>
 </li>
@@ -817,23 +685,6 @@
 
         </div>
 
-        
-            <div class="post-copyright-info">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li>Post title：Maven</li>
-        <li>Post author：yhd</li>
-        <li>Create time：2021-03-20 21:22:32</li>
-        <li>
-            Post link：https://keep.xpoet.cn/2021/03/20/Maven/
-        </li>
-        <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
-        </li>
-    </ul>
-</div>
-
-            </div>
         
 
         
@@ -891,25 +742,11 @@
             
               <span>2020</span>&nbsp;-&nbsp;
             
-            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">yhd</a>
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Keep Team</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    <span id="busuanzi_container_site_uv">
-                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv">
-                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
         <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.2</a>
         </div>
         
     </div>
@@ -923,10 +760,6 @@
             <div class="post-tools-container">
     <ul class="tools-list">
         <!-- TOC aside toggle -->
-        
-            <li class="tools-item page-aside-toggle">
-                <i class="fas fa-outdent"></i>
-            </li>
         
 
         <!-- go comment -->
@@ -960,6 +793,10 @@
         
 
         
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
 
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
@@ -971,24 +808,11 @@
             <i class="fas fa-cog fa-spin"></i>
         </li>
         
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
     </ul>
 </div>
 
     </div>
 
-    
-        <aside class="page-aside">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%B0%E4%BB%8A%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">现今项目开发问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Maven%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">Maven是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">Maven基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%95%E4%B8%BA%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA"><span class="nav-number">2.2.</span> <span class="nav-text">何为项目构建</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Maven%E6%A0%B8%E5%BF%83%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">安装Maven核心程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDmaven%E6%A0%B8%E5%BF%83%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.1.</span> <span class="nav-text">下载maven核心程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5JAVA-HOME%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">3.2.</span> <span class="nav-text">检查JAVA_HOME环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8BMaven%E6%A0%B8%E5%BF%83%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.3.</span> <span class="nav-text">解压Maven核心程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEMaven%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">3.4.</span> <span class="nav-text">配置Maven环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E9%85%8D%E7%BD%AE%E7%BB%93%E6%9E%9C"><span class="nav-number">3.5.</span> <span class="nav-text">检查配置结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%A6%E5%AE%9A%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">约定目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A6%E5%AE%9A%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-number">4.1.</span> <span class="nav-text">约定目录结构的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.</span> <span class="nav-text">目录结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Maven%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">Maven常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%81%94%E7%BD%91%E9%97%AE%E9%A2%98"><span class="nav-number">5.2.</span> <span class="nav-text">关于联网问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%BD%8D%E7%BD%AE"><span class="nav-number">5.3.</span> <span class="nav-text">修改本地仓库位置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Maven%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="nav-number">6.</span> <span class="nav-text">Maven核心概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#POM"><span class="nav-number">7.</span> <span class="nav-text">POM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%90%AB%E4%B9%89"><span class="nav-number">7.1.</span> <span class="nav-text">基本含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POM%E6%96%87%E4%BB%B6%E7%AE%80%E8%BF%B0"><span class="nav-number">7.2.</span> <span class="nav-text">POM文件简述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9D%90%E6%A0%87-GAV"><span class="nav-number">8.</span> <span class="nav-text">坐标(GAV)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%93%E5%BA%93"><span class="nav-number">9.</span> <span class="nav-text">仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%93%E5%BA%93%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">9.1.</span> <span class="nav-text">仓库的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%93%E5%BA%93%E4%B8%AD%E4%BF%9D%E5%AD%98%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">9.2.</span> <span class="nav-text">仓库中保存的内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-number">10.</span> <span class="nav-text">依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">10.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">10.2.</span> <span class="nav-text">依赖的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E7%9A%84%E4%BC%A0%E9%80%92%E6%80%A7"><span class="nav-number">10.3.</span> <span class="nav-text">依赖的传递性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-number">10.3.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E7%9A%84%E4%BC%A0%E9%80%92%E6%95%88%E6%9E%9C"><span class="nav-number">10.3.2.</span> <span class="nav-text">依赖的传递效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E7%9A%84%E6%8E%92%E9%99%A4"><span class="nav-number">10.4.</span> <span class="nav-text">依赖的排除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E7%9A%84%E5%8E%9F%E5%88%99"><span class="nav-number">10.5.</span> <span class="nav-text">依赖的原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E5%BE%84%E6%9C%80%E7%9F%AD%E8%80%85%E4%BC%98%E5%85%88%E5%8E%9F%E5%88%99"><span class="nav-number">10.5.1.</span> <span class="nav-text">路径最短者优先原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E5%BE%84%E7%9B%B8%E5%90%8C%E6%97%B6%E5%85%88%E5%A3%B0%E6%98%8E%E8%80%85%E4%BC%98%E5%85%88"><span class="nav-number">10.5.2.</span> <span class="nav-text">路径相同时先声明者优先</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC"><span class="nav-number">10.6.</span> <span class="nav-text">统一管理依赖版本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">11.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-2"><span class="nav-number">11.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clean%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F"><span class="nav-number">11.2.</span> <span class="nav-text">Clean声明周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Default%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F"><span class="nav-number">11.3.</span> <span class="nav-text">Default声明周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Site%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">11.4.</span> <span class="nav-text">Site生命周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Eclipse%E4%B8%AD%E4%BD%BF%E7%94%A8Maven"><span class="nav-number">12.</span> <span class="nav-text">Eclipse中使用Maven</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="nav-number">12.1.</span> <span class="nav-text">基本设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAMaven%E7%89%88java%E5%B7%A5%E7%A8%8B"><span class="nav-number">12.2.</span> <span class="nav-text">创建Maven版java工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8CMaven%E5%91%BD%E4%BB%A4"><span class="nav-number">12.3.</span> <span class="nav-text">执行Maven命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAMaven%E7%89%88Web%E5%B7%A5%E7%A8%8B"><span class="nav-number">12.4.</span> <span class="nav-text">创建Maven版Web工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5Maven%E5%B7%A5%E7%A8%8B"><span class="nav-number">12.5.</span> <span class="nav-text">导入Maven工程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">13.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">13.1.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A"><span class="nav-number">13.2.</span> <span class="nav-text">解决方案：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%81%9A%E5%90%88"><span class="nav-number">14.</span> <span class="nav-text">聚合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web%E5%B7%A5%E7%A8%8B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="nav-number">15.</span> <span class="nav-text">Web工程的自动化部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E4%BE%9D%E8%B5%96%E4%BF%A1%E6%81%AF%E7%BD%91%E7%AB%99"><span class="nav-number">16.</span> <span class="nav-text">查找依赖信息网站</span></a></li></ol>
-    </div>
-</div>
-        </aside>
     
 
     <div class="image-viewer-container">
@@ -1031,23 +855,29 @@
 
 
 
-<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+    
+<script src="/js/local-search.js"></script>
 
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
 
 
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts">
-    
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
 
