@@ -23,7 +23,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
@@ -196,16 +196,20 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="数据库完整性"><a href="#数据库完整性" class="headerlink" title="数据库完整性"></a>数据库完整性</h1><p><img  
+            <h1 id="数据库完整性">数据库完整性</h1>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%8C%E6%95%B4%E6%80%A7.png"
-                     
+                      alt=""
                 ></p>
-<h2 id="什么是数据库完整性"><a href="#什么是数据库完整性" class="headerlink" title="什么是数据库完整性"></a>什么是数据库完整性</h2><ol>
-<li><p>数据库完整性(integrity)：<strong>数据</strong>的<strong>正确性</strong>和<strong>相容性</strong></p>
+<h2 id="什么是数据库完整性">什么是数据库完整性</h2>
+<ol>
+<li>
+<p>数据库完整性(integrity)：<strong>数据</strong>的<strong>正确性</strong>和<strong>相容性</strong></p>
 </li>
-<li><p>维护数据库完整性功能组成</p>
+<li>
+<p>维护数据库完整性功能组成</p>
 <ol>
 <li><strong>完整性约束机制</strong>：实体完整性、参照完整性、用户定义完整性等</li>
 <li><strong>完整性检查方法</strong>：一般在增删改查或事务操作前后进行</li>
@@ -213,116 +217,137 @@
 </ol>
 </li>
 </ol>
-<h2 id="实体完整性"><a href="#实体完整性" class="headerlink" title="实体完整性"></a>实体完整性</h2><ol>
-<li><p><strong>定义</strong>：<strong>create</strong> table 中的 <strong>primary key</strong>定义(列级/表级)</p>
+<h2 id="实体完整性">实体完整性</h2>
+<ol>
+<li>
+<p><strong>定义</strong>：<strong>create</strong> table 中的 <strong>primary key</strong>定义(列级/表级)</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">	Sno <span class="built_in">char</span>(<span class="number">9</span>) <span class="comment">/*primary key*/</span>,  <span class="comment">/*列级定义*/</span></span><br><span class="line">    primary <span class="keyword">key</span>(Sno) <span class="comment">/*表级定义*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>完整性检查</strong></p>
+<li>
+<p><strong>完整性检查</strong></p>
 <ol>
 <li>检查<strong>主码值是否唯一</strong>，若不唯一<strong>拒绝</strong>插入与更新</li>
 <li>检查<strong>主码个属性是否为空</strong>，存在一个空，则同样拒绝操作</li>
 </ol>
 </li>
-<li><p><strong>违约处理</strong>：对于主键冲突，违约<strong>系统默认</strong>一概<strong>NOT ACTION(拒绝)</strong>处理</p>
+<li>
+<p><strong>违约处理</strong>：对于主键冲突，违约<strong>系统默认</strong>一概<strong>NOT ACTION(拒绝)</strong>处理</p>
 </li>
 </ol>
-<h2 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h2><ol>
-<li><p><strong>定义</strong>：<strong>create</strong> table 中的 <strong>foreign key() references</strong>定义(<strong>表级</strong>)</p>
-</li>
-<li><p><strong>完整性检查与违约处理</strong></p>
+<h2 id="参照完整性">参照完整性</h2>
 <ol>
-<li><p><strong>隐式处理</strong>(默认策略)：<strong>NOT ACTION(拒绝)</strong></p>
+<li>
+<p><strong>定义</strong>：<strong>create</strong> table 中的 <strong>foreign key() references</strong>定义(<strong>表级</strong>)</p>
 </li>
-<li><p><strong>显示处理</strong>(自定义违约处理方式)：</p>
+<li>
+<p><strong>完整性检查与违约处理</strong></p>
 <ol>
-<li><p><strong>应用场景</strong>：只有被参照表(外码表)才可显示定义违约处理策略，<strong>即只允许在 foreign key 授权语句后追加，不可写在其他地方</strong>，且仅限于update与delete操作</p>
+<li>
+<p><strong>隐式处理</strong>(默认策略)：<strong>NOT ACTION(拒绝)</strong></p>
 </li>
-<li><p>语句格式：[表级定义权限约束 &lt;空格&gt;]  ON <strong> &lt;违约操作&gt; &lt;违约处理&gt; </strong></p>
+<li>
+<p><strong>显示处理</strong>(自定义违约处理方式)：</p>
+<ol>
+<li>
+<p><strong>应用场景</strong>：只有被参照表(外码表)才可显示定义违约处理策略，<strong>即只允许在 foreign key 授权语句后追加，不可写在其他地方</strong>，且仅限于update与delete操作</p>
+</li>
+<li>
+<p>语句格式：[表级定义权限约束 &lt;空格&gt;]  ON <strong> &lt;违约操作&gt; &lt;违约处理&gt; </strong></p>
 <ul>
-<li><p><strong>&lt;违约操作&gt;</strong>：且限于 update、delete</p>
+<li>
+<p><strong>&lt;违约操作&gt;</strong>：且限于 update、delete</p>
 </li>
-<li><p><strong>&lt;违约处理&gt;</strong>：拒绝(<strong>NO ACTION</strong>)，级联(<strong>CASCADE</strong>)，置空(<strong>NULLIFIES</strong>)</p>
+<li>
+<p><strong>&lt;违约处理&gt;</strong>：拒绝(<strong>NO ACTION</strong>)，级联(<strong>CASCADE</strong>)，置空(<strong>NULLIFIES</strong>)</p>
 <p>级联操作：若删除的参照表的数据在其他表被引用，连同删除</p>
 </li>
 </ul>
 </li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">	...</span><br><span class="line">    primary <span class="keyword">key</span>(Sno,Cno),		<span class="comment">/*只允许在foreign key 后追加显示违约处理*/</span></span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span>(Sno) <span class="keyword">references</span> Student(Sno) <span class="keyword">on</span> <span class="keyword">delete</span> <span class="keyword">cascade</span> <span class="keyword">on</span> <span class="keyword">update</span> <span class="keyword">cascade</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
 </li>
 </ol>
-<h2 id="用户定义的完整性"><a href="#用户定义的完整性" class="headerlink" title="用户定义的完整性"></a>用户定义的完整性</h2><ol>
-<li><p><strong>定义</strong>：用户可对具体列(字段)进行约束，一般分为两种</p>
+<h2 id="用户定义的完整性">用户定义的完整性</h2>
+<ol>
+<li>
+<p><strong>定义</strong>：用户可对具体列(字段)进行约束，一般分为两种</p>
 <ul>
 <li><strong>属性上的约束条件：可对</strong>单个列级属性<strong>进行</strong>约束</li>
 <li><strong>元组上的约束条件</strong>：可对<strong>多个列级属性</strong>进行<strong>约束</strong>，完整性约束限制类型同上</li>
 </ul>
 </li>
-<li><p><strong>完整性约束</strong>：限制类型含，<strong>not null</strong>(非空)，<strong>unique</strong>(唯一)，<strong>check</strong>&lt;条件表达式&gt;)</p>
+<li>
+<p><strong>完整性约束</strong>：限制类型含，<strong>not null</strong>(非空)，<strong>unique</strong>(唯一)，<strong>check</strong>&lt;条件表达式&gt;)</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> SC(</span><br><span class="line">	Sno <span class="built_in">char</span>(<span class="number">9</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    Sname <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    Ssex <span class="built_in">char</span>(<span class="number">2</span>) <span class="keyword">check</span>(Ssex <span class="keyword">IN</span>(<span class="string">&#x27;男&#x27;</span>,<span class="string">&#x27;女&#x27;</span>)),</span><br><span class="line">    Sgrade samllint <span class="keyword">check</span>(Sgrade &gt;=<span class="number">0</span> <span class="keyword">AND</span> Sgrade &lt;= <span class="number">100</span>),</span><br><span class="line">    <span class="keyword">CHECK</span>(Ssex = <span class="string">&#x27;女&#x27;</span> <span class="keyword">OR</span> Sname <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">&#x27;Ms.%&#x27;</span>)<span class="comment">/*同时约束多个列*/</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>违约处理</strong>：系统统一采取**拒绝(NOT ACTION)**处理</p>
+<li>
+<p><strong>违约处理</strong>：系统统一采取**拒绝(NOT ACTION)**处理</p>
 </li>
 </ol>
-<h2 id="完整性约束命名子句"><a href="#完整性约束命名子句" class="headerlink" title="完整性约束命名子句"></a>完整性约束命名子句</h2><h3 id="概念与子句的创建"><a href="#概念与子句的创建" class="headerlink" title="概念与子句的创建"></a>概念与子句的创建</h3><ol>
-<li><p><strong>前言</strong>：上述所有约束都是在create table时设置，若需要修改约束，难道只能重新建表？</p>
+<h2 id="完整性约束命名子句">完整性约束命名子句</h2>
+<h3 id="概念与子句的创建">概念与子句的创建</h3>
+<ol>
+<li>
+<p><strong>前言</strong>：上述所有约束都是在create table时设置，若需要修改约束，难道只能重新建表？</p>
 </li>
-<li><p><strong>命名子句</strong>：在create table设置约束时<strong>为每个约束操作命名</strong>，后序修改或删除约束可通过操作这个命名</p>
+<li>
+<p><strong>命名子句</strong>：在create table设置约束时<strong>为每个约束操作命名</strong>，后序修改或删除约束可通过操作这个命名</p>
 </li>
-<li><p><strong>子句格式</strong>：<code>constraint &lt;完整性约束条件名&gt;&lt;完整性约束条件&gt; </code></p>
+<li>
+<p><strong>子句格式</strong>：<code>constraint &lt;完整性约束条件名&gt;&lt;完整性约束条件&gt; </code></p>
 <ul>
 <li>&lt;完整性约束条件&gt;包含：<strong>primary key、foreign key，not null、unique、check</strong></li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">	Sno <span class="built_in">int</span> <span class="keyword">constraint</span> c1 <span class="keyword">check</span>(Sno &gt;= <span class="number">9000</span> <span class="keyword">AND</span> Sno &lt;= <span class="number">9999</span>),<span class="comment">/*列级操作*/</span></span><br><span class="line">    <span class="keyword">constraint</span> StudentKey primary <span class="keyword">key</span>(Sno) <span class="comment">/*表级操作示例*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
-<h3 id="修改完整性限制"><a href="#修改完整性限制" class="headerlink" title="修改完整性限制"></a>修改完整性限制</h3><ol>
+<h3 id="修改完整性限制">修改完整性限制</h3>
+<ol>
 <li><strong>使用环境</strong>：在 <code>alter table</code> 语句下进行修改(add、drop)</li>
 <li><strong>语句格式</strong>：`&lt;add | drop&gt; constraint &lt;完整性约束子句名 | 完整性约束子句&gt;</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student</span><br><span class="line">	<span class="keyword">drop</span> <span class="keyword">constraint</span> c1; <span class="comment">/*删除Student表中名为c1的完整性约束*/</span></span><br><span class="line">	</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student  <span class="comment">/*在Student表中添加新的完整性约束子句*/</span></span><br><span class="line">	<span class="keyword">add</span> <span class="keyword">constraint</span> Sno_domain <span class="keyword">check</span>(Sno &gt;= <span class="number">9000</span> <span class="keyword">AND</span> Sno &lt;= <span class="number">9999</span>);</span><br><span class="line">	</span><br><span class="line"><span class="comment">/*若想修改约束，则只能先删除约束再添加过新的约束*/</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><ol>
-<li><p><strong>定义</strong>：触发器(trigger)，<strong>由事件驱动的特殊过程</strong>(事件-&gt;条件-&gt;动作)</p>
+<h2 id="触发器">触发器</h2>
+<ol>
+<li>
+<p><strong>定义</strong>：触发器(trigger)，<strong>由事件驱动的特殊过程</strong>(事件-&gt;条件-&gt;动作)</p>
 </li>
-<li><p><strong>创建触发器</strong>：[ 事件(触发时机) -&gt; 条件(触发条件) -&gt; 动作(存储过程)]</p>
+<li>
+<p><strong>创建触发器</strong>：[ 事件(触发时机) -&gt; 条件(触发条件) -&gt; 动作(存储过程)]</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> &lt;触发器名&gt;</span><br><span class="line">&lt;<span class="keyword">before</span> | <span class="keyword">after</span>&gt; &lt;触发事件&gt; <span class="keyword">on</span> &lt;表名&gt; <span class="comment">/*定义触发的时机*/</span></span><br><span class="line"><span class="keyword">referencing</span> &lt;<span class="keyword">new</span>|<span class="keyword">old</span>&gt; <span class="keyword">row</span> <span class="keyword">as</span>&lt;变量&gt; <span class="comment">/*通过referencing引出变量*/</span></span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span>&lt;<span class="keyword">row</span> | <span class="keyword">statement</span>&gt; <span class="comment">/*指明动作体执行的频率*/</span></span><br><span class="line">[<span class="keyword">when</span> &lt;触发条件&gt;]&lt;触发动作体&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>只有创建表的用户才能在此表上创建触发器，而且数量有限，具体数量由数据库管理系统本身设计所定</li>
 <li>触发器名：必须唯一</li>
 <li>表名：只能是基本表，不能是视图</li>
-<li><strong>触发事件</strong>：<ul>
+<li><strong>触发事件</strong>：
+<ul>
 <li>触发时机：可在语句执行前before，或执行后after</li>
 <li>操作类型：可以是<strong>增删改查，事务等</strong>操作，如insert，delete，update…</li>
 <li>事件组合：可以单一事件，可组合，insert or delete，或指定列触发 update of &lt;触发列,…&gt;</li>
 </ul>
 </li>
-<li><strong>触发器类型</strong>：<ul>
+<li><strong>触发器类型</strong>：
+<ul>
 <li>语句级触发器(for each statement)：<strong>执行完这条语句</strong>后且符合触发条件才会调用触发器(有可能这条语句已经操作了若干行数  据)，因此<strong>语句级</strong>触发器是<strong>不允许通过referencing</strong>引出变量new或者old row数据的</li>
-<li>行级触发器(for each row)：相反，行级触发器，当检查到一行数据符合触发条件就会调用触发器。因为数据行是确定的，所  以可以通过referencing 引出变量new | row的数据  </li>
+<li>行级触发器(for each row)：相反，行级触发器，当检查到一行数据符合触发条件就会调用触发器。因为数据行是确定的，所  以可以通过referencing 引出变量new | row的数据</li>
 </ul>
 </li>
 <li><strong>触发条件</strong>：触发条件的书写即<strong>&lt;条件表达式&gt;的书写</strong></li>
 <li><strong>触发动作体</strong>：匿名PL/SQL过程块，也可以是存储过程</li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*当对表SC的Grade属性进行修改时，若分数增加了10%，则将此次操作记录到另一个表SC_U(Sno、Cno、Oldgrade、Newgrade)中，其中Oldgrade是修改前的分数，Newgrade是修改后的分数。*/</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> SC_T</span><br></pre></td></tr></table></figure>
-
-
-
 </li>
-</ol>
-<ol>
-<li><p><strong>触发器的激活机制</strong>：</p>
+<li>
+<p><strong>触发器的激活机制</strong>：</p>
 <ol>
 <li>同一表上的多个触发器按，执行before触发器—&gt; 激活sql语句 —&gt; 执行after触发器流程触发</li>
 <li>对于相同的触发器类型的触发器，遵循“<strong>谁先创建谁先执行原则</strong>”，有些DBMS按触发器名称字母排序。</li>
 </ol>
 </li>
-<li><p><strong>删除触发器</strong>：<code>drop trigger &lt;触发器名&gt; on &lt;表名&gt;</code></p>
+<li>
+<p><strong>删除触发器</strong>：<code>drop trigger &lt;触发器名&gt; on &lt;表名&gt;</code></p>
 </li>
 </ol>
 

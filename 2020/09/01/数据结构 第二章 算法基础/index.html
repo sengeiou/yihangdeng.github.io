@@ -23,7 +23,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
@@ -196,7 +196,8 @@
 <li><strong>读物</strong>：<a class="link"   target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/" >《大话数据结构》<i class="fas fa-external-link-alt"></i></a></li>
 <li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
 </ul>
-<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ol>
+<h1 id="大纲">大纲</h1>
+<ol>
 <li><strong>算法的定义</strong></li>
 <li><strong>算法的特性</strong></li>
 <li><strong>算法设计的要求</strong></li>
@@ -206,48 +207,66 @@
 <li><strong>算法空间复杂度</strong></li>
 <li><strong>最坏情况与平均情况</strong></li>
 </ol>
-<h1 id="算法的定义"><a href="#算法的定义" class="headerlink" title="算法的定义"></a>算法的定义</h1><p>算法：算法是解决特定问题<strong>求解步骤的描述</strong>，在计算机中表现为<strong>指令的有限序列</strong>，并且每条指令表示一个或多个操作。</p>
-<h1 id="算法的特性"><a href="#算法的特性" class="headerlink" title="算法的特性"></a>算法的特性</h1><p>算法具有的五个基本特性：<strong>输入、输出、有穷性、确定性、可行性</strong>。</p>
-<h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><ul>
+<h1 id="算法的定义">算法的定义</h1>
+<p>算法：算法是解决特定问题<strong>求解步骤的描述</strong>，在计算机中表现为<strong>指令的有限序列</strong>，并且每条指令表示一个或多个操作。</p>
+<h1 id="算法的特性">算法的特性</h1>
+<p>算法具有的五个基本特性：<strong>输入、输出、有穷性、确定性、可行性</strong>。</p>
+<h2 id="输入与输出">输入与输出</h2>
+<ul>
 <li>算法具有<strong>零个或多个</strong>输入。</li>
 <li>算法至少<strong>有一个或多个</strong>输出。</li>
 </ul>
-<h2 id="有穷性"><a href="#有穷性" class="headerlink" title="有穷性"></a>有穷性</h2><ol>
+<h2 id="有穷性">有穷性</h2>
+<ol>
 <li>算法在执行有限步骤之后，自动结束而<strong>不会出现无限循环</strong>。</li>
 <li>每一个步骤在<strong>可接受的时间</strong>内完成。即实际意义。</li>
 </ol>
-<h2 id="确定性"><a href="#确定性" class="headerlink" title="确定性"></a>确定性</h2><p>确定性：算法的每一步骤都具有<strong>确定的含义，不会出现二义性</strong>，类似函数。</p>
-<h2 id="可行性"><a href="#可行性" class="headerlink" title="可行性"></a>可行性</h2><ul>
+<h2 id="确定性">确定性</h2>
+<p>确定性：算法的每一步骤都具有<strong>确定的含义，不会出现二义性</strong>，类似函数。</p>
+<h2 id="可行性">可行性</h2>
+<ul>
 <li>算法的每一步都必须是<strong>可行的</strong>，也就是说，每一步都能够通过执行有限次数完成。</li>
 <li>可行性意味着算法<strong>可转换为程序上机运行</strong>。</li>
 </ul>
-<h1 id="算法设计的要求"><a href="#算法设计的要求" class="headerlink" title="算法设计的要求"></a>算法设计的要求</h1><p>算法设计的要求包含：<strong>正确性、可读性、健壮性、时间效率高和存储量低</strong>。</p>
-<h2 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h2><p>正确性：算法的正确性是指算法至少应该具有<strong>输入、输出和加工处理无歧义性、能正确反映问题的需求、能够得到问题的正确答案</strong>。大体分为以下<strong>四个层次</strong>：</p>
+<h1 id="算法设计的要求">算法设计的要求</h1>
+<p>算法设计的要求包含：<strong>正确性、可读性、健壮性、时间效率高和存储量低</strong>。</p>
+<h2 id="正确性">正确性</h2>
+<p>正确性：算法的正确性是指算法至少应该具有<strong>输入、输出和加工处理无歧义性、能正确反映问题的需求、能够得到问题的正确答案</strong>。大体分为以下<strong>四个层次</strong>：</p>
 <ul>
-<li><p><strong>没有语法错误</strong></p>
+<li>
+<p><strong>没有语法错误</strong></p>
 </li>
-<li><p>对于<strong>合法</strong>的输入数据能够产生<strong>满足要求的输出结果</strong></p>
+<li>
+<p>对于<strong>合法</strong>的输入数据能够产生<strong>满足要求的输出结果</strong></p>
 </li>
-<li><p>对于<strong>非法</strong>的输入数据能够得出<strong>满足规格说明的结果</strong></p>
+<li>
+<p>对于<strong>非法</strong>的输入数据能够得出<strong>满足规格说明的结果</strong></p>
 </li>
-<li><p>对于精心选择的，甚至刁难的测试数据都有满足要求的输出结构。</p>
+<li>
+<p>对于精心选择的，甚至刁难的测试数据都有满足要求的输出结构。</p>
 <blockquote>
 <p>一般情况下，我们把层次3作为一个算法是否正确的标准</p>
 </blockquote>
 </li>
 </ul>
-<h2 id="可读性"><a href="#可读性" class="headerlink" title="可读性"></a>可读性</h2><p>可读性：算法设计的另一个目的是为了<strong>便于阅读、理解和交流</strong>。</p>
-<h2 id="健壮性"><a href="#健壮性" class="headerlink" title="健壮性"></a>健壮性</h2><p>健壮性：当<strong>输入数据不合法</strong>时，算法也能做出相关处理，而<strong>不是</strong>产生<strong>异常或莫名奇妙</strong>的结果。</p>
-<h2 id="时间效率高和存储量低"><a href="#时间效率高和存储量低" class="headerlink" title="时间效率高和存储量低"></a>时间效率高和存储量低</h2><p>设计算法应该尽量满足时间效率高和存储量(占用内存与外部硬盘存储空间)低的需求。</p>
-<h1 id="算法效率的度量方法"><a href="#算法效率的度量方法" class="headerlink" title="算法效率的度量方法"></a>算法效率的度量方法</h1><p><strong>ps</strong>：这里指的效率大都是指算法的<strong>执行时间</strong>。</p>
-<h2 id="事后统计方法"><a href="#事后统计方法" class="headerlink" title="事后统计方法"></a>事后统计方法</h2><p>事后统计方法：这种方法主要是通过事先<strong>设计好的测试程序和数据</strong>，利用计算机<strong>计时器</strong>对不同算法编制的程序的运行时间进行比较，从而确定算法效率的高低。  </p>
+<h2 id="可读性">可读性</h2>
+<p>可读性：算法设计的另一个目的是为了<strong>便于阅读、理解和交流</strong>。</p>
+<h2 id="健壮性">健壮性</h2>
+<p>健壮性：当<strong>输入数据不合法</strong>时，算法也能做出相关处理，而<strong>不是</strong>产生<strong>异常或莫名奇妙</strong>的结果。</p>
+<h2 id="时间效率高和存储量低">时间效率高和存储量低</h2>
+<p>设计算法应该尽量满足时间效率高和存储量(占用内存与外部硬盘存储空间)低的需求。</p>
+<h1 id="算法效率的度量方法">算法效率的度量方法</h1>
+<p><strong>ps</strong>：这里指的效率大都是指算法的<strong>执行时间</strong>。</p>
+<h2 id="事后统计方法">事后统计方法</h2>
+<p>事后统计方法：这种方法主要是通过事先<strong>设计好的测试程序和数据</strong>，利用计算机<strong>计时器</strong>对不同算法编制的程序的运行时间进行比较，从而确定算法效率的高低。</p>
 <p>但这种方法显然存在很大的缺陷：</p>
 <ul>
 <li>必须依据算法事先编制对应的测试程序，费时费力，工作量可能翻倍。</li>
 <li>计时器的计时效果比较依赖计算机硬件和软件等环境因素。</li>
 <li>算法的测试数据设计困难。</li>
 </ul>
-<h2 id="事前分析估算方法"><a href="#事前分析估算方法" class="headerlink" title="事前分析估算方法"></a>事前分析估算方法</h2><p>事前分析估算方法：在计算机程序<strong>编程前</strong>，依据统计方法对算法提前进行估算。</p>
+<h2 id="事前分析估算方法">事前分析估算方法</h2>
+<p>事前分析估算方法：在计算机程序<strong>编程前</strong>，依据统计方法对算法提前进行估算。</p>
 <p>事前分析一个程序在计算机运行所消耗的时间取决于下列因素：</p>
 <ol>
 <li>算法采用的策略、方法。</li>
@@ -257,40 +276,50 @@
 </ol>
 <p><strong>结论</strong>：</p>
 <ul>
-<li><p>一个程序的运行时间，<strong>依赖于</strong>算法的<strong>好坏</strong>和问题的**输入规模(输入变量的值)**。</p>
+<li>
+<p>一个程序的运行时间，<strong>依赖于</strong>算法的<strong>好坏</strong>和问题的<strong>输入规模(输入变量的值)</strong>。</p>
 </li>
-<li><p>测定运行时间最可靠的方法就是依据输入规模计算语句的<strong>执行次数</strong>。</p>
+<li>
+<p>测定运行时间最可靠的方法就是依据输入规模计算语句的<strong>执行次数</strong>。</p>
 <blockquote>
 <p>执行次数，也成为基本操作数量，记作 f(n)，n表示输入规模。</p>
 </blockquote>
 </li>
 </ul>
-<h1 id="函数的渐进增长"><a href="#函数的渐进增长" class="headerlink" title="函数的渐进增长"></a>函数的渐进增长</h1><p><strong>ps</strong>：判断两个算法效率的高低，会存在因不同量级的输入规模而得出相反的结果。</p>
+<h1 id="函数的渐进增长">函数的渐进增长</h1>
+<p><strong>ps</strong>：判断两个算法效率的高低，会存在因不同量级的输入规模而得出相反的结果。</p>
 <blockquote>
 <p>因此给出定义，输入规模n在没有限制的情况下，只要<strong>超过一个数值N</strong>，这个函数就<strong>总是</strong>大于另一个函数，我们称函数是渐进增长快的。</p>
 </blockquote>
 <p>函数渐进增长：<strong>给定两个函数f(n)和g(n)，如果存在一个整数N，使得对于所有的n&gt;N，f(n)总是比g(n)大，那么，我们说f(n)的增长渐进快于g(n)。</strong></p>
 <hr>
 <p><strong>结论</strong>：判断一个算法的效率时，函数中的<strong>常数</strong>和其他<strong>次要项</strong>常常可以<strong>忽略</strong>，而**更应该关注主项(最高阶项)**的阶数。</p>
-<h1 id="算法时间复杂度"><a href="#算法时间复杂度" class="headerlink" title="算法时间复杂度"></a>算法时间复杂度</h1><h2 id="时间复杂度的定义"><a href="#时间复杂度的定义" class="headerlink" title="时间复杂度的定义"></a>时间复杂度的定义</h2><p><strong>算法时间复杂度</strong>，记作T(n)=O(f(n))，通过大写<strong>O( )**来体现时间复杂度的记法，也称之为</strong>大O记法**。</p>
+<h1 id="算法时间复杂度">算法时间复杂度</h1>
+<h2 id="时间复杂度的定义">时间复杂度的定义</h2>
+<p><strong>算法时间复杂度</strong>，记作T(n)=O(f(n))，通过大写<strong>O( )<strong>来体现时间复杂度的记法，也称之为</strong>大O记法</strong>。</p>
 <blockquote>
-<p><strong>在进行算法分析时，语句总的执行次数T(n)是关于问题规模n的函数，进而分析T(n)随n的变化情况并确定T(n)的数量级。算法的时间复杂度，也就是算法的时间量度，记作：T(n)= O(f(n))。它表示随问题规模n的增大，算法执行时间的增长率和f(n)的增长率相同，称作算法的渐近时间复杂度，简称为时间复杂度。其中f(n)是问题规模n的某个函数。</strong>   </p>
+<p><strong>在进行算法分析时，语句总的执行次数T(n)是关于问题规模n的函数，进而分析T(n)随n的变化情况并确定T(n)的数量级。算法的时间复杂度，也就是算法的时间量度，记作：T(n)= O(f(n))。它表示随问题规模n的增大，算法执行时间的增长率和f(n)的增长率相同，称作算法的渐近时间复杂度，简称为时间复杂度。其中f(n)是问题规模n的某个函数。</strong></p>
 </blockquote>
-<h2 id="推导大O阶方法"><a href="#推导大O阶方法" class="headerlink" title="推导大O阶方法"></a>推导大O阶方法</h2><ol>
-<li><p>写出每一条语句的执行次数。</p>
+<h2 id="推导大O阶方法">推导大O阶方法</h2>
+<ol>
+<li>
+<p>写出每一条语句的执行次数。</p>
 </li>
-<li><p>把所有语句的执行次数相加并且进行基本的数学化简。</p>
+<li>
+<p>把所有语句的执行次数相加并且进行基本的数学化简。</p>
 <hr>
 </li>
-<li><p>用<strong>常数1</strong>取代运行时间中的所有<strong>加法常数</strong>。</p>
+<li>
+<p>用<strong>常数1</strong>取代运行时间中的所有<strong>加法常数</strong>。</p>
 </li>
-<li><p>只保留<strong>最高阶项</strong>。</p>
+<li>
+<p>只保留<strong>最高阶项</strong>。</p>
 </li>
-<li><p>若最高阶项存在且不是1，则去除与<strong>这个项相乘的常数</strong>。</p>
+<li>
+<p>若最高阶项存在且不是1，则去除与<strong>这个项相乘的常数</strong>。</p>
 </li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i,j;				<span class="comment">//执行1次</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)&#123;			<span class="comment">//执行n次</span></span><br><span class="line">	<span class="keyword">for</span>(j = i; j &lt; n; j++)&#123;</span><br><span class="line">		<span class="comment">/*时间复杂度O(1)的程序步骤序列*/</span></span><br><span class="line">       		<span class="comment">//执行n-2次...n-1,n,执行1次</span></span><br><span class="line">        	<span class="comment">//执行n-2次...n-1,n,执行1次</span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;end&quot;</span>);				<span class="comment">//执行1次</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>总执行次数为：1+n+(n-1)+(n-2)+…+1 + 1= n(n+1)/2 +2 = n<sup>2</sup>/2+n/2 + 2</li>
 <li>去除常数： n<sup>2</sup>/2+n/2</li>
@@ -303,75 +332,79 @@
 <li>首项a<sub>1</sub>=1，公差d=1，项数n=n</li>
 </ul>
 </blockquote>
-<h2 id="常见时间复杂度"><a href="#常见时间复杂度" class="headerlink" title="常见时间复杂度"></a>常见时间复杂度</h2><table>
+<h2 id="常见时间复杂度">常见时间复杂度</h2>
+<table>
 <thead>
 <tr>
-<th align="center">阶</th>
-<th align="center">非正式术语</th>
-<th align="center">常见结构</th>
-<th align="center">例</th>
+<th style="text-align:center">阶</th>
+<th style="text-align:center">非正式术语</th>
+<th style="text-align:center">常见结构</th>
+<th style="text-align:center">例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">O(1)</td>
-<td align="center">常数阶</td>
-<td align="center">顺序结构、无循环分支结构</td>
-<td align="center">12</td>
+<tbody>
+<tr>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">常数阶</td>
+<td style="text-align:center">顺序结构、无循环分支结构</td>
+<td style="text-align:center">12</td>
 </tr>
 <tr>
-<td align="center">O(n)</td>
-<td align="center">线性阶</td>
-<td align="center">无内嵌循环结构</td>
-<td align="center">2n+3</td>
+<td style="text-align:center">O(n)</td>
+<td style="text-align:center">线性阶</td>
+<td style="text-align:center">无内嵌循环结构</td>
+<td style="text-align:center">2n+3</td>
 </tr>
 <tr>
-<td align="center">O(n<sup>2</sup>)</td>
-<td align="center">平方阶</td>
-<td align="center">二层内嵌循环结构</td>
-<td align="center">3n<sup>2</sup>+2n+1</td>
+<td style="text-align:center">O(n<sup>2</sup>)</td>
+<td style="text-align:center">平方阶</td>
+<td style="text-align:center">二层内嵌循环结构</td>
+<td style="text-align:center">3n<sup>2</sup>+2n+1</td>
 </tr>
 <tr>
-<td align="center">O(log n)</td>
-<td align="center">对数阶</td>
-<td align="center">非1线性增长的循环索引</td>
-<td align="center">log<sub>2</sub>n+20</td>
+<td style="text-align:center">O(log n)</td>
+<td style="text-align:center">对数阶</td>
+<td style="text-align:center">非1线性增长的循环索引</td>
+<td style="text-align:center">log<sub>2</sub>n+20</td>
 </tr>
 <tr>
-<td align="center">O(n log n)</td>
-<td align="center">nlog n阶</td>
-<td align="center"></td>
-<td align="center">2n+3nlog<sub>2</sub>n</td>
+<td style="text-align:center">O(n log n)</td>
+<td style="text-align:center">nlog n阶</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">2n+3nlog<sub>2</sub>n</td>
 </tr>
 <tr>
-<td align="center">O(n<sup>3</sup>)</td>
-<td align="center">立方阶</td>
-<td align="center">三层内嵌循环</td>
-<td align="center">n<sup>3</sup>+2</td>
+<td style="text-align:center">O(n<sup>3</sup>)</td>
+<td style="text-align:center">立方阶</td>
+<td style="text-align:center">三层内嵌循环</td>
+<td style="text-align:center">n<sup>3</sup>+2</td>
 </tr>
 <tr>
-<td align="center">2<sup>n</sup></td>
-<td align="center">指数阶</td>
-<td align="center"></td>
-<td align="center">2<sup>n</sup></td>
+<td style="text-align:center">2<sup>n</sup></td>
+<td style="text-align:center">指数阶</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">2<sup>n</sup></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>常用时间复杂度所耗费得时间从小到大依次是：</p>
 <p><strong>O(1) &lt; O(log⁡n) &lt; O(n) &lt; O(nlog⁡n) &lt; O(n<sup>2</sup>) &lt; O(n<sup>3</sup>) &lt; O(a<sup>n</sup>) &lt; O(n!) &lt; O(n<sup>n</sup>) </strong></p>
 <p><strong>对数阶补充说明</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count =<span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(count &lt; n)&#123;</span><br><span class="line">	count = count * <span class="number">2</span>;</span><br><span class="line">	<span class="comment">/*时间复杂度O(1)的程序步骤序列*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>每次count乘2之后，就距离n更接近一分，而需要乘多少次？接需要执行多少次，才能跳出循环？</li>
 <li>把需要乘的次数设为x，则2<sup>x</sup>=n，得到执行次数x=log<sub>2</sub>n</li>
 </ul>
-<h1 id="算法的空间复杂度"><a href="#算法的空间复杂度" class="headerlink" title="算法的空间复杂度"></a>算法的空间复杂度</h1><p>空间复杂度：算法的空间复杂度即<strong>算法所需的存储空间</strong>，记作：<strong>S(n)=O(f(n)，</strong>此时n为问题的规模，f(n)为语句关于n所占<strong>存储空间函数</strong>。</p>
+<h1 id="算法的空间复杂度">算法的空间复杂度</h1>
+<p>空间复杂度：算法的空间复杂度即<strong>算法所需的存储空间</strong>，记作：<strong>S(n)=O(f(n)，<strong>此时n为问题的规模，f(n)为语句关于n所占</strong>存储空间函数</strong>。</p>
 <blockquote>
 <ul>
 <li>当不用限定词地使用“复杂度”，则通常指时间复杂度。</li>
 <li>时间复杂度和空间复杂度一般情况下可以相互转换。</li>
 </ul>
 </blockquote>
-<h1 id="最坏情况与平均情况"><a href="#最坏情况与平均情况" class="headerlink" title="最坏情况与平均情况"></a>最坏情况与平均情况</h1><p>最坏情况：即一个算法存在的<strong>最低执行效率</strong>情况。</p>
+<h1 id="最坏情况与平均情况">最坏情况与平均情况</h1>
+<p>最坏情况：即一个算法存在的<strong>最低执行效率</strong>情况。</p>
 <ul>
 <li>在应用中，最坏情况是一种重要的需求，通常，除非特别指定，提及的<strong>运行时间</strong>都是指<strong>最坏情况</strong>的运行时间</li>
 <li>平均运行时间是所有情况中最有意义的，它属于<strong>期望</strong>的运行时间。</li>
