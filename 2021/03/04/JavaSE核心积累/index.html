@@ -21,7 +21,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
@@ -194,29 +194,6 @@
 <hr>
 <p>[TOC]</p>
 <hr>
-<h1 id="常用DOS命令"><a href="#常用DOS命令" class="headerlink" title="常用DOS命令"></a>常用DOS命令</h1><ul>
-<li><strong>快速进入特定路径下的命令窗体</strong>：在拟进入文件路径的地址栏中直接输入cmd</li>
-<li><strong>复制与黏贴</strong><ul>
-<li>win7：任意位置<strong>右键“标记”</strong>，<strong>选中</strong>要复制的内容，再<strong>点击右键</strong>，剪贴板里面了</li>
-<li>win10：<strong>左键</strong>直接选中，然后<strong>右键单击一下</strong>就到剪贴板里面了</li>
-</ul>
-</li>
-<li><strong>D:</strong> 切换盘符直接输入“<strong>盘符</strong>”</li>
-<li><strong>md</strong>：mkdir make director创建目录</li>
-<li><strong>cd</strong>：change directory切换目录<ul>
-<li><strong>cd</strong>：相对路径或绝对路径</li>
-<li>**cd ..**：回到上级路径</li>
-<li><strong>cd \</strong> ：直接回到根路径</li>
-<li><strong>.</strong> ：一个点，代表当前路径。（常用与配置环境变量）</li>
-</ul>
-</li>
-<li><strong>cls：</strong>清屏</li>
-<li><strong>dir</strong> directory：查看当前路径文件目录：</li>
-<li><strong>exit</strong>：退出DOS命令窗口</li>
-<li><strong>rd</strong>：只能删除空文件夹：</li>
-<li><strong>de</strong>：删除文件目录内所有内容</li>
-<li><strong>echo</strong> content(内容)&gt;1.doc：输入流</li>
-</ul>
 <h1 id="语言概述"><a href="#语言概述" class="headerlink" title="语言概述"></a>语言概述</h1><h2 id="语言历史"><a href="#语言历史" class="headerlink" title="语言历史"></a>语言历史</h2><p>​    创始人：java之父<strong>James Gosling</strong></p>
 <ul>
 <li><p><strong>SUN</strong>(Stanford University Network，斯坦福大学网络公司 )<strong>1995</strong>推出</p>
@@ -240,6 +217,7 @@
 </li>
 </ul>
 <h2 id="语言特点"><a href="#语言特点" class="headerlink" title="语言特点"></a>语言特点</h2><ol>
+<li>java是一种<strong>半编译半解释型</strong>语言</li>
 <li><strong>面向对象</strong>：类、对象、<strong>封装、继承、多态</strong></li>
 <li><strong>健壮性</strong>：<strong>垃圾回收机制</strong>(<strong>GC</strong>机制)，<em>但仍存在内存泄漏与溢出</em>。c通过malloc与free手动管理)</li>
 <li><strong>跨平台性</strong>：<strong>java虚拟</strong>(<strong>JVM</strong>)，write once,run anywhere 一次编译，到处运行</li>
@@ -278,12 +256,42 @@
 </li>
 <li><p><strong>配置环境变量path</strong>：</p>
 <ol>
-<li>进入<strong>系统变量设置</strong>：(win10)计算机，右键属性，高级系统变量，环境变量</li>
-<li>把安装<strong>JDK</strong>的<strong>bin目录路径</strong>添加到环境变量<strong>path</strong>中(若不存在path则新建)<ul>
-<li><strong>方式1</strong>：直接把JDK下的bin目录路径添加到path变量中</li>
-<li><strong>方式2</strong>(<strong>推荐</strong>)：<ol>
-<li>在<strong>系统变量</strong>中<strong>新建</strong>名为<strong>JAVA_HOME</strong>，值为<strong>JDK目录</strong>路径的环境变量</li>
-<li>在path中<strong>通过引用</strong>的方式添加，即在path中添加 <strong>%JAVA_HOME%\bin;</strong> </li>
+<li><p>进入<strong>系统变量设置</strong>：(win10)计算机，右键属性，高级系统变量，环境变量</p>
+</li>
+<li><p>把安装<strong>JDK</strong>的<strong>bin目录路径</strong>添加到环境变量<strong>path</strong>中(若不存在path则新建)</p>
+<ul>
+<li><p><strong>方式1</strong>：直接把JDK下的<strong>bin目录</strong>路径添加到<strong>path变量</strong>中即可</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210325104845.png"
+                     
+                ></p>
+</li>
+<li><p><strong>方式2</strong>(<strong>推荐</strong>)：</p>
+<ol>
+<li><p>在<strong>系统变量</strong>中<strong>新建</strong>名为<strong>JAVA_HOME</strong>，值为<strong>JDK目录</strong>路径的环境变量</p>
+</li>
+<li><p>在path中<strong>通过引用</strong>的方式添加，即在path中添加 <strong>%JAVA_HOME%\bin;</strong>  (注意win10末尾无需分号)</p>
+<ul>
+<li>新建JAVA_HOME变量如下图</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210325105539.png"
+                     
+                ></p>
+<ul>
+<li>在Path环境变量中引用JAVA_HOME在bin目录下配置如下图</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210325103947.png"
+                     
+                ></p>
+</li>
 </ol>
 </li>
 </ul>
@@ -293,22 +301,31 @@
 <p>Tips：推荐使用方式2，后续tomcat运行环境需识别JAVA_HOME</p>
 </blockquote>
 </li>
-<li><p><strong>验证</strong>：<strong>重新</strong>进入cmd输入<strong>javac</strong>程序如下内容显示或输入<strong>java –version</strong> 若出现安装JDK的版本号信息则安装成功</p>
+<li><p><strong>验证</strong>：<strong>注意，要重新打开一个新的cmd窗口</strong>输入<strong>javac</strong>显示如下内容信息则安装成功</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/javaSE%E5%9B%9E%E7%82%89-JDK%E5%AE%89%E8%A3%852.png"
                      
                 ></p>
+</li>
+</ol>
+<ol>
+<li><p><strong>常见问题：(待收集)</strong></p>
+<ul>
+<li><p>重写打开一个新的cmd窗口测试javac</p>
+</li>
+<li><p>尝试把java的环境变量的位置以至最前面(防止部分功能失效)</p>
+</li>
+<li><p><strong>win10环境</strong>下配置环境变量，<strong>无需添加</strong>末尾的分号’;’</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/javaSE%E5%9B%9E%E7%82%89-JDK%E5%AE%89%E8%A3%851.png"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210325104539.png"
                      
                 ></p>
 </li>
-<li><p><strong>常见问题：(待收集)</strong></p>
-<p>尝试把java的环境变量的位置以至最前面(防止部分功能失效)</p>
+</ul>
 </li>
 </ol>
 <h2 id="JDK内容概要"><a href="#JDK内容概要" class="headerlink" title="JDK内容概要"></a>JDK内容概要</h2><p>默认安装路径：C:\Program Files\Java\jdk1.8.0_144</p>
@@ -909,16 +926,18 @@
 </li>
 <li><p><strong>声明与初始化</strong>：静态初始化，动态初始化</p>
 <ul>
-<li><p><strong>静态初始化</strong>：<strong>指定</strong>数组元素的<strong>初始值</strong>，由<strong>系统决定</strong>数组<strong>长度</strong> </p>
-</li>
-<li><p><strong>动态初始化</strong>：<strong>指定数组长度</strong>(可以是<strong>变量</strong>)，由<strong>系统</strong>为数组元素<strong>分配初始值</strong></p>
-<blockquote>
-<pre><code>整型：0
-浮点型：0.0
-char型：0或&#39;\u0000&#39;，而非&#39;0&#39;
-boolean型：false
-用数据类型：null</code></pre>
-</blockquote>
+<li><strong>静态初始化</strong>：<strong>指定</strong>数组元素的<strong>初始值</strong>，由<strong>系统决定</strong>数组<strong>长度</strong> </li>
+<li><strong>动态初始化</strong>：<strong>指定数组长度</strong>(可以是<strong>变量</strong>)，由<strong>系统</strong>为数组元素<strong>分配初始值</strong></li>
+</ul>
+<hr>
+<ul>
+<li>数组初始化值<ul>
+<li>整型：0</li>
+<li>浮点型：0.0</li>
+<li>char型：0或’\u0000’，而非’0’</li>
+<li>boolean型：false</li>
+<li>用数据类型：null</li>
+</ul>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> [] ids;<span class="comment">//声明</span></span><br><span class="line">ids = <span class="keyword">new</span> ids[]&#123;<span class="number">1001</span>,<span class="number">1002</span>,<span class="number">1003</span>&#125;;<span class="comment">//初始化</span></span><br><span class="line"><span class="keyword">int</span>[] a = &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;<span class="comment">//简化语法格式</span></span><br><span class="line"></span><br><span class="line">String[] names = <span class="keyword">new</span> String[<span class="number">4</span>];<span class="comment">//动态初始化，数组长度可以是变量</span></span><br></pre></td></tr></table></figure>
@@ -967,8 +986,7 @@ boolean型：false
 <li><strong>ArrayIndexOutOfBoundsException</strong>：角标越界异常</li>
 <li><strong>NullPointerException</strong>：空指针异常</li>
 </ul>
-<h1 id="内存结构与变量"><a href="#内存结构与变量" class="headerlink" title="内存结构与变量"></a>内存结构与变量</h1><p>JVM基本结构</p>
-<ul>
+<h1 id="内存结构与变量"><a href="#内存结构与变量" class="headerlink" title="内存结构与变量"></a>内存结构与变量</h1><h2 id="JVM基本结构"><a href="#JVM基本结构" class="headerlink" title="JVM基本结构"></a>JVM基本结构</h2><ul>
 <li><p><strong>虚拟机堆</strong>(heap)：存放<strong>数组</strong>、<strong>对象实例</strong>(含非static属性)</p>
 </li>
 <li><p><strong>虚拟机栈</strong>(stack)：存放<strong>局部变量</strong>、<strong>对象引用</strong></p>
@@ -991,7 +1009,9 @@ boolean型：false
 
 </li>
 </ul>
-<h2 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h2><h2 id="变量的初始化及默认值"><a href="#变量的初始化及默认值" class="headerlink" title="变量的初始化及默认值"></a>变量的初始化及默认值</h2><h2 id="不同变量的内存结构"><a href="#不同变量的内存结构" class="headerlink" title="不同变量的内存结构"></a>不同变量的内存结构</h2><ul>
+<h2 id="变量的类型"><a href="#变量的类型" class="headerlink" title="变量的类型"></a>变量的类型</h2><h2 id="变量的初始化及默认值"><a href="#变量的初始化及默认值" class="headerlink" title="变量的初始化及默认值"></a>变量的初始化及默认值</h2><h2 id="不同变量的内存结构"><a href="#不同变量的内存结构" class="headerlink" title="不同变量的内存结构"></a>不同变量的内存结构</h2><p>java中，<strong>所有局部变量</strong>，在未初始化的情况下使用均会发生<strong>编译型错误</strong></p>
+<p>局部变量非在所在范围内(方法)被调用时才创建，而是直到给局部变量赋值后才会创建</p>
+<ul>
 <li><p>Java变量的类型**：局部变量，成员变量</p>
 <ul>
 <li><p><strong>局部变量</strong>：形参、方法内变量、代码块内变量</p>
@@ -1424,7 +1444,7 @@ boolean型：false
 </li>
 <li><p>this与super调用构造器<strong>只能二选一</strong>，<strong>不能同时出现</strong></p>
 <hr>
-<p>在子类构造器的首行，没显式的声明”this(形参列表)”或”super(形参列表)”，则<strong>默认调用</strong>的是<strong>父类中空参的构造器</strong></p>
+<p>在子类构造器的首行，没显式的声明”this(形参列表)”或”super(形参列表)”，则<strong>默认调用</strong>的是<strong>父类</strong>中<strong>空参</strong>的<strong>构造器</strong></p>
 </li>
 <li><p>在类的多个构造器中，<strong>至少一个构造器</strong>中使用了”super(形参列表)”，<strong>调用父类中的构造器</strong></p>
 </li>
@@ -1576,7 +1596,7 @@ boolean型：false
 <ul>
 <li><p><strong>基本数据类型</strong>：<strong>数值</strong>上的相等(类型不一定一样，底层是数值即可、因为会自动类型转换)</p>
 </li>
-<li><p><strong>引用数据类型</strong>：引用的地址值是否相等</p>
+<li><p><strong>引用数据类型</strong>：引用的地址值是否相等，前提是比较双方<strong>类型可兼容</strong>，否则会出现<strong>编译型错误</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、基本数据类型：数值</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">double</span> d = <span class="number">10.0</span>;</span><br><span class="line">System.out.println(i == d);<span class="comment">//输出true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2、引用数据类型：地址值(数值)</span></span><br><span class="line">Person p1 = <span class="keyword">new</span> Person(<span class="string">&quot;小明&quot;</span>,<span class="number">21</span>);</span><br><span class="line">Person p2 = <span class="keyword">new</span> Person(<span class="string">&quot;小明&quot;</span>,<span class="number">21</span>);</span><br><span class="line">System.out.println(p1 == p2);<span class="comment">//输出false</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -2248,10 +2268,31 @@ boolean型：false
 <p>封装：</p>
 <p>继承：复用，易扩展</p>
 <p>多态性：提高代码的通用性，如Object 的equals方法</p>
-<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h1 id="有关源码的题"><a href="#有关源码的题" class="headerlink" title="有关源码的题"></a>有关源码的题</h1><h2 id="包装类相关"><a href="#包装类相关" class="headerlink" title="包装类相关"></a>包装类相关</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Integer i = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">    Integer j = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">    System.out.println(i == j);<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">    Integer m = <span class="number">1</span>;</span><br><span class="line">    Integer n = <span class="number">1</span>;</span><br><span class="line">    System.out.println(m == n);<span class="comment">//true</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//注意，如果数值不一样是肯定不一样的</span></span><br><span class="line">    Integer a = <span class="number">210</span>;</span><br><span class="line">    Integer b = <span class="number">211</span>;</span><br><span class="line">    System.out.println(a == b);<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">    Integer x = <span class="number">128</span>;</span><br><span class="line">    Integer y = <span class="number">128</span>;</span><br><span class="line">    System.out.println(x == y);<span class="comment">//false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  Integer内部定义了IntegerCache结构，IntegerCache中定义了Integer[],</span></span><br><span class="line"><span class="comment">//  保存了从-128~127范围的整数。如果我们使用自动装箱的方式，给Integer赋值的范围在</span></span><br><span class="line"><span class="comment">//  -128~127范围内时，可以直接使用数组中的元素，不用再去new了。目的：提高效率</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  Integer m = 1; //-128~127范围内相当于同一个数组地址</span></span><br><span class="line"><span class="comment">//  Integer n = 1;</span></span><br><span class="line"><span class="comment">//  Integer x = 128;//相当于new了一个Integer对象</span></span><br><span class="line"><span class="comment">//  Integer y = 128;//相当于new了一个Integer对象</span></span><br></pre></td></tr></table></figure>
+<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h1 id="有关源码的题"><a href="#有关源码的题" class="headerlink" title="有关源码的题"></a>有关源码的题</h1><h2 id="包装类相关"><a href="#包装类相关" class="headerlink" title="包装类相关"></a>包装类相关</h2><h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Integer i = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">    Integer j = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">    System.out.println(i == j);<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">    Integer m = <span class="number">1</span>;</span><br><span class="line">    Integer n = <span class="number">1</span>;</span><br><span class="line">    System.out.println(m == n);<span class="comment">//true</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//注意，如果数值不一样是肯定不一样的</span></span><br><span class="line">    Integer a = <span class="number">210</span>;</span><br><span class="line">    Integer b = <span class="number">211</span>;</span><br><span class="line">    System.out.println(a == b);<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">    Integer x = <span class="number">128</span>;</span><br><span class="line">    Integer y = <span class="number">128</span>;</span><br><span class="line">    System.out.println(x == y);<span class="comment">//false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  Integer内部定义了IntegerCache结构，IntegerCache中定义了Integer[],</span></span><br><span class="line"><span class="comment">//  保存了从-128~127范围的整数。如果我们使用自动装箱的方式，给Integer赋值的范围在</span></span><br><span class="line"><span class="comment">//  -128~127范围内时，可以直接使用数组中的元素，不用再去new了。目的：提高效率</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  Integer m = 1; //-128~127范围内相当于同一个数组地址</span></span><br><span class="line"><span class="comment">//  Integer n = 1;</span></span><br><span class="line"><span class="comment">//  Integer x = 128;//相当于new了一个Integer对象</span></span><br><span class="line"><span class="comment">//  Integer y = 128;//相当于new了一个Integer对象</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>原理</strong></li>
+<h3 id="equals重写逻辑"><a href="#equals重写逻辑" class="headerlink" title="equals重写逻辑"></a>equals重写逻辑</h3><p>包装类在进行equals比较时，首先会比较两个的<strong>数据类型</strong>、不一致返回false、一致后<strong>再比较数值</strong></p>
+<h1 id="常用DOS命令"><a href="#常用DOS命令" class="headerlink" title="常用DOS命令"></a>常用DOS命令</h1><ul>
+<li><strong>快速进入特定路径下的命令窗体</strong>：在拟进入文件路径的地址栏中直接输入cmd</li>
+<li><strong>复制与黏贴</strong><ul>
+<li>win7：任意位置<strong>右键“标记”</strong>，<strong>选中</strong>要复制的内容，再<strong>点击右键</strong>，剪贴板里面了</li>
+<li>win10：<strong>左键</strong>直接选中，然后<strong>右键单击一下</strong>就到剪贴板里面了</li>
+</ul>
+</li>
+<li><strong>D:</strong> 切换盘符直接输入“<strong>盘符</strong>”</li>
+<li><strong>md</strong>：mkdir make director创建目录</li>
+<li><strong>cd</strong>：change directory切换目录<ul>
+<li><strong>cd</strong>：相对路径或绝对路径</li>
+<li>**cd ..**：回到上级路径</li>
+<li><strong>cd \</strong> ：直接回到根路径</li>
+<li><strong>.</strong> ：一个点，代表当前路径。（常用与配置环境变量）</li>
+</ul>
+</li>
+<li><strong>cls：</strong>清屏</li>
+<li><strong>dir</strong> directory：查看当前路径文件目录：</li>
+<li><strong>exit</strong>：退出DOS命令窗口</li>
+<li><strong>rd</strong>：只能删除空文件夹：</li>
+<li><strong>de</strong>：删除文件目录内所有内容</li>
+<li><strong>echo</strong> content(内容)&gt;1.doc：输入流</li>
 </ul>
 
         </div>
@@ -2424,7 +2465,7 @@ boolean型：false
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8DOS%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">常用DOS命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">语言概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E5%8E%86%E5%8F%B2"><span class="nav-number">2.1.</span> <span class="nav-text">语言历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">语言特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87"><span class="nav-number">3.1.</span> <span class="nav-text">知识储备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">3.2.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK%E5%86%85%E5%AE%B9%E6%A6%82%E8%A6%81"><span class="nav-number">3.3.</span> <span class="nav-text">JDK内容概要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AF%A6%E8%A7%A3"><span class="nav-number">3.4.</span> <span class="nav-text">环境变量详解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E9%80%BB%E8%BE%91"><span class="nav-number">4.</span> <span class="nav-text">.Java程序运行逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#java%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91"><span class="nav-number">4.1.</span> <span class="nav-text">java程序执行逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%8F%8A%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">编译及运行命令的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA"><span class="nav-number">4.3.</span> <span class="nav-text">演示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">5.1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E3%80%81%E4%BF%9D%E7%95%99%E5%AD%97%E3%80%81%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-number">5.2.</span> <span class="nav-text">关键字、保留字、标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.4.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">5.5.</span> <span class="nav-text">流程控制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">6.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">6.1.</span> <span class="nav-text">一维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">6.2.</span> <span class="nav-text">多维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8"><span class="nav-number">6.3.</span> <span class="nav-text">常见异常</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E4%B8%8E%E5%8F%98%E9%87%8F"><span class="nav-number">7.</span> <span class="nav-text">内存结构与变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">7.1.</span> <span class="nav-text">变量的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%8A%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">7.2.</span> <span class="nav-text">变量的初始化及默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-number">7.3.</span> <span class="nav-text">不同变量的内存结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">8.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%88%90%E5%91%98%E5%8F%8A%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-number">8.1.</span> <span class="nav-text">类成员及内存结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">8.2.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">8.3.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">8.4.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">8.5.</span> <span class="nav-text">Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="nav-number">8.6.</span> <span class="nav-text">包装类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static"><span class="nav-number">8.7.</span> <span class="nav-text">static</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E5%B1%9E%E6%80%A7"><span class="nav-number">8.7.1.</span> <span class="nav-text">修饰属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E6%96%B9%E6%B3%95"><span class="nav-number">8.7.2.</span> <span class="nav-text">修饰方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">8.7.3.</span> <span class="nav-text">静态属性和方法应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main%E6%96%B9%E6%B3%95"><span class="nav-number">8.7.4.</span> <span class="nav-text">main方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">8.8.</span> <span class="nav-text">代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final"><span class="nav-number">8.9.</span> <span class="nav-text">final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E5%83%8F%E7%B1%BB"><span class="nav-number">8.10.</span> <span class="nav-text">抽像类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">8.11.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">8.12.</span> <span class="nav-text">内部类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%BA%93"><span class="nav-number">9.</span> <span class="nav-text">Java基础类库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JUnitTest"><span class="nav-number">9.1.</span> <span class="nav-text">JUnitTest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System"><span class="nav-number">9.2.</span> <span class="nav-text">System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrays"><span class="nav-number">9.3.</span> <span class="nav-text">Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scanner"><span class="nav-number">9.4.</span> <span class="nav-text">Scanner</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math"><span class="nav-number">9.5.</span> <span class="nav-text">Math</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84"><span class="nav-number">10.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E5%85%B3%E6%BA%90%E7%A0%81%E7%9A%84%E9%A2%98"><span class="nav-number">11.</span> <span class="nav-text">有关源码的题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB%E7%9B%B8%E5%85%B3"><span class="nav-number">11.1.</span> <span class="nav-text">包装类相关</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">语言概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E5%8E%86%E5%8F%B2"><span class="nav-number">1.1.</span> <span class="nav-text">语言历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">语言特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87"><span class="nav-number">2.1.</span> <span class="nav-text">知识储备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK%E5%86%85%E5%AE%B9%E6%A6%82%E8%A6%81"><span class="nav-number">2.3.</span> <span class="nav-text">JDK内容概要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">环境变量详解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E9%80%BB%E8%BE%91"><span class="nav-number">3.</span> <span class="nav-text">.Java程序运行逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#java%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91"><span class="nav-number">3.1.</span> <span class="nav-text">java程序执行逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%8F%8A%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">编译及运行命令的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA"><span class="nav-number">3.3.</span> <span class="nav-text">演示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">4.1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E3%80%81%E4%BF%9D%E7%95%99%E5%AD%97%E3%80%81%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-number">4.2.</span> <span class="nav-text">关键字、保留字、标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">4.4.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">4.5.</span> <span class="nav-text">流程控制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">5.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">5.1.</span> <span class="nav-text">一维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">5.2.</span> <span class="nav-text">多维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8"><span class="nav-number">5.3.</span> <span class="nav-text">常见异常</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E4%B8%8E%E5%8F%98%E9%87%8F"><span class="nav-number">6.</span> <span class="nav-text">内存结构与变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="nav-number">6.1.</span> <span class="nav-text">JVM基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.2.</span> <span class="nav-text">变量的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%8A%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">6.3.</span> <span class="nav-text">变量的初始化及默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-number">6.4.</span> <span class="nav-text">不同变量的内存结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">7.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%88%90%E5%91%98%E5%8F%8A%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-number">7.1.</span> <span class="nav-text">类成员及内存结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">7.2.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">7.3.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">7.4.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">7.5.</span> <span class="nav-text">Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="nav-number">7.6.</span> <span class="nav-text">包装类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static"><span class="nav-number">7.7.</span> <span class="nav-text">static</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E5%B1%9E%E6%80%A7"><span class="nav-number">7.7.1.</span> <span class="nav-text">修饰属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E6%96%B9%E6%B3%95"><span class="nav-number">7.7.2.</span> <span class="nav-text">修饰方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">7.7.3.</span> <span class="nav-text">静态属性和方法应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main%E6%96%B9%E6%B3%95"><span class="nav-number">7.7.4.</span> <span class="nav-text">main方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">7.8.</span> <span class="nav-text">代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final"><span class="nav-number">7.9.</span> <span class="nav-text">final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E5%83%8F%E7%B1%BB"><span class="nav-number">7.10.</span> <span class="nav-text">抽像类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">7.11.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">7.12.</span> <span class="nav-text">内部类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%BA%93"><span class="nav-number">8.</span> <span class="nav-text">Java基础类库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JUnitTest"><span class="nav-number">8.1.</span> <span class="nav-text">JUnitTest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System"><span class="nav-number">8.2.</span> <span class="nav-text">System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrays"><span class="nav-number">8.3.</span> <span class="nav-text">Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scanner"><span class="nav-number">8.4.</span> <span class="nav-text">Scanner</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math"><span class="nav-number">8.5.</span> <span class="nav-text">Math</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84"><span class="nav-number">9.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E5%85%B3%E6%BA%90%E7%A0%81%E7%9A%84%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">有关源码的题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB%E7%9B%B8%E5%85%B3"><span class="nav-number">10.1.</span> <span class="nav-text">包装类相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98"><span class="nav-number">10.1.1.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equals%E9%87%8D%E5%86%99%E9%80%BB%E8%BE%91"><span class="nav-number">10.1.2.</span> <span class="nav-text">equals重写逻辑</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8DOS%E5%91%BD%E4%BB%A4"><span class="nav-number">11.</span> <span class="nav-text">常用DOS命令</span></a></li></ol>
     </div>
 </div>
         </aside>
