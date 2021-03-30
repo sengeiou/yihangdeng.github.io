@@ -194,68 +194,59 @@
 <li><strong>读物</strong>：<a class="link"   target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/" >《大话数据结构》<i class="fas fa-external-link-alt"></i></a></li>
 <li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
 </ul>
-<h1 id="大纲">大纲</h1>
-<ol>
+<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ol>
 <li><strong>基本概念</strong></li>
 <li><strong>静态链表的初始化</strong></li>
 <li><strong>静态链表的插入操作</strong></li>
 <li><strong>小结</strong></li>
 </ol>
-<h1 id="基本概念">基本概念</h1>
-<ul>
-<li>
-<p>静态链表：用<strong>数组</strong>描述的链表叫做静态链表。</p>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul>
+<li><p>静态链表：用<strong>数组</strong>描述的链表叫做静态链表。</p>
 <blockquote>
-<p>如Basic、Fortran等早期编程语言，没有指针，就可通过数组实现链表结构(游标实现法)。</p>
+<p> 如Basic、Fortran等早期编程语言，没有指针，就可通过数组实现链表结构(游标实现法)。</p>
 </blockquote>
 </li>
-<li>
-<p>静态链表使用<strong>两个数据域组成</strong>，分别叫<strong>data、cur</strong>，cur类似单链表中的<strong>next</strong>。不记录指针，而是<strong>记录后继元素的数组下标</strong>。</p>
+<li><p>静态链表使用<strong>两个数据域组成</strong>，分别叫<strong>data、cur</strong>，cur类似单链表中的<strong>next</strong>。不记录指针，而是<strong>记录后继元素的数组下标</strong>。</p>
 </li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*线性表的静态链表存储结构*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 1000</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="keyword">int</span> cur;	<span class="comment">/*游标(Cursor)，为0时表示无指向*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>静态链表的<strong>第一个</strong>和<strong>最后一个</strong>元素作为特殊处理，不存数据。</li>
-<li><strong>未被使用</strong>的数组元素称为<strong>备用链表</strong>。
-<ol>
+<li><strong>未被使用</strong>的数组元素称为<strong>备用链表</strong>。<ol>
 <li><strong>下标为0</strong>的第一个元素cur称为<strong>头指针</strong>，用于<strong>存放备用链表的下标</strong>。</li>
 <li>数组最后一个元素的cur，存放第一个有数值元素的下标(<strong>相当于头结点</strong>)。</li>
 </ol>
 </li>
 </ul>
-<h1 id="静态链表初始化">静态链表初始化</h1>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*将一维数组space中各个分量链成一备用链表*/</span></span><br><span class="line"><span class="function">Status <span class="title">InitList</span><span class="params">(StaticLinkList space)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; MAXSIZE - <span class="number">1</span>; i++)<span class="comment">/*为链表所有元素cur赋值，将其中各个分量链成一备用链表*/</span></span><br><span class="line">        space[i] = i + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    space[MAXSIZE - <span class="number">1</span>].cur = <span class="number">0</span>;	<span class="comment">/*目前链表为空，最后一个元素的cur为0*/</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="静态链表初始化"><a href="#静态链表初始化" class="headerlink" title="静态链表初始化"></a>静态链表初始化</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*将一维数组space中各个分量链成一备用链表*/</span></span><br><span class="line"><span class="function">Status <span class="title">InitList</span><span class="params">(StaticLinkList space)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; MAXSIZE - <span class="number">1</span>; i++)<span class="comment">/*为链表所有元素cur赋值，将其中各个分量链成一备用链表*/</span></span><br><span class="line">        space[i] = i + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    space[MAXSIZE - <span class="number">1</span>].cur = <span class="number">0</span>;	<span class="comment">/*目前链表为空，最后一个元素的cur为0*/</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png"
                       alt="静态链表基本结构示意图"
                 ></p>
-<h1 id="静态链表的插入操作">静态链表的插入操作</h1>
-<p>链表的<strong>插入/删除</strong>操作都需要调用存储空间的<strong>申请/释放</strong>函数。标准定义的malloc，free函数直接调用就可自动申请或释放空间。对于<strong>通过数组</strong>实现链表功能的<strong>静态链表</strong>实现插入/删除操作<strong>首先要解决的问题</strong>：如何用<strong>静态模拟动态链表对存储空间的分配/管理(申请/释放)</strong>。需要时申请、无用时释放。</p>
-<h2 id="Malloc-SSL">Malloc_SSL</h2>
-<ul>
-<li>
-<p>因此静态链表需要<strong>自己实现</strong>单链表的malloc函数功能。</p>
+<h1 id="静态链表的插入操作"><a href="#静态链表的插入操作" class="headerlink" title="静态链表的插入操作"></a>静态链表的插入操作</h1><p>链表的<strong>插入/删除</strong>操作都需要调用存储空间的<strong>申请/释放</strong>函数。标准定义的malloc，free函数直接调用就可自动申请或释放空间。对于<strong>通过数组</strong>实现链表功能的<strong>静态链表</strong>实现插入/删除操作<strong>首先要解决的问题</strong>：如何用**静态模拟动态链表对存储空间的分配/管理(申请/释放)**。需要时申请、无用时释放。</p>
+<h2 id="Malloc-SSL"><a href="#Malloc-SSL" class="headerlink" title="Malloc_SSL"></a>Malloc_SSL</h2><ul>
+<li><p>因此静态链表需要<strong>自己实现</strong>单链表的malloc函数功能。</p>
 </li>
-<li>
-<p><strong>功能描述</strong>：若备用空间链表非空，则返回可分配的结点下标(类似向内存申请空间，返回地址值)，否则返回0。</p>
+<li><p><strong>功能描述</strong>：若备用空间链表非空，则返回可分配的结点下标(类似向内存申请空间，返回地址值)，否则返回0。</p>
 </li>
-<li>
-<p><strong>实现思路</strong>：</p>
+<li><p><strong>实现思路</strong>：</p>
 <ol>
-<li>
-<p>静态链表设计本身然下标为0的元素<strong>存放备用链表的下标</strong>，所以直接返回下标0的cur即可。</p>
+<li><p>静态链表设计本身然下标为0的元素<strong>存放备用链表的下标</strong>，所以直接返回下标0的cur即可。</p>
 </li>
-<li>
-<p>同时，需要把<strong>即将返回</strong>的备用链表的<strong>cur</strong>值重新填充到下标为0的cur，<strong>为下次分配使用</strong>。</p>
+<li><p>同时，需要把<strong>即将返回</strong>的备用链表的<strong>cur</strong>值重新填充到下标为0的cur，<strong>为下次分配使用</strong>。</p>
 </li>
 </ol>
 </li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*若备用空间链表非空，则返回可分配的结点下标，否则返回0*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Malloc_SSL</span><span class="params">(StaticLinkList space)</span> </span>&#123; </span><br><span class="line">	<span class="keyword">int</span> i = space[<span class="number">0</span>].cur;           		<span class="comment">/* 当前数组第一个元素的cur存的值 */</span></span><br><span class="line">	                                		<span class="comment">/* 就是要返回的第一个备用空闲的下标 */</span></span><br><span class="line">	<span class="keyword">if</span> (space[<span class="number">0</span>]. cur)         </span><br><span class="line">	    space[<span class="number">0</span>]. cur = space[i].cur;       <span class="comment">/* 由于要拿出一个分量来使用了， */</span></span><br><span class="line">	                                        <span class="comment">/* 所以我们就得把它的下一个 */</span></span><br><span class="line">	                                        <span class="comment">/* 分量用来做备用 */</span></span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="ListInsert">ListInsert</h2>
-<p>思路：</p>
+
+
+
+<h2 id="ListInsert"><a href="#ListInsert" class="headerlink" title="ListInsert"></a>ListInsert</h2><p>思路：</p>
 <ol>
 <li>基本插入错误过滤</li>
 <li>获取空闲分量下标</li>
@@ -264,17 +255,21 @@
 <li>头插法</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function">Status <span class="title">ListInsert</span><span class="params">(StaticLinkList L, <span class="keyword">int</span> i, ElemType e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (i &lt; <span class="number">1</span> || i &gt; ListLength(L) + <span class="number">1</span>)	<span class="comment">//若链表已满</span></span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">int</span> j = Malloc_SLL(L);	<span class="comment">//获得空闲分量的下标</span></span><br><span class="line">	<span class="keyword">if</span> (j) &#123;</span><br><span class="line">		L[j].data = e;<span class="comment">//将数据赋值给此分量的data</span></span><br><span class="line">							</span><br><span class="line">		<span class="keyword">int</span> k = MAXSIZE <span class="number">-1</span>,l; <span class="comment">//找到插入位置的前继元素，(计数器+while+工作指针后移)</span></span><br><span class="line">            				 <span class="comment">//静态链表的头结点在尾部			</span></span><br><span class="line">		<span class="keyword">for</span> (l = <span class="number">1</span>; l &lt;= i - <span class="number">1</span>; l++)</span><br><span class="line">			k = L[k].cur;</span><br><span class="line">        </span><br><span class="line">		L[j].cur = L[k].cur;<span class="comment">//改变游标指向(头插法)</span></span><br><span class="line">		L[k].cur = j;       <span class="comment">//先把前继节点的后继游标传给新节点的后继游标                                               </span></span><br><span class="line">        </span><br><span class="line">		<span class="keyword">return</span> OK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ERROR;	<span class="comment">//若获取分量失败则返回错误</span></span><br><span class="line">	   	  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>注意：</p>
 <ul>
 <li>获取头结点下标：<code>int k = MAXSIZE -1</code></li>
 </ul>
-<h2 id="Free-SSL">Free_SSL</h2>
-<p>同样，静态链表实现删除操作也要先实现free函数</p>
+<h2 id="Free-SSL"><a href="#Free-SSL" class="headerlink" title="Free_SSL"></a>Free_SSL</h2><p>同样，静态链表实现删除操作也要先实现free函数</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*将下标为k的空闲结点回收到备用链表*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Free_SSL</span><span class="params">(StaticLinkList space, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	space[k].cur = space[<span class="number">0</span>].cur;	<span class="comment">//让即将要删除的位置成为第一个优先的空位</span></span><br><span class="line">	space[<span class="number">0</span>].cur = k;	<span class="comment">//即删除节点与备用链表交换两个参数</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="ListDelete">ListDelete</h2>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function">Status <span class="title">ListDelete</span><span class="params">(StaticLinkList L, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (i &lt; <span class="number">1</span> || i &gt; ListLength(L))<span class="comment">//删除索引过滤</span></span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> k = MAXSIZE - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> l;</span><br><span class="line">	<span class="keyword">for</span> (l = <span class="number">1</span>; l &lt;= i <span class="number">-1</span>; l++)	<span class="comment">//定位前继节点</span></span><br><span class="line">		k = L[k].cur;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> d = L[k].cur;<span class="comment">//创建临时变量存储欲删除cur</span></span><br><span class="line">	L[k].cur = L[d].cur;</span><br><span class="line">	Free_SSL(L,d);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="小结">小结</h1>
-<p>静态链表其实为了给没有指针的高级语言设计的一种实现单链表能力的方法。特性与单链表类似，尽管以后这种方法不一定用上，但这样的思考方式是非常巧妙的。</p>
+
+
+
+<h2 id="ListDelete"><a href="#ListDelete" class="headerlink" title="ListDelete"></a>ListDelete</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function">Status <span class="title">ListDelete</span><span class="params">(StaticLinkList L, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (i &lt; <span class="number">1</span> || i &gt; ListLength(L))<span class="comment">//删除索引过滤</span></span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> k = MAXSIZE - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> l;</span><br><span class="line">	<span class="keyword">for</span> (l = <span class="number">1</span>; l &lt;= i <span class="number">-1</span>; l++)	<span class="comment">//定位前继节点</span></span><br><span class="line">		k = L[k].cur;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> d = L[k].cur;<span class="comment">//创建临时变量存储欲删除cur</span></span><br><span class="line">	L[k].cur = L[d].cur;</span><br><span class="line">	Free_SSL(L,d);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>静态链表其实为了给没有指针的高级语言设计的一种实现单链表能力的方法。特性与单链表类似，尽管以后这种方法不一定用上，但这样的思考方式是非常巧妙的。</p>
 
         </div>
 
