@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="yhd">
+    
+    <title>
+        
+            数据结构 第五章 串 |
+        
+        MyBlog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                MyBlog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">数据结构 第五章 串</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">yhd</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-09-25 17:12:32
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/">技术积累</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <ul>
+<li><strong>读物</strong>：<a class="link"   target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/" >《大话数据结构》<i class="fas fa-external-link-alt"></i></a></li>
+<li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
+</ul>
+<h1 id="大纲">大纲</h1>
+<h1 id="串的定义">串的定义</h1>
+<p><strong>串(String)：</strong>是由<strong>零个或多个字符</strong>组成的<strong>有限</strong>序列，又名叫<strong>字符串</strong>。</p>
+<ul>
+<li>记为：<strong>s = “a<sub>1</sub>a<sub>2</sub>a<sub>3</sub>…a<sub>n</sub>(n ≥0)”</strong></li>
+<li>串中的<strong>字符数目n</strong>称为<strong>串的长度</strong></li>
+<li><strong>零</strong>个字符串称为<strong>空串</strong>(null string)即，“<strong> ‘’&quot; </strong>”</li>
+<li><strong>序列</strong>即相邻字符之间存在<strong>前驱后继</strong>关系</li>
+<li><strong>主串与子串</strong>：串中<strong>任意个数</strong>的<strong>连续</strong>字符组成的<strong>子序列</strong>称为该串(<strong>主串</strong>)的子串</li>
+</ul>
+<h1 id="串的比较">串的比较</h1>
+<h2 id="常用字符标准编码">常用字符标准编码</h2>
+<ul>
+<li><strong>标准ASCII编码</strong>：用<strong>7位</strong>二进制数表示<strong>128个字符</strong> (可表示英语为主的语言)</li>
+<li><strong>扩展ASCII编码</strong>：用<strong>8位</strong>二进制数表示<strong>256个字符</strong> (可表示英语为主的语言和<strong>特殊字符</strong>)</li>
+<li><strong>Unicode编码</strong>：用<strong>16位</strong>二进制表示<strong>2<sup>16</sup>个字符，约6.5万多个字符</strong>(足以表示<strong>全世界成百上千种语言和文字</strong>)</li>
+</ul>
+<h2 id="比较原则">比较原则</h2>
+<p>字符串的比较在计算机中取决于<strong>挨个字母</strong>的<strong>前后顺序</strong>，<strong>靠后</strong>的字母比<strong>靠前</strong>的字母要大。如“silly” &lt; “stupid”</p>
+<p>存在字符串 s 与 t，若 s &gt; t，则存在如下两种情况：</p>
+<ol>
+<li>情况1：“<strong>单纯地多出字母</strong>(包含关系)，则多出字母的字符常大”。如：“happy” &gt; “hap”，单纯多出“py”</li>
+<li>情况2：“无包含关系，则<strong>挨个字母比较顺序</strong>，靠后比靠前大”。如：“happy” &gt; “happen”，匹配到第5个字母‘y’ &gt; ‘e’</li>
+</ol>
+<p>小结：</p>
+<ul>
+<li>等长：挨个字母前后顺序比较</li>
+<li>不等长
+<ul>
+<li>完全包含关系，多字母为大，happy &gt; hap</li>
+<li>非包含完全包含关系，挨个字母比较，happy &gt; happen</li>
+</ul>
+</li>
+</ul>
+<h1 id="串的抽象数据类型">串的抽象数据类型</h1>
+<p>“串”从<strong>逻辑结构</strong>上和线性表很相似，但<strong>基本操作</strong>，串<strong>更倾向于查找子串位置，替换子串等</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ADT 串(<span class="built_in">string</span>)</span><br><span class="line">Data</span><br><span class="line">    串中元素仅由一个字符组成，相邻元素具有前驱和后继关系。</span><br><span class="line">Operation</span><br><span class="line">    StrAssign(T, *chars):        生成一个其值等于字符串常量chars的串T。</span><br><span class="line">    StrCopy(T, S):               串S存在，由串S复制得串T。</span><br><span class="line">    ClearString(S):              串S存在，将串清空。</span><br><span class="line">    StringEmpty(S):              若串S为空，返回<span class="literal">true</span>，否则返回<span class="literal">false</span>。</span><br><span class="line">    StrLength(S):                返回串S的元素个数，即串的长度。</span><br><span class="line">    StrCompare(S, T):            若S&gt;T，返回值&gt;<span class="number">0</span>，若S=T，返回<span class="number">0</span>，若S&lt;T，返回值&lt;<span class="number">0</span>。</span><br><span class="line">    Concat(T, S1, S2):           用T返回由S1和S2联接而成的新串。</span><br><span class="line">    SubString(Sub, S, pos, len): 串S存在，<span class="number">1</span>≤pos≤StrLength(S)，</span><br><span class="line">                                 且<span class="number">0</span>≤len≤StrLength(S)-pos+<span class="number">1</span>，用Sub返</span><br><span class="line">                                 回串S的第pos个字符起长度为len的子串。</span><br><span class="line">    Index(S, T, pos):            串S和T存在，T是非空串，<span class="number">1</span>≤pos≤StrLength(S)。</span><br><span class="line">                                 若主串S中存在和串T值相同的子串，则返回它在主串S中</span><br><span class="line">                                 第pos个字符之后第一次出现的位置，否则返回<span class="number">0</span>。</span><br><span class="line">    Replace(S, T, V):            串S、T和V存在，T是非空串。用V替换主串S中出现的所有</span><br><span class="line">                                 与T相等的不重叠的子串。</span><br><span class="line">    StrInsert(S, pos, T):        串S和T存在，<span class="number">1</span>≤pos≤StrLength(S)+<span class="number">1</span>。</span><br><span class="line">                                 在串S的第pos个字符之前插入串T。</span><br><span class="line">    StrDelete(S, pos, len):      串S存在，<span class="number">1</span>≤pos≤StrLength(S)-len+<span class="number">1</span>。</span><br><span class="line">                                 从串S中删除第pos个字符起长度为len的子串。</span><br><span class="line">endADT</span><br></pre></td></tr></table></figure>
+<h1 id="串的存储结构">串的存储结构</h1>
+<h2 id="串的顺序存储结构">串的顺序存储结构</h2>
+<ul>
+<li>串的顺序存储结构一般用<strong>定长数组</strong>来定义</li>
+<li>一般将<strong>串的长度值</strong>保存数组下标<strong>0</strong>处，有的也可存储在<strong>最后一个下标位置</strong>，或在串值后添加<strong>结束标记字符</strong>如“\0”(数据结构面向人，一般与日常数数顺序为主)</li>
+<li>串的操作常使得，串值存储空间需要<strong>动态变化</strong>。一般通过<strong>自由存储区</strong>——<strong>堆</strong>和相关<strong>操作函数</strong>(malloc/free)<strong>动态分配空间</strong></li>
+</ul>
+<h2 id="串的链式存储结构">串的链式存储结构</h2>
+<p>串的链式存储结构因为用<strong>结点存储字符序列会浪费大量的空间</strong>，<strong>除连接串与串操作有一定方便外(只是方便/不是高效)</strong>，总的来说，<strong>不如顺序存储灵活，性能也不如顺序存储结构好</strong></p>
+<h1 id="BF算法">BF算法</h1>
+<p>BF算法，也叫朴素的模式匹配算法</p>
+<p><strong>串的模式匹配</strong>：即<strong>子串在主串中的定位操作</strong>，如S=“goodgoogle”，找到T=&quot;google&quot;这个子串的位置</p>
+<h2 id="匹配思路：">匹配思路：</h2>
+<ol>
+<li>用子串从主串的第一位开始<strong>逐一字符匹配</strong></li>
+<li>若子串中任意一个字符匹配失败，则整个子串从上一次主串<strong>开始匹配的位置</strong>的下一个位置开始匹配</li>
+<li>以此循环，直至存在子串的每一个字符均被匹配正确的情况</li>
+</ol>
+<p><strong>匹配思路图示如下</strong>：如S=“goodgoogle”，找到T=&quot;google&quot;这个子串的位置</p>
+<p><strong>tips</strong>：“|”竖线表示匹配成功，“⚡”表示匹配失败</p>
+<ol>
+<li><strong>第一步</strong></li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D01.jpg"
+                      alt="模式匹配"
+                ></p>
+<ol start="2">
+<li><strong>第二步</strong></li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D02.jpg"
+                      alt="模式匹配"
+                ></p>
+<p>​	3. <strong>第三步</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D03.jpg"
+                      alt=""
+                ></p>
+<ol start="4">
+<li><strong>第四步</strong></li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D04.jpg"
+                      alt=""
+                ></p>
+<ol start="5">
+<li><strong>第五步</strong></li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D05.jpg"
+                      alt=""
+                ></p>
+<h2 id="代码案例">代码案例</h2>
+<p>思路：</p>
+<ol>
+<li>位置变量pos合法过滤</li>
+<li>设置主串与子串循环开始索引(下标0表串长度，下标1是第一个字符</li>
+<li>匹配循环结构结束条件(||关系，&amp;&amp;表达)：S[0],T[0]表示串长度，子串提前匹配成功，或主串全部被匹配完。则结束循环</li>
+<li>若字符匹配成功，则主串与子串索引分别+1，否则主串匹配索引回退，子串索引初始化</li>
+<li>若匹配成功(子串被全部匹配)，则计算位置并返回，否则返回错误提示</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 返回子串T在主串S中第pos个字符之后的位置。若不存在，则函数返回值为0。*/</span></span><br><span class="line"><span class="comment">/*  T非空，1≤ pos ≤ StrLength(S)。*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index</span><span class="params">(String S,String T,<span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">    <span class="comment">//位置变量pos合法过滤</span></span><br><span class="line">    <span class="keyword">if</span> (pos &lt; <span class="number">1</span> || pos &gt; StrLength(S))</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置主串与子串循环开始索引</span></span><br><span class="line">    <span class="keyword">int</span> i = pos;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">1</span>;<span class="comment">//下标0用于存储字符串长度，下标1即是第一个字符的数组下标</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//匹配循环结构结束条件：S[0],T[0]表示串长度，子串提前匹配成功，或主串全部被匹配完。则结束循环</span></span><br><span class="line">    <span class="comment">//因，匹配次数 = 字符串长度 = (j - 1)，所以 等于“=”时也需执行</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt;= T[<span class="number">0</span>] &amp;&amp; i &lt;= S[<span class="number">0</span>])&#123;<span class="comment">//&amp;&amp; 在这里表示，有任何一个条件不符合都表示匹配完毕</span></span><br><span class="line">         <span class="comment">//若字符匹配成功，则主串与子串索引分别+1</span></span><br><span class="line">        <span class="keyword">if</span>(S[i] == T[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//若匹配失败，则主串匹配索引回退，子串索引初始化</span></span><br><span class="line">            i - j + <span class="number">2</span>;	<span class="comment">//i - (j - 1) + 1 </span></span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//若匹配成功(子串被全部匹配)，则计算位置并返回。</span></span><br><span class="line">    <span class="comment">//因，匹配次数 = 字符串长度 = (j - 1)，所以若全部匹配，j一定大于字符串长度</span></span><br><span class="line">    <span class="keyword">if</span>(j &gt; T[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span> i - T[<span class="number">0</span>];<span class="comment">//从起点减去匹配过的次数(增过的量) == 子串长度</span></span><br><span class="line">    	</span><br><span class="line">     <span class="comment">//若匹配失败，则返回错误提示</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> ERROR;								</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>因为当前教材是把字符串<strong>长度</strong>记录在数组<strong>下标0处</strong>，所以第一个字符的数组下标就是<strong>1</strong>。因此未开始匹配字符时，子串匹配索引 j 的初始值就是1，而<strong>匹配成功1次后</strong>，j++才变成<strong>2</strong>。即它们之间的关系是，<strong>匹配次数 = (j - 1) = 字符长度</strong></p>
+</li>
+<li>
+<p><strong>主串索引回退代码分析</strong>(<code>i - j + 2</code>)：匹配成功一次，才会造成一次主串(子串)索引的自增，所以<strong>匹配次数==主串增加量</strong>，由上可知，匹配次数 == j -1，所以主串<strong>回退到原位</strong>因为，<strong>i - (j - 1)</strong>，而需要进入下一轮匹配则还需要回退原位后 + 1，则：</p>
+<p>回退上一次匹配位置下位代码未：<strong>i - ( j - 1 ) + 1 == i - j +2</strong></p>
+</li>
+</ul>
+<h2 id="优化理解版">优化理解版</h2>
+<p>《数据结构》从概念到C++的实现，王红梅。P104，通过增加空间复杂度O(1)，引入start变量单独存放子串匹配位置</p>
+<h1 id="KMP模式匹配算法">KMP模式匹配算法</h1>
+<h2 id="KMP匹配算法原理">KMP匹配算法原理</h2>
+<p>KMP算法核心可总结为两句话：“<strong>因为不同所以不同，跳过不同。因为相同所以相同，跳过相同</strong>！”</p>
+<ol>
+<li>
+<p>“<strong>因为不同所以不同，跳过不同</strong>”：若存在子串字符互不相同部分，当出现主串字符匹配不了时，则无需BF完全回溯，因为BF回溯后的下一个主子串匹配肯定也是不同的。因此我们应让下次匹配<strong>跳到子串首字符(除首字符位置)下一次出现的位置。</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp%E4%BC%98%E5%8C%961.jpg"
+                      alt="kmp"
+                ></p>
+</li>
+<li>
+<p>“<strong>因为相同所以相同，跳过相同</strong>”：当子串与主串出现不匹配时，靠近不匹配处的若干字符在字符前缀部分出现过，则不应该仅跳到重复字符(下一次出现位置)的首字符，而是跳过包括这一段相同部分。，即应该跳到(新的匹配位置)于后缀部分相同的前缀部分的下一个位置。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp%E4%BC%98%E5%8C%962.jpg"
+                      alt="KMP"
+                ></p>
+<p>此时，next数组的含义就是记录若当前字符出现不匹配，则需下次开始匹配的位置——重复部分的下一个位置的下标</p>
+<p>快速</p>
+</li>
+</ol>
+<h2 id="next数组">next数组</h2>
+<h3 id="next数组含义">next数组含义</h3>
+<p>k = 子串下标 = 前缀长度</p>
+<h3 id="next数组的计算">next数组的计算</h3>
+<h3 id="next-数组代码实现">next 数组代码实现</h3>
+<h1 id="KMP模式匹配算法改进">KMP模式匹配算法改进</h1>
+<p>记住，一切能用数学公式或字母来形式化的东西，都是为了辅助我们更好的表述，它是无二义的，请不要害怕它。</p>
+<p>我们不一定从数学公式中直接理解</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：数据结构 第五章 串</li>
+        <li>Post author：yhd</li>
+        <li>Create time：2020-09-25 17:12:32</li>
+        <li>
+            Post link：https://keep.xpoet.cn/2020/09/25/数据结构 第五章 串/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/09/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">冒泡排序</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/09/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E9%98%9F%E5%88%97/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">数据结构 第四章 队列</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">yhd</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">大纲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">串的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">3.</span> <span class="nav-text">串的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E6%A0%87%E5%87%86%E7%BC%96%E7%A0%81"><span class="nav-number">3.1.</span> <span class="nav-text">常用字符标准编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E5%8E%9F%E5%88%99"><span class="nav-number">3.2.</span> <span class="nav-text">比较原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">串的抽象数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">串的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">5.1.</span> <span class="nav-text">串的顺序存储结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">5.2.</span> <span class="nav-text">串的链式存储结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BF%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">BF算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-number">6.1.</span> <span class="nav-text">匹配思路：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B"><span class="nav-number">6.2.</span> <span class="nav-text">代码案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E7%90%86%E8%A7%A3%E7%89%88"><span class="nav-number">6.3.</span> <span class="nav-text">优化理解版</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KMP%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">KMP模式匹配算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="nav-number">7.1.</span> <span class="nav-text">KMP匹配算法原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84"><span class="nav-number">7.2.</span> <span class="nav-text">next数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E5%90%AB%E4%B9%89"><span class="nav-number">7.2.1.</span> <span class="nav-text">next数组含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">7.2.2.</span> <span class="nav-text">next数组的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next-%E6%95%B0%E7%BB%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.2.3.</span> <span class="nav-text">next 数组代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KMP%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E6%94%B9%E8%BF%9B"><span class="nav-number">8.</span> <span class="nav-text">KMP模式匹配算法改进</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
