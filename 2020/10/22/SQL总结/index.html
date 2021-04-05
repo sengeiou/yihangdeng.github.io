@@ -190,106 +190,88 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><p><strong>创建数据库</strong></p>
+            <h1 id="数据库操作">数据库操作</h1>
+<p><strong>创建数据库</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">schema</span> &lt;数据库名&gt; authorization &lt;用户名&gt; [内嵌定义];</span><br><span class="line">[内嵌定义] ：[&lt;表创建子句&gt;|&lt;视图创建子句&gt;|&lt;授权定义子句&gt;]</span><br></pre></td></tr></table></figure>
-
-
-
 <p><strong>删除数据库</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">schema</span> &lt;数据库名&gt; &lt;<span class="keyword">cascade</span>|restrict&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="数据表操作"><a href="#数据表操作" class="headerlink" title="数据表操作"></a>数据表操作</h1><p>创建表</p>
+<h1 id="数据表操作">数据表操作</h1>
+<p>创建表</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> &lt;表名&gt;(&lt;字段定义&gt;);</span><br><span class="line">&lt;字段定义&gt;：(</span><br><span class="line">	&lt;列名&gt;&lt;数据类型&gt;[列级完整性约束]</span><br><span class="line">	[, &lt;列名&gt;&lt;数据类型&gt;[列级完整性约束] ]</span><br><span class="line">	…</span><br><span class="line">	[, &lt;表级完整性约束&gt;]</span><br><span class="line">   )</span><br></pre></td></tr></table></figure>
-
-
-
 <p>修改表</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span>&lt;表名&gt;</span><br><span class="line">	[<span class="keyword">add</span>[<span class="keyword">column</span>] &lt;新列名&gt;&lt;数据类型&gt;[列级完整性约束] ]  </span><br><span class="line">	[<span class="keyword">add</span> &lt;表级完整性约束&gt;] <span class="comment">/*ADD **UNIQUE(Name)** */</span></span><br><span class="line">	</span><br><span class="line">	[<span class="keyword">drop</span> [<span class="keyword">column</span>] &lt;列名&gt;[<span class="keyword">cascade</span>|restrict] ]              </span><br><span class="line">	[<span class="keyword">drop</span> <span class="keyword">constraint</span> &lt;完整性约束**名**&gt;[<span class="keyword">cascade</span>|restrict]]       </span><br><span class="line"></span><br><span class="line">	[<span class="keyword">alter</span> <span class="keyword">column</span> &lt;已存在列名&gt;&lt;新数据类型&gt;]       </span><br></pre></td></tr></table></figure>
-
 <p>删除表</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> &lt;表名&gt;[restrict|<span class="keyword">cascade</span>];</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="DQL语言"><a href="#DQL语言" class="headerlink" title="DQL语言"></a>DQL语言</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [<span class="keyword">all</span>|<span class="keyword">distinct</span>]&lt;目标列表达式&gt; [,&lt;目标列表达式&gt;]…</span><br><span class="line"><span class="keyword">from</span> &lt;表/视图名&gt;[,&lt;表/视图名&gt;…]</span><br><span class="line">[<span class="keyword">where</span> &lt;条件表达式&gt;]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> &lt;列名<span class="number">1</span>&gt; [<span class="keyword">having</span>&lt;条件表达式&gt;]]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> &lt;列名<span class="number">2</span>&gt; [<span class="keyword">asc</span>|<span class="keyword">desc</span>]];</span><br></pre></td></tr></table></figure>
-
+<h1 id="DQL语言">DQL语言</h1>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [<span class="keyword">all</span>|<span class="keyword">distinct</span>]&lt;目标列表达式&gt; [,&lt;目标列表达式&gt;]…</span><br><span class="line"><span class="keyword">from</span> &lt;表/视图名&gt;[,&lt;表/视图名&gt;…]</span><br><span class="line">[<span class="keyword">where</span> &lt;条件表达式&gt;]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> &lt;列名<span class="number">1</span>&gt; [<span class="keyword">having</span>&lt;条件表达式&gt;]]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> &lt;列名<span class="number">2</span>&gt; [<span class="keyword">asc</span>|<span class="keyword">desc</span>]];</span><br></pre></td></tr></table></figure>
 <ul>
 <li>&lt;目标列表达式&gt;：控制取某字段、字段别名、’常量列’、运算式、调用函数</li>
 <li>调用函数：count(*)、sum、avg、max、min。均可选择count( [distinct | all] &lt;列名&gt;)</li>
-<li>&lt;条件表达式&gt;：<ol>
+<li>&lt;条件表达式&gt;：
+<ol>
 <li>=，&gt;，&lt;，&gt;=，&lt;=，!=，&lt;&gt;，!&gt;，!&lt; ; NOT + 上述比较运算符</li>
-<li><strong>范围：</strong>between and、not between and： <code>&lt;字段名&gt;between &lt;值1&gt;and&lt;值2&gt;</code>;</li>
-<li><strong>集合：</strong>in，not in ：<code>&lt;字段名&gt; in (&lt;数据集合|子查询&gt;);</code></li>
-<li><strong>字符匹配：</strong>like、not like ：<code>&lt;字段名&gt; like ‘&lt;匹配串&gt;’; [ESCAPE ‘&lt;换转义符字符&gt;’]</code></li>
-<li><strong>空值：</strong>is null、is not null ：<code>&lt;字段名&gt;is null;</code></li>
-<li><strong>条件：</strong>and、or、not：<code>&lt;条件表达式&gt; AND &lt;条件表达式&gt;;</code></li>
+<li>**范围：**between and、not between and： <code>&lt;字段名&gt;between &lt;值1&gt;and&lt;值2&gt;</code>;</li>
+<li>**集合：**in，not in ：<code>&lt;字段名&gt; in (&lt;数据集合|子查询&gt;);</code></li>
+<li>**字符匹配：**like、not like ：<code>&lt;字段名&gt; like ‘&lt;匹配串&gt;’; [ESCAPE ‘&lt;换转义符字符&gt;’]</code></li>
+<li>**空值：**is null、is not null ：<code>&lt;字段名&gt;is null;</code></li>
+<li>**条件：**and、or、not：<code>&lt;条件表达式&gt; AND &lt;条件表达式&gt;;</code></li>
 </ol>
 </li>
 </ul>
-<h1 id="DL高级查询"><a href="#DL高级查询" class="headerlink" title="DL高级查询"></a>DL高级查询</h1><p>DQL高级查询：子查询、连接查询、集合查询</p>
-<h2 id="子查询-嵌套查询"><a href="#子查询-嵌套查询" class="headerlink" title="子查询(嵌套查询)"></a>子查询(嵌套查询)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>…<span class="keyword">from</span>…<span class="keyword">where</span> &lt;字段&gt;&lt;子查询谓词&gt;(&lt;查询块&gt;)</span><br><span class="line">&lt;查询块&gt;：<span class="keyword">select</span>…<span class="keyword">from</span>…<span class="keyword">where</span></span><br></pre></td></tr></table></figure>
-
+<h1 id="DL高级查询">DL高级查询</h1>
+<p>DQL高级查询：子查询、连接查询、集合查询</p>
+<h2 id="子查询-嵌套查询">子查询(嵌套查询)</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>…<span class="keyword">from</span>…<span class="keyword">where</span> &lt;字段&gt;&lt;子查询谓词&gt;(&lt;查询块&gt;)</span><br><span class="line">&lt;查询块&gt;：<span class="keyword">select</span>…<span class="keyword">from</span>…<span class="keyword">where</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>&lt;子查询谓词&gt;：in、比较运算符、比较运算符+any/some,all、exists</li>
 <li>any，&lt;all等…，(any：某个值、all：所有值)</li>
 <li>exists：不返回任何数据，只产生逻辑真假“true/false”</li>
 </ul>
-<h2 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h2><ul>
+<h2 id="连接查询">连接查询</h2>
+<ul>
 <li>连接查询：等值、非等值、自连接、外连接(左外右外)</li>
 <li>连接查询：<strong>from 多表 + 表名点取字段 + 别名设计 + 连接谓词</strong></li>
 </ul>
-<h3 id="等值连接"><a href="#等值连接" class="headerlink" title="等值连接"></a>等值连接</h3><p>等值连接查询：连接条件/谓词使用 “=” 符号</p>
+<h3 id="等值连接">等值连接</h3>
+<p>等值连接查询：连接条件/谓词使用 “=” 符号</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from &lt;表1&gt;[,表2]…</span><br><span class="line">where &lt;表1&gt;.&lt;字段&gt; = &lt;表2&gt;.&lt;字段&gt;…</span><br></pre></td></tr></table></figure>
-
-<h3 id="非等值连接查询"><a href="#非等值连接查询" class="headerlink" title="非等值连接查询"></a>非等值连接查询</h3><p>非等值连接查询：连接条件/谓词不是使用 “=” 符号</p>
-<h3 id="自身连接查询"><a href="#自身连接查询" class="headerlink" title="自身连接查询"></a>自身连接查询</h3><p>自身连接查询：同一个表设置不同的别名</p>
+<h3 id="非等值连接查询">非等值连接查询</h3>
+<p>非等值连接查询：连接条件/谓词不是使用 “=” 符号</p>
+<h3 id="自身连接查询">自身连接查询</h3>
+<p>自身连接查询：同一个表设置不同的别名</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>&lt;别名<span class="number">1</span>&gt;.&lt;字段<span class="number">1</span>&gt;,&lt;别名<span class="number">2</span>&gt;.&lt;字段<span class="number">2</span>&gt;</span><br><span class="line"><span class="keyword">from</span>&lt;表名<span class="number">1</span>&gt;.&lt;别名<span class="number">1</span>&gt;,&lt;表名<span class="number">2</span>&gt;.&lt;别名<span class="number">2</span>&gt;</span><br><span class="line"><span class="keyword">where</span> &lt;别名<span class="number">1</span>&gt;.&lt;字段<span class="number">2</span>&gt;=&lt;别名<span class="number">2</span>&gt;.&lt;字段<span class="number">1</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="外连接查询"><a href="#外连接查询" class="headerlink" title="外连接查询"></a>外连接查询</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from &lt;表1&gt; left outer join &lt;表2&gt; on(&lt;连接条件&gt;) /*左外(保留左表数据)*/</span><br><span class="line">from &lt;表1&gt; right outer join &lt;表2&gt; on(&lt;连接条件&gt;) /* 右外(保留右表数据) */</span><br></pre></td></tr></table></figure>
-
-<h2 id="集合查询"><a href="#集合查询" class="headerlink" title="集合查询"></a>集合查询</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;查询块集合1&gt; &lt;集合查询谓词&gt; &lt;查询块集合2&gt;</span><br><span class="line">&lt;集合查询谓词&gt;：交操作intersect，并操作union，差(集)操作except</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="DML语言："><a href="#DML语言：" class="headerlink" title="DML语言："></a>DML语言：</h1><p>​    插入</p>
+<h3 id="外连接查询">外连接查询</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from &lt;表1&gt; left outer join &lt;表2&gt; on(&lt;连接条件&gt;) /*左外(保留左表数据)*/</span><br><span class="line">from &lt;表1&gt; right outer join &lt;表2&gt; on(&lt;连接条件&gt;) /* 右外(保留右表数据) */</span><br></pre></td></tr></table></figure>
+<h2 id="集合查询">集合查询</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;查询块集合1&gt; &lt;集合查询谓词&gt; &lt;查询块集合2&gt;</span><br><span class="line">&lt;集合查询谓词&gt;：交操作intersect，并操作union，差(集)操作except</span><br></pre></td></tr></table></figure>
+<h1 id="DML语言：">DML语言：</h1>
+<p>​    插入</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>&lt;表名&gt;[(&lt;属性列<span class="number">1</span>[,属性列<span class="number">2</span>]&gt;…)] <span class="keyword">values</span>(&lt;常量<span class="number">1</span>&gt;[,&lt;常量<span class="number">2</span>&gt;…);</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li><p>若不写字段，则必须按序写完value参数</p>
-</li>
-<li><p>插入多条语句values(),(),()…</p>
-</li>
-<li><p>允许空的字段，value值可用null占位 </p>
-</li>
-<li><p>若填写了属性列表，则value部分必须一一对应(数量上，类型上)。且属性列表<strong>不一定按序</strong>，可自动识别字段名，但数据要和字段名对应。</p>
-<p>子查询插入</p>
-</li>
+<li>若不写字段，则必须按序写完value参数</li>
+<li>插入多条语句values(),(),()…</li>
+<li>允许空的字段，value值可用null占位</li>
+<li>若填写了属性列表，则value部分必须一一对应(数量上，类型上)。且属性列表<strong>不一定按序</strong>，可自动识别字段名，但数据要和字段名对应。</li>
 </ul>
+<p>子查询插入</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> &lt;表名&gt;[(&lt;属性列<span class="number">1</span>[,属性列<span class="number">2</span>]&gt;…)] &lt;子查询&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>通过子查询的形式不用写value，但子查询字段同样需要对应属性列信息</li>
 </ul>
 <p>​    修改</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> &lt;表名&gt; <span class="keyword">set</span> &lt;列名&gt; = &lt;表达式&gt;[,&lt;列名&gt; = &lt;表达式&gt;]</span><br><span class="line">[<span class="keyword">where</span> &lt;条件&gt;]</span><br></pre></td></tr></table></figure>
-
 <p>​    删除</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> &lt;表名&gt; [<span class="keyword">where</span> &lt;条件&gt;]; </span><br></pre></td></tr></table></figure>
-
-<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> &lt;视图名&gt; [(&lt;列名&gt;[,&lt;列名&gt;]…)]</span><br><span class="line"><span class="keyword">as</span> &lt;子查询&gt;</span><br><span class="line">[<span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<p>​    </p>
-<pre><code># 数据库安全性</code></pre>
+<h1 id="视图">视图</h1>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> &lt;视图名&gt; [(&lt;列名&gt;[,&lt;列名&gt;]…)]</span><br><span class="line"><span class="keyword">as</span> &lt;子查询&gt;</span><br><span class="line">[<span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>]</span><br></pre></td></tr></table></figure>
+<p>​</p>
+<pre><code># 数据库安全性
+</code></pre>
 <p>以下均为自主存储控制方法</p>
-<h2 id="授予权限"><a href="#授予权限" class="headerlink" title="授予权限"></a>授予权限</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> &lt;权限/操作类型&gt;[,权限]...</span><br><span class="line"><span class="keyword">on</span> &lt;对象类型&gt; &lt;对象名&gt;[,&lt;对象类型&gt;&lt;对象名&gt;]... <span class="comment">/*一般为： Table &lt;表名&gt;*/</span></span><br><span class="line"><span class="keyword">to</span> &lt;用户&gt;[,&lt;用户&gt;]...	<span class="comment">/*注意：授予权限给用户前需存在这个用户(新建或原本存在)*/</span></span><br><span class="line">[<span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span>]</span><br></pre></td></tr></table></figure>
-
+<h2 id="授予权限">授予权限</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> &lt;权限/操作类型&gt;[,权限]...</span><br><span class="line"><span class="keyword">on</span> &lt;对象类型&gt; &lt;对象名&gt;[,&lt;对象类型&gt;&lt;对象名&gt;]... <span class="comment">/*一般为： Table &lt;表名&gt;*/</span></span><br><span class="line"><span class="keyword">to</span> &lt;用户&gt;[,&lt;用户&gt;]...	<span class="comment">/*注意：授予权限给用户前需存在这个用户(新建或原本存在)*/</span></span><br><span class="line">[<span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span>]</span><br></pre></td></tr></table></figure>
 <p>example：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*把查询Student表的权限授给用户U1*/</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="keyword">on</span> <span class="keyword">TABLE</span> Student</span><br><span class="line"><span class="keyword">to</span> U1;</span><br></pre></td></tr></table></figure>
-
 <p>&lt;权限/操作类型&gt;：即为用户授予<strong>哪些操作</strong></p>
 <table>
 <thead>
@@ -298,7 +280,8 @@
 <th>具体语句</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>数据库</td>
 <td>create schema</td>
 </tr>
@@ -322,37 +305,40 @@
 <td>属性列</td>
 <td>select，insert，update，references，all privileges</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>&lt;对象类型&gt; &lt;对象名&gt;</strong>：一般最大是表级限制。即  <code>Table &lt;表名&gt;</code></p>
 <p><strong>&lt;用户&gt;</strong>：若不存在指定用户需要先建立用户才能进行对应的授权操作，sql server2008 R2 环境下创建新用户步骤如下：</p>
 <p>创建指定数据库的用户需要与这个用户的登录用户绑定：即<strong>想建立用户，必须先建立这个用户对应的登录用户</strong></p>
 <ol>
-<li><p>创建<strong>新登录用户</strong></p>
+<li>
+<p>创建<strong>新登录用户</strong></p>
 <ol>
 <li>打开sql server，连接数据库后。找到根目录下的“<strong>安全性</strong>”文件夹。</li>
 <li>选中“<strong>登录名</strong>”文件夹并<strong>右键</strong>点击“<strong>新建登录名</strong>”</li>
 <li>设置登录名，并选择“<strong>sql server 身份验证</strong>”，<strong>设置密码</strong>(自己记住)。</li>
-<li>最后把“<strong>强制密码过期(x)**”的勾选</strong>去除**，最后点击右下加确认按钮保存即可</li>
+<li>最后把“<strong>强制密码过期(x)</strong>”的勾选<strong>去除</strong>，最后点击右下加确认按钮保存即可</li>
 </ol>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%96%B0%E5%BB%BA%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E5%90%8D.jpg"
-                     
+                      alt=""
                 ></p>
 </li>
-<li><p>创建<strong>用户</strong></p>
+<li>
+<p>创建<strong>用户</strong></p>
 <ol>
 <li>进入到需创建用户的<strong>数据库</strong>文件夹内，找到<strong>指定数据库目录下的</strong>“<strong>安全性</strong>”文件夹</li>
 <li>此时在选中“<strong>安全性</strong>”文件夹后<strong>右键——&gt;新建——&gt;用户(U)</strong></li>
 <li>输入<strong>用户名</strong>，可自定义(但一般与对应的登录用户名一致)</li>
-<li>点击在“<strong>登录名</strong>”输入栏最右边的“**[…]<strong>”按钮，展开后右边点击“</strong>浏览<strong>”，勾选刚刚建立的</strong>新登录用户名**，最后点击左下角确认按钮保存即可。</li>
+<li>点击在“<strong>登录名</strong>”输入栏最右边的“<strong>[…]</strong>”按钮，展开后右边点击“<strong>浏览</strong>”，勾选刚刚建立的<strong>新登录用户名</strong>，最后点击左下角确认按钮保存即可。</li>
 </ol>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%96%B0%E5%BB%BA%E7%94%A8%E6%88%B7.jpg"
-                     
+                      alt=""
                 ></p>
 </li>
 </ol>
@@ -362,7 +348,9 @@
 <li>有别于教材，当前环境添加&lt;对象类型&gt;即table关键字会报错</li>
 <li>当前环境grant语句一次性只允许向一个表授权，可同时向多个用户授权</li>
 </ul>
-<h2 id="收回权限"><a href="#收回权限" class="headerlink" title="收回权限"></a>收回权限</h2><h1 id="数据库完整性"><a href="#数据库完整性" class="headerlink" title="数据库完整性"></a>数据库完整性</h1><p>数据库完整性指：数据的<strong>正确性</strong>与<strong>相容性</strong></p>
+<h2 id="收回权限">收回权限</h2>
+<h1 id="数据库完整性">数据库完整性</h1>
+<p>数据库完整性指：数据的<strong>正确性</strong>与<strong>相容性</strong></p>
 
         </div>
 
