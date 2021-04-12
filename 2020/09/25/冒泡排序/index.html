@@ -21,7 +21,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
@@ -186,58 +186,50 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="冒泡排序分析">冒泡排序分析</h1>
-<p><img  
+            <h1 id="冒泡排序分析"><a href="#冒泡排序分析" class="headerlink" title="冒泡排序分析"></a>冒泡排序分析</h1><p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E5%8A%A8%E6%80%81%E7%A4%BA%E6%84%8F%E5%9B%BE.gif"
                       alt="冒泡排序"
                 ></p>
 <ol>
-<li>每一轮交替比较把最值往<strong>后排(下沉)</strong>，能得出参与这次轮次所有数中的最值
-<ul>
+<li>每一轮交替比较把最值往**后排(下沉)**，能得出参与这次轮次所有数中的最值<ul>
 <li>首次交替次数：最后一个数无需交替比较。即循环下标结构 for(j = 0;<strong>j &lt; len - 1</strong>; j ++ )</li>
 </ul>
 </li>
-<li>接下来继续开始若干次从头开始的交替，逐一把“第2最值”，“第3最值”…排到最后(下沉)
-<ul>
+<li>接下来继续开始若干次从头开始的交替，逐一把“第2最值”，“第3最值”…排到最后(下沉)<ul>
 <li>剩余轮次交替次数：每一次交替比较后的最值无需参与下一次交替比较，剩下轮次的交替比较次数呈<strong>递减1状态</strong></li>
 <li>总比较轮次：每一个数都需走一遍轮次。，最后交替(数组最前的数)只需一个轮次完成，即总论次为：<strong>len - 1</strong></li>
 </ul>
 </li>
 </ol>
-<h1 id="总结：">总结：</h1>
-<h2 id="理论支持">理论支持</h2>
-<p>每一轮交替比较把最值往<strong>后排(下沉)</strong>，能得出参与这次轮次所有数当中的最值</p>
-<h2 id="核心部分">核心部分</h2>
-<ol>
-<li>
-<p>把最值往<strong>后排(下沉)</strong></p>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><h2 id="理论支持"><a href="#理论支持" class="headerlink" title="理论支持"></a>理论支持</h2><p>每一轮交替比较把最值往**后排(下沉)**，能得出参与这次轮次所有数当中的最值</p>
+<h2 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h2><ol>
+<li><p>把最值往<strong>后排(下沉)</strong></p>
 <ul>
 <li>从大到小，降序，后排下沉最小值，a[ j ] &lt; a[ j + 1 ]</li>
 <li>从小到大，升序，后排下沉最大值，a[ j ] &gt; a[ j + 1 ]</li>
 </ul>
 </li>
-<li>
-<p>数组内部比较交替次数：</p>
+<li><p>数组内部比较交替次数：</p>
 <ul>
-<li>首次比较交替次数：<strong>len - 1</strong>	即<code>for(j = 0;j &lt; len - 1;j++)</code></li>
+<li>首次比较交替次数：<strong>len - 1</strong>    即<code>for(j = 0;j &lt; len - 1;j++)</code></li>
 <li>剩下轮次比较交替次数：<strong>每经一个轮次，交替比较次数减1</strong></li>
 </ul>
 </li>
-<li>
-<p>整个完整排序的比较轮次：最后交替比较两个数(数组最前的两个数)只需一个轮次完成，<strong>len - 1</strong>。</p>
+<li><p>整个完整排序的比较轮次：最后交替比较两个数(数组最前的两个数)只需一个轮次完成，<strong>len - 1</strong>。  </p>
 </li>
 </ol>
-<h2 id="代码表示">代码表示</h2>
-<ol>
+<h2 id="代码表示"><a href="#代码表示" class="headerlink" title="代码表示"></a>代码表示</h2><ol>
 <li>比较轮次属于<strong>外循环</strong>：<strong>len - 1</strong></li>
 <li>内部比较交替次数属于<strong>内循环</strong>：(首次)<strong>len - 1</strong>，(剩余)<strong>每一轮次，次数减1</strong></li>
 <li>从大到小，降序，则后排下沉最小值(a[j] 到 a[j + 1])比较</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//外循环：比较轮次</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; len - <span class="number">1</span>;i++)&#123;		<span class="comment">//数组遍历写法 i = 0; i &lt; len; i++ 正常遍历，len-1则少一次</span></span><br><span class="line">    <span class="comment">//内循环：交替比较次数，递减1通过i增1来实现</span></span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>;j &lt; len - <span class="number">1</span> - i;j++)&#123;</span><br><span class="line">        <span class="comment">//实现从大到小，降序，后排下沉最小值，a[ j ] &lt; a[ j + 1 ]</span></span><br><span class="line">        <span class="keyword">if</span>(a[j] &lt; a[j + <span class="number">1</span>])<span class="comment">//边界分析：i = 0，判断上溢d = j + 1，因为“&lt;”，所以j = (len-1) - 1，所以d = len - 1(没上溢)</span></span><br><span class="line">            <span class="comment">//交换位置</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="时间复杂度分析">时间复杂度分析</h1>
-<blockquote>
+
+
+
+<h1 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h1><blockquote>
 <p>参考：<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/66768445" >https://zhuanlan.zhihu.com/p/66768445<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 
