@@ -21,7 +21,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"yoursite.com","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.1.1"></head>
@@ -194,7 +194,8 @@
 <li><strong>读物</strong>：<a class="link"   target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/" >《大话数据结构》<i class="fas fa-external-link-alt"></i></a></li>
 <li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
 </ul>
-<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ol>
+<h1 id="大纲">大纲</h1>
+<ol>
 <li><strong>队列的定义</strong></li>
 <li><strong>队列的抽线数据结构</strong></li>
 <li><strong>队列顺序存储结构及其不足</strong></li>
@@ -203,19 +204,24 @@
 <li><strong>队列的链式存储结构</strong></li>
 <li><strong>总结</strong></li>
 </ol>
-<h1 id="队列的定义"><a href="#队列的定义" class="headerlink" title="队列的定义"></a>队列的定义</h1><p><strong>队列(queue)：</strong>只允许在<strong>一端</strong>进行<strong>插入</strong>，<strong>另一端</strong>进行<strong>删除</strong>操作的<strong>线性表</strong></p>
+<h1 id="队列的定义">队列的定义</h1>
+<p><strong>队列(queue)：</strong>只允许在<strong>一端</strong>进行<strong>插入</strong>，<strong>另一端</strong>进行<strong>删除</strong>操作的<strong>线性表</strong></p>
 <ul>
 <li>队列是一种<strong>先进先出(First In First Out，FIFO)</strong>的线性表。(符合生活中的习惯)</li>
 <li>允许<strong>插入</strong>的一端称为<strong>队尾</strong>，允许<strong>删除</strong>的一端称为<strong>队头</strong></li>
 </ul>
 <p>队列的应用十分广泛：如键盘输入到屏幕显示、操作系统、客服系统等</p>
-<h1 id="队列的抽象数据类型"><a href="#队列的抽象数据类型" class="headerlink" title="队列的抽象数据类型"></a>队列的抽象数据类型</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ADT 队列(Queue)</span><br><span class="line">Data</span><br><span class="line">    同线性表。元素具有相同的类型，相邻元素具有前驱和后继关系。</span><br><span class="line">Operation</span><br><span class="line">    InitQueue(*Q):    初始化操作，建立一个空队列Q。</span><br><span class="line">    DestroyQueue(*Q): 若队列Q存在，则销毁它。</span><br><span class="line">    ClearQueue(*Q):   将队列Q清空。</span><br><span class="line">    QueueEmpty(Q):    若队列Q为空，返回<span class="literal">true</span>，否则返回<span class="literal">false</span>。</span><br><span class="line">    GetHead(Q, *e):   若队列Q存在且非空，用e返回队列Q的队头元素。</span><br><span class="line">    EnQueue(*Q, e):   若队列Q存在，插入新元素e到队列Q中并成为队尾元素。</span><br><span class="line">    DeQueue(*Q, *e):  删除队列Q中队头元素，并用e返回其值。</span><br><span class="line">    QueueLength(Q):   返回队列Q的元素个数</span><br><span class="line">endADT</span><br></pre></td></tr></table></figure>
-
-<h1 id="队列顺序存储结构及其不足"><a href="#队列顺序存储结构及其不足" class="headerlink" title="队列顺序存储结构及其不足"></a>队列顺序存储结构及其不足</h1><h2 id="队列的顺序存储结构设计"><a href="#队列的顺序存储结构设计" class="headerlink" title="队列的顺序存储结构设计"></a>队列的顺序存储结构设计</h2><h3 id="传统定义上的设计"><a href="#传统定义上的设计" class="headerlink" title="传统定义上的设计"></a>传统定义上的设计</h3><ul>
-<li>队列<strong>插入</strong>元素<strong>：只需在队尾追加</strong>一个元素即刻，<strong>时间复杂度为O(1)</strong></li>
+<h1 id="队列的抽象数据类型">队列的抽象数据类型</h1>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ADT 队列(Queue)</span><br><span class="line">Data</span><br><span class="line">    同线性表。元素具有相同的类型，相邻元素具有前驱和后继关系。</span><br><span class="line">Operation</span><br><span class="line">    InitQueue(*Q):    初始化操作，建立一个空队列Q。</span><br><span class="line">    DestroyQueue(*Q): 若队列Q存在，则销毁它。</span><br><span class="line">    ClearQueue(*Q):   将队列Q清空。</span><br><span class="line">    QueueEmpty(Q):    若队列Q为空，返回<span class="literal">true</span>，否则返回<span class="literal">false</span>。</span><br><span class="line">    GetHead(Q, *e):   若队列Q存在且非空，用e返回队列Q的队头元素。</span><br><span class="line">    EnQueue(*Q, e):   若队列Q存在，插入新元素e到队列Q中并成为队尾元素。</span><br><span class="line">    DeQueue(*Q, *e):  删除队列Q中队头元素，并用e返回其值。</span><br><span class="line">    QueueLength(Q):   返回队列Q的元素个数</span><br><span class="line">endADT</span><br></pre></td></tr></table></figure>
+<h1 id="队列顺序存储结构及其不足">队列顺序存储结构及其不足</h1>
+<h2 id="队列的顺序存储结构设计">队列的顺序存储结构设计</h2>
+<h3 id="传统定义上的设计">传统定义上的设计</h3>
+<ul>
+<li>队列<strong>插入</strong>元素**：只需在队尾追加**一个元素即刻，<strong>时间复杂度为O(1)</strong></li>
 <li>队列<strong>删除</strong>元素：把下标为0的队头元素删除后，<strong>其余所有元素均需向前移动</strong>,<strong>时间复杂度为O(n)</strong></li>
 </ul>
-<h3 id="现今队列顺序存储结构设计"><a href="#现今队列顺序存储结构设计" class="headerlink" title="现今队列顺序存储结构设计"></a>现今队列顺序存储结构设计</h3><p>因<strong>队头固定为数组起始下标0，导致删除元素效率低</strong>，O(n)，且避免<strong>只有一个元素时</strong>，队头和队尾<strong>重合</strong>使处理变得麻烦</p>
+<h3 id="现今队列顺序存储结构设计">现今队列顺序存储结构设计</h3>
+<p>因<strong>队头固定为数组起始下标0，导致删除元素效率低</strong>，O(n)，且避免<strong>只有一个元素时</strong>，队头和队尾<strong>重合</strong>使处理变得麻烦</p>
 <ul>
 <li>引入<strong>两个指针</strong>，<strong>front</strong>指向<strong>队头元素</strong>，<strong>rear</strong>指向<strong>队尾元素的下一个位置</strong>，此时front = rear表示<strong>空队列</strong></li>
 <li>队列<strong>删除元素</strong>时，<strong>直接改变队头front的指向</strong>从而实现删除元素时间复杂度提升至<strong>O(1)</strong></li>
@@ -227,7 +233,8 @@
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%99%AE%E9%80%9A%E9%98%9F%E5%88%97%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png"
                       alt="队列顺序存储结构"
                 ></p>
-<h2 id="队列顺序存储结构的不足"><a href="#队列顺序存储结构的不足" class="headerlink" title="队列顺序存储结构的不足"></a>队列顺序存储结构的不足</h2><p>若在队列未满时曾经通过可移动头指针删除过元素，会导致当rear指针移至数组末端时(表示无法再插入元素时)，数组靠前部分还有空闲空间的<strong>“假溢出”</strong>现象。</p>
+<h2 id="队列顺序存储结构的不足">队列顺序存储结构的不足</h2>
+<p>若在队列未满时曾经通过可移动头指针删除过元素，会导致当rear指针移至数组末端时(表示无法再插入元素时)，数组靠前部分还有空闲空间的<strong>“假溢出”</strong>现象。</p>
 <p>配合上述“普通队列插入图示”理解假溢出现象如下：</p>
 <p><img  
                      lazyload
@@ -236,7 +243,9 @@
                       alt="假溢出"
                 ></p>
 <p><strong>解决方案</strong>：采用<strong>循环队列</strong>。</p>
-<h1 id="循环队列的顺序存储结构"><a href="#循环队列的顺序存储结构" class="headerlink" title="循环队列的顺序存储结构"></a>循环队列的顺序存储结构</h1><h2 id="循环队列的定义"><a href="#循环队列的定义" class="headerlink" title="循环队列的定义"></a>循环队列的定义</h2><p><strong>循环队列</strong>：把队列<strong>头尾相接</strong>的顺序存储结构(实际把<strong>rear</strong>指针变成<strong>可移动指针</strong>)，<strong>后面满了，就从头开始</strong>。</p>
+<h1 id="循环队列的顺序存储结构">循环队列的顺序存储结构</h1>
+<h2 id="循环队列的定义">循环队列的定义</h2>
+<p><strong>循环队列</strong>：把队列<strong>头尾相接</strong>的顺序存储结构(实际把<strong>rear</strong>指针变成<strong>可移动指针</strong>)，<strong>后面满了，就从头开始</strong>。</p>
 <p>循环队列特性小结：</p>
 <ul>
 <li><strong>front</strong>指向<strong>队头元素下标</strong>，<strong>rear</strong>指向<strong>队尾元素的下一个位置</strong></li>
@@ -244,9 +253,6 @@
 </ul>
 <p>结构定义如下:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 循环队列的顺序存储结构 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">	QElemType data[MAXSIZE];</span><br><span class="line">	<span class="keyword">int</span> front;    	<span class="comment">/* 头指针 */</span></span><br><span class="line">	<span class="keyword">int</span> rear;		<span class="comment">/* 尾指针，若队列不空，指向队列尾元素的下一个位置 */</span></span><br><span class="line">&#125;SqQueue;</span><br></pre></td></tr></table></figure>
-
-
-
 <p>循环队列连续插入数据图示如下：</p>
 <p><img  
                      lazyload
@@ -261,10 +267,10 @@
                       alt="循环队列"
                 ></p>
 <p><strong>注意</strong>：最终<strong>队列满</strong>时，<strong>rear == front</strong>，此时与一开始定义<strong> rear == front </strong> 表示<strong>队列为空</strong>的定义重复了。</p>
-<p><del><strong>解决方案1</strong>：设置一个标志变量flag，当front == rear，且flag=0时为队列空，当front == rear，且flag=1时为队列满。</del></p>
+<p><s><strong>解决方案1</strong>：设置一个标志变量flag，当front == rear，且flag=0时为队列空，当front == rear，且flag=1时为队列满。</s></p>
 <p><strong>解决方案2</strong>：</p>
 <ul>
-<li>预留一个空闲空间表示队列满的状态，即<strong>队列满时，数组中还有一个空闲单元</strong><code>rear + 1 = front</code>  </li>
+<li>预留一个空闲空间表示队列满的状态，即<strong>队列满时，数组中还有一个空闲单元</strong><code>rear + 1 = front</code></li>
 <li>此时队列<strong>可存储数据量</strong>为 <strong>“ MAXSIZE - 1 ”</strong></li>
 </ul>
 <p>注意：循环队列的front和rear指针<strong>均可独立循环移动</strong>，因此导致存在<strong>两种队列满的状态</strong>，即<strong>rear &gt; front 与 rear &lt; front 的两种情况</strong>。如下图所示：</p>
@@ -275,27 +281,31 @@
                       alt="循环队列满状态"
                 ></p>
 <ul>
-<li><p><strong>显然 rear &gt; front 的情况是不能完全匹配 rear + 1 == front 这个队列满的判定条件</strong></p>
+<li>
+<p><strong>显然 rear &gt; front 的情况是不能完全匹配 rear + 1 == front 这个队列满的判定条件</strong></p>
 </li>
-<li><p>因此<strong>通用的队列满判别条件为</strong>： (QueueSize 为队列最大尺寸)</p>
+<li>
+<p>因此<strong>通用的队列满判别条件为</strong>： (QueueSize 为队列最大尺寸)</p>
 <p><strong>“ (rear + 1) % QueueSize == front  ”</strong></p>
 </li>
-<li><p>同理两种rear与front的大小关系决定了<strong>计算队列长度通用公式为</strong>：  </p>
+<li>
+<p>同理两种rear与front的大小关系决定了<strong>计算队列长度通用公式为</strong>：</p>
 <p><strong>“ (rear - front) + QueueSize % QueueSize ”</strong></p>
 </li>
 </ul>
-<h2 id="循环队列的初始化"><a href="#循环队列的初始化" class="headerlink" title="循环队列的初始化"></a>循环队列的初始化</h2><h3 id="InitQueue"><a href="#InitQueue" class="headerlink" title="InitQueue"></a>InitQueue</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始化一个空队列Q */</span></span><br><span class="line"><span class="function">Status <span class="title">InitQueue</span><span class="params">(SqQueue *Q)</span></span>&#123;</span><br><span class="line">	Q-&gt;front=<span class="number">0</span>;</span><br><span class="line">	Q-&gt;rear=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span>  OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="循环队列入队"><a href="#循环队列入队" class="headerlink" title="循环队列入队"></a>循环队列入队</h2><h3 id="EnQueue"><a href="#EnQueue" class="headerlink" title="EnQueue"></a>EnQueue</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环队列入队操作</span></span><br><span class="line"><span class="function">Status <span class="title">EnQueue</span><span class="params">(SqQueue *Q, QElemType e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ((Q-&gt;rear + <span class="number">1</span>) % MAXSIZE == Q-&gt;front)<span class="comment">//判断队列是否已满</span></span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">    </span><br><span class="line">	Q-&gt;data[Q-&gt;rear] = e; <span class="comment">//队列，只能通过队尾入队，只操作rear</span></span><br><span class="line">	Q-&gt;rear = (Q-&gt;rear+<span class="number">1</span>) % MAXSIZE; <span class="comment">//然rear指针符合循环队列特点，循环自增归零</span></span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="循环队列出队"><a href="#循环队列出队" class="headerlink" title="循环队列出队"></a>循环队列出队</h3><h3 id="DeQueue"><a href="#DeQueue" class="headerlink" title="DeQueue"></a>DeQueue</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环队列出队操作</span></span><br><span class="line"><span class="function">Status <span class="title">DeQueue</span><span class="params">(SqQueue *Q, QElemType *e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q-&gt;rear == Q-&gt;front)<span class="comment">//判断队列是否为空，空则无法出队</span></span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line"></span><br><span class="line">	*e = Q-&gt;data[Q-&gt;front];<span class="comment">//队列，只能通过队头入队，只操作front</span></span><br><span class="line">	Q-&gt;front = (Q-&gt;front + <span class="number">1</span>) % MAXSIZE;<span class="comment">//让front指针符合循环队列特点，循环自增归零</span></span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
-<li><p>无论入队还是出队操作，都有一句类似的代码<code>Q-&gt;front = (Q-&gt;front + 1) % MAXSIZE</code>，而这总写法是一种通用的<strong>循环自增归零写法</strong>。MAXSIZE控制自增的最大值，也是开始循环的值。</p>
+<h2 id="循环队列的初始化">循环队列的初始化</h2>
+<h3 id="InitQueue">InitQueue</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 初始化一个空队列Q */</span></span><br><span class="line"><span class="function">Status <span class="title">InitQueue</span><span class="params">(SqQueue *Q)</span></span>&#123;</span><br><span class="line">	Q-&gt;front=<span class="number">0</span>;</span><br><span class="line">	Q-&gt;rear=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span>  OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="循环队列入队">循环队列入队</h2>
+<h3 id="EnQueue">EnQueue</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环队列入队操作</span></span><br><span class="line"><span class="function">Status <span class="title">EnQueue</span><span class="params">(SqQueue *Q, QElemType e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ((Q-&gt;rear + <span class="number">1</span>) % MAXSIZE == Q-&gt;front)<span class="comment">//判断队列是否已满</span></span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">    </span><br><span class="line">	Q-&gt;data[Q-&gt;rear] = e; <span class="comment">//队列，只能通过队尾入队，只操作rear</span></span><br><span class="line">	Q-&gt;rear = (Q-&gt;rear+<span class="number">1</span>) % MAXSIZE; <span class="comment">//然rear指针符合循环队列特点，循环自增归零</span></span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="循环队列出队">循环队列出队</h3>
+<h3 id="DeQueue">DeQueue</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环队列出队操作</span></span><br><span class="line"><span class="function">Status <span class="title">DeQueue</span><span class="params">(SqQueue *Q, QElemType *e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q-&gt;rear == Q-&gt;front)<span class="comment">//判断队列是否为空，空则无法出队</span></span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line"></span><br><span class="line">	*e = Q-&gt;data[Q-&gt;front];<span class="comment">//队列，只能通过队头入队，只操作front</span></span><br><span class="line">	Q-&gt;front = (Q-&gt;front + <span class="number">1</span>) % MAXSIZE;<span class="comment">//让front指针符合循环队列特点，循环自增归零</span></span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="要点">要点</h3>
+<ol>
+<li>
+<p>无论入队还是出队操作，都有一句类似的代码<code>Q-&gt;front = (Q-&gt;front + 1) % MAXSIZE</code>，而这总写法是一种通用的<strong>循环自增归零写法</strong>。MAXSIZE控制自增的最大值，也是开始循环的值。</p>
 <p><strong>(变量 + 1) % MAXSIZE;</strong> 图示如下：</p>
 </li>
 </ol>
@@ -308,19 +318,26 @@
 <ol start="2">
 <li>入队和出队的rear与front数值变化都是<strong>独立</strong>的<strong>循环自增</strong>，<strong>互不影响</strong>。**两者唯一有交集(关系)**部分已经解决(判读队列空与满的多种情况)</li>
 </ol>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><h2 id="队列的顺序存储结构："><a href="#队列的顺序存储结构：" class="headerlink" title="队列的顺序存储结构："></a>队列的顺序存储结构：</h2><ol>
-<li><p><strong>队列</strong>：</p>
+<h1 id="小结">小结</h1>
+<h2 id="队列的顺序存储结构：">队列的顺序存储结构：</h2>
+<ol>
+<li>
+<p><strong>队列</strong>：</p>
 <ul>
-<li><p>只能通过<strong>队尾入队</strong>，入队<strong>只操作rear</strong>，只能通过<strong>队头入队</strong>，入队<strong>只操作front</strong></p>
+<li>
+<p>只能通过<strong>队尾入队</strong>，入队<strong>只操作rear</strong>，只能通过<strong>队头入队</strong>，入队<strong>只操作front</strong></p>
 </li>
-<li><p>front可移动化，提高删除效率</p>
+<li>
+<p>front可移动化，提高删除效率</p>
 </li>
 </ul>
 </li>
-<li><p><strong>循环队列</strong>：</p>
+<li>
+<p><strong>循环队列</strong>：</p>
 <ul>
 <li>front与rear分别独立<strong>循环移动</strong>，解决“<strong>假溢出</strong>”现象</li>
-<li>队列满条件：<ul>
+<li>队列满条件：
+<ul>
 <li><strong> (rear + 1) % QueueSize == front </strong></li>
 <li>注意：此时队列<strong>可存储数据量</strong>为 <strong>MAXSIZE - 1</strong></li>
 </ul>
@@ -330,7 +347,9 @@
 </ul>
 </li>
 </ol>
-<h1 id="队列的链式存储结构"><a href="#队列的链式存储结构" class="headerlink" title="队列的链式存储结构"></a>队列的链式存储结构</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>队列的链式存储结构，相当于<strong>只能尾进头出的单链表</strong>，简称<strong>链队列</strong></p>
+<h1 id="队列的链式存储结构">队列的链式存储结构</h1>
+<h2 id="定义">定义</h2>
+<p>队列的链式存储结构，相当于<strong>只能尾进头出的单链表</strong>，简称<strong>链队列</strong></p>
 <ul>
 <li><strong>队头</strong>指针(<strong>front</strong>)指向<strong>头结点(不是头指针！)</strong></li>
 <li><strong>队尾</strong>指针(<strong>rear</strong>)指向<strong>尾指针</strong></li>
@@ -342,9 +361,8 @@
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/队列链式存储结构空队列.png"
                       alt="空队列" style="zoom: 67%;" /
                 >
-
-<h2 id="结构定义"><a href="#结构定义" class="headerlink" title="结构定义"></a>结构定义</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类似栈的链式存储结果设计</span></span><br><span class="line"><span class="comment">//结点结构：QueuePtr</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> &#123;</span></span><br><span class="line">	QElemType data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Qnode</span> *<span class="title">next</span>;</span></span><br><span class="line"></span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line"><span class="comment">//链表结构：LinkQueue</span></span><br><span class="line"><span class="comment">//LinkQueue相当于一个front与rear结点管理器，存储这两个变量的指向</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	QueuePtr front, rear;<span class="comment">/*队头队尾指针*/</span></span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
-
+<h2 id="结构定义">结构定义</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类似栈的链式存储结果设计</span></span><br><span class="line"><span class="comment">//结点结构：QueuePtr</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> &#123;</span></span><br><span class="line">	QElemType data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Qnode</span> *<span class="title">next</span>;</span></span><br><span class="line"></span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line"><span class="comment">//链表结构：LinkQueue</span></span><br><span class="line"><span class="comment">//LinkQueue相当于一个front与rear结点管理器，存储这两个变量的指向</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	QueuePtr front, rear;<span class="comment">/*队头队尾指针*/</span></span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
 <p>LinkQueue相当于一个front与rear结点管理器，存储这两个变量的指向，front与rear独立工作。<strong>在理解上的结构关系</strong>(不完全是实际结构)如下：</p>
 <p><img  
                      lazyload
@@ -352,13 +370,12 @@
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E9%98%9F%E5%88%97%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84(%E7%90%86%E8%A7%A3%E4%B8%8A).png"
                       alt="队列链式存储"
                 ></p>
-<h2 id="队列初始化"><a href="#队列初始化" class="headerlink" title="队列初始化"></a>队列初始化</h2><p>队列链式存储结构初始化关键在于：<strong>创建一个头结点</strong>，并且front 与 rear <strong>都指向</strong>头结点(表示队列为空)，并且把<strong>头结点的指针域</strong>赋值为<strong>NULL</strong></p>
+<h2 id="队列初始化">队列初始化</h2>
+<p>队列链式存储结构初始化关键在于：<strong>创建一个头结点</strong>，并且front 与 rear <strong>都指向</strong>头结点(表示队列为空)，并且把<strong>头结点的指针域</strong>赋值为<strong>NULL</strong></p>
 <p><strong>InitQueue</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*构建一个空列表Q*/</span></span><br><span class="line"><span class="function">Status <span class="title">InitQueue</span><span class="params">(LinkQueue *Q)</span></span>&#123;</span><br><span class="line">   Q-&gt;front = Q-&gt;rear = (QueuePtr)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));<span class="comment">//创建一个头结点并同时指向fornt与rear</span></span><br><span class="line">   <span class="keyword">if</span> (!Q-&gt;front)<span class="comment">//申请失败则向系统报出异常</span></span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">   -&gt;front-&gt;next = <span class="literal">NULL</span>;<span class="comment">//为头结点指针域赋值NULL</span></span><br><span class="line">   <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="初始化到数据入队过程"><a href="#初始化到数据入队过程" class="headerlink" title="初始化到数据入队过程"></a>初始化到数据入队过程</h2><p>队列的链式存储结构初始化后(空队列)到数据插入的过程理解如下图所示：</p>
+<h2 id="初始化到数据入队过程">初始化到数据入队过程</h2>
+<p>队列的链式存储结构初始化后(空队列)到数据插入的过程理解如下图所示：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
@@ -369,9 +386,10 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E9%98%9F%E5%88%97%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A52.png"
-                     
+                      alt=""
                 ></p>
-<h2 id="EnQueue-1"><a href="#EnQueue-1" class="headerlink" title="EnQueue"></a>EnQueue</h2><p><strong>思路</strong>：</p>
+<h2 id="EnQueue-2">EnQueue</h2>
+<p><strong>思路</strong>：</p>
 <ol>
 <li>链式存储结构一般不会满</li>
 <li>创建新结点</li>
@@ -380,13 +398,13 @@
 <li>修改链表结构LinkQueue的rear指向，返回OK即可</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//入队操作</span></span><br><span class="line"><span class="function">Status <span class="title">EnQueue</span><span class="params">(LinkQueue *Q, QElemType e)</span> </span>&#123;</span><br><span class="line">	QueuePtr s = (QueuePtr)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));	<span class="comment">//创建新结点</span></span><br><span class="line">	<span class="keyword">if</span> (!s)		<span class="comment">//假如内存申请失败</span></span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);	<span class="comment">//非正常退出</span></span><br><span class="line"></span><br><span class="line">	s-&gt;data = e;	<span class="comment">//为新结点的数据域和指针域赋值</span></span><br><span class="line">	s-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">	Q-&gt;rear-&gt;next = s;	<span class="comment">//把新结点/尾结点s成为给原队尾结点的后继结点</span></span><br><span class="line">	Q-&gt;rear = s;	<span class="comment">//修改链表结构LinkQueue的rear指向</span></span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>exit()</strong> 函数：结束当前进程/当前程序/，在整个程序中，只要调用 exit ，就结束。</p>
 <ul>
 <li><strong>exit(1)</strong>表示进程<strong>异常退出</strong></li>
 <li><strong>exit(0)</strong>表示进程<strong>正常退出</strong></li>
 </ul>
-<h2 id="DeQueue-1"><a href="#DeQueue-1" class="headerlink" title="DeQueue"></a>DeQueue</h2><p><strong>关键点</strong>：</p>
+<h2 id="DeQueue-2">DeQueue</h2>
+<p><strong>关键点</strong>：</p>
 <ol>
 <li>front指针不是直接指向数据结点，而是<strong>指向头结点</strong>，所以<strong>待删除的结点</strong>应为<code>Q-&gt;front-&gt;next</code></li>
 <li>删除思路与<strong>单链表的删除操作思路一致</strong></li>
@@ -407,8 +425,8 @@
                       alt="队列出队"
                 ></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 若队列不空,删除Q的队头元素,用e返回其值,并返回OK,否则返回ERROR */</span></span><br><span class="line"><span class="function">Status <span class="title">DeQueue</span><span class="params">(LinkQueue *Q,QElemType *e)</span></span>&#123;</span><br><span class="line">	QueuePtr p;</span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;front==Q-&gt;rear)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	p=Q-&gt;front-&gt;next;		<span class="comment">/* 将欲删除的队头结点暂存给p*/</span></span><br><span class="line">	*e=p-&gt;data;				<span class="comment">/* 将欲删除的队头结点的值赋值给e */</span></span><br><span class="line">	Q-&gt;front-&gt;next=p-&gt;next;<span class="comment">/* 将原队头结点的后继p-&gt;next赋值给头结点后继*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;rear==p)		<span class="comment">/* 若队头就是队尾，则删除后将rear指向头结点 */</span></span><br><span class="line">		Q-&gt;rear=Q-&gt;front;</span><br><span class="line">	<span class="built_in">free</span>(p);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<h1 id="总结">总结</h1>
+<ul>
 <li>从基本<strong>单次操作</strong>中，循环队列和链队列时间上<strong>都是常数时间</strong>O(1)</li>
 <li>若<strong>出队入队频繁</strong>，链队列会因每次申请和释放结点存在<strong>额外一些时间开销</strong>，与循环队列相比有<strong>细微差距</strong></li>
 <li>在<strong>空间上</strong>，<strong>循环队列</strong>会因长度的固定限制，造成<strong>空间上的浪费</strong>。链队列则不存在</li>
@@ -585,7 +603,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">大纲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">队列的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">队列的抽象数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E4%B8%8D%E8%B6%B3"><span class="nav-number">4.</span> <span class="nav-text">队列顺序存储结构及其不足</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.1.</span> <span class="nav-text">队列的顺序存储结构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E5%AE%9A%E4%B9%89%E4%B8%8A%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.1.1.</span> <span class="nav-text">传统定义上的设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E4%BB%8A%E9%98%9F%E5%88%97%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.1.2.</span> <span class="nav-text">现今队列顺序存储结构设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E7%9A%84%E4%B8%8D%E8%B6%B3"><span class="nav-number">4.2.</span> <span class="nav-text">队列顺序存储结构的不足</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">循环队列的顺序存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">5.1.</span> <span class="nav-text">循环队列的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">5.2.</span> <span class="nav-text">循环队列的初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#InitQueue"><span class="nav-number">5.2.1.</span> <span class="nav-text">InitQueue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E5%85%A5%E9%98%9F"><span class="nav-number">5.3.</span> <span class="nav-text">循环队列入队</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EnQueue"><span class="nav-number">5.3.1.</span> <span class="nav-text">EnQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E5%87%BA%E9%98%9F"><span class="nav-number">5.3.2.</span> <span class="nav-text">循环队列出队</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeQueue"><span class="nav-number">5.3.3.</span> <span class="nav-text">DeQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%81%E7%82%B9"><span class="nav-number">5.3.4.</span> <span class="nav-text">要点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="nav-number">6.1.</span> <span class="nav-text">队列的顺序存储结构：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">7.</span> <span class="nav-text">队列的链式存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">7.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="nav-number">7.2.</span> <span class="nav-text">结构定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">7.3.</span> <span class="nav-text">队列初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%B0%E6%95%B0%E6%8D%AE%E5%85%A5%E9%98%9F%E8%BF%87%E7%A8%8B"><span class="nav-number">7.4.</span> <span class="nav-text">初始化到数据入队过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EnQueue-1"><span class="nav-number">7.5.</span> <span class="nav-text">EnQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DeQueue-1"><span class="nav-number">7.6.</span> <span class="nav-text">DeQueue</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">大纲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">队列的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">队列的抽象数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E4%B8%8D%E8%B6%B3"><span class="nav-number">4.</span> <span class="nav-text">队列顺序存储结构及其不足</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.1.</span> <span class="nav-text">队列的顺序存储结构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E5%AE%9A%E4%B9%89%E4%B8%8A%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.1.1.</span> <span class="nav-text">传统定义上的设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E4%BB%8A%E9%98%9F%E5%88%97%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.1.2.</span> <span class="nav-text">现今队列顺序存储结构设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E7%9A%84%E4%B8%8D%E8%B6%B3"><span class="nav-number">4.2.</span> <span class="nav-text">队列顺序存储结构的不足</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">循环队列的顺序存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">5.1.</span> <span class="nav-text">循环队列的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">5.2.</span> <span class="nav-text">循环队列的初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#InitQueue"><span class="nav-number">5.2.1.</span> <span class="nav-text">InitQueue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E5%85%A5%E9%98%9F"><span class="nav-number">5.3.</span> <span class="nav-text">循环队列入队</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EnQueue"><span class="nav-number">5.3.1.</span> <span class="nav-text">EnQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E5%87%BA%E9%98%9F"><span class="nav-number">5.3.2.</span> <span class="nav-text">循环队列出队</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeQueue"><span class="nav-number">5.3.3.</span> <span class="nav-text">DeQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%81%E7%82%B9"><span class="nav-number">5.3.4.</span> <span class="nav-text">要点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="nav-number">6.1.</span> <span class="nav-text">队列的顺序存储结构：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">7.</span> <span class="nav-text">队列的链式存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">7.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="nav-number">7.2.</span> <span class="nav-text">结构定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">7.3.</span> <span class="nav-text">队列初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%B0%E6%95%B0%E6%8D%AE%E5%85%A5%E9%98%9F%E8%BF%87%E7%A8%8B"><span class="nav-number">7.4.</span> <span class="nav-text">初始化到数据入队过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EnQueue-2"><span class="nav-number">7.5.</span> <span class="nav-text">EnQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DeQueue-2"><span class="nav-number">7.6.</span> <span class="nav-text">DeQueue</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol>
     </div>
 </div>
         </aside>
