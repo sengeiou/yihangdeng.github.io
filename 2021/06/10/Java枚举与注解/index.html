@@ -467,9 +467,9 @@
 </li>
 <li><p>使用Rentention注解时<strong>通过该枚举类</strong>选择参数值传递给@Rentention注解设定生命周期</p>
 <ul>
-<li>RetentionPolicy.<strong>SOURCE</strong>：在<strong>源文件中有效</strong>（即源文件保留），编译器忽略</li>
-<li>RetentionPolicy.<strong>CLASS</strong>：在<strong>class文件中有效</strong>（即class保留） ， 运行时, JVM忽略(不加载到内存)，这也是<strong>注解的默认行为</strong>。</li>
-<li>RetentionPolicy.<strong>RUNTIME</strong>：在<strong>运行时有效</strong>（即运行时保留），当运时, JVM保留注解。程序可以通过<strong>反射获取该注释</strong>。</li>
+<li>RetentionPolicy.<strong>SOURCE</strong>：在<strong>源文件中有效</strong>，即源文件保留注解，编译后不保留</li>
+<li>RetentionPolicy.<strong>CLASS</strong>：在<strong>class文件中有效</strong>，class保留注解 ， 运行时, JVM忽略(不加载到内存)，这也是<strong>注解的默认行为</strong>。</li>
+<li>RetentionPolicy.<strong>RUNTIME</strong>：在<strong>运行时有效</strong>，运行时保留注解，当运时, JVM保留注解。程序可以通过<strong>反射获取该注释</strong>。</li>
 </ul>
 </li>
 <li><p>使用 @Rentention 时必须为该value 成员变量指定值</p>
@@ -644,6 +644,21 @@
 
         
             <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/06/12/Java%E9%9B%86%E5%90%88/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Java集合</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next">
