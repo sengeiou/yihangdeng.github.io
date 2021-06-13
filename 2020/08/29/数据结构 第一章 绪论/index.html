@@ -204,30 +204,41 @@
 <li><strong>读物</strong>：<a class="link"   target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/" >《大话数据结构》<i class="fas fa-external-link-alt"></i></a></li>
 <li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
 </ul>
-<h1 id="知识大纲"><a href="#知识大纲" class="headerlink" title="知识大纲"></a>知识大纲</h1><ol>
+<h1 id="知识大纲">知识大纲</h1>
+<ol>
 <li>数据结构的起源</li>
 <li>基本概念和术语</li>
 <li>逻辑结构与物理结构</li>
 <li>抽象数据类型</li>
 </ol>
-<h1 id="数据结构的起源"><a href="#数据结构的起源" class="headerlink" title="数据结构的起源"></a>数据结构的起源</h1><h2 id="早期认知"><a href="#早期认知" class="headerlink" title="早期认知"></a>早期认知</h2><p>人们都把计算机理解为<strong>数值计算工具</strong>。解决问题方式如下：</p>
+<h1 id="数据结构的起源">数据结构的起源</h1>
+<h2 id="早期认知">早期认知</h2>
+<p>人们都把计算机理解为<strong>数值计算工具</strong>。解决问题方式如下：</p>
 <ol>
 <li>分析问题</li>
 <li>抽像其数据模型</li>
 <li>设计数据模型对应算法</li>
 <li>编写程序</li>
 </ol>
-<h2 id="实际环境"><a href="#实际环境" class="headerlink" title="实际环境"></a>实际环境</h2><p>现实中，更多是<strong>解决非数值型问题，因此需要</strong>更加有效的科学手段。**(<strong>比如表、树图等数据结构</strong>)。</p>
-<h1 id="基本概念和术语"><a href="#基本概念和术语" class="headerlink" title="基本概念和术语"></a>基本概念和术语</h1><h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><h3 id="数据的基本概念"><a href="#数据的基本概念" class="headerlink" title="数据的基本概念"></a>数据的基本概念</h3><p>数据：是描述客观事物的<strong>符号</strong>，是计算机中<strong>可操作</strong>的对象，是<strong>能被计算机识别</strong>，并<strong>能够输入</strong>给计算机<strong>处理</strong>的<strong>符号集合</strong>。</p>
+<h2 id="实际环境">实际环境</h2>
+<p>现实中，更多是<strong>解决非数值型问题，因此需要</strong>更加有效的科学手段。**(<strong>比如表、树图等数据结构</strong>)。</p>
+<h1 id="基本概念和术语">基本概念和术语</h1>
+<h2 id="数据">数据</h2>
+<h3 id="数据的基本概念">数据的基本概念</h3>
+<p>数据：是描述客观事物的<strong>符号</strong>，是计算机中<strong>可操作</strong>的对象，是<strong>能被计算机识别</strong>，并<strong>能够输入</strong>给计算机<strong>处理</strong>的<strong>符号集合</strong>。</p>
 <blockquote>
-<p>比如编程所用到的数据类型，还包括字符、声音、图像、视频等<br>这里所描述的数据，其实就是符号</p>
+<p>比如编程所用到的数据类型，还包括字符、声音、图像、视频等<br>
+这里所描述的数据，其实就是符号</p>
 </blockquote>
-<h3 id="数据的基本特性"><a href="#数据的基本特性" class="headerlink" title="数据的基本特性"></a>数据的基本特性</h3><ul>
+<h3 id="数据的基本特性">数据的基本特性</h3>
+<ul>
 <li><strong>可输入</strong>到计算机中</li>
 <li>能被<strong>计算机程序处理</strong></li>
 </ul>
-<h2 id="数据元素"><a href="#数据元素" class="headerlink" title="数据元素"></a>数据元素</h2><p>数据元素：<strong>组成数据</strong>的，有一定<strong>意义</strong>的基本单位，在及算你中通常作为整体处理。也被称为<strong>记录</strong>。</p>
-<h2 id="数据项"><a href="#数据项" class="headerlink" title="数据项"></a>数据项</h2><p>数据项：一个数据元素可以由若干个数据项组成。</p>
+<h2 id="数据元素">数据元素</h2>
+<p>数据元素：<strong>组成数据</strong>的，有一定<strong>意义</strong>的基本单位，在及算你中通常作为整体处理。也被称为<strong>记录</strong>。</p>
+<h2 id="数据项">数据项</h2>
+<p>数据项：一个数据元素可以由若干个数据项组成。</p>
 <blockquote>
 <p>比如人这样的数据元素，可以有眼、耳、口、鼻，姓名、年龄、性别这些数据项</p>
 </blockquote>
@@ -235,66 +246,83 @@
 <li><strong>数据项</strong>是<strong>数据</strong>的<strong>最小单位</strong></li>
 <li>在研究数据结构问题时，<strong>数据元素</strong>才是建立数据模型的着眼点</li>
 </ul>
-<h2 id="数据对象"><a href="#数据对象" class="headerlink" title="数据对象"></a>数据对象</h2><p>数据对象：是<strong>性质相同</strong>的数据元素的集合，是数据的<strong>子集</strong>。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<h2 id="数据对象">数据对象</h2>
+<p>数据对象：是<strong>性质相同</strong>的数据元素的集合，是数据的<strong>子集</strong>。</p>
+<h2 id="小结">小结</h2>
+<ul>
 <li>数据：就是<strong>符号</strong>，数值型和非数值型集合</li>
 <li>数据元素：组成数据有意义的基本单位，即java中的“<strong>类</strong>”</li>
 <li>数据项：组成数据元素的基本单位，即类里面的“<strong>属性</strong>”</li>
 <li>数据对象：是<strong>数据</strong>的子集。即类里面的“<strong>对象/实例</strong>”</li>
 </ul>
 <hr>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>数据结构：是相互之间存在一种或多种特定<strong>关系</strong>的<strong>数据元素</strong>的集合。结构即关系！</p>
-<p>一个“好”的程序，必须分析待处理<strong>对象的特性</strong>及其**<em>各处理对象之间存在的关系**</em>这就是研究数据结构的意义所在。</p>
+<h2 id="数据结构">数据结构</h2>
+<p>数据结构：是相互之间存在一种或多种特定<strong>关系</strong>的<strong>数据元素</strong>的集合。结构即关系！</p>
+<p>一个“好”的程序，必须分析待处理<strong>对象的特性</strong>及其<em><strong>各处理对象之间存在的关系</strong></em>这就是研究数据结构的意义所在。</p>
 <blockquote>
 <ul>
-<li>“分析待处理对象的特性”，即以前接触高级语言的“面向对象编程”  </li>
+<li>“分析待处理对象的特性”，即以前接触高级语言的“面向对象编程”</li>
 <li>博主如今缺乏的，即是学习“各处理对象之间存在的关系”</li>
 </ul>
 </blockquote>
 <p><strong>数据结构实际涵盖三个主要内容</strong>：<strong>逻辑结构</strong>(表,队,树,图…)、<strong>存储结构</strong>(顺序存储,链式存储)、<strong>基本操作</strong>(ADT)组成</p>
-<h1 id="逻辑结构与物理结构"><a href="#逻辑结构与物理结构" class="headerlink" title="逻辑结构与物理结构"></a>逻辑结构与物理结构</h1><h2 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h2><p>逻辑结构：是指数据对象中数据元素之间的相互关系，也是今后讨论的重点。主要类型包含如下</p>
+<h1 id="逻辑结构与物理结构">逻辑结构与物理结构</h1>
+<h2 id="逻辑结构">逻辑结构</h2>
+<p>逻辑结构：是指数据对象中数据元素之间的相互关系，也是今后讨论的重点。主要类型包含如下</p>
 <ul>
 <li>集合结果</li>
 <li>线性结构</li>
 <li>树形结构</li>
 <li>图像结构</li>
 </ul>
-<h3 id="集合结构"><a href="#集合结构" class="headerlink" title="集合结构"></a>集合结构</h3><p>集合结构：集合结构中的数据元素除了<strong>同一个集合</strong>外，它们之间没有其他关系。</p>
+<h3 id="集合结构">集合结构</h3>
+<p>集合结构：集合结构中的数据元素除了<strong>同一个集合</strong>外，它们之间没有其他关系。</p>
 <blockquote>
 <p>它们相互平等，唯一且共同的属性就是“<strong>同属一个集合</strong>”，类似数学的集合，形如“鱼塘”</p>
 </blockquote>
-<h3 id="线性结构"><a href="#线性结构" class="headerlink" title="线性结构"></a>线性结构</h3><p>线性结构：线性结构中的数据元素之间是<strong>一对一</strong>的关系，类似“<strong>火车，项链</strong>”。</p>
-<h3 id="树形结构"><a href="#树形结构" class="headerlink" title="树形结构"></a>树形结构</h3><p>树形结构：树形结构中的数据元素之间存在一种<strong>一对多</strong>的的层次关系。形如“<strong>大树</strong>”分支。</p>
-<h3 id="图形结构"><a href="#图形结构" class="headerlink" title="图形结构"></a>图形结构</h3><p>图像结构：图形结构的数据元素是<strong>多对多</strong>的关系，类似“<strong>人际关系</strong>”，交错复杂。</p>
-<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>用示意图表示数据的逻辑结构时，要注意两点</p>
+<h3 id="线性结构">线性结构</h3>
+<p>线性结构：线性结构中的数据元素之间是<strong>一对一</strong>的关系，类似“<strong>火车，项链</strong>”。</p>
+<h3 id="树形结构">树形结构</h3>
+<p>树形结构：树形结构中的数据元素之间存在一种<strong>一对多</strong>的的层次关系。形如“<strong>大树</strong>”分支。</p>
+<h3 id="图形结构">图形结构</h3>
+<p>图像结构：图形结构的数据元素是<strong>多对多</strong>的关系，类似“<strong>人际关系</strong>”，交错复杂。</p>
+<h3 id="小结-2">小结</h3>
+<p>用示意图表示数据的逻辑结构时，要注意两点</p>
 <ul>
 <li>将每一个<strong>数据元素</strong>看做一个<strong>结点</strong>，用<strong>圆圈</strong>表示</li>
 <li>元素之间的逻辑关系用结点之间的连线表示，如果这个关系是<strong>有方向</strong>的，必须标明箭头</li>
 </ul>
 <hr>
-<h2 id="物理结构-存储结构"><a href="#物理结构-存储结构" class="headerlink" title="物理结构/存储结构"></a>物理结构/存储结构</h2><p>物理结构：是指数据的逻辑结构在计算机中的<strong>存储形式</strong>。</p>
+<h2 id="物理结构-存储结构">物理结构/存储结构</h2>
+<p>物理结构：是指数据的逻辑结构在计算机中的<strong>存储形式</strong>。</p>
 <blockquote>
 <ul>
-<li>即数据元素如何存储到计算机的存储器中，这里的存储器主要针对<strong>内存</strong>而言 </li>
-<li>数据的存储结构应正确反映数据元素之间的逻辑关系，这才是重点  </li>
+<li>即数据元素如何存储到计算机的存储器中，这里的存储器主要针对<strong>内存</strong>而言</li>
+<li>数据的存储结构应正确反映数据元素之间的逻辑关系，这才是重点</li>
 </ul>
 </blockquote>
 <hr>
 <p><strong>存储结构形式有两种：顺序存储和链式存储</strong></p>
-<h3 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h3><p>顺序存储结构：是把数据元素存放在<strong>地址连续</strong>的存储单元里。此时，其数据间的<strong>逻辑关系和物理关系是一致</strong>的。</p>
+<h3 id="顺序存储结构">顺序存储结构</h3>
+<p>顺序存储结构：是把数据元素存放在<strong>地址连续</strong>的存储单元里。此时，其数据间的<strong>逻辑关系和物理关系是一致</strong>的。</p>
 <blockquote>
 <p>形如理想状态下的<strong>排队</strong>，又如编程中的<strong>数组</strong>存储/开辟空间机制</p>
 </blockquote>
-<h3 id="链式存储结构"><a href="#链式存储结构" class="headerlink" title="链式存储结构"></a>链式存储结构</h3><p>链式存储结构：是把数据元素存放在<strong>任意的存储单元</strong>里，而这组存储单元可以是连续的，也可以是不连续的。</p>
+<h3 id="链式存储结构">链式存储结构</h3>
+<p>链式存储结构：是把数据元素存放在<strong>任意的存储单元</strong>里，而这组存储单元可以是连续的，也可以是不连续的。</p>
 <blockquote>
-<p>形如去银行、医院等地方，设置了“<strong>叫号排序</strong>”的机制。<br>实际，把变量的地址存储在一个指针变量中，通过指针变量找到对应的数据</p>
+<p>形如去银行、医院等地方，设置了“<strong>叫号排序</strong>”的机制。<br>
+实际，把变量的地址存储在一个指针变量中，通过指针变量找到对应的数据</p>
 </blockquote>
-<h2 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h2><ul>
+<h2 id="小结-3">小结</h2>
+<ul>
 <li>逻辑结构是<strong>面向问题</strong>的，而物理结构就是<strong>面向计算机</strong>的</li>
 <li>顺序存储：<strong>连续</strong>开辟-<strong>按序</strong>对应</li>
 <li>链式存储：<strong>任意</strong>开辟-<strong>叫号</strong>对应</li>
 </ul>
-<h1 id="抽象数据类型"><a href="#抽象数据类型" class="headerlink" title="抽象数据类型"></a>抽象数据类型</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p><strong>数据类型</strong>：是指一组<strong>性质相同</strong>的值的集合,及定义在此集合上的<strong>一些操作</strong>的总称。</p>
+<h1 id="抽象数据类型">抽象数据类型</h1>
+<h2 id="数据类型">数据类型</h2>
+<p><strong>数据类型</strong>：是指一组<strong>性质相同</strong>的值的集合,及定义在此集合上的<strong>一些操作</strong>的总称。</p>
 <blockquote>
 <p>在计算机中，内存也不是无限大的，计算机的研究者们就考虑，要对数据类型进行分类，分出多种数据类型来适合各种不同的计算条件差异，同时节省内存</p>
 </blockquote>
@@ -303,8 +331,11 @@
 <li><strong>原子类型</strong>：<strong>不可以再分解</strong>的基本类型，例如整型、浮点型、字符型等。</li>
 <li><strong>结构类型</strong>：由<strong>若干种数据类型组合</strong>而成，是可再分解。如整型数组由若干整型数据组成的</li>
 </ul>
-<h2 id="抽象数据类型-1"><a href="#抽象数据类型-1" class="headerlink" title="抽象数据类型"></a>抽象数据类型</h2><h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p>抽象：抽象是指抽取出事物具有的普遍性的本质。即抽出<strong>问题的特征</strong>而忽略非本质的细节。</p>
-<h3 id="抽象数据类型-2"><a href="#抽象数据类型-2" class="headerlink" title="抽象数据类型"></a>抽象数据类型</h3><p>抽象数据类型(Abstract Data Type，ADT)：是指一个<strong>数学模型</strong>及定义在该模型上的<strong>一组操作</strong>。</p>
+<h2 id="抽象数据类型-2">抽象数据类型</h2>
+<h3 id="抽象">抽象</h3>
+<p>抽象：抽象是指抽取出事物具有的普遍性的本质。即抽出<strong>问题的特征</strong>而忽略非本质的细节。</p>
+<h3 id="抽象数据类型-3">抽象数据类型</h3>
+<p>抽象数据类型(Abstract Data Type，ADT)：是指一个<strong>数学模型</strong>及定义在该模型上的<strong>一组操作</strong>。</p>
 <blockquote>
 <ol>
 <li>抽象数据类型不仅仅指那些已经定义并实现的数据类型(int、char等)，还可以是计算机编程者在设计软件程序时<strong>自己定义的数据类型</strong>，即如同高级语言的即“<strong>类</strong>”一样。而“及定义在该模型上的一组操作”即如同定义类，及其基本“<strong>方法</strong>”</li>
@@ -312,7 +343,8 @@
 </ol>
 </blockquote>
 <p><strong>抽象数据类型</strong>体现了程序设计中，<strong>问题分解、抽线、信息隐藏</strong>的特性。</p>
-<h3 id="抽象数据类型的标准格式"><a href="#抽象数据类型的标准格式" class="headerlink" title="抽象数据类型的标准格式"></a>抽象数据类型的标准格式</h3><pre><code>ADT 抽象数据类型名
+<h3 id="抽象数据类型的标准格式">抽象数据类型的标准格式</h3>
+<pre><code>ADT 抽象数据类型名
 Data
     数据元素之间逻辑关系的定义
 Operation
@@ -322,11 +354,15 @@ Operation
     操作2
         ...
 
-endADT</code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li><p>现实问题中更需要解决的是<strong>非数值运算</strong>问题。</p>
+endADT
+</code></pre>
+<h1 id="总结">总结</h1>
+<ol>
+<li>
+<p>现实问题中更需要解决的是<strong>非数值运算</strong>问题。</p>
 </li>
-<li><p>数据  </p>
+<li>
+<p>数据</p>
 <ul>
 <li>数据即<strong>符号</strong></li>
 <li>数据元素即“<strong>类</strong>”</li>
@@ -334,35 +370,42 @@ endADT</code></pre>
 <li>数据项即“<strong>属性</strong>”</li>
 </ul>
 </li>
-<li><p><strong>结构即关系</strong></p>
+<li>
+<p><strong>结构即关系</strong></p>
 <blockquote>
 <p>数据结构定义：<strong>是相互之间存在一种或多种特定关系的数据元素的集合</strong></p>
 </blockquote>
 </li>
-<li><p>逻辑结构与物理结构，即<strong>面向问题，与面向存储</strong>。</p>
+<li>
+<p>逻辑结构与物理结构，即<strong>面向问题，与面向存储</strong>。</p>
 <ol>
-<li>四大逻辑结构(“<strong>四形</strong>”)<ul>
+<li>四大逻辑结构(“<strong>四形</strong>”)
+<ul>
 <li>集合结构</li>
 <li>线性结构</li>
 <li>树形结构</li>
 <li>图形结构</li>
 </ul>
 </li>
-<li>两大物理结构<ul>
+<li>两大物理结构
+<ul>
 <li>顺序存储(数组)</li>
 <li>链式存储(指针)</li>
 </ul>
 </li>
 </ol>
 </li>
-<li><p>抽象数据类型</p>
+<li>
+<p>抽象数据类型</p>
 <ol>
-<li>数据类型<ul>
+<li>数据类型
+<ul>
 <li>原子类型(不可分割/int，char)</li>
 <li>结构类型(组合而成)</li>
 </ul>
 </li>
-<li>抽象数据类型<ul>
+<li>抽象数据类型
+<ul>
 <li><strong>已定义</strong>数据类型抽象，即int，char</li>
 <li>自定义数据类型抽象，即struct，类</li>
 </ul>
@@ -371,34 +414,41 @@ endADT</code></pre>
 </ol>
 </li>
 </ol>
-<h1 id="作者建议研读方法"><a href="#作者建议研读方法" class="headerlink" title="作者建议研读方法"></a>作者建议研读方法</h1><ul>
+<h1 id="作者建议研读方法">作者建议研读方法</h1>
+<ul>
 <li>复习c语言的基础知识。</li>
 <li>第一遍阅读，建议从头至尾进行通读。</li>
 <li>阅读时，摘抄/笔记是非常好的习惯。“最淡的墨水也胜于最强的记忆”</li>
-<li><strong>阅读每一章时，特别是阅读****<em>算法的推导过程</em></strong>，<strong>一定要在电脑中运行代码和进行调试，设置断点和逐行执行，参照书的讲解，观察变量的变化情况来理解算法的编写原理</strong>。</li>
+<li><strong>阅读每一章时，特别是阅读</strong><em><strong>算法的推导过程</strong></em>，<strong>一定要在电脑中运行代码和进行调试，设置断点和逐行执行，参照书的讲解，观察变量的变化情况来理解算法的编写原理</strong>。</li>
 <li>阅读完每一章时，一定要在<strong>理解基础上</strong>记忆一些<strong>关键东西</strong>，最佳效果就是不看书也可以一点不错的默写相关的算法。</li>
 <li>阅读完每一章时，一定要适当练习。</li>
 <li>在之后的学习或工作中，尽量把学到的数据结构和算法<strong>运用</strong>到现实开发中。</li>
 </ul>
-<h1 id="《大话数据树结构》初读后有感"><a href="#《大话数据树结构》初读后有感" class="headerlink" title="《大话数据树结构》初读后有感"></a>《大话数据树结构》初读后有感</h1><h2 id="教材和自学读物，所面向的读者是完全不同的"><a href="#教材和自学读物，所面向的读者是完全不同的" class="headerlink" title="教材和自学读物，所面向的读者是完全不同的"></a>教材和自学读物，所面向的读者是完全不同的</h2><h3 id="教材特性"><a href="#教材特性" class="headerlink" title="教材特性"></a>教材特性</h3><ol>
+<h1 id="《大话数据树结构》初读后有感">《大话数据树结构》初读后有感</h1>
+<h2 id="教材和自学读物，所面向的读者是完全不同的">教材和自学读物，所面向的读者是完全不同的</h2>
+<h3 id="教材特性">教材特性</h3>
+<ol>
 <li>好的教材应试是<strong>提纲挈领、重点突出</strong>。</li>
 <li>一定要<strong>留出思考空间</strong>，否则就没必要再听老师上课了。教材很多内容的讲解都是由<strong>老师</strong>在课堂上完成的。</li>
-<li>教材中必定有<strong>练习、课后习题、思考题等</strong>，而这些大多可以通过老师来解答。<blockquote>
+<li>教材中必定有<strong>练习、课后习题、思考题等</strong>，而这些大多可以通过老师来解答。</li>
+</ol>
+<blockquote>
 <p>比如我们中学时的语文、数学课本，很薄的一本书通常要用一个学期、甚至一年的时间来学，这就是因为它们是教材而不是自学读物。如果小说,可能一两天就读完了。</p>
 </blockquote>
-</li>
-</ol>
-<h2 id="读物——隔空交流的介质"><a href="#读物——隔空交流的介质" class="headerlink" title="读物——隔空交流的介质"></a>读物——隔空交流的介质</h2><h3 id="作者角度"><a href="#作者角度" class="headerlink" title="作者角度"></a>作者角度</h3><ol>
+<h2 id="读物——隔空交流的介质">读物——隔空交流的介质</h2>
+<h3 id="作者角度">作者角度</h3>
+<ol>
 <li>作者认为，读者拿到的虽然只是一本没有表情、不会说话的书，但其实也是在隔空与另一个朋友交流。</li>
 <li>人与人的交流不可能只是就事论事，一定会有情感的沟通，这种情感如果能产生共鸣、达成互信，就会让沟通的事情本身更容易理解和接受。</li>
 </ol>
-<h3 id="博主理解"><a href="#博主理解" class="headerlink" title="博主理解"></a>博主理解</h3><ol>
+<h3 id="博主理解">博主理解</h3>
+<ol>
 <li>读物本是以内容第一为原则。但其作者的表诉方式，引用，感受等情感会附带许多作者本人的价值观。即情感交流，也是阅读的影响之一。</li>
-<li>对于技术类读物，除技术内外，最明显的就是学习读者的编书方式，从编书结构从而建立更全面，深刻，有效的知识的架构。<blockquote>
+<li>对于技术类读物，除技术内外，最明显的就是学习读者的编书方式，从编书结构从而建立更全面，深刻，有效的知识的架构。</li>
+</ol>
+<blockquote>
 <p>如本书最明显的其中一个特征就是会对每一个小知识群进行小结提炼。这也会影响到我摘抄笔记的录入结构。</p>
 </blockquote>
-</li>
-</ol>
 
         </div>
 
@@ -570,7 +620,7 @@ endADT</code></pre>
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">知识大纲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">数据结构的起源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A9%E6%9C%9F%E8%AE%A4%E7%9F%A5"><span class="nav-number">2.1.</span> <span class="nav-text">早期认知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E7%8E%AF%E5%A2%83"><span class="nav-number">2.2.</span> <span class="nav-text">实际环境</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">基本概念和术语</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.1.</span> <span class="nav-text">数据的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="nav-number">3.1.2.</span> <span class="nav-text">数据的基本特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="nav-number">3.2.</span> <span class="nav-text">数据元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A1%B9"><span class="nav-number">3.3.</span> <span class="nav-text">数据项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.4.</span> <span class="nav-text">数据对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.5.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">3.6.</span> <span class="nav-text">数据结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">逻辑结构与物理结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.</span> <span class="nav-text">逻辑结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.1.</span> <span class="nav-text">集合结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.2.</span> <span class="nav-text">线性结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.3.</span> <span class="nav-text">树形结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.4.</span> <span class="nav-text">图形结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-number">4.1.5.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84-%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.</span> <span class="nav-text">物理结构&#x2F;存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.1.</span> <span class="nav-text">顺序存储结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.2.</span> <span class="nav-text">链式存储结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-number">4.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">抽象数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-1"><span class="nav-number">5.2.</span> <span class="nav-text">抽象数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1"><span class="nav-number">5.2.1.</span> <span class="nav-text">抽象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-2"><span class="nav-number">5.2.2.</span> <span class="nav-text">抽象数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%A0%87%E5%87%86%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.2.3.</span> <span class="nav-text">抽象数据类型的标准格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%9C%E8%80%85%E5%BB%BA%E8%AE%AE%E7%A0%94%E8%AF%BB%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">作者建议研读方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%8A%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E6%A0%91%E7%BB%93%E6%9E%84%E3%80%8B%E5%88%9D%E8%AF%BB%E5%90%8E%E6%9C%89%E6%84%9F"><span class="nav-number">8.</span> <span class="nav-text">《大话数据树结构》初读后有感</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%99%E6%9D%90%E5%92%8C%E8%87%AA%E5%AD%A6%E8%AF%BB%E7%89%A9%EF%BC%8C%E6%89%80%E9%9D%A2%E5%90%91%E7%9A%84%E8%AF%BB%E8%80%85%E6%98%AF%E5%AE%8C%E5%85%A8%E4%B8%8D%E5%90%8C%E7%9A%84"><span class="nav-number">8.1.</span> <span class="nav-text">教材和自学读物，所面向的读者是完全不同的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%99%E6%9D%90%E7%89%B9%E6%80%A7"><span class="nav-number">8.1.1.</span> <span class="nav-text">教材特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E7%89%A9%E2%80%94%E2%80%94%E9%9A%94%E7%A9%BA%E4%BA%A4%E6%B5%81%E7%9A%84%E4%BB%8B%E8%B4%A8"><span class="nav-number">8.2.</span> <span class="nav-text">读物——隔空交流的介质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E8%80%85%E8%A7%92%E5%BA%A6"><span class="nav-number">8.2.1.</span> <span class="nav-text">作者角度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E4%B8%BB%E7%90%86%E8%A7%A3"><span class="nav-number">8.2.2.</span> <span class="nav-text">博主理解</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">知识大纲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">数据结构的起源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A9%E6%9C%9F%E8%AE%A4%E7%9F%A5"><span class="nav-number">2.1.</span> <span class="nav-text">早期认知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E7%8E%AF%E5%A2%83"><span class="nav-number">2.2.</span> <span class="nav-text">实际环境</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">基本概念和术语</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.1.</span> <span class="nav-text">数据的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="nav-number">3.1.2.</span> <span class="nav-text">数据的基本特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="nav-number">3.2.</span> <span class="nav-text">数据元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A1%B9"><span class="nav-number">3.3.</span> <span class="nav-text">数据项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.4.</span> <span class="nav-text">数据对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.5.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">3.6.</span> <span class="nav-text">数据结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E4%B8%8E%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">逻辑结构与物理结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.</span> <span class="nav-text">逻辑结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.1.</span> <span class="nav-text">集合结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.2.</span> <span class="nav-text">线性结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.3.</span> <span class="nav-text">树形结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.4.</span> <span class="nav-text">图形结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-number">4.1.5.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84-%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.</span> <span class="nav-text">物理结构&#x2F;存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.1.</span> <span class="nav-text">顺序存储结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.2.</span> <span class="nav-text">链式存储结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-3"><span class="nav-number">4.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">抽象数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-2"><span class="nav-number">5.2.</span> <span class="nav-text">抽象数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1"><span class="nav-number">5.2.1.</span> <span class="nav-text">抽象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-3"><span class="nav-number">5.2.2.</span> <span class="nav-text">抽象数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%A0%87%E5%87%86%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.2.3.</span> <span class="nav-text">抽象数据类型的标准格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%9C%E8%80%85%E5%BB%BA%E8%AE%AE%E7%A0%94%E8%AF%BB%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">作者建议研读方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%8A%E5%A4%A7%E8%AF%9D%E6%95%B0%E6%8D%AE%E6%A0%91%E7%BB%93%E6%9E%84%E3%80%8B%E5%88%9D%E8%AF%BB%E5%90%8E%E6%9C%89%E6%84%9F"><span class="nav-number">8.</span> <span class="nav-text">《大话数据树结构》初读后有感</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%99%E6%9D%90%E5%92%8C%E8%87%AA%E5%AD%A6%E8%AF%BB%E7%89%A9%EF%BC%8C%E6%89%80%E9%9D%A2%E5%90%91%E7%9A%84%E8%AF%BB%E8%80%85%E6%98%AF%E5%AE%8C%E5%85%A8%E4%B8%8D%E5%90%8C%E7%9A%84"><span class="nav-number">8.1.</span> <span class="nav-text">教材和自学读物，所面向的读者是完全不同的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%99%E6%9D%90%E7%89%B9%E6%80%A7"><span class="nav-number">8.1.1.</span> <span class="nav-text">教材特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E7%89%A9%E2%80%94%E2%80%94%E9%9A%94%E7%A9%BA%E4%BA%A4%E6%B5%81%E7%9A%84%E4%BB%8B%E8%B4%A8"><span class="nav-number">8.2.</span> <span class="nav-text">读物——隔空交流的介质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E8%80%85%E8%A7%92%E5%BA%A6"><span class="nav-number">8.2.1.</span> <span class="nav-text">作者角度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E4%B8%BB%E7%90%86%E8%A7%A3"><span class="nav-number">8.2.2.</span> <span class="nav-text">博主理解</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>
