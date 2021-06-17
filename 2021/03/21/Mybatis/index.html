@@ -179,12 +179,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>3.1k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>4.5k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>13 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>19 Mins</span>
         </span>
     
     
@@ -434,10 +434,10 @@
 <hr>
 <ol>
 <li><p>如在类路径下创建一个dbconfig.properties文件，用于存放数据源信息，内容如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver&#x3D;com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;mybatis</span><br><span class="line">jdbc.username&#x3D;root</span><br><span class="line">jdbc.password&#x3D;root</span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">jdbc.driver</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="meta">jdbc.url</span>=<span class="string">jdbc:mysql://localhost:3306/mybatis</span></span><br><span class="line"><span class="meta">jdbc.username</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">jdbc.password</span>=<span class="string">root</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过<code>properties</code>标签引入相关信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;!-- 若不在类路径下，则按包名定位到，如com&#x2F;test&#x2F;dbconfig.properties... --&gt;</span><br><span class="line">	&lt;properties resource&#x3D;&quot;dbconfig.properties&quot;&gt;&lt;&#x2F;properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;environments default&#x3D;&quot;development&quot;&gt;</span><br><span class="line">		&lt;environment id&#x3D;&quot;development&quot;&gt;</span><br><span class="line">			&lt;transactionManager type&#x3D;&quot;JDBC&quot; &#x2F;&gt;</span><br><span class="line">			&lt;dataSource type&#x3D;&quot;POOLED&quot;&gt;</span><br><span class="line">				&lt;property name&#x3D;&quot;driver&quot; value&#x3D;&quot;$&#123;jdbc.driver&#125;&quot; &#x2F;&gt;</span><br><span class="line">				&lt;property name&#x3D;&quot;url&quot; value&#x3D;&quot;$&#123;jdbc.url&#125;&quot; &#x2F;&gt;</span><br><span class="line">				&lt;property name&#x3D;&quot;username&quot; value&#x3D;&quot;$&#123;jdbc.username&#125;&quot; &#x2F;&gt;</span><br><span class="line">				&lt;property name&#x3D;&quot;password&quot; value&#x3D;&quot;$&#123;jdbc.password&#125;&quot; &#x2F;&gt;</span><br><span class="line">			&lt;&#x2F;dataSource&gt;</span><br><span class="line">		&lt;&#x2F;environment&gt;</span><br><span class="line">	&lt;&#x2F;environments&gt;</span><br><span class="line"></span><br><span class="line">	&lt;mappers&gt;</span><br><span class="line">		&lt;mapper resource&#x3D;&quot;EmployeeMapper.xml&quot; &#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;mappers&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 若不在类路径下，则按包名定位到，如com/test/dbconfig.properties... --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;dbconfig.properties&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.driver&#125;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.url&#125;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.username&#125;&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.password&#125;&quot;</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;EmployeeMapper.xml&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><img  
                      lazyload
@@ -447,7 +447,7 @@
                 ></p>
 </li>
 </ol>
-<h2 id="settings"><a href="#settings" class="headerlink" title="settings"></a>settings</h2><p>这是 MyBatis中极为重要的调整设置，它们会改变MyBatis 的运行时行为。一般使用默认即可，不需要配置，需要再查看文档进行相应的配置。</p>
+<h2 id="settings"><a href="#settings" class="headerlink" title="settings"></a>settings</h2><p><strong>初步认识</strong>：这是 MyBatis中极为重要的调整设置，它们会改变MyBatis 的运行时行为。一般使用默认即可，不需要配置，需要再查看文档进行相应的配置。</p>
 <ul>
 <li><strong>name</strong>为要设置对应的<strong>配置信息</strong>，</li>
 <li><strong>value</strong>就是配置的<strong>值</strong></li>
@@ -471,14 +471,14 @@
 </tr>
 </tbody></table>
 <p>默认是False，若开启后，数据库列名为 <strong>last_Name</strong> 可直接映射java属性名<strong>lastName</strong>，而无需使用别名修改为lastName进行映射</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;settings&gt;</span><br><span class="line">	&lt;setting name&#x3D;&quot;mapUnderscoreToCamelCase&quot; value&#x3D;&quot;true&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;settings&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;mapUnderscoreToCamelCase&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="typeAliases"><a href="#typeAliases" class="headerlink" title="typeAliases"></a>typeAliases</h2><h3 id="自定义类别名"><a href="#自定义类别名" class="headerlink" title="自定义类别名"></a>自定义类别名</h3><p>为某个java类全类名起别名</p>
 <ul>
 <li><strong>type</strong>：指定要起别名的类的全类名，<strong>默认别名</strong>就是类<strong>名</strong>(不分大小写)</li>
 <li><strong>alias</strong>：指定<strong>新的别名</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;typeAliases&gt;</span><br><span class="line">		&lt;!-- 方式1.1：指定被起别名类全类名，使用默认别名(类名) --&gt;&lt;!-- </span><br><span class="line">		&lt;typeAlias type&#x3D;&quot;com.test.mybatis.bean.Employee&quot;&#x2F;&gt;--&gt;</span><br><span class="line">		 </span><br><span class="line">		&lt;!-- 方式1.2：在方式1的基础上，使用alias标签指定自定义别名 --&gt;&lt;!-- </span><br><span class="line">		&lt;typeAlias type&#x3D;&quot;com.test.mybatis.bean.Employee&quot; alias&#x3D;&quot;emp&quot;&#x2F;&gt; --&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!-- 方式2.1：为指定包下所有类起别名，此时只能使用默认别名 --&gt;&lt;!-- </span><br><span class="line">		&lt;package name&#x3D;&quot;com.test.mybatis.bean&quot;&#x2F;&gt;--&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!-- 方式2.2：若指定某包名与其子包下存在两个同名的类，则可以使用@Alias(&quot;Name&quot;)注解直接为指定java类起别名 --&gt;</span><br><span class="line">		&lt;!-- 注意：需要指明使用别名注解的包是什么，即要保留方式2.1的package标签，否则会报错 --&gt;</span><br><span class="line">		&lt;package name&#x3D;&quot;com.test.mybatis.bean&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;typeAliases&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 方式1.1：指定被起别名类全类名，使用默认别名(类名) --&gt;</span><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">    &lt;typeAlias type=&quot;com.test.mybatis.bean.Employee&quot;/&gt;--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 方式1.2：在方式1的基础上，使用alias标签指定自定义别名 --&gt;</span><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">    &lt;typeAlias type=&quot;com.test.mybatis.bean.Employee&quot; alias=&quot;emp&quot;/&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 方式2.1：为指定包下所有类起别名，此时只能使用默认别名 --&gt;</span><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">    &lt;package name=&quot;com.test.mybatis.bean&quot;/&gt;--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 方式2.2：若指定某包名与其子包下存在两个同名的类，则可以使用@Alias(&quot;Name&quot;)注解直接为指定java类起别名 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注意：需要指明使用别名注解的包是什么，即要保留方式2.1的package标签，否则会报错 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;com.test.mybatis.bean&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Alias(&quot;ABC&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -613,7 +613,117 @@
 <td>Iterator</td>
 </tr>
 </tbody></table>
-<h2 id="typeHandlers"><a href="#typeHandlers" class="headerlink" title="typeHandlers"></a>typeHandlers</h2>
+<h2 id="typeHandlers"><a href="#typeHandlers" class="headerlink" title="typeHandlers"></a>typeHandlers</h2><p><strong>初步认识</strong>：类型处理器，主要用于架起java类型和数据库类型映射的桥梁。比如，如何将java中String类型变量存储在数据库时适配成char，varchar等。反之，从数据库中查出的Integer如何转换成java使用的Integer。</p>
+<h2 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h2><p><strong>初步认识</strong>：MyBatis 允许在映射语句执行过程中的某一点进行拦截调用。默认情况下，使用插件机制来实现拦截。对应以下对象方法执行前后进行拦截，动态代理，可以改变mybatis的一些默认行为，达到自定义的效果。</p>
+<ul>
+<li>Executor（update、query、flushStatement、commit、rollback、getTransaction、close、isClosed）</li>
+<li>ParameterHandler（getParameterObject、setParameters）</li>
+<li>ResultSetHandler（handleResultSets、handleOutputParameters）</li>
+<li>StatementHandler（prepare、parameterize、batch、update、query）</li>
+</ul>
+<h2 id="environments"><a href="#environments" class="headerlink" title="environments"></a>environments</h2><p>MyBatis 可以配置成适应多种环境，这种机制有助于将 SQL 映射应用于多种数据库之中，现实情况下有多种理由需要这么做。例如，开发、测试和生产环境需要有不同的配置；或者想在具有相同 Schema的多个生产数据库中使用相同的 SQL 映射。还有许多类似的使用场景</p>
+<ul>
+<li><p><strong>environments</strong>：“环境们”，mybatis可以配置多种环境 。<strong>default属性</strong>指定<strong>当前使用的环境。</strong></p>
+</li>
+<li><p><strong>environment</strong>：配置一个具体的环境信息，必须含以下两个标签；<strong>id属性</strong>代表当前环境的唯一标识</p>
+<ul>
+<li><p><strong>transactionManager</strong>：事务管理器标签，<strong>type属性</strong>指定事务管理器的类型，可选项有<strong>JDBC</strong>，<strong>MANAGED</strong>或<strong>自定义</strong></p>
+<blockquote>
+<ul>
+<li>JDBC指使用JDBC来进行事务控制，MANAGED是使用JEE 容器来控制事务</li>
+<li>JDBC与MANAGED其实是别名，实际对应操作类在Configuration.class中注JDBC(<strong>JdbcTransactionFactory</strong>)|MANAGED(<strong>ManagedTransactionFactory</strong>)</li>
+<li>自定义事务管理器：实现<strong>TransactionFactory</strong>接口，type指定为实现类的全类名</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>dataSource</strong>：<strong>type属性</strong>指定数据源类型，可选项为 <strong>UNPOOLED</strong> | <strong>POOLED</strong> | <strong>JNDI</strong> | <strong>自定义</strong></p>
+<ul>
+<li><strong>UNPOOLED</strong> ：不适用连接池技术，每次数据库操作都与数据库建立一次新的连接。</li>
+<li><strong>POOLED</strong> ：使用连接池技术</li>
+<li><strong>JNDI</strong> ：略，有兴趣再了解</li>
+<li><strong>自定义数据源</strong>：如想使用C3P0等，实现<strong>DataSourceFactory</strong>接口，type为全类名</li>
+</ul>
+<blockquote>
+<p>别名说明：</p>
+<ul>
+<li>UNPOOLED(UnpooledDataSourceFactory)</li>
+<li>POOLED(PooledDataSourceFactory)</li>
+<li>JNDI(JndiDataSourceFactory)</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 通过default属性指定使用某个环境 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;dev_mysql&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 环境1 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;dev_mysql&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.driver&#125;&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.url&#125;&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.username&#125;&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.password&#125;&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">    <span class="comment">&lt;!-- 环境2 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;dev_oracle&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;orcl.driver&#125;&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;orcl.url&#125;&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;orcl.username&#125;&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;orcl.password&#125;&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="databaseldProvider"><a href="#databaseldProvider" class="headerlink" title="databaseldProvider"></a>databaseldProvider</h2><p>MyBatis 可以根据不同的数据库厂(MySQL、Oracle…)商执行不同的语句，也就是mybatis在移植性的支持的考虑</p>
+<ul>
+<li><strong>databaseIdProvider</strong>： <strong>type</strong>属性<strong>使用固定默认值</strong><code>type=&quot;DB_VENDOR&quot;</code>，DB_VENDOR也是别名，对应操作类为VendorDatabaseIdProvider，该操作类就是通过得到数据库厂商的标识(驱动getDatabaseProductName())，来区分执行不同的sql语句</li>
+<li><strong>常见数据库厂商标识</strong>：<ul>
+<li>MySQL标识：MySQL</li>
+<li>Oracle标识：Oracle</li>
+<li>SQL Server标识：SQL Server</li>
+</ul>
+</li>
+<li><strong>property</strong>：可通过该标签为某个数据<strong>库厂商标识起别名</strong><ul>
+<li><strong>name</strong>：数据库厂商标识</li>
+<li><strong>value</strong>：对应别名</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">databaseIdProvider</span> <span class="attr">type</span>=<span class="string">&quot;DB_VENDOR&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 为不同的数据库厂商起别名 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;MySQL&quot;</span> <span class="attr">value</span>=<span class="string">&quot;mysql&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;Oracle&quot;</span> <span class="attr">value</span>=<span class="string">&quot;oracle&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;SQL Server&quot;</span> <span class="attr">value</span>=<span class="string">&quot;sqlserver&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">databaseIdProvider</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>使用方式</strong>：若想实现不同数据库厂商自动执行对应的数据库厂商sql语句，需如下操作配合：<ol>
+<li>通过<strong>environment</strong>标签创建拟操作数据库对应数据源信息</li>
+<li>修改<strong>environments</strong>标签的default属性指定使用指定的数据源</li>
+<li>启用<strong>atabaseldProvider</strong>标签，并为数据库厂商标识起别名</li>
+<li>在sql映射xml文件中，为数据库操作标签添加<strong>databaseId属性</strong>，指定为<strong>atabaseldProvider</strong>标签中某个数据库厂商标识别名</li>
+</ol>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210323161647.png"
+                     
+                ></p>
+<h2 id="mappers"><a href="#mappers" class="headerlink" title="mappers"></a>mappers</h2><p><strong>mappers</strong>标签用于将sql映射xml文件<strong>注册</strong>到全局配置中，而实现注册有以下<strong>三种不同的方式</strong></p>
+<ol>
+<li><p><strong>直接注册配置文件</strong>：</p>
+<ul>
+<li><strong>resource属性</strong>：引用<strong>类路径</strong>下的sql映射文件</li>
+<li><strong>url属性</strong>：引用<strong>网络路径</strong>或者<strong>磁盘路径</strong>下的sql映射文件</li>
+</ul>
+</li>
+<li><p><strong>通过注册接口实现注册</strong>：</p>
+<ol>
+<li><strong>方式一</strong>：将sql映射文件与接口<strong>同一目录下</strong>，且映射文件名必须和接口<strong>同名</strong><ul>
+<li><strong>class属性</strong>：接口<strong>全类名</strong></li>
+</ul>
+</li>
+<li><strong>方式二</strong>：没有sql映射文件，直接在接口添加操作数据库的注解，如<code>@Select(&quot;select...&quot;)</code><ul>
+<li><strong>class属性</strong>：接口<strong>全类名</strong></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong>批量注册</strong>：批量注册时<strong>建立在</strong>“通过注册接口实现注册”的<strong>基础上的一种注册</strong>。因为批量注册时通过package标签对<strong>包名</strong>进行注册</p>
+<p><code>&lt;package name=&quot;com.atguigu.mybatis.dao&quot;/&gt;</code></p>
+<p>因此批量注册合第二种注册方式中两种情况要求一致(有映射文件必须同名同目录，无映射文件必须有注解)</p>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>比较重要的，复杂的Dao接口，建议通过写sql映射文件实现</li>
+<li>不重要，简单的Dao接口为了开发快速可以使用注解；</li>
+<li>tips：eclipse下可采用在不同文件夹下建立与接口同包名的文件夹存放接口对应的sql映射文件，达到方便管理的要求</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;mybatis/mapper/EmployeeMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- &lt;mapper class=&quot;com.atguigu.mybatis.dao.EmployeeMapperAnnotation&quot;/&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;package name=&quot;com.atguigu.mybatis.dao&quot;/&gt;--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
 
         
@@ -784,7 +894,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%86%E5%8F%B2"><span class="nav-number">1.</span> <span class="nav-text">基本历史</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">2.</span> <span class="nav-text">Mybatis的优势</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7"><span class="nav-number">2.1.</span> <span class="nav-text">JDBC及相关工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hibernate"><span class="nav-number">2.2.</span> <span class="nav-text">Hibernate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis"><span class="nav-number">2.3.</span> <span class="nav-text">Mybatis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis%E4%B8%8B%E8%BD%BD"><span class="nav-number">3.</span> <span class="nav-text">Mybatis下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HelloWorld"><span class="nav-number">4.</span> <span class="nav-text">HelloWorld</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#helloworld"><span class="nav-number">4.1.</span> <span class="nav-text">helloworld</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">接口式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.2.1.</span> <span class="nav-text">操作步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">4.2.2.</span> <span class="nav-text">优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">4.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#config-xml%E7%9B%B8%E5%85%B3%E6%A0%87%E7%AD%BE"><span class="nav-number">5.</span> <span class="nav-text">config_xml相关标签</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E4%B9%A6%E5%86%99%E6%8F%90%E7%A4%BA%E6%A3%80%E6%9F%A5"><span class="nav-number">5.1.</span> <span class="nav-text">标签书写提示检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#properties"><span class="nav-number">5.2.</span> <span class="nav-text">properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings"><span class="nav-number">5.3.</span> <span class="nav-text">settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeAliases"><span class="nav-number">5.4.</span> <span class="nav-text">typeAliases</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%88%AB%E5%90%8D"><span class="nav-number">5.4.1.</span> <span class="nav-text">自定义类别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE%E5%88%AB%E5%90%8D"><span class="nav-number">5.4.2.</span> <span class="nav-text">默认设置别名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeHandlers"><span class="nav-number">5.5.</span> <span class="nav-text">typeHandlers</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%86%E5%8F%B2"><span class="nav-number">1.</span> <span class="nav-text">基本历史</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">2.</span> <span class="nav-text">Mybatis的优势</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7"><span class="nav-number">2.1.</span> <span class="nav-text">JDBC及相关工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hibernate"><span class="nav-number">2.2.</span> <span class="nav-text">Hibernate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis"><span class="nav-number">2.3.</span> <span class="nav-text">Mybatis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis%E4%B8%8B%E8%BD%BD"><span class="nav-number">3.</span> <span class="nav-text">Mybatis下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HelloWorld"><span class="nav-number">4.</span> <span class="nav-text">HelloWorld</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#helloworld"><span class="nav-number">4.1.</span> <span class="nav-text">helloworld</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">接口式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.2.1.</span> <span class="nav-text">操作步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">4.2.2.</span> <span class="nav-text">优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">4.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#config-xml%E7%9B%B8%E5%85%B3%E6%A0%87%E7%AD%BE"><span class="nav-number">5.</span> <span class="nav-text">config_xml相关标签</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E4%B9%A6%E5%86%99%E6%8F%90%E7%A4%BA%E6%A3%80%E6%9F%A5"><span class="nav-number">5.1.</span> <span class="nav-text">标签书写提示检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#properties"><span class="nav-number">5.2.</span> <span class="nav-text">properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings"><span class="nav-number">5.3.</span> <span class="nav-text">settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeAliases"><span class="nav-number">5.4.</span> <span class="nav-text">typeAliases</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%88%AB%E5%90%8D"><span class="nav-number">5.4.1.</span> <span class="nav-text">自定义类别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE%E5%88%AB%E5%90%8D"><span class="nav-number">5.4.2.</span> <span class="nav-text">默认设置别名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeHandlers"><span class="nav-number">5.5.</span> <span class="nav-text">typeHandlers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plugins"><span class="nav-number">5.6.</span> <span class="nav-text">plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#environments"><span class="nav-number">5.7.</span> <span class="nav-text">environments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#databaseldProvider"><span class="nav-number">5.8.</span> <span class="nav-text">databaseldProvider</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mappers"><span class="nav-number">5.9.</span> <span class="nav-text">mappers</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
