@@ -152,6 +152,7 @@
 印次：2020年5月第25次印刷(2020.5重印)
 
 大纲
+
 线性表的定义
 线性表的抽象数据类型
 线性表的顺序存储结构
@@ -160,7 +161,7 @@
 顺序存储结构的插入与删除
 线性表顺序存储结构的优缺点
 
-线性表的...
+线性表...
                     
                 </div>
 
@@ -210,6 +211,7 @@
 印次：2020年5月第25次印刷(2020.5重印)
 
 大纲
+
 算法的定义
 算法的特性
 算法设计的要求
@@ -219,7 +221,8 @@
 算法空间复杂度
 最坏情况与平均情况
 
-算法的定义算法：算法是解决特定问...
+算法的定义
+算法：算法是解决特...
                     
                 </div>
 
@@ -269,15 +272,17 @@
 印次：2020年5月第25次印刷(2020.5重印)
 
 知识大纲
+
 数据结构的起源
 基本概念和术语
 逻辑结构与物理结构
 抽象数据类型
 
-数据结构的起源早期认知人们都把计算机理解为数值计算工具。解决问题方式如下：
+数据结构的起源
+早期认知
+人们都把计算机理解为数值计算工具。解决问题方式如下：
 
-分析问题
-抽...
+分析问...
                     
                 </div>
 
@@ -323,13 +328,16 @@
                 <div class="home-article-content markdown-body">
                     
                         参考链接
+
+
 本人解决方案：https://www.jianshu.com/p/b69950a49ae2
+
 
 markdown各种解决方案：https://www.jianshu.com/p/ea1eb11db63f
 
-picgo连接gitee：
 
-htt...
+picgo连接gitee：
+...
                     
                 </div>
 
@@ -370,16 +378,20 @@ htt...
                 <div class="home-article-content markdown-body">
                     
                         前提
+
+
 已经安装hexo，并且能够通过hexo d命令推送到GitHub实现远程推送。
 
 实现方案具体可参考《基于Hexo框架的博客搭建及其GitHub部署》
+
 
 
 已经注册Gitee账号并且绑定手机。
 
 
 Gitee新建仓库
-新建仓库时名称最好是保持跟...
+
+新建仓库时名称最好...
                     
                 </div>
 
@@ -430,8 +442,10 @@ Gitee新建仓库
                 <div class="home-article-content markdown-body">
                     
                         Hexo简介
-Hexo 是一个快速、简洁且高效的静态博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  
-Hexo受众面较广，对应的问题、扩展等内容在网上均有成熟解决方案，推荐安装使用。...
+
+Hexo 是一个快速、简洁且高效的静态博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+Hexo受众面较广，对应的问题、扩展等内容在网上均有成熟解决方案，推荐安装使用。
+...
                     
                 </div>
 
@@ -664,182 +678,33 @@ Hexo受众面较广，对应的问题、扩展等内容在网上均有成熟解�
 
 
     
-        $icon-size = 1.2rem;
-
-.search-pop-overlay {
-  position: fixed;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0);
-  visibility: hidden;
-  z-index: $z-index-8;
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
-
-  &.active {
-    visibility: visible;
-    background: rgba(0, 0, 0, 0.35);
-
-    .search-popup {
-      transform: scale(1);
-    }
-
-  }
-
-
-  .search-popup {
-    background: var(--background-color);
-    border-radius: 5px;
-    height: 80%;
-    width: 70%;
-    margin: auto;
-    transform: scale(0);
-    z-index: $z-index-6;
-    transition-t("transform", "0", "0.3", "ease");
-
-    +keep-tablet() {
-      width: 80%;
-    }
-
-    +keep-mobile() {
-      width: 90%;
-    }
-
-    .search-header {
-      background: var(--fourth-text-color);
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
-      display: flex;
-      padding: 10px;
-
-      .search-input-field-pre, .popup-btn-close {
-        font-size: $icon-size;
-        padding: 0 10px;
-        display: flex;
-        align-items: center;
-      }
-
-      .search-input-field-pre {
-        cursor: pointer;
-        color: var(--third-text-color);
-      }
-
-      .popup-btn-close {
-        color: var(--default-text-color);
-      }
-
-
-      .search-input-container {
-
-        flex-grow: 1;
-        padding: 2px;
-
-        .search-input {
-          background: transparent;
-          border: 0;
-          outline: 0;
-          width: 100%;
-          font-size: 1.2rem;
-          color: var(--default-text-color);
-
-          &::-webkit-search-cancel-button {
-            display: none;
-          }
-        }
-
-
-      }
-
-
-      .popup-btn-close {
-        cursor: pointer;
-
-        &:hover .fas, far, fab {
-          color: var(--first-text-color);
-        }
-      }
-
-    }
-
-
-    #search-result {
-      display: flex;
-      height: calc(100% - 55px);
-      overflow: auto;
-      padding: 5px 25px;
-
-      .search-result-list {
-        width: 100%;
-        height: 100%;
-        font-size: 1rem;
-
-        li {
-          border-bottom: 1px dashed var(--border-color);
-          padding: 10px 0;
-          margin: 10px 0;
-          box-sizing: border-box;
-
-          &:last-child {
-            border-bottom: none;
-          }
-
-
-          .search-result-title {
-            position: relative;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding-left: 16px;
-            display: flex;
-            align-items: center;
-
-            &::after {
-              content: '';
-              position: absolute;
-              width: 5px;
-              height: 5px;
-              border-radius: 50%;
-              top: 50%;
-              transform: translateY(-50%);
-              left: 0;
-              background: var(--default-text-color);
-            }
-          }
-
-
-          .search-result {
-            line-height: 2rem;
-            margin: 0;
-            padding-left: 16px;
-            word-wrap: break-word;
-          }
-
-          a {
-            &:hover {
-              color: var(--default-text-color);
-            }
-          }
-
-          .search-keyword {
-            border-bottom: 1px dashed var(--primary-color);
-            color: var(--primary-color);
-            font-weight: bold;
-          }
-
-        }
-      }
-
-
-      #no-result {
-        color: var(--third-text-color);
-        margin: auto;
-      }
-
-    }
-  }
-}
-
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 

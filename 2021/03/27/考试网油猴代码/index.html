@@ -198,9 +198,6 @@
         <div class="article-content markdown-body">
             <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ==UserScript==</span></span><br><span class="line"><span class="comment">// @name            考试资料网跳转显示答案</span></span><br><span class="line"><span class="comment">// @namespace       https://github.com/cuifeiran/ppkao/</span></span><br><span class="line"><span class="comment">// @version         0.1.7</span></span><br><span class="line"><span class="comment">// @description     对单个题目进行跳转，使得跳转后的页面显示题目的答案。期间可能需要验证,遇到问题可以在GitHub issue我～</span></span><br><span class="line"><span class="comment">// @author          Dave</span></span><br><span class="line"><span class="comment">// @match           *://www.ppkao.com/tiku/shiti/*</span></span><br><span class="line"><span class="comment">// @match           *://www.ppkao.com/kaoti/*</span></span><br><span class="line"><span class="comment">// @include         *://www.ppkao.com/tiku/shiti/*</span></span><br><span class="line"><span class="comment">// @include         *://www.ppkao.com/shiti/*</span></span><br><span class="line"><span class="comment">// @include         *://www.ppkao.com/kaoti/*</span></span><br><span class="line"><span class="comment">// @include         *://www.ppkao.com/daan/*</span></span><br><span class="line"><span class="comment">//@contributionURL</span></span><br><span class="line"><span class="comment">// @grant           none</span></span><br><span class="line"><span class="comment">// ==/UserScript==</span></span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    &#x27;use strict&#x27;</span>;</span><br><span class="line">    <span class="comment">//清除限制题目访问数量的cookie</span></span><br><span class="line">    <span class="keyword">var</span> Days = <span class="number">30</span>;</span><br><span class="line">    <span class="keyword">var</span> exp = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    exp.setTime(exp.getTime() + Days*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>);</span><br><span class="line">    <span class="built_in">document</span>.cookie=<span class="string">&quot;PPKAO=PPKAOSTID=&amp;PPKAOCEID=&amp;PPKAOSJID=&amp;UserName=&amp;EDays=; domain=ppkao.com;expires=&quot;</span>+exp.toGMTString()+<span class="string">&quot;;path=/&quot;</span>;</span><br><span class="line">    <span class="comment">//获取当前页面URL</span></span><br><span class="line">    <span class="keyword">var</span> iSite = <span class="built_in">window</span>.location.href;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="regexp">/[1-9][0-9]*/g</span>;</span><br><span class="line">    <span class="keyword">var</span> numList = iSite.match(reg);</span><br><span class="line">    <span class="keyword">var</span> isKaoti =<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;kaoti&quot;</span>).test(iSite);</span><br><span class="line">    <span class="keyword">var</span> isTiku =<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;tiku&quot;</span>).test(iSite);</span><br><span class="line">    <span class="keyword">var</span> isShiti =<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;shiti&quot;</span>).test(iSite);</span><br><span class="line">    <span class="keyword">var</span> isDaan =<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;daan&quot;</span>).test(iSite);</span><br><span class="line">    <span class="keyword">var</span> sUrl=<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (isKaoti===<span class="literal">true</span>)&#123;sUrl=<span class="string">&#x27;https://api.ppkao.com/mnkc/kaoti/?id=&#x27;</span>+ numList;<span class="built_in">window</span>.location.href =sUrl;&#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(isTiku===<span class="literal">true</span>)&#123;sUrl=<span class="string">&#x27;https://api.ppkao.com/mnkc/tiku/?id=&#x27;</span>+ numList;<span class="built_in">window</span>.location.href =sUrl;&#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isShiti===<span class="literal">true</span>)&#123;sUrl=<span class="string">&#x27;https://newapi.ppkao.com/mnkc/shiti/?id=&#x27;</span>+ numList;<span class="built_in">window</span>.location.href =sUrl;&#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(isDaan===<span class="literal">true</span>)&#123;</span><br><span class="line">                    <span class="keyword">var</span> html = <span class="string">&#x27;&lt;div id=&quot;showQRcode&quot; style=&quot;position: fixed;right:30px;bottom: 0px;&quot;&gt;&lt;a style=&quot;font-size:14px;color:red;background-color: white;display:block;&quot; href=&quot;https://raw.githubusercontent.com/cuifeiran/ppkao/master/donations&quot;&gt;[捐助名单]我在考研二战,愁于房租,致谢捐助者！&lt;/a&gt;&lt;a style=&quot;font-size: 14px;display:block;color:black;background-color: white;&quot; onclick=&quot;$(this).parent().remove();&quot; hidden=&quot;javascripe:void(0)&quot; &gt;[不想捐助点击这里]&lt;/a&gt;&lt;img width=&quot;420&quot; height=&quot;210&quot; src=&quot;https://s1.ax1x.com/2018/12/11/FJ47an.jpg&quot;&gt;&lt;/img&gt;&lt;/div&gt;&#x27;</span></span><br><span class="line">                    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">                    div.setAttribute(<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;showQRcode&#x27;</span>);</span><br><span class="line">                    div.innerHTML = html;</span><br><span class="line">                    <span class="built_in">document</span>.body.appendChild(div);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-
-
         </div>
 
         
@@ -383,182 +380,33 @@
 
 
     
-        $icon-size = 1.2rem;
-
-.search-pop-overlay {
-  position: fixed;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0);
-  visibility: hidden;
-  z-index: $z-index-8;
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
-
-  &.active {
-    visibility: visible;
-    background: rgba(0, 0, 0, 0.35);
-
-    .search-popup {
-      transform: scale(1);
-    }
-
-  }
-
-
-  .search-popup {
-    background: var(--background-color);
-    border-radius: 5px;
-    height: 80%;
-    width: 70%;
-    margin: auto;
-    transform: scale(0);
-    z-index: $z-index-6;
-    transition-t("transform", "0", "0.3", "ease");
-
-    +keep-tablet() {
-      width: 80%;
-    }
-
-    +keep-mobile() {
-      width: 90%;
-    }
-
-    .search-header {
-      background: var(--fourth-text-color);
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
-      display: flex;
-      padding: 10px;
-
-      .search-input-field-pre, .popup-btn-close {
-        font-size: $icon-size;
-        padding: 0 10px;
-        display: flex;
-        align-items: center;
-      }
-
-      .search-input-field-pre {
-        cursor: pointer;
-        color: var(--third-text-color);
-      }
-
-      .popup-btn-close {
-        color: var(--default-text-color);
-      }
-
-
-      .search-input-container {
-
-        flex-grow: 1;
-        padding: 2px;
-
-        .search-input {
-          background: transparent;
-          border: 0;
-          outline: 0;
-          width: 100%;
-          font-size: 1.2rem;
-          color: var(--default-text-color);
-
-          &::-webkit-search-cancel-button {
-            display: none;
-          }
-        }
-
-
-      }
-
-
-      .popup-btn-close {
-        cursor: pointer;
-
-        &:hover .fas, far, fab {
-          color: var(--first-text-color);
-        }
-      }
-
-    }
-
-
-    #search-result {
-      display: flex;
-      height: calc(100% - 55px);
-      overflow: auto;
-      padding: 5px 25px;
-
-      .search-result-list {
-        width: 100%;
-        height: 100%;
-        font-size: 1rem;
-
-        li {
-          border-bottom: 1px dashed var(--border-color);
-          padding: 10px 0;
-          margin: 10px 0;
-          box-sizing: border-box;
-
-          &:last-child {
-            border-bottom: none;
-          }
-
-
-          .search-result-title {
-            position: relative;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding-left: 16px;
-            display: flex;
-            align-items: center;
-
-            &::after {
-              content: '';
-              position: absolute;
-              width: 5px;
-              height: 5px;
-              border-radius: 50%;
-              top: 50%;
-              transform: translateY(-50%);
-              left: 0;
-              background: var(--default-text-color);
-            }
-          }
-
-
-          .search-result {
-            line-height: 2rem;
-            margin: 0;
-            padding-left: 16px;
-            word-wrap: break-word;
-          }
-
-          a {
-            &:hover {
-              color: var(--default-text-color);
-            }
-          }
-
-          .search-keyword {
-            border-bottom: 1px dashed var(--primary-color);
-            color: var(--primary-color);
-            font-weight: bold;
-          }
-
-        }
-      }
-
-
-      #no-result {
-        color: var(--third-text-color);
-        margin: auto;
-      }
-
-    }
-  }
-}
-
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 

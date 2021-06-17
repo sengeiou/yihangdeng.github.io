@@ -196,32 +196,40 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><p>本人解决方案：<a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/b69950a49ae2" >https://www.jianshu.com/p/b69950a49ae2<i class="fas fa-external-link-alt"></i></a></p>
+            <h1 id="参考链接">参考链接</h1>
+<ul>
+<li>
+<p>本人解决方案：<a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/b69950a49ae2" >https://www.jianshu.com/p/b69950a49ae2<i class="fas fa-external-link-alt"></i></a></p>
 </li>
-<li><p>markdown各种解决方案：<a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/ea1eb11db63f" >https://www.jianshu.com/p/ea1eb11db63f<i class="fas fa-external-link-alt"></i></a></p>
+<li>
+<p>markdown各种解决方案：<a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/ea1eb11db63f" >https://www.jianshu.com/p/ea1eb11db63f<i class="fas fa-external-link-alt"></i></a></p>
 </li>
-<li><p>picgo连接gitee：</p>
+<li>
+<p>picgo连接gitee：</p>
 <ul>
 <li><a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/b69950a49ae2" >https://www.jianshu.com/p/b69950a49ae2<i class="fas fa-external-link-alt"></i></a></li>
 <li><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/disILLL/article/details/104944710" >https://blog.csdn.net/disILLL/article/details/104944710<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/qtzd/p/12554902.html" >https://www.cnblogs.com/qtzd/p/12554902.html<i class="fas fa-external-link-alt"></i></a> </li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/qtzd/p/12554902.html" >https://www.cnblogs.com/qtzd/p/12554902.html<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
 </li>
 </ul>
-<h1 id="软件关系简要说明"><a href="#软件关系简要说明" class="headerlink" title="软件关系简要说明"></a>软件关系简要说明</h1><ul>
-<li><p>Typora</p>
+<h1 id="软件关系简要说明">软件关系简要说明</h1>
+<ul>
+<li>
+<p>Typora</p>
 <ol>
 <li>作为markdown编辑器本身具备的优势</li>
 <li>最新版支持 picgo自动上传功能呢</li>
 </ol>
 </li>
-<li><p>picgo(图床工具)</p>
+<li>
+<p>picgo(图床工具)</p>
 <ul>
 <li>主要功能：与各大图床存储平台对接，实现快捷本地上传，返回各种需求的连接服务(markdown、html、svg链接等)</li>
 </ul>
 </li>
-<li><p>gitee：作为一个免费图床存储平台，无防盗链设置</p>
+<li>
+<p>gitee：作为一个免费图床存储平台，无防盗链设置</p>
 </li>
 </ul>
 
@@ -407,182 +415,33 @@
 
 
     
-        $icon-size = 1.2rem;
-
-.search-pop-overlay {
-  position: fixed;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0);
-  visibility: hidden;
-  z-index: $z-index-8;
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
-
-  &.active {
-    visibility: visible;
-    background: rgba(0, 0, 0, 0.35);
-
-    .search-popup {
-      transform: scale(1);
-    }
-
-  }
-
-
-  .search-popup {
-    background: var(--background-color);
-    border-radius: 5px;
-    height: 80%;
-    width: 70%;
-    margin: auto;
-    transform: scale(0);
-    z-index: $z-index-6;
-    transition-t("transform", "0", "0.3", "ease");
-
-    +keep-tablet() {
-      width: 80%;
-    }
-
-    +keep-mobile() {
-      width: 90%;
-    }
-
-    .search-header {
-      background: var(--fourth-text-color);
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
-      display: flex;
-      padding: 10px;
-
-      .search-input-field-pre, .popup-btn-close {
-        font-size: $icon-size;
-        padding: 0 10px;
-        display: flex;
-        align-items: center;
-      }
-
-      .search-input-field-pre {
-        cursor: pointer;
-        color: var(--third-text-color);
-      }
-
-      .popup-btn-close {
-        color: var(--default-text-color);
-      }
-
-
-      .search-input-container {
-
-        flex-grow: 1;
-        padding: 2px;
-
-        .search-input {
-          background: transparent;
-          border: 0;
-          outline: 0;
-          width: 100%;
-          font-size: 1.2rem;
-          color: var(--default-text-color);
-
-          &::-webkit-search-cancel-button {
-            display: none;
-          }
-        }
-
-
-      }
-
-
-      .popup-btn-close {
-        cursor: pointer;
-
-        &:hover .fas, far, fab {
-          color: var(--first-text-color);
-        }
-      }
-
-    }
-
-
-    #search-result {
-      display: flex;
-      height: calc(100% - 55px);
-      overflow: auto;
-      padding: 5px 25px;
-
-      .search-result-list {
-        width: 100%;
-        height: 100%;
-        font-size: 1rem;
-
-        li {
-          border-bottom: 1px dashed var(--border-color);
-          padding: 10px 0;
-          margin: 10px 0;
-          box-sizing: border-box;
-
-          &:last-child {
-            border-bottom: none;
-          }
-
-
-          .search-result-title {
-            position: relative;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding-left: 16px;
-            display: flex;
-            align-items: center;
-
-            &::after {
-              content: '';
-              position: absolute;
-              width: 5px;
-              height: 5px;
-              border-radius: 50%;
-              top: 50%;
-              transform: translateY(-50%);
-              left: 0;
-              background: var(--default-text-color);
-            }
-          }
-
-
-          .search-result {
-            line-height: 2rem;
-            margin: 0;
-            padding-left: 16px;
-            word-wrap: break-word;
-          }
-
-          a {
-            &:hover {
-              color: var(--default-text-color);
-            }
-          }
-
-          .search-keyword {
-            border-bottom: 1px dashed var(--primary-color);
-            color: var(--primary-color);
-            font-weight: bold;
-          }
-
-        }
-      }
-
-
-      #no-result {
-        color: var(--third-text-color);
-        margin: auto;
-      }
-
-    }
-  }
-}
-
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 

@@ -158,8 +158,10 @@
                 <div class="home-article-content markdown-body">
                     
                         引言：本文主要介绍Java IO流系统的知识，包含File类的使用、IO流原理及流的分类、节点流(文件流)、缓冲流、转换流、标准输入输出流、打印流、对象流、随机存取文件流、NIO中的Path、Paths、Files类的使用。
-File类基本概念
-ja...
+File类
+基本概念
+
+...
                     
                 </div>
 
@@ -365,8 +367,11 @@ ja...
 
                 <div class="home-article-content markdown-body">
                     
-                        原始数据报分析fiddler抓取本地包通过浏览器或Windows设置本地代理为ip:8888，ip可尝试127.0.0.1或当前网络情况的其他ip尝试。由于fiddler默认的代理端口号就是8888。
-文本类型测试分别发出GET和POST请求，请求的...
+                        原始数据报分析
+fiddler抓取本地包
+通过浏览器或Windows设置本地代理为ip:8888，ip可尝试127.0.0.1或当前网络情况的其他ip尝试。由于fiddler默认的代理端口号就是8888。
+文本类型测试
+分别发出GET和POST请求，...
                     
                 </div>
 
@@ -406,9 +411,11 @@ ja...
 
                 <div class="home-article-content markdown-body">
                     
-                        JavaWeb技术概述万维网
+                        JavaWeb技术概述
+万维网
+
 WWW是World Wide Web简称，目的为了实现全世界能利用因特网进行文档交换，是一个大规模、分布式、联机式的信息储藏所。
-Web是基于客户/服务器的一种B/S体系结构，其基本工作原理为，客户使用浏览器向Web服务...
+Web是基于客户/服务器的一种B/S体系结构，其基本工作原理为，客户使用浏览器向Web...
                     
                 </div>
 
@@ -449,7 +456,8 @@ Web是基于客户/服务器的一种B/S体系结构，其基本工作原理为�
                 <div class="home-article-content markdown-body">
                     
                         引言：原生Web技术方案涵盖了MVC设计模式、数据域使用、表单重复提交、分页技术、验证码、权限管理、事务管理、常见电商web功能模块、前后端分离技术、i18n国际化技术等。在于原生实现思路的体现，实现的代码部分可能存在bug，请注意。
-MVC模式基础...
+MVC模式
+基...
                     
                 </div>
 
@@ -494,12 +502,16 @@ MVC模式基础...
 
                 <div class="home-article-content markdown-body">
                     
-                        基本概念原语
+                        基本概念
+原语
+
+
 原语（primitive）是机器指令的延伸，往往是为完成某些特定的功能而编制的一段系统程序
+
 
 原语操作也称做“原子操作”（atomic action），即一个操作中的所有动作要么全做，要么全不做
 
-执行原语操作时，系统会自动屏蔽中断，以...
+执行原语操作时，系统会自动屏蔽...
                     
                 </div>
 
@@ -545,7 +557,9 @@ MVC模式基础...
                 <div class="home-article-content markdown-body">
                     
                         [TOC]
-HTML基本规范123456789101112131415&lt;!DOCTYPE html&gt;&lt;!-- 约束,声明 --&gt;&lt;!-- html标签表示html的开始   lang=&quot;zh_CN&quot;表...
+HTML
+基本规范
+123456789101112131415&lt;!DOCTYPE html&gt;&lt;!-- 约束,声明 --&gt;&lt;!-- html标签表示html的开始   lang=&quot;zh_CN&quot...
                     
                 </div>
 
@@ -704,182 +718,33 @@ HTML基本规范123456789101112131415&lt;!DOCTYPE html&gt;&lt;!-- 约束,声明 
 
 
     
-        $icon-size = 1.2rem;
-
-.search-pop-overlay {
-  position: fixed;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0);
-  visibility: hidden;
-  z-index: $z-index-8;
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
-
-  &.active {
-    visibility: visible;
-    background: rgba(0, 0, 0, 0.35);
-
-    .search-popup {
-      transform: scale(1);
-    }
-
-  }
-
-
-  .search-popup {
-    background: var(--background-color);
-    border-radius: 5px;
-    height: 80%;
-    width: 70%;
-    margin: auto;
-    transform: scale(0);
-    z-index: $z-index-6;
-    transition-t("transform", "0", "0.3", "ease");
-
-    +keep-tablet() {
-      width: 80%;
-    }
-
-    +keep-mobile() {
-      width: 90%;
-    }
-
-    .search-header {
-      background: var(--fourth-text-color);
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
-      display: flex;
-      padding: 10px;
-
-      .search-input-field-pre, .popup-btn-close {
-        font-size: $icon-size;
-        padding: 0 10px;
-        display: flex;
-        align-items: center;
-      }
-
-      .search-input-field-pre {
-        cursor: pointer;
-        color: var(--third-text-color);
-      }
-
-      .popup-btn-close {
-        color: var(--default-text-color);
-      }
-
-
-      .search-input-container {
-
-        flex-grow: 1;
-        padding: 2px;
-
-        .search-input {
-          background: transparent;
-          border: 0;
-          outline: 0;
-          width: 100%;
-          font-size: 1.2rem;
-          color: var(--default-text-color);
-
-          &::-webkit-search-cancel-button {
-            display: none;
-          }
-        }
-
-
-      }
-
-
-      .popup-btn-close {
-        cursor: pointer;
-
-        &:hover .fas, far, fab {
-          color: var(--first-text-color);
-        }
-      }
-
-    }
-
-
-    #search-result {
-      display: flex;
-      height: calc(100% - 55px);
-      overflow: auto;
-      padding: 5px 25px;
-
-      .search-result-list {
-        width: 100%;
-        height: 100%;
-        font-size: 1rem;
-
-        li {
-          border-bottom: 1px dashed var(--border-color);
-          padding: 10px 0;
-          margin: 10px 0;
-          box-sizing: border-box;
-
-          &:last-child {
-            border-bottom: none;
-          }
-
-
-          .search-result-title {
-            position: relative;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding-left: 16px;
-            display: flex;
-            align-items: center;
-
-            &::after {
-              content: '';
-              position: absolute;
-              width: 5px;
-              height: 5px;
-              border-radius: 50%;
-              top: 50%;
-              transform: translateY(-50%);
-              left: 0;
-              background: var(--default-text-color);
-            }
-          }
-
-
-          .search-result {
-            line-height: 2rem;
-            margin: 0;
-            padding-left: 16px;
-            word-wrap: break-word;
-          }
-
-          a {
-            &:hover {
-              color: var(--default-text-color);
-            }
-          }
-
-          .search-keyword {
-            border-bottom: 1px dashed var(--primary-color);
-            color: var(--primary-color);
-            font-weight: bold;
-          }
-
-        }
-      }
-
-
-      #no-result {
-        color: var(--third-text-color);
-        margin: auto;
-      }
-
-    }
-  }
-}
-
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 

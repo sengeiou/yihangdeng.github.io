@@ -200,34 +200,43 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="原语"><a href="#原语" class="headerlink" title="原语"></a>原语</h2><ul>
-<li><p><strong>原语</strong>（primitive）是机器指令的延伸，往往是为完成某些特定的功能而编制的一段<strong>系统程序</strong></p>
+            <h1 id="基本概念">基本概念</h1>
+<h2 id="原语">原语</h2>
+<ul>
+<li>
+<p><strong>原语</strong>（primitive）是机器指令的延伸，往往是为完成某些特定的功能而编制的一段<strong>系统程序</strong></p>
 </li>
-<li><p>原语操作也称做“<strong>原子操作</strong>”（atomic action），即一个操作中的所有动作<strong>要么全做，要么全不做</strong></p>
+<li>
+<p>原语操作也称做“<strong>原子操作</strong>”（atomic action），即一个操作中的所有动作<strong>要么全做，要么全不做</strong></p>
 <blockquote>
 <p><strong>执行原语</strong>操作时，系统会自动<strong>屏蔽中断</strong>，以保证其操作的不可分割性。</p>
 </blockquote>
 </li>
 </ul>
-<h2 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h2><ul>
-<li><p><strong>信号量</strong>(semaphore)是由荷兰科学家Dijkstra在1965年提出的一种<strong>进程同步机制</strong></p>
+<h2 id="信号量">信号量</h2>
+<ul>
+<li>
+<p><strong>信号量</strong>(semaphore)是由荷兰科学家Dijkstra在1965年提出的一种<strong>进程同步机制</strong></p>
 </li>
-<li><p><strong>计数信号量</strong>(整型)的物理意义：<strong>S&gt;=0</strong>时表示某资源的可用数，<strong>S&lt;0</strong>时其绝对值表示阻塞队列中等待该资源的进程数。</p>
+<li>
+<p><strong>计数信号量</strong>(整型)的物理意义：<strong>S&gt;=0</strong>时表示某资源的可用数，<strong>S&lt;0</strong>时其绝对值表示阻塞队列中等待该资源的进程数。</p>
 </li>
 </ul>
-<h2 id="PV操作的原语操作"><a href="#PV操作的原语操作" class="headerlink" title="PV操作的原语操作"></a>PV操作的原语操作</h2><p>在信号量同步机制中包含“检测”与“归还”两个操作，检测操作称为P操作，归还操作称为V操作，对应的原语操作如下。(注意原语操作不一定是代码实现就这样)</p>
+<h2 id="PV操作的原语操作">PV操作的原语操作</h2>
+<p>在信号量同步机制中包含“检测”与“归还”两个操作，检测操作称为P操作，归还操作称为V操作，对应的原语操作如下。(注意原语操作不一定是代码实现就这样)</p>
 <ul>
-<li><p>P操作的<strong>原语操作</strong>：passeren(通过、检测)</p>
+<li>
+<p>P操作的<strong>原语操作</strong>：passeren(通过、检测)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;x是计数信号量</span><br><span class="line">P(x)&#123;</span><br><span class="line">	while(x &lt;&#x3D; 0);</span><br><span class="line">	x--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>V操作<strong>原语操作</strong>：vrijgeven(释放)</p>
+<li>
+<p>V操作<strong>原语操作</strong>：vrijgeven(释放)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">V(x)&#123;</span><br><span class="line">	x--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 </li>
 </ul>
-<h1 id="PV操作的使用"><a href="#PV操作的使用" class="headerlink" title="PV操作的使用"></a>PV操作的使用</h1><h2 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h2><p>单纯开启多个线程，直接使用PV操作的原语操作(while)自封装PV函数，设置整型信号量进行线程同步和互斥操作<strong>是不行</strong>的。原因在于：</p>
+<h1 id="PV操作的使用">PV操作的使用</h1>
+<h2 id="基本概念-2">基本概念</h2>
+<p>单纯开启多个线程，直接使用PV操作的原语操作(while)自封装PV函数，设置整型信号量进行线程同步和互斥操作<strong>是不行</strong>的。原因在于：</p>
 <ol>
 <li>PV操作必须是<strong>原子操作</strong>，即在运行过程中，占有完整的一个时间片，不可分割。而未被特殊处理过的普通程序代码是不具备这种特性的。</li>
 <li>PV操作必须要<strong>控制线程</strong>。管理线程队列并控制使其线程阻塞、中断、唤醒等操作</li>
@@ -235,36 +244,46 @@
 <blockquote>
 <p>以前没有基于标准多线程编程的程序，由于都是一些简单双线程同步操作，对于少量的线程同步操作，只要有足够的时间让系统反应，程序运行总体看起来满足要求的。但对于复杂高响应的同步，或高竞争的线程<strong>互斥</strong>操作，没有标准的相关多线程编写方法，是无法达成的。</p>
 </blockquote>
-<h2 id="Semaphore封装类"><a href="#Semaphore封装类" class="headerlink" title="Semaphore封装类"></a>Semaphore封装类</h2><p><strong>Semaphore</strong>，java专用信号量封装类，可声明信号量并内置了PV操作</p>
+<h2 id="Semaphore封装类">Semaphore封装类</h2>
+<p><strong>Semaphore</strong>，java专用信号量封装类，可声明信号量并内置了PV操作</p>
 <ul>
-<li><p><strong>构造器</strong>：可初始化信号量的值：<code>Semaphore mutex = new Semaphore(1);</code></p>
+<li>
+<p><strong>构造器</strong>：可初始化信号量的值：<code>Semaphore mutex = new Semaphore(1);</code></p>
 </li>
-<li><p><strong>方法</strong>：</p>
+<li>
+<p><strong>方法</strong>：</p>
 <ul>
 <li>void <strong>acquire</strong>()：从信号量获取<strong>一个</strong>许可，如果无可用许可前将一直<strong>阻塞等待</strong>，<strong>对应P操作</strong></li>
 <li>void <strong>release</strong>()： 释放一个许可，<strong>对应V操作</strong>。</li>
-<li>……</li>
+<li>…</li>
 <li>void acquire(int permits) ：获取指定数目的许可，如果无可用许可前也将会一直阻塞等待</li>
 <li>boolean tryAcquire()：从信号量尝试获取一个许可，如果无可用许可，直接返回false，不会阻塞</li>
 <li>boolean tryAcquire(int permits)： 尝试获取指定数目的许可，如果无可用许可直接返回false</li>
 <li>boolean tryAcquire(int permits, long timeout, TimeUnit unit)： 在指定的时间内尝试从信号量中获取许可，如果在指定的时间内获取成功，返回true，否则返回false</li>
 <li>int availablePermits()： 获取当前信号量可用的许可</li>
-<li>……</li>
+<li>…</li>
 </ul>
 </li>
-<li><p><strong>Semaphore 源码</strong></p>
+<li>
+<p><strong>Semaphore 源码</strong></p>
 <p>因此学习Semaphore 源码也是学习如何源码级别实现PV操作的一个绝佳途径。(初步估计：应该需要基于多线程控制中<strong>Wait</strong>和<strong>Notify</strong>，和通过关键字synchronized，保证了PV操作函数是一条<strong>原语</strong>）</p>
 </li>
 </ul>
-<h2 id="PV操作实例"><a href="#PV操作实例" class="headerlink" title="PV操作实例"></a>PV操作实例</h2><h3 id="父母儿女水果问题"><a href="#父母儿女水果问题" class="headerlink" title="父母儿女水果问题"></a>父母儿女水果问题</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>桌上有一只盘子，每次只能放入一个水果。爸爸专向盘子中放苹果，妈妈专向盘子中放桔子，一个女儿专等吃盘子里的苹果，一个儿子专等吃盘子里的桔子。只要盘子空则爸爸或妈妈都可以向盘子放一个水果，仅当盘子中有自己需要的水果时，儿子或女儿可以从盘子中取出水果</p>
-<h4 id="操作分析"><a href="#操作分析" class="headerlink" title="操作分析"></a>操作分析</h4><p><img  
+<h2 id="PV操作实例">PV操作实例</h2>
+<h3 id="父母儿女水果问题">父母儿女水果问题</h3>
+<h4 id="题目">题目</h4>
+<p>桌上有一只盘子，每次只能放入一个水果。爸爸专向盘子中放苹果，妈妈专向盘子中放桔子，一个女儿专等吃盘子里的苹果，一个儿子专等吃盘子里的桔子。只要盘子空则爸爸或妈妈都可以向盘子放一个水果，仅当盘子中有自己需要的水果时，儿子或女儿可以从盘子中取出水果</p>
+<h4 id="操作分析">操作分析</h4>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210524205856.png"
-                     
+                      alt=""
                 ></p>
-<h4 id="信号量设计"><a href="#信号量设计" class="headerlink" title="信号量设计"></a>信号量设计</h4><ul>
-<li><p><strong>方案1</strong>：</p>
+<h4 id="信号量设计">信号量设计</h4>
+<ul>
+<li>
+<p><strong>方案1</strong>：</p>
 <ol>
 <li>father 或 mother 盘子有水果时不能放入，生产者信号量empty = N = 1;</li>
 <li>盘子没有apple时，daughter 需等待，消费者信号量 (full) apple = 0;</li>
@@ -272,7 +291,8 @@
 <li>father、mother、daughter、son 之间互斥适用盘子，mutex = 1;</li>
 </ol>
 </li>
-<li><p><strong>方案2</strong>：更少信号量，但竞争更激烈</p>
+<li>
+<p><strong>方案2</strong>：更少信号量，但竞争更激烈</p>
 <ol>
 <li>father 或 mother 盘子有水果时不能放入，生产者信号量empty = N = 1;</li>
 <li>盘子没有水果时，daughter和son都需等待，消费者信号量 fruit = 0;</li>
@@ -283,22 +303,21 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><ul>
+<h4 id="代码实现">代码实现</h4>
+<ul>
 <li><strong>com.test.pojo.Person.java</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.test.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><strong>com.test.pojo.PVtest.java</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.test.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Semaphore;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PVtest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//java封装的信号量类</span></span><br><span class="line">	Semaphore apple = <span class="keyword">new</span> Semaphore(<span class="number">0</span>);		<span class="comment">//是否有苹果，没有d需等待</span></span><br><span class="line">	Semaphore orange = <span class="keyword">new</span> Semaphore(<span class="number">0</span>);	<span class="comment">//是否有橘子、没有s需等待</span></span><br><span class="line">	Semaphore empty = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);		<span class="comment">//没有空闲区时f与m均不能放入水果</span></span><br><span class="line">	Semaphore mutex = <span class="keyword">new</span> Semaphore(<span class="number">1</span>);		<span class="comment">//f、m、d、s互斥操作盘子信号量</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//PV操作:基于Semaphore实现</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">P</span><span class="params">(Semaphore semaphore)</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			semaphore.acquire();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">V</span><span class="params">(Semaphore semaphore)</span></span>&#123;</span><br><span class="line">		semaphore.release();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//主函数调用</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">//父亲线程</span></span><br><span class="line">		<span class="keyword">new</span> Person(<span class="string">&quot;father&quot;</span>)&#123;</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">					P(empty);</span><br><span class="line">					P(mutex);</span><br><span class="line">					System.out.println(</span><br><span class="line">                        Thread.currentThread().getId()  + <span class="string">&quot; : &quot;</span> + <span class="string">&quot;父亲放入一个苹果&quot;</span>);</span><br><span class="line">					V(mutex);</span><br><span class="line">					V(apple);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;.start();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//母亲线程</span></span><br><span class="line">		<span class="keyword">new</span> Person(<span class="string">&quot;mother&quot;</span>)&#123;</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">				<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">					P(empty);</span><br><span class="line">					P(mutex);</span><br><span class="line">					System.out.println(</span><br><span class="line">                        Thread.currentThread().getId()  + <span class="string">&quot; : &quot;</span> + <span class="string">&quot;母前放入一个橘子&quot;</span>);</span><br><span class="line">					V(mutex);</span><br><span class="line">					V(orange);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;.start();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//女儿线程</span></span><br><span class="line">		<span class="keyword">new</span> Person(<span class="string">&quot;daughter&quot;</span>)&#123;</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">					P(apple);</span><br><span class="line">					P(mutex);</span><br><span class="line">					System.out.println(</span><br><span class="line">                        Thread.currentThread().getId()  + <span class="string">&quot; : &quot;</span> + <span class="string">&quot;女儿吃掉一个苹果&quot;</span>);</span><br><span class="line">					V(mutex);</span><br><span class="line">					V(empty);</span><br><span class="line">					System.out.println();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;.start();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//儿子线程</span></span><br><span class="line">		<span class="keyword">new</span> Person(<span class="string">&quot;son&quot;</span>)&#123;</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">					P(orange);</span><br><span class="line">					P(mutex);</span><br><span class="line">					System.out.println(</span><br><span class="line">                        Thread.currentThread().getId()  + <span class="string">&quot; : &quot;</span> + <span class="string">&quot;儿子吃掉一个橘子&quot;</span>);</span><br><span class="line">					V(mutex);</span><br><span class="line">					V(empty);</span><br><span class="line">					System.out.println();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;.start();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> PVtest().test();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><strong>输出效果</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">11 : 母前放入一个橘子</span><br><span class="line"></span><br><span class="line">13 : 儿子吃掉一个橘子</span><br><span class="line">10 : 父亲放入一个苹果</span><br><span class="line">12 : 女儿吃掉一个苹果</span><br><span class="line"></span><br><span class="line">11 : 母前放入一个橘子</span><br><span class="line"></span><br><span class="line">13 : 儿子吃掉一个橘子</span><br><span class="line">10 : 父亲放入一个苹果</span><br><span class="line">12 : 女儿吃掉一个苹果</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">11 : 母前放入一个橘子</span><br><span class="line">13 : 儿子吃掉一个橘子</span><br><span class="line"></span><br><span class="line">10 : 父亲放入一个苹果</span><br><span class="line">12 : 女儿吃掉一个苹果</span><br><span class="line"></span><br><span class="line">11 : 母前放入一个橘子</span><br><span class="line">13 : 儿子吃掉一个橘子</span><br><span class="line"></span><br><span class="line">10 : 父亲放入一个苹果</span><br><span class="line">12 : 女儿吃掉一个苹果</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
-
-<h1 id="PV操作的自实现"><a href="#PV操作的自实现" class="headerlink" title="PV操作的自实现"></a>PV操作的自实现</h1><p>待开发…</p>
+<h1 id="PV操作的自实现">PV操作的自实现</h1>
+<p>待开发…</p>
 <ul>
 <li>参考：<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/TQCAI/p/7700354.html" >https://www.cnblogs.com/TQCAI/p/7700354.html<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
@@ -473,7 +492,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E8%AF%AD"><span class="nav-number">1.1.</span> <span class="nav-text">原语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-number">1.2.</span> <span class="nav-text">信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PV%E6%93%8D%E4%BD%9C%E7%9A%84%E5%8E%9F%E8%AF%AD%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">PV操作的原语操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PV%E6%93%8D%E4%BD%9C%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">PV操作的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semaphore%E5%B0%81%E8%A3%85%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">Semaphore封装类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PV%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.3.</span> <span class="nav-text">PV操作实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E6%AF%8D%E5%84%BF%E5%A5%B3%E6%B0%B4%E6%9E%9C%E9%97%AE%E9%A2%98"><span class="nav-number">2.3.1.</span> <span class="nav-text">父母儿女水果问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%88%86%E6%9E%90"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">操作分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">信号量设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PV%E6%93%8D%E4%BD%9C%E7%9A%84%E8%87%AA%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">PV操作的自实现</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E8%AF%AD"><span class="nav-number">1.1.</span> <span class="nav-text">原语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-number">1.2.</span> <span class="nav-text">信号量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PV%E6%93%8D%E4%BD%9C%E7%9A%84%E5%8E%9F%E8%AF%AD%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">PV操作的原语操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PV%E6%93%8D%E4%BD%9C%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">PV操作的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-2"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semaphore%E5%B0%81%E8%A3%85%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">Semaphore封装类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PV%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.3.</span> <span class="nav-text">PV操作实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E6%AF%8D%E5%84%BF%E5%A5%B3%E6%B0%B4%E6%9E%9C%E9%97%AE%E9%A2%98"><span class="nav-number">2.3.1.</span> <span class="nav-text">父母儿女水果问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%88%86%E6%9E%90"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">操作分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">信号量设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PV%E6%93%8D%E4%BD%9C%E7%9A%84%E8%87%AA%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">PV操作的自实现</span></a></li></ol>
     </div>
 </div>
         </aside>
@@ -485,182 +504,33 @@
 
 
     
-        $icon-size = 1.2rem;
-
-.search-pop-overlay {
-  position: fixed;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0);
-  visibility: hidden;
-  z-index: $z-index-8;
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
-
-  &.active {
-    visibility: visible;
-    background: rgba(0, 0, 0, 0.35);
-
-    .search-popup {
-      transform: scale(1);
-    }
-
-  }
-
-
-  .search-popup {
-    background: var(--background-color);
-    border-radius: 5px;
-    height: 80%;
-    width: 70%;
-    margin: auto;
-    transform: scale(0);
-    z-index: $z-index-6;
-    transition-t("transform", "0", "0.3", "ease");
-
-    +keep-tablet() {
-      width: 80%;
-    }
-
-    +keep-mobile() {
-      width: 90%;
-    }
-
-    .search-header {
-      background: var(--fourth-text-color);
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
-      display: flex;
-      padding: 10px;
-
-      .search-input-field-pre, .popup-btn-close {
-        font-size: $icon-size;
-        padding: 0 10px;
-        display: flex;
-        align-items: center;
-      }
-
-      .search-input-field-pre {
-        cursor: pointer;
-        color: var(--third-text-color);
-      }
-
-      .popup-btn-close {
-        color: var(--default-text-color);
-      }
-
-
-      .search-input-container {
-
-        flex-grow: 1;
-        padding: 2px;
-
-        .search-input {
-          background: transparent;
-          border: 0;
-          outline: 0;
-          width: 100%;
-          font-size: 1.2rem;
-          color: var(--default-text-color);
-
-          &::-webkit-search-cancel-button {
-            display: none;
-          }
-        }
-
-
-      }
-
-
-      .popup-btn-close {
-        cursor: pointer;
-
-        &:hover .fas, far, fab {
-          color: var(--first-text-color);
-        }
-      }
-
-    }
-
-
-    #search-result {
-      display: flex;
-      height: calc(100% - 55px);
-      overflow: auto;
-      padding: 5px 25px;
-
-      .search-result-list {
-        width: 100%;
-        height: 100%;
-        font-size: 1rem;
-
-        li {
-          border-bottom: 1px dashed var(--border-color);
-          padding: 10px 0;
-          margin: 10px 0;
-          box-sizing: border-box;
-
-          &:last-child {
-            border-bottom: none;
-          }
-
-
-          .search-result-title {
-            position: relative;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding-left: 16px;
-            display: flex;
-            align-items: center;
-
-            &::after {
-              content: '';
-              position: absolute;
-              width: 5px;
-              height: 5px;
-              border-radius: 50%;
-              top: 50%;
-              transform: translateY(-50%);
-              left: 0;
-              background: var(--default-text-color);
-            }
-          }
-
-
-          .search-result {
-            line-height: 2rem;
-            margin: 0;
-            padding-left: 16px;
-            word-wrap: break-word;
-          }
-
-          a {
-            &:hover {
-              color: var(--default-text-color);
-            }
-          }
-
-          .search-keyword {
-            border-bottom: 1px dashed var(--primary-color);
-            color: var(--primary-color);
-            font-weight: bold;
-          }
-
-        }
-      }
-
-
-      #no-result {
-        color: var(--third-text-color);
-        margin: auto;
-      }
-
-    }
-  }
-}
-
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 
