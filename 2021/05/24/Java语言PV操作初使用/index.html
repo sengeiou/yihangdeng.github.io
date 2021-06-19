@@ -230,12 +230,12 @@
 <h1 id="PV操作的使用"><a href="#PV操作的使用" class="headerlink" title="PV操作的使用"></a>PV操作的使用</h1><h2 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h2><p>单纯开启多个线程，直接使用PV操作的原语操作(while)自封装PV函数，设置整型信号量进行线程同步和互斥操作<strong>是不行</strong>的。原因在于：</p>
 <ol>
 <li>PV操作必须是<strong>原子操作</strong>，即在运行过程中，占有完整的一个时间片，不可分割。而未被特殊处理过的普通程序代码是不具备这种特性的。</li>
-<li>PV操作必须要<strong>控制线程</strong>。管理线程队列并控制使其线程<strong>阻塞、中断、唤醒</strong>等操作</li>
+<li>现如今一般采用的是”<strong>记录型信后量机制</strong>“，即含<strong>线程控制</strong>，避免忙等待状态。管理线程队列并控制使其线程<strong>阻塞、中断、唤醒</strong>等操作。若自定义</li>
 </ol>
 <blockquote>
 <p>以前没有基于标准多线程编程的程序，由于都是一些简单双线程同步操作，对于少量的线程同步操作，只要有足够的时间让系统反应，程序运行总体看起来满足要求的。但对于复杂高响应的同步，或高竞争的线程<strong>互斥</strong>操作，没有标准的相关多线程编写方法，是无法达成的。而且像子线程里面跑while死循环，还会被系统自动阻塞掉。需要手动唤醒</p>
 </blockquote>
-<h2 id="Semaphore封装类"><a href="#Semaphore封装类" class="headerlink" title="Semaphore封装类"></a>Semaphore封装类</h2><p><strong>Semaphore</strong>，java专用信号量封装类，可声明信号量并内置了PV操作</p>
+<h2 id="Semaphore封装类"><a href="#Semaphore封装类" class="headerlink" title="Semaphore封装类"></a>Semaphore封装类</h2><p><strong>Semaphore</strong>，java专用信号量封装类，可声明信号量并内置了PV操作(应该是记录型信号量)</p>
 <ul>
 <li><p><strong>构造器</strong>：可初始化信号量的值：<code>Semaphore mutex = new Semaphore(1);</code></p>
 </li>
