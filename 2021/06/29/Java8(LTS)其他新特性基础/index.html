@@ -9,7 +9,7 @@
     
     <title>
         
-            Java8(LTS)其他新特性 |
+            Java8(LTS)其他新特性基础 |
         
         DyhBlog
     </title>
@@ -138,7 +138,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Java8(LTS)其他新特性</span>
+            <span class="title-hover-animation">Java8(LTS)其他新特性基础</span>
         </div>
 
         
@@ -175,12 +175,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>8.9k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>9k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>36 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>37 Mins</span>
         </span>
     
     
@@ -436,7 +436,7 @@
 <ul>
 <li>测试代码，抽象方法只有一个形参，则t取走作为了调用方法的对象，剩下就没有参数作为实参传入调用的方法中，因此等于t调用了一个空参的方法。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Employee employee = <span class="keyword">new</span> Employee(<span class="number">1001</span>, <span class="string">&quot;Jerry&quot;</span>, <span class="number">23</span>, <span class="number">6000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//两者同样是，调用了抽象方法形参1的getName()方法，</span></span><br><span class="line">Function&lt;Employee,String&gt; func1 = e -&gt; e.getName();</span><br><span class="line">Function&lt;Employee,String&gt; func2 = Employee::getName;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee(<span class="number">1001</span>, <span class="string">&quot;Jerry&quot;</span>, <span class="number">23</span>, <span class="number">6000</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//两者同样是，调用了抽象方法形参1的getName()方法，</span></span><br><span class="line">    Function&lt;Employee,String&gt; func1 = e -&gt; e.getName();</span><br><span class="line">    Function&lt;Employee,String&gt; func2 = Employee::getName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -563,17 +563,17 @@
 <h3 id="Collection方式"><a href="#Collection方式" class="headerlink" title="Collection方式"></a>Collection方式</h3><ul>
 <li>JDK8对<strong>Collection接口</strong>扩充了两个<strong>default</strong>方法，提供获取<strong>串行Stream和并行Stream对象</strong></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Person&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list.add(<span class="keyword">new</span> Person(<span class="string">&quot;Priscilla&quot;</span>,<span class="number">23</span>));</span><br><span class="line">list.add(<span class="keyword">new</span> Person(<span class="string">&quot;Deny&quot;</span>,<span class="number">25</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取Stream实例</span></span><br><span class="line">Stream&lt;Person&gt; stream = list.stream();</span><br><span class="line">Stream&lt;Person&gt; personStream = list.parallelStream();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Person&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(<span class="keyword">new</span> Person(<span class="string">&quot;Priscilla&quot;</span>,<span class="number">23</span>));</span><br><span class="line">    list.add(<span class="keyword">new</span> Person(<span class="string">&quot;Deny&quot;</span>,<span class="number">25</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取Stream实例</span></span><br><span class="line">    Stream&lt;Person&gt; stream = list.stream();</span><br><span class="line">    Stream&lt;Person&gt; personStream = list.parallelStream();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Arrays方式"><a href="#Arrays方式" class="headerlink" title="Arrays方式"></a>Arrays方式</h3><ul>
 <li>对于数组类型的数据源，可以使用<strong>Arrays</strong>工具类提供静态的static stream()方法</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person p1 = <span class="keyword">new</span> Person(<span class="string">&quot;Priscilla&quot;</span>,<span class="number">23</span>);</span><br><span class="line">Person p2 = <span class="keyword">new</span> Person(<span class="string">&quot;Deny&quot;</span>,<span class="number">25</span>);</span><br><span class="line">Person[] array = <span class="keyword">new</span> Person[]&#123;p1,p2&#125;;</span><br><span class="line"><span class="keyword">int</span>[] intArray = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取Stream实例</span></span><br><span class="line">Stream&lt;Person&gt; stream = Arrays.stream(array);</span><br><span class="line">IntStream stream1 = Arrays.stream(intArray);<span class="comment">//基本数据类型有对应的Stream对象</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Person p1 = <span class="keyword">new</span> Person(<span class="string">&quot;Priscilla&quot;</span>,<span class="number">23</span>);</span><br><span class="line">    Person p2 = <span class="keyword">new</span> Person(<span class="string">&quot;Deny&quot;</span>,<span class="number">25</span>);</span><br><span class="line">    Person[] array = <span class="keyword">new</span> Person[]&#123;p1,p2&#125;;</span><br><span class="line">    <span class="keyword">int</span>[] intArray = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取Stream实例</span></span><br><span class="line">    Stream&lt;Person&gt; stream = Arrays.stream(array);</span><br><span class="line">    IntStream stream1 = Arrays.stream(intArray);<span class="comment">//基本数据类型有对应的Stream对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Stream-of-方式"><a href="#Stream-of-方式" class="headerlink" title="Stream.of()方式"></a>Stream.of()方式</h3><ul>
 <li>Stream类本身也提供静态方法of(T… values)，通过可变形参的方式提供数据源</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//貌似不能传入array和collection类型</span></span><br><span class="line">Stream&lt;Integer&gt; stream2 = Stream.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//貌似不能传入array和collection类型</span></span><br><span class="line">    Stream&lt;Integer&gt; stream2 = Stream.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="创建无限流"><a href="#创建无限流" class="headerlink" title="创建无限流"></a>创建无限流</h3><p><strong>创建无限流</strong>：可直接在Stream上<strong>创建</strong>无限个数据源对应的Stream实例</p>
 <ul>
@@ -584,7 +584,7 @@
 <li><strong>生成方法</strong>：generate，直接通过<strong>供给型函数式接口</strong>，<strong>生成无限量数据</strong></li>
 <li><strong>示例代码</strong>：由于不加以限制性的中间操作和终止操作，是会无限输出数据，和看不到数据效果</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、通过迭代的方式生成10个偶数</span></span><br><span class="line"><span class="comment">//种子数据，也可理解为初始数据</span></span><br><span class="line"><span class="keyword">int</span> seed = <span class="number">0</span>;</span><br><span class="line">Stream.iterate(seed,t -&gt; t + <span class="number">2</span>).limit(<span class="number">10</span>).forEach(System.out::println);</span><br><span class="line"></span><br><span class="line"><span class="comment">//2、通过生成的方式，直接生成10个随机数</span></span><br><span class="line">Stream.generate(Math::random).limit(<span class="number">10</span>).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1、通过迭代的方式生成10个偶数</span></span><br><span class="line">    <span class="comment">//种子数据，也可理解为初始数据</span></span><br><span class="line">    <span class="keyword">int</span> seed = <span class="number">0</span>;</span><br><span class="line">    Stream.iterate(seed,t -&gt; t + <span class="number">2</span>).limit(<span class="number">10</span>).forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2、通过生成的方式，直接生成10个随机数</span></span><br><span class="line">    Stream.generate(Math::random).limit(<span class="number">10</span>).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Stream中间操作"><a href="#Stream中间操作" class="headerlink" title="Stream中间操作"></a>Stream中间操作</h2><ul>
 <li><p>中间操作是对数据源进行<strong>数据处理的操作</strong></p>
@@ -642,22 +642,22 @@
 <h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><ul>
 <li>过滤出薪资 &gt; 7000的员工</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line"></span><br><span class="line">stream.filter(t -&gt; t.getSalary() &gt; <span class="number">7000</span>).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">    Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line"></span><br><span class="line">    stream.filter(t -&gt; t.getSalary() &gt; <span class="number">7000</span>).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h4><ul>
 <li>取出前两项数据</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line"></span><br><span class="line">stream.limit(<span class="number">2</span>).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">    Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line"></span><br><span class="line">    stream.limit(<span class="number">2</span>).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h4><ul>
 <li>跳过前三项数据</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line"></span><br><span class="line">stream.skip(<span class="number">3</span>).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">    Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line"></span><br><span class="line">    stream.skip(<span class="number">3</span>).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h4><ul>
 <li>执行过滤掉重复数据的操作</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">employees.add(<span class="keyword">new</span> Employee(<span class="number">33</span>,<span class="string">&quot;priscilla&quot;</span>,<span class="number">23</span>,<span class="number">666</span>));</span><br><span class="line">employees.add(<span class="keyword">new</span> Employee(<span class="number">33</span>,<span class="string">&quot;priscilla&quot;</span>,<span class="number">23</span>,<span class="number">666</span>));</span><br><span class="line"></span><br><span class="line">Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line">stream.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">System.out.println();</span><br><span class="line"></span><br><span class="line">employees.stream().distinct().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">    employees.add(<span class="keyword">new</span> Employee(<span class="number">33</span>,<span class="string">&quot;priscilla&quot;</span>,<span class="number">23</span>,<span class="number">666</span>));</span><br><span class="line">    employees.add(<span class="keyword">new</span> Employee(<span class="number">33</span>,<span class="string">&quot;priscilla&quot;</span>,<span class="number">23</span>,<span class="number">666</span>));</span><br><span class="line"></span><br><span class="line">    Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line">    stream.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    System.out.println();</span><br><span class="line"></span><br><span class="line">    employees.stream().distinct().forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h3><p>映射的操作含义在于：数据源 ——&gt; [<strong>遍历</strong> —&gt; map(<strong>Functio</strong>&lt;T&gt; t) —&gt;处理后] ——&gt;加工后的数据</p>
 <h4 id="API-1"><a href="#API-1" class="headerlink" title="API"></a>API</h4><table>
@@ -695,12 +695,12 @@
 <h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><ul>
 <li><strong>示例1</strong>：将集合的所有字符转换为大写</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = Arrays.asList(<span class="string">&quot;aa&quot;</span>,<span class="string">&quot;bb&quot;</span>,<span class="string">&quot;CC&quot;</span>,<span class="string">&quot;dd&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//普通Lambda表达式</span></span><br><span class="line">list.stream().map(str -&gt; str.toUpperCase()).forEach(System.out::println);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用方法引用方式更简短</span></span><br><span class="line">list.stream().map(String::toUpperCase).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; list = Arrays.asList(<span class="string">&quot;aa&quot;</span>,<span class="string">&quot;bb&quot;</span>,<span class="string">&quot;CC&quot;</span>,<span class="string">&quot;dd&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//普通Lambda表达式</span></span><br><span class="line">    list.stream().map(str -&gt; str.toUpperCase()).forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用方法引用方式更简短</span></span><br><span class="line">    list.stream().map(String::toUpperCase).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><strong>示例2</strong>：综合使用，获取员工姓名长度大于3的员工的姓名</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line"></span><br><span class="line">stream.filter(t -&gt; t.getName().length() &gt; <span class="number">3</span>)</span><br><span class="line">    .map(t -&gt; t.getName())<span class="comment">//也可方法引用.map(Employee::getName)</span></span><br><span class="line">    .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line">    Stream&lt;Employee&gt; stream = employees.stream();</span><br><span class="line"></span><br><span class="line">    stream.filter(t -&gt; t.getName().length() &gt; <span class="number">3</span>)</span><br><span class="line">        .map(t -&gt; t.getName())<span class="comment">//也可方法引用.map(Employee::getName)</span></span><br><span class="line">        .forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h4><ul>
 <li><strong>辅助测试方法</strong>：准备一个将字符的每个字符转换为Stream实例的方法</li>
@@ -710,12 +710,12 @@
 <ul>
 <li><strong>map</strong>()测试，直接整体当做一个Stream中的Stream元素了</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;Stream&lt;Character&gt;&gt; streamStream = list.stream().map(str -&gt; fromStringToStream(str));</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Stream&lt;Stream&lt;Character&gt;&gt; streamStream = list.stream().map(str -&gt;</span><br><span class="line">    fromStringToStream(str));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><strong>flatMap</strong>()测试，将Function&lt;T&gt;返回的Stream类型拆开，并全部链接成一个流</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;Character&gt; characterStream = list.stream().flatMap(str -&gt; fromStringToStream(str));</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Stream&lt;Character&gt; characterStream = list.stream().flatMap(str -&gt;</span><br><span class="line">     fromStringToStream(str));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="API-2"><a href="#API-2" class="headerlink" title="API"></a>API</h4><table>
 <thead>
@@ -740,12 +740,12 @@
 <h4 id="自然排序"><a href="#自然排序" class="headerlink" title="自然排序"></a>自然排序</h4><ul>
 <li>自然排序，从小到大</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">12</span>,<span class="number">33</span>,<span class="number">4</span>,<span class="number">11</span>,<span class="number">25</span>,<span class="number">3</span>);</span><br><span class="line">list.stream().sorted().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; list = Arrays.asList(<span class="number">12</span>,<span class="number">33</span>,<span class="number">4</span>,<span class="number">11</span>,<span class="number">25</span>,<span class="number">3</span>);</span><br><span class="line">    list.stream().sorted().forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="定制排序"><a href="#定制排序" class="headerlink" title="定制排序"></a>定制排序</h4><ul>
 <li>逆序排序，从大到小</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">12</span>,<span class="number">33</span>,<span class="number">4</span>,<span class="number">11</span>,<span class="number">25</span>,<span class="number">3</span>);</span><br><span class="line">       list.stream().sorted((e1,e2) -&gt; -Integer.compare(e1,e2)).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">12</span>,<span class="number">33</span>,<span class="number">4</span>,<span class="number">11</span>,<span class="number">25</span>,<span class="number">3</span>);</span><br><span class="line">        list.stream().sorted((e1,e2) -&gt; </span><br><span class="line">		-Integer.compare(e1,e2)).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Stream终止操作"><a href="#Stream终止操作" class="headerlink" title="Stream终止操作"></a>Stream终止操作</h2><ul>
 <li>执行终止操作后的Stream对象间会被关闭，<strong>不能够再次使用</strong>，只能作为结果输出。</li>
@@ -837,7 +837,7 @@
 <h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><ul>
 <li><strong>示例</strong>1：计算1-10的自然数和结果</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>);</span><br><span class="line">Integer reduce = list.stream().reduce(<span class="number">0</span>, Integer::sum);</span><br><span class="line">System.out.println(<span class="string">&quot;reduce = &quot;</span> + reduce);<span class="comment">//55</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>);</span><br><span class="line">    Integer reduce = list.stream().reduce(<span class="number">0</span>, Integer::sum);</span><br><span class="line">    System.out.println(<span class="string">&quot;reduce = &quot;</span> + reduce);<span class="comment">//55</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><strong>示例2</strong>：计算公司所有员工工资的综合<ul>
@@ -845,7 +845,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line"></span><br><span class="line">Optional&lt;Double&gt; reduce = employees.stream()</span><br><span class="line">    .map(e -&gt; e.getSalary()) <span class="comment">//或使用方法引用，Employee::getSalary</span></span><br><span class="line">    .reduce(Double::sum);</span><br><span class="line">System.out.println(<span class="string">&quot;reduce = &quot;</span> + reduce);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Employee&gt; employees = EmployeeData.getEmployees();</span><br><span class="line"></span><br><span class="line">    Optional&lt;Double&gt; reduce = employees.stream()</span><br><span class="line">        .map(e -&gt; e.getSalary()) <span class="comment">//或使用方法引用，Employee::getSalary</span></span><br><span class="line">        .reduce(Double::sum);</span><br><span class="line">    System.out.println(<span class="string">&quot;reduce = &quot;</span> + reduce);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h3><ul>
 <li>若Stream操作中数据过多，或者需要暂存回内存中(Collection中)，可进行收集操作。</li>
@@ -903,12 +903,12 @@
 <ul>
 <li><strong>示例代码1</strong>：转换为List</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Employee&gt; collect = stream.collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">collect.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Employee&gt; collect = stream.collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">    collect.forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><strong>示例代码</strong>2：转换为Set</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;Employee&gt; collect = stream.collect(Collectors.toSet());</span><br><span class="line"></span><br><span class="line">collect.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Set&lt;Employee&gt; collect = stream.collect(Collectors.toSet());</span><br><span class="line">    </span><br><span class="line">    collect.forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
 <ul>
@@ -1076,11 +1076,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Java8(LTS)其他新特性</li>
+        <li>Post title：Java8(LTS)其他新特性基础</li>
         <li>Post author：yhd</li>
         <li>Create time：2021-06-29 16:57:56</li>
         <li>
-            Post link：https://keep.xpoet.cn/2021/06/29/Java8(LTS)其他新特性/
+            Post link：https://keep.xpoet.cn/2021/06/29/Java8(LTS)其他新特性基础/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -1093,6 +1093,21 @@
 
         
             <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/06/30/Java9,10,11(LTS)%E6%96%B0%E7%89%B9%E6%80%A7%E5%9F%BA%E7%A1%80/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Java9,10,11(LTS)新特性基础</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next">
