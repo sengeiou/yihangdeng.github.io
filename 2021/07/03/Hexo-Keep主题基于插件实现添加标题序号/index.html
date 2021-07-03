@@ -206,43 +206,36 @@
 <blockquote>
 <p>文章参考出处：<a class="link"   target="_blank" rel="noopener" href="https://yuanmomo.net/2019/11/09/hexo-mweb-title-number/" >Hexo, MWeb 为标题自动添加序号<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
-<h1 id="编号需求">编号需求</h1>
-<p>在Hexo的Keep主题中希望在解析MD文档的时候，能自动为标题带上一个序号</p>
+<h1 id="编号需求"><a href="#编号需求" class="headerlink" title="编号需求"></a>编号需求</h1><p>在Hexo的Keep主题中希望在解析MD文档的时候，能自动为标题带上一个序号</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 xxxxx</span><br><span class="line">1.1 xxxx</span><br><span class="line">1.1.1 xxxx</span><br><span class="line"></span><br><span class="line">2. xxxxx</span><br></pre></td></tr></table></figure>
-<h1 id="修改主题CSS">修改主题CSS</h1>
-<ol>
-<li>
-<p>找到Keep主题markdown文档样式的css文件</p>
+
+<h1 id="修改主题CSS"><a href="#修改主题CSS" class="headerlink" title="修改主题CSS"></a>修改主题CSS</h1><ol>
+<li><p>找到Keep主题markdown文档样式的css文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;hexo根目录&#125;\themes\keep\source\css\common\markdown.styl</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>打开<code>markdown.styl</code>文件，在<code>.markdown-body &#123;&#125;</code>域中添加如下css代码</p>
+<li><p>打开<code>markdown.styl</code>文件，在<code>.markdown-body &#123;&#125;</code>域中添加如下css代码</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.markdown-body</span> &#123;</span><br><span class="line">	<span class="attribute">counter-reset</span>:section</span><br><span class="line">	h1&#123;counter-reset:sub-section&#125;</span><br><span class="line">	<span class="selector-tag">h2</span>&#123;<span class="attribute">counter-reset</span>:composite&#125;</span><br><span class="line">	<span class="selector-tag">h3</span>&#123;<span class="attribute">counter-reset</span>:detail&#125;</span><br><span class="line"></span><br><span class="line">	<span class="selector-tag">h1</span><span class="selector-pseudo">:before</span>&#123;<span class="attribute">content</span>:<span class="built_in">counter</span>(section) <span class="string">&quot; &quot;</span>;<span class="attribute">counter-increment</span>:section&#125;</span><br><span class="line">	<span class="selector-tag">h2</span><span class="selector-pseudo">:before</span>&#123;<span class="attribute">content</span>:<span class="built_in">counter</span>(section) <span class="string">&quot;.&quot;</span> <span class="built_in">counter</span>(sub-section) <span class="string">&quot; &quot;</span>;<span class="attribute">counter-increment</span>:sub-section&#125;</span><br><span class="line">	<span class="selector-tag">h3</span><span class="selector-pseudo">:before</span>&#123;<span class="attribute">content</span>:<span class="built_in">counter</span>(section) <span class="string">&quot;.&quot;</span> <span class="built_in">counter</span>(sub-section) <span class="string">&quot;.&quot;</span> <span class="built_in">counter</span>(composite) <span class="string">&quot; &quot;</span>;<span class="attribute">counter-increment</span>:composite&#125;</span><br><span class="line">	<span class="selector-tag">h4</span><span class="selector-pseudo">:before</span>&#123;<span class="attribute">content</span>:<span class="built_in">counter</span>(section) <span class="string">&quot;.&quot;</span> <span class="built_in">counter</span>(sub-section) <span class="string">&quot;.&quot;</span> <span class="built_in">counter</span>(composite) <span class="string">&quot;.&quot;</span> <span class="built_in">counter</span>(detail) <span class="string">&quot; &quot;</span>;<span class="attribute">counter-increment</span>:detail&#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
-<h1 id="添加插件">添加插件</h1>
-<ul>
-<li>
-<p><strong>在hexo安装的根目录中</strong>，添加<a class="link"   target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-heading-index" >hexo-heading-index<i class="fas fa-external-link-alt"></i></a>插件</p>
+<h1 id="添加插件"><a href="#添加插件" class="headerlink" title="添加插件"></a>添加插件</h1><ul>
+<li><p><strong>在hexo安装的根目录中</strong>，添加<a class="link"   target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-heading-index" >hexo-heading-index<i class="fas fa-external-link-alt"></i></a>插件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-heading-index</span></span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>在hexo根目录的全局配置文件<code>_config.yml</code>中添加如下配置</p>
+<li><p>在hexo根目录的全局配置文件<code>_config.yml</code>中添加如下配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">heading_index:</span><br><span class="line">  enable: true</span><br><span class="line">  index_styles: &quot;&#123;1&#125; &#123;1&#125; &#123;1&#125; &#123;1&#125; &#123;1&#125; &#123;1&#125;&quot;</span><br><span class="line">  connector: &quot;.&quot;</span><br><span class="line">  global_prefix: &quot;&quot;</span><br><span class="line">  global_suffix: &quot;. &quot;</span><br><span class="line">  start_level: 1</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>执行<code>hexo clean</code>与<code>hexo g</code>命令重新生成hexo数据，最后执行<code>hexo s</code>命令启动博客查看效果</p>
+<li><p>执行<code>hexo clean</code>与<code>hexo g</code>命令重新生成hexo数据，最后执行<code>hexo s</code>命令启动博客查看效果</p>
 </li>
 </ul>
-<h1 id="最终效果">最终效果</h1>
-<ul>
+<h1 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h1><ul>
 <li>最后就可以基于hexo-heading-index实现Hexo的Keep主题自动添加标题序号的功能了</li>
 </ul>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210703113929.png"
-                      alt=""
+                     
                 ></p>
 
         </div>
@@ -268,21 +261,6 @@
 
         
             <div class="article-nav">
-                
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/07/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">数据结构基础</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
                 
                 
                     <div class="article-next">

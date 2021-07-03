@@ -204,25 +204,20 @@
 <li><strong>读物</strong>：<a class="link"   target="_blank" rel="noopener" href="https://book.douban.com/subject/6424904/" >《大话数据结构》<i class="fas fa-external-link-alt"></i></a></li>
 <li><strong>印次</strong>：2020年5月第25次印刷(2020.5重印)</li>
 </ul>
-<h1 id="大纲">大纲</h1>
-<h1 id="串的定义">串的定义</h1>
-<p><strong>串(String)：</strong>是由<strong>零个或多个字符</strong>组成的<strong>有限</strong>序列，又名叫<strong>字符串</strong>。</p>
+<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><h1 id="串的定义"><a href="#串的定义" class="headerlink" title="串的定义"></a>串的定义</h1><p><strong>串(String)：</strong>是由<strong>零个或多个字符</strong>组成的<strong>有限</strong>序列，又名叫<strong>字符串</strong>。</p>
 <ul>
 <li>记为：<strong>s = “a<sub>1</sub>a<sub>2</sub>a<sub>3</sub>…a<sub>n</sub>(n ≥0)”</strong></li>
 <li>串中的<strong>字符数目n</strong>称为<strong>串的长度</strong></li>
-<li><strong>零</strong>个字符串称为<strong>空串</strong>(null string)即，“<strong> ‘’&quot; </strong>”</li>
+<li><strong>零</strong>个字符串称为<strong>空串</strong>(null string)即，“<strong> ‘’” </strong>”</li>
 <li><strong>序列</strong>即相邻字符之间存在<strong>前驱后继</strong>关系</li>
 <li><strong>主串与子串</strong>：串中<strong>任意个数</strong>的<strong>连续</strong>字符组成的<strong>子序列</strong>称为该串(<strong>主串</strong>)的子串</li>
 </ul>
-<h1 id="串的比较">串的比较</h1>
-<h2 id="常用字符标准编码">常用字符标准编码</h2>
-<ul>
+<h1 id="串的比较"><a href="#串的比较" class="headerlink" title="串的比较"></a>串的比较</h1><h2 id="常用字符标准编码"><a href="#常用字符标准编码" class="headerlink" title="常用字符标准编码"></a>常用字符标准编码</h2><ul>
 <li><strong>标准ASCII编码</strong>：用<strong>7位</strong>二进制数表示<strong>128个字符</strong> (可表示英语为主的语言)</li>
 <li><strong>扩展ASCII编码</strong>：用<strong>8位</strong>二进制数表示<strong>256个字符</strong> (可表示英语为主的语言和<strong>特殊字符</strong>)</li>
 <li><strong>Unicode编码</strong>：用<strong>16位</strong>二进制表示<strong>2<sup>16</sup>个字符，约6.5万多个字符</strong>(足以表示<strong>全世界成百上千种语言和文字</strong>)</li>
 </ul>
-<h2 id="比较原则">比较原则</h2>
-<p>字符串的比较在计算机中取决于<strong>挨个字母</strong>的<strong>前后顺序</strong>，<strong>靠后</strong>的字母比<strong>靠前</strong>的字母要大。如“silly” &lt; “stupid”</p>
+<h2 id="比较原则"><a href="#比较原则" class="headerlink" title="比较原则"></a>比较原则</h2><p>字符串的比较在计算机中取决于<strong>挨个字母</strong>的<strong>前后顺序</strong>，<strong>靠后</strong>的字母比<strong>靠前</strong>的字母要大。如“silly” &lt; “stupid”</p>
 <p>存在字符串 s 与 t，若 s &gt; t，则存在如下两种情况：</p>
 <ol>
 <li>情况1：“<strong>单纯地多出字母</strong>(包含关系)，则多出字母的字符常大”。如：“happy” &gt; “hap”，单纯多出“py”</li>
@@ -231,35 +226,33 @@
 <p>小结：</p>
 <ul>
 <li>等长：挨个字母前后顺序比较</li>
-<li>不等长
-<ul>
+<li>不等长<ul>
 <li>完全包含关系，多字母为大，happy &gt; hap</li>
 <li>非包含完全包含关系，挨个字母比较，happy &gt; happen</li>
 </ul>
 </li>
 </ul>
-<h1 id="串的抽象数据类型">串的抽象数据类型</h1>
-<p>“串”从<strong>逻辑结构</strong>上和线性表很相似，但<strong>基本操作</strong>，串<strong>更倾向于查找子串位置，替换子串等</strong></p>
+<h1 id="串的抽象数据类型"><a href="#串的抽象数据类型" class="headerlink" title="串的抽象数据类型"></a>串的抽象数据类型</h1><p>“串”从<strong>逻辑结构</strong>上和线性表很相似，但<strong>基本操作</strong>，串<strong>更倾向于查找子串位置，替换子串等</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ADT 串(<span class="built_in">string</span>)</span><br><span class="line">Data</span><br><span class="line">    串中元素仅由一个字符组成，相邻元素具有前驱和后继关系。</span><br><span class="line">Operation</span><br><span class="line">    StrAssign(T, *chars):        生成一个其值等于字符串常量chars的串T。</span><br><span class="line">    StrCopy(T, S):               串S存在，由串S复制得串T。</span><br><span class="line">    ClearString(S):              串S存在，将串清空。</span><br><span class="line">    StringEmpty(S):              若串S为空，返回<span class="literal">true</span>，否则返回<span class="literal">false</span>。</span><br><span class="line">    StrLength(S):                返回串S的元素个数，即串的长度。</span><br><span class="line">    StrCompare(S, T):            若S&gt;T，返回值&gt;<span class="number">0</span>，若S=T，返回<span class="number">0</span>，若S&lt;T，返回值&lt;<span class="number">0</span>。</span><br><span class="line">    Concat(T, S1, S2):           用T返回由S1和S2联接而成的新串。</span><br><span class="line">    SubString(Sub, S, pos, len): 串S存在，<span class="number">1</span>≤pos≤StrLength(S)，</span><br><span class="line">                                 且<span class="number">0</span>≤len≤StrLength(S)-pos+<span class="number">1</span>，用Sub返</span><br><span class="line">                                 回串S的第pos个字符起长度为len的子串。</span><br><span class="line">    Index(S, T, pos):            串S和T存在，T是非空串，<span class="number">1</span>≤pos≤StrLength(S)。</span><br><span class="line">                                 若主串S中存在和串T值相同的子串，则返回它在主串S中</span><br><span class="line">                                 第pos个字符之后第一次出现的位置，否则返回<span class="number">0</span>。</span><br><span class="line">    Replace(S, T, V):            串S、T和V存在，T是非空串。用V替换主串S中出现的所有</span><br><span class="line">                                 与T相等的不重叠的子串。</span><br><span class="line">    StrInsert(S, pos, T):        串S和T存在，<span class="number">1</span>≤pos≤StrLength(S)+<span class="number">1</span>。</span><br><span class="line">                                 在串S的第pos个字符之前插入串T。</span><br><span class="line">    StrDelete(S, pos, len):      串S存在，<span class="number">1</span>≤pos≤StrLength(S)-len+<span class="number">1</span>。</span><br><span class="line">                                 从串S中删除第pos个字符起长度为len的子串。</span><br><span class="line">endADT</span><br></pre></td></tr></table></figure>
-<h1 id="串的存储结构">串的存储结构</h1>
-<h2 id="串的顺序存储结构">串的顺序存储结构</h2>
-<ul>
+
+
+
+
+
+<h1 id="串的存储结构"><a href="#串的存储结构" class="headerlink" title="串的存储结构"></a>串的存储结构</h1><h2 id="串的顺序存储结构"><a href="#串的顺序存储结构" class="headerlink" title="串的顺序存储结构"></a>串的顺序存储结构</h2><ul>
 <li>串的顺序存储结构一般用<strong>定长数组</strong>来定义</li>
 <li>一般将<strong>串的长度值</strong>保存数组下标<strong>0</strong>处，有的也可存储在<strong>最后一个下标位置</strong>，或在串值后添加<strong>结束标记字符</strong>如“\0”(数据结构面向人，一般与日常数数顺序为主)</li>
 <li>串的操作常使得，串值存储空间需要<strong>动态变化</strong>。一般通过<strong>自由存储区</strong>——<strong>堆</strong>和相关<strong>操作函数</strong>(malloc/free)<strong>动态分配空间</strong></li>
 </ul>
-<h2 id="串的链式存储结构">串的链式存储结构</h2>
-<p>串的链式存储结构因为用<strong>结点存储字符序列会浪费大量的空间</strong>，<strong>除连接串与串操作有一定方便外(只是方便/不是高效)</strong>，总的来说，<strong>不如顺序存储灵活，性能也不如顺序存储结构好</strong></p>
-<h1 id="BF算法">BF算法</h1>
-<p>BF算法，也叫朴素的模式匹配算法</p>
-<p><strong>串的模式匹配</strong>：即<strong>子串在主串中的定位操作</strong>，如S=“goodgoogle”，找到T=&quot;google&quot;这个子串的位置</p>
-<h2 id="匹配思路：">匹配思路：</h2>
-<ol>
+<h2 id="串的链式存储结构"><a href="#串的链式存储结构" class="headerlink" title="串的链式存储结构"></a>串的链式存储结构</h2><p>串的链式存储结构因为用<strong>结点存储字符序列会浪费大量的空间</strong>，<strong>除连接串与串操作有一定方便外(只是方便/不是高效)**，总的来说，</strong>不如顺序存储灵活，性能也不如顺序存储结构好**</p>
+<h1 id="BF算法"><a href="#BF算法" class="headerlink" title="BF算法"></a>BF算法</h1><p>BF算法，也叫朴素的模式匹配算法</p>
+<p><strong>串的模式匹配</strong>：即<strong>子串在主串中的定位操作</strong>，如S=”goodgoogle”，找到T=”google”这个子串的位置</p>
+<h2 id="匹配思路："><a href="#匹配思路：" class="headerlink" title="匹配思路："></a>匹配思路：</h2><ol>
 <li>用子串从主串的第一位开始<strong>逐一字符匹配</strong></li>
 <li>若子串中任意一个字符匹配失败，则整个子串从上一次主串<strong>开始匹配的位置</strong>的下一个位置开始匹配</li>
 <li>以此循环，直至存在子串的每一个字符均被匹配正确的情况</li>
 </ol>
-<p><strong>匹配思路图示如下</strong>：如S=“goodgoogle”，找到T=&quot;google&quot;这个子串的位置</p>
+<p><strong>匹配思路图示如下</strong>：如S=”goodgoogle”，找到T=”google”这个子串的位置</p>
 <p><strong>tips</strong>：“|”竖线表示匹配成功，“⚡”表示匹配失败</p>
 <ol>
 <li><strong>第一步</strong></li>
@@ -279,12 +272,12 @@
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D02.jpg"
                       alt="模式匹配"
                 ></p>
-<p>​	3. <strong>第三步</strong></p>
+<p>​    3. <strong>第三步</strong></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D03.jpg"
-                      alt=""
+                     
                 ></p>
 <ol start="4">
 <li><strong>第四步</strong></li>
@@ -293,7 +286,7 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D04.jpg"
-                      alt=""
+                     
                 ></p>
 <ol start="5">
 <li><strong>第五步</strong></li>
@@ -302,10 +295,9 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E6%9C%B4%E7%B4%A0%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D05.jpg"
-                      alt=""
+                     
                 ></p>
-<h2 id="代码案例">代码案例</h2>
-<p>思路：</p>
+<h2 id="代码案例"><a href="#代码案例" class="headerlink" title="代码案例"></a>代码案例</h2><p>思路：</p>
 <ol>
 <li>位置变量pos合法过滤</li>
 <li>设置主串与子串循环开始索引(下标0表串长度，下标1是第一个字符</li>
@@ -314,23 +306,18 @@
 <li>若匹配成功(子串被全部匹配)，则计算位置并返回，否则返回错误提示</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 返回子串T在主串S中第pos个字符之后的位置。若不存在，则函数返回值为0。*/</span></span><br><span class="line"><span class="comment">/*  T非空，1≤ pos ≤ StrLength(S)。*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index</span><span class="params">(String S,String T,<span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">    <span class="comment">//位置变量pos合法过滤</span></span><br><span class="line">    <span class="keyword">if</span> (pos &lt; <span class="number">1</span> || pos &gt; StrLength(S))</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置主串与子串循环开始索引</span></span><br><span class="line">    <span class="keyword">int</span> i = pos;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">1</span>;<span class="comment">//下标0用于存储字符串长度，下标1即是第一个字符的数组下标</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//匹配循环结构结束条件：S[0],T[0]表示串长度，子串提前匹配成功，或主串全部被匹配完。则结束循环</span></span><br><span class="line">    <span class="comment">//因，匹配次数 = 字符串长度 = (j - 1)，所以 等于“=”时也需执行</span></span><br><span class="line">    <span class="keyword">while</span>(j &lt;= T[<span class="number">0</span>] &amp;&amp; i &lt;= S[<span class="number">0</span>])&#123;<span class="comment">//&amp;&amp; 在这里表示，有任何一个条件不符合都表示匹配完毕</span></span><br><span class="line">         <span class="comment">//若字符匹配成功，则主串与子串索引分别+1</span></span><br><span class="line">        <span class="keyword">if</span>(S[i] == T[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//若匹配失败，则主串匹配索引回退，子串索引初始化</span></span><br><span class="line">            i - j + <span class="number">2</span>;	<span class="comment">//i - (j - 1) + 1 </span></span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//若匹配成功(子串被全部匹配)，则计算位置并返回。</span></span><br><span class="line">    <span class="comment">//因，匹配次数 = 字符串长度 = (j - 1)，所以若全部匹配，j一定大于字符串长度</span></span><br><span class="line">    <span class="keyword">if</span>(j &gt; T[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span> i - T[<span class="number">0</span>];<span class="comment">//从起点减去匹配过的次数(增过的量) == 子串长度</span></span><br><span class="line">    	</span><br><span class="line">     <span class="comment">//若匹配失败，则返回错误提示</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> ERROR;								</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>
-<p>因为当前教材是把字符串<strong>长度</strong>记录在数组<strong>下标0处</strong>，所以第一个字符的数组下标就是<strong>1</strong>。因此未开始匹配字符时，子串匹配索引 j 的初始值就是1，而<strong>匹配成功1次后</strong>，j++才变成<strong>2</strong>。即它们之间的关系是，<strong>匹配次数 = (j - 1) = 字符长度</strong></p>
+<li><p>因为当前教材是把字符串<strong>长度</strong>记录在数组<strong>下标0处</strong>，所以第一个字符的数组下标就是<strong>1</strong>。因此未开始匹配字符时，子串匹配索引 j 的初始值就是1，而<strong>匹配成功1次后</strong>，j++才变成<strong>2</strong>。即它们之间的关系是，<strong>匹配次数 = (j - 1) = 字符长度</strong></p>
 </li>
-<li>
-<p><strong>主串索引回退代码分析</strong>(<code>i - j + 2</code>)：匹配成功一次，才会造成一次主串(子串)索引的自增，所以<strong>匹配次数==主串增加量</strong>，由上可知，匹配次数 == j -1，所以主串<strong>回退到原位</strong>因为，<strong>i - (j - 1)</strong>，而需要进入下一轮匹配则还需要回退原位后 + 1，则：</p>
+<li><p><strong>主串索引回退代码分析</strong>(<code>i - j + 2</code>)：匹配成功一次，才会造成一次主串(子串)索引的自增，所以<strong>匹配次数==主串增加量</strong>，由上可知，匹配次数 == j -1，所以主串<strong>回退到原位</strong>因为，<strong>i - (j - 1)</strong>，而需要进入下一轮匹配则还需要回退原位后 + 1，则：  </p>
 <p>回退上一次匹配位置下位代码未：<strong>i - ( j - 1 ) + 1 == i - j +2</strong></p>
 </li>
 </ul>
-<h2 id="优化理解版">优化理解版</h2>
-<p>《数据结构》从概念到C++的实现，王红梅。P104，通过增加空间复杂度O(1)，引入start变量单独存放子串匹配位置</p>
-<h1 id="KMP模式匹配算法">KMP模式匹配算法</h1>
-<h2 id="KMP匹配算法原理">KMP匹配算法原理</h2>
-<p>KMP算法核心可总结为两句话：“<strong>因为不同所以不同，跳过不同。因为相同所以相同，跳过相同</strong>！”</p>
+<h2 id="优化理解版"><a href="#优化理解版" class="headerlink" title="优化理解版"></a>优化理解版</h2><p>《数据结构》从概念到C++的实现，王红梅。P104，通过增加空间复杂度O(1)，引入start变量单独存放子串匹配位置</p>
+<h1 id="KMP模式匹配算法"><a href="#KMP模式匹配算法" class="headerlink" title="KMP模式匹配算法"></a>KMP模式匹配算法</h1><h2 id="KMP匹配算法原理"><a href="#KMP匹配算法原理" class="headerlink" title="KMP匹配算法原理"></a>KMP匹配算法原理</h2><p>KMP算法核心可总结为两句话：“<strong>因为不同所以不同，跳过不同。因为相同所以相同，跳过相同</strong>！”</p>
 <ol>
-<li>
-<p>“<strong>因为不同所以不同，跳过不同</strong>”：若存在子串字符互不相同部分，当出现主串字符匹配不了时，则无需BF完全回溯，因为BF回溯后的下一个主子串匹配肯定也是不同的。因此我们应让下次匹配<strong>跳到子串首字符(除首字符位置)下一次出现的位置。</strong></p>
+<li><p>“<strong>因为不同所以不同，跳过不同</strong>”：若存在子串字符互不相同部分，当出现主串字符匹配不了时，则无需BF完全回溯，因为BF回溯后的下一个主子串匹配肯定也是不同的。因此我们应让下次匹配<strong>跳到子串首字符(除首字符位置)下一次出现的位置。</strong></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
@@ -338,8 +325,9 @@
                       alt="kmp"
                 ></p>
 </li>
-<li>
-<p>“<strong>因为相同所以相同，跳过相同</strong>”：当子串与主串出现不匹配时，靠近不匹配处的若干字符在字符前缀部分出现过，则不应该仅跳到重复字符(下一次出现位置)的首字符，而是跳过包括这一段相同部分。，即应该跳到(新的匹配位置)于后缀部分相同的前缀部分的下一个位置。</p>
+</ol>
+<ol>
+<li><p>“<strong>因为相同所以相同，跳过相同</strong>”：当子串与主串出现不匹配时，靠近不匹配处的若干字符在字符前缀部分出现过，则不应该仅跳到重复字符(下一次出现位置)的首字符，而是跳过包括这一段相同部分。，即应该跳到(新的匹配位置)于后缀部分相同的前缀部分的下一个位置。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
@@ -350,13 +338,8 @@
 <p>快速</p>
 </li>
 </ol>
-<h2 id="next数组">next数组</h2>
-<h3 id="next数组含义">next数组含义</h3>
-<p>k = 子串下标 = 前缀长度</p>
-<h3 id="next数组的计算">next数组的计算</h3>
-<h3 id="next-数组代码实现">next 数组代码实现</h3>
-<h1 id="KMP模式匹配算法改进">KMP模式匹配算法改进</h1>
-<p>记住，一切能用数学公式或字母来形式化的东西，都是为了辅助我们更好的表述，它是无二义的，请不要害怕它。</p>
+<h2 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h2><h3 id="next数组含义"><a href="#next数组含义" class="headerlink" title="next数组含义"></a>next数组含义</h3><p>k = 子串下标 = 前缀长度</p>
+<h3 id="next数组的计算"><a href="#next数组的计算" class="headerlink" title="next数组的计算"></a>next数组的计算</h3><h3 id="next-数组代码实现"><a href="#next-数组代码实现" class="headerlink" title="next 数组代码实现"></a>next 数组代码实现</h3><h1 id="KMP模式匹配算法改进"><a href="#KMP模式匹配算法改进" class="headerlink" title="KMP模式匹配算法改进"></a>KMP模式匹配算法改进</h1><p>记住，一切能用数学公式或字母来形式化的东西，都是为了辅助我们更好的表述，它是无二义的，请不要害怕它。</p>
 <p>我们不一定从数学公式中直接理解</p>
 
         </div>
