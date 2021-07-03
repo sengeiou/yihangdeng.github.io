@@ -1,5 +1,31 @@
 .markdown-body {
+  counter-reset: section;
   font-size: 1rem;
+}
+.markdown-body h1 {
+  counter-reset: sub-section;
+}
+.markdown-body h2 {
+  counter-reset: composite;
+}
+.markdown-body h3 {
+  counter-reset: detail;
+}
+.markdown-body h1:before {
+  content: counter(section) " ";
+  counter-increment: section;
+}
+.markdown-body h2:before {
+  content: counter(section) "." counter(sub-section) " ";
+  counter-increment: sub-section;
+}
+.markdown-body h3:before {
+  content: counter(section) "." counter(sub-section) "." counter(composite) " ";
+  counter-increment: composite;
+}
+.markdown-body h4:before {
+  content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";
+  counter-increment: detail;
 }
 .markdown-body blockquote {
   box-sizing: border-box;

@@ -175,7 +175,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>27.8k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>27.9k Words</span>
         </span>
     
     
@@ -399,7 +399,7 @@
 </li>
 </ol>
 <h2 id="public-class"><a href="#public-class" class="headerlink" title="public class"></a>public class</h2><ol>
-<li>在一个java源文件中可以声明多个类，但一个源文件中<strong>只有一个</strong>类能<strong>声明public</strong>，</li>
+<li>在一个java源文件中可以声明多个类，但一个源文件中<strong>只能有一个</strong>类能<strong>声明public</strong>，</li>
 <li>而且声明public的类的<strong>类名</strong>必须与源文件<strong>文件名相同</strong>，才不会出现编译错误</li>
 <li>存在多个class的源文件编译会生成对应的多个字节码文件，<strong>java.exe只需执行</strong>含<strong>main方法</strong>的类即可</li>
 </ol>
@@ -1213,6 +1213,8 @@
 </ul>
 <h4 id="重写规则"><a href="#重写规则" class="headerlink" title="重写规则"></a>重写规则</h4><h5 id="重写的对象"><a href="#重写的对象" class="headerlink" title="重写的对象"></a>重写的对象</h5><ul>
 <li><p><strong>只能重写方法，属性无重写一说</strong></p>
+</li>
+<li><p>子类定义父类的同名属性叫左把父类的同名属性“<strong>隐藏</strong>”</p>
 <blockquote>
 <p>若<strong>子类</strong>与<strong>父类</strong>声明<strong>同名属性</strong>，按就近原则调用同名属性</p>
 <ul>
