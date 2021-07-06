@@ -140,28 +140,28 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2020/09/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E4%B8%B2/">
-                        数据结构 第五章 串
+                    <a href="/2020/09/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">
+                        冒泡排序
                     </a>
                 </h3>
 
                 <div class="home-article-content markdown-body">
                     
-                        
-读物：《大话数据结构》
-印次：2020年5月第25次印刷(2020.5重印)
+                        冒泡排序分析
 
-大纲串的定义串(String)：是由零个或多个字符组成的有限序列，又名叫字符串。
 
-记为：s = “a1a2a3…an(n ≥0)”
-串中的字符数目n称为串的长度
-零个...
+每一轮交替比较把最值往后排(下沉)，能得出参与这次轮次所有数中的最值
+
+首次交替次数：最后一个数无需交替比较。即循环下标结构 for(j = 0;j &lt; len - 1; j ++ )
+
+
+接下来继续开始若干次从头开始的交替，...
                     
                 </div>
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Sep 25 2020 17:12:32 GMT+0800">2020-09-25</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Sep 25 2020 21:42:32 GMT+0800">2020-09-25</span></span>
         
         
             <span class="home-article-tag">
@@ -170,12 +170,7 @@
                     
                         <li>
                             
-                            <a href="/tags/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/">技术积累</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -183,7 +178,7 @@
         
     </div>
 
-    <a href="/2020/09/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E4%B8%B2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2020/09/25/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -200,7 +195,8 @@
 
                 <div class="home-article-content markdown-body">
                     
-                        本单元目标12345678910111213141516171819202122232425262728293031323334353637一、为什么要学习数据库二、数据库的相关概念          DBMS、DB、SQL三、数据库存储数据的特点四...
+                        本单元目标
+12345678910111213141516171819202122232425262728293031323334353637一、为什么要学习数据库二、数据库的相关概念          DBMS、DB、SQL三、数据库存储数据的特点...
                     
                 </div>
 
@@ -250,15 +246,18 @@
 印次：2020年5月第25次印刷(2020.5重印)
 
 大纲
+
 基本概念
 静态链表的初始化
 静态链表的插入操作
 小结
 
 基本概念
+
+
 静态链表：用数组描述的链表叫做静态链表。
 
- 如Basic、Fortran等早期编程语言，没有指...
+如Basic、Fortran等早期编程语言，没...
                     
                 </div>
 
@@ -304,13 +303,16 @@
                 <div class="home-article-content markdown-body">
                     
                         参考链接
+
+
 本人解决方案：https://www.jianshu.com/p/b69950a49ae2
+
 
 markdown各种解决方案：https://www.jianshu.com/p/ea1eb11db63f
 
-picgo连接gitee：
 
-htt...
+picgo连接gitee：
+...
                     
                 </div>
 
@@ -351,16 +353,20 @@ htt...
                 <div class="home-article-content markdown-body">
                     
                         前提
+
+
 已经安装hexo，并且能够通过hexo d命令推送到GitHub实现远程推送。
 
 实现方案具体可参考《基于Hexo框架的博客搭建及其GitHub部署》
+
 
 
 已经注册Gitee账号并且绑定手机。
 
 
 Gitee新建仓库
-新建仓库时名称最好是保持跟...
+
+新建仓库时名称最好...
                     
                 </div>
 
@@ -411,8 +417,10 @@ Gitee新建仓库
                 <div class="home-article-content markdown-body">
                     
                         Hexo简介
-Hexo 是一个快速、简洁且高效的静态博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  
-Hexo受众面较广，对应的问题、扩展等内容在网上均有成熟解决方案，推荐安装使用。...
+
+Hexo 是一个快速、简洁且高效的静态博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+Hexo受众面较广，对应的问题、扩展等内容在网上均有成熟解决方案，推荐安装使用。
+...
                     
                 </div>
 
