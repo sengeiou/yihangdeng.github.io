@@ -514,10 +514,16 @@
 <h3 id="首页数据获取"><a href="#首页数据获取" class="headerlink" title="首页数据获取"></a>首页数据获取</h3><p>如上所示，当index.jsp首页没数据时，可以通过先访问一个Servlet再转发到index.jsp页面内。但此时用户访问首页的时候必须访问一个Servlet地址。而一般网站的首页地址<code>http://ip:port</code>或 <code>http://www.xxx.com</code>下的index文件，不会是不方便用户记忆的Servlet长地址。</p>
 <h4 id="方案1：jsp跳板"><a href="#方案1：jsp跳板" class="headerlink" title="方案1：jsp跳板"></a>方案1：jsp跳板</h4><p>可以利用再工程根目录下创建一个index.jsp文件，这个文件里面只做一件事，就是进行一次请求的转发访问获取首页数据的Servlet，Servlet最终传送数据到正在的index.jsp页面。即访问过程，<strong>index.jsp ——&gt; Servlet ——&gt; index.jsp</strong>。</p>
 <ul>
-<li>工程根目录下index.jsp：<code>&lt;jsp:forward page=&quot;/include/xxxServlet&quot;&gt;</code></li>
+<li>工程根目录下index.jsp：<code>&lt;jsp:forward page=&quot;/include/xxxServlet&quot;&gt;&lt;/jsp:forward&gt;</code></li>
 <li>首页数据Servlet</li>
 <li>真正的index.jsp</li>
 </ul>
+<blockquote>
+<ul>
+<li>注意：index首页通过<strong>请求转发</strong>到的页面<strong>不能是被过滤器拦截的页面</strong>，否则会进行转发拦截死循环</li>
+<li>若首页转发的页面受拦截器作用，则只能用重定向</li>
+</ul>
+</blockquote>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
@@ -2343,6 +2349,7 @@
 
 
 
+<p>SH</p>
 
         </div>
 

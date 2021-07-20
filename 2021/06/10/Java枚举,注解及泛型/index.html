@@ -175,7 +175,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>9.7k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>9.9k Words</span>
         </span>
     
     
@@ -405,7 +405,7 @@
                 ></p>
 <h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><h3 id="定义说明"><a href="#定义说明" class="headerlink" title="定义说明"></a>定义说明</h3><p>参照@SuppressWarnings定义</p>
 <ol>
-<li><strong>创建注解实现类</strong>，用**@interface**修饰类，如 <code>@interface SuppressWarnings &#123;&#125;</code><ul>
+<li><strong>创建注解实现类</strong>，用@interface修饰类，如 <code>@interface SuppressWarnings &#123;&#125;</code><ul>
 <li>tips：自定义注解自动继承了java.lang.annotation.Annotation接口</li>
 </ul>
 </li>
@@ -546,7 +546,17 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.website.annotationtest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Annotation;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhd</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2021-06-10 8:06</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnnotationTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@MyAnnotation(value=&quot;test&quot;,url=&quot;test&quot;)</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//默认自动含有@MyAnnotation(value=&quot;test&quot;,url=&quot;test&quot;)注解</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Class clazz = Student.class;//子类通过反射可以读取到注解</span><br><span class="line">        Annotation[] annotation = clazz.getAnnotations();</span><br><span class="line">        <span class="keyword">for</span> (Annotation an : annotation) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;annotation = &quot;</span> + an);</span><br><span class="line">            <span class="comment">//annotation = @com.website.annotationtest.MyAnnotation(value=test, url=test)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="反射获取注解"><a href="#反射获取注解" class="headerlink" title="反射获取注解"></a>反射获取注解</h2><h2 id="JDK8注解新特性"><a href="#JDK8注解新特性" class="headerlink" title="JDK8注解新特性"></a>JDK8注解新特性</h2><h3 id="可重复注解"><a href="#可重复注解" class="headerlink" title="可重复注解"></a>可重复注解</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><ul>
+<h2 id="反射获取注解"><a href="#反射获取注解" class="headerlink" title="反射获取注解"></a>反射获取注解</h2><ul>
+<li>注解的使用并不是单单的自定义注解</li>
+<li>关键在于，通过反射扫描出<strong>使用注解的元素</strong>，及其元素使用的<strong>注解名</strong>、以及其<strong>注解属性的内容</strong></li>
+<li>然后根据这些信息，为使用注解的元素实现一些自动化的服务（设置，装配…）</li>
+<li>一句话来说，<u>注解的效能</u>需要通过<strong>反射获取注解的相关信息</strong>再而进行<strong>对应的操作</strong>才能<u>体现出来</u></li>
+</ul>
+<hr>
+<ul>
+<li>案例过程，暂且忽略…</li>
+</ul>
+<h2 id="JDK8注解新特性"><a href="#JDK8注解新特性" class="headerlink" title="JDK8注解新特性"></a>JDK8注解新特性</h2><h3 id="可重复注解"><a href="#可重复注解" class="headerlink" title="可重复注解"></a>可重复注解</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><ul>
 <li>即将同一个注解在同一个位置重复使用多次</li>
 <li>注意：这种需求是存在的，如Spring 的注解 <code>@PropertySource</code>常需要一个地方引用多个文件</li>
 </ul>

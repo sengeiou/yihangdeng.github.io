@@ -175,12 +175,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>31.3k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>31.4k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>134 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>135 Mins</span>
         </span>
     
     
@@ -2793,6 +2793,12 @@
 </tr>
 </tbody></table>
 <p><strong>结论</strong>：因此在实际Web开发中，直接通过<strong>继承HttpFilter</strong>来使用Filter过滤器。</p>
+<blockquote>
+<ul>
+<li>注意：index首页通过<strong>请求转发</strong>到的页面<strong>不能是被过滤器拦截的页面</strong>，否则会进行转发拦截死循环</li>
+<li>若首页转发的页面受拦截器作用，则只能用重定向</li>
+</ul>
+</blockquote>
 <h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
 <li><p>编写一个类去<strong>继承HttpFilter抽象类</strong></p>
 </li>
