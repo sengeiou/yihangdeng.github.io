@@ -196,79 +196,74 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="原始数据报分析"><a href="#原始数据报分析" class="headerlink" title="原始数据报分析"></a>原始数据报分析</h1><h2 id="fiddler抓取本地包"><a href="#fiddler抓取本地包" class="headerlink" title="fiddler抓取本地包"></a>fiddler抓取本地包</h2><p>通过浏览器或Windows设置本地代理为ip:8888，ip可尝试127.0.0.1或当前网络情况的其他ip尝试。由于fiddler默认的代理端口号就是8888。</p>
-<h2 id="文本类型测试"><a href="#文本类型测试" class="headerlink" title="文本类型测试"></a>文本类型测试</h2><p>分别发出GET和POST请求，请求的参数均为</p>
+            <h1 id="原始数据报分析">原始数据报分析</h1>
+<h2 id="fiddler抓取本地包">fiddler抓取本地包</h2>
+<p>通过浏览器或Windows设置本地代理为ip:8888，ip可尝试127.0.0.1或当前网络情况的其他ip尝试。由于fiddler默认的代理端口号就是8888。</p>
+<h2 id="文本类型测试">文本类型测试</h2>
+<p>分别发出GET和POST请求，请求的参数均为</p>
 <ul>
 <li>param1：aaa</li>
 <li>param2：bbb</li>
 <li>chinese：中文</li>
 </ul>
 <p>服务器响应的数据均为：<code>aaa&lt;br/&gt;bbb&lt;br/&gt;中文&lt;br/&gt;</code></p>
-<h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><ul>
+<h3 id="GET">GET</h3>
+<ul>
 <li>GET请求原始数据报：</li>
 </ul>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">http://127.0.0.1:8080/16_TestCode/httpTestServlet?param1=aaa&amp;param2=bbb&amp;chinese=%E4%B8%AD%E6%96%87</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: 127.0.0.1:8080</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Referer</span>: http://127.0.0.1:8080/16_TestCode/</span><br><span class="line"><span class="attribute">Cookie</span>: JSESSIONID=F4B23411BF1A0000940BB19B223558F7</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span>: 1</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>GET响应原始数据报</li>
 </ul>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span></span><br><span class="line"><span class="attribute">Content-Type</span>: text/html;charset=UTF-8</span><br><span class="line"><span class="attribute">Content-Length</span>: 27</span><br><span class="line"><span class="attribute">Date</span>: Fri, 04 Jun 2021 09:06:25 GMT</span><br><span class="line"><span class="attribute">Keep-Alive</span>: timeout=20</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"></span><br><span class="line"><span class="attribute">aaa&lt;br/&gt;bbb&lt;br/&gt;中文&lt;br/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><ul>
+<h3 id="POST">POST</h3>
+<ul>
 <li>POST请求原始数据报：</li>
-<li>tips：”中文”字符串的URL编码为”%E4%B8%AD%E6%96%87”</li>
+<li>tips：“中文&quot;字符串的URL编码为”%E4%B8%AD%E6%96%87&quot;</li>
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">http://127.0.0.1:8080/16_TestCode/httpTestServlet</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: 127.0.0.1:8080</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Content-Type</span>: application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Content-Length</span>: 48</span><br><span class="line"><span class="attribute">Origin</span>: http://127.0.0.1:8080</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Referer</span>: http://127.0.0.1:8080/16_TestCode/</span><br><span class="line"><span class="attribute">Cookie</span>: JSESSIONID=F4B23411BF1A0000940BB19B223558F7</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span>: 1</span><br><span class="line"></span><br><span class="line">param1=aaa&amp;param2=bbb&amp;chinese=%E4%B8%AD%E6%96%87</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>POST响应原始数据报</li>
 </ul>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span></span><br><span class="line"><span class="attribute">Content-Type</span>: text/html;charset=UTF-8</span><br><span class="line"><span class="attribute">Content-Length</span>: 27</span><br><span class="line"><span class="attribute">Date</span>: Fri, 04 Jun 2021 09:06:28 GMT</span><br><span class="line"><span class="attribute">Keep-Alive</span>: timeout=20</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"></span><br><span class="line"><span class="attribute">aaa&lt;br/&gt;bbb&lt;br/&gt;中文&lt;br/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="文件类型测试"><a href="#文件类型测试" class="headerlink" title="文件类型测试"></a>文件类型测试</h2><h3 id="GET-1"><a href="#GET-1" class="headerlink" title="GET"></a>GET</h3><p>如请求首页操作，获取整个html文档</p>
+<h2 id="文件类型测试">文件类型测试</h2>
+<h3 id="GET-2">GET</h3>
+<p>如请求首页操作，获取整个html文档</p>
 <ul>
 <li>GET请求原始报文</li>
 </ul>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">http://127.0.0.1:8080/16_TestCode/httptest.html</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: 127.0.0.1:8080</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Cookie</span>: JSESSIONID=F4B23411BF1A0000940BB19B223558F7</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span>: 1</span><br><span class="line"><span class="attribute">If-Modified-Since</span>: Fri, 04 Jun 2021 09:16:01 GMT</span><br><span class="line"><span class="attribute">If-None-Match</span>: W/&quot;1180-1622798161524&quot;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>GET响应原始报名</li>
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span></span><br><span class="line"><span class="attribute">Accept-Ranges</span>: bytes</span><br><span class="line"><span class="attribute">ETag</span>: W/&quot;1184-1622798265215&quot;</span><br><span class="line"><span class="attribute">Last-Modified</span>: Fri, 04 Jun 2021 09:17:45 GMT</span><br><span class="line"><span class="attribute">Content-Type</span>: text/html</span><br><span class="line"><span class="attribute">Content-Length</span>: 1184</span><br><span class="line"><span class="attribute">Date</span>: Fri, 04 Jun 2021 09:22:06 GMT</span><br><span class="line"><span class="attribute">Keep-Alive</span>: timeout=20</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;a href=&quot;img/testImg.jpg&quot;&gt;图片&lt;/a&gt;&lt;br/&gt;</span><br><span class="line">    &lt;a href=&quot;/16_TestCode/httpTestServlet?param1=a&amp;param2=b&amp;chinese=中文&quot;&gt;get请求&lt;/a&gt;</span><br><span class="line">    &lt;br/&gt;</span><br><span class="line">    get请求表单</span><br><span class="line">    &lt;form action=&quot;/16_TestCode/httpTestServlet&quot; method=&quot;get&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;param1&quot; value=&quot;aaa&quot;&gt;&lt;br/&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;param2&quot; value=&quot;bbb&quot;&gt;&lt;br/&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;chinese&quot; value=&quot;中文&quot;&gt;&lt;br/&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;br/&gt;</span><br><span class="line">    post请求表单</span><br><span class="line">    &lt;form action=&quot;/16_TestCode/httpTestServlet&quot; method=&quot;post&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;param1&quot; value=&quot;aaa&quot;&gt;&lt;br/&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;param2&quot; value=&quot;bbb&quot;&gt;&lt;br/&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;chinese&quot; value=&quot;中文&quot;&gt;&lt;br/&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line"></span><br><span class="line">    post文件上传</span><br><span class="line">    &lt;br/&gt;</span><br><span class="line">    &lt;form action=&quot;/16_TestCode/httpTestServlet&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;&lt;br/&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="POST-1"><a href="#POST-1" class="headerlink" title="POST"></a>POST</h3><p>通过表单进行文件上传，表单使用分段二进制流形式上传<code>enctype=&quot;multipart/form-data&quot;</code></p>
+<h3 id="POST-2">POST</h3>
+<p>通过表单进行文件上传，表单使用分段二进制流形式上传<code>enctype=&quot;multipart/form-data&quot;</code></p>
 <ul>
 <li>POST请求原始报文</li>
 </ul>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">http://127.0.0.1:8080/16_TestCode/httpTestServlet</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: 127.0.0.1:8080</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Content-Type</span>: multipart/form-data; boundary=---------------------------148424116915262504472899372157</span><br><span class="line"><span class="attribute">Content-Length</span>: 399</span><br><span class="line"><span class="attribute">Origin</span>: http://127.0.0.1:8080</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Referer</span>: http://127.0.0.1:8080/16_TestCode/httptest.html</span><br><span class="line"><span class="attribute">Cookie</span>: JSESSIONID=F4B23411BF1A0000940BB19B223558F7</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span>: 1</span><br><span class="line"></span><br><span class="line">-----------------------------148424116915262504472899372157</span><br><span class="line"><span class="attribute">Content-Disposition</span>: form-data; name=&quot;file&quot;; filename=&quot;testZip.zip&quot;</span><br><span class="line"><span class="attribute">Content-Type</span>: application/x-zip-compressed</span><br><span class="line"></span><br><span class="line"><span class="attribute">PK</span></span><br><span class="line">     M  R Fw       </span><br><span class="line">   testZip.txt21PK? </span><br><span class="line">     M  R Fw       </span><br><span class="line"> $               testZip.txt</span><br><span class="line">         r </span><br><span class="line"> #Y s   #Y  $` #Y PK      ]   +     </span><br><span class="line">-----------------------------148424116915262504472899372157--</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>POST响应原始报文</li>
 </ul>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span></span><br><span class="line"><span class="attribute">Content-Type</span>: text/html;charset=UTF-8</span><br><span class="line"><span class="attribute">Content-Length</span>: 27</span><br><span class="line"><span class="attribute">Date</span>: Fri, 04 Jun 2021 09:26:44 GMT</span><br><span class="line"><span class="attribute">Keep-Alive</span>: timeout=20</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"></span><br><span class="line"><span class="attribute">null&lt;br/&gt;null&lt;br/&gt;null&lt;br/&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-<h1 id="HTTP数据传递"><a href="#HTTP数据传递" class="headerlink" title="HTTP数据传递"></a>HTTP数据传递</h1><ol>
+<h1 id="HTTP数据传递">HTTP数据传递</h1>
+<ol>
 <li>URL请求参数中若包含中文字符，则需要通过URL编码。平时浏览器自动识别完成转换后才发起请求，如果自己写代码，则需要手动转换后拼凑URL再发出请求。</li>
 <li>其实对于post请求，任何类型提交类型(前端中input 中name或上传文件的分段流方式)，或中直接的application/json;charset=UTF-8，其实都是在请求头末尾空行后的追加的二进制数据，理论上不指定contentType也是可以顺利读取(contentType)只是方便告诉服务器解析成什么文件</li>
 <li>URL传递参数没要求一定要通过?开头键值对方式传递形参，这常用的浏览器传参格式。其实URL本身就是传递字符串，服务器接收后，就是从字符串中获取一个个数据而已，纯正的字符串处理操作而已，其实以前写thinkphp接口时，老师也有说，不一定要键值对，可以按顺序读取</li>
 <li>HTTP报文一切都是字符串流(请求行、头、数据)，本质是二进制流</li>
 <li>get请求相当于只能通过URL传递参数的请求，POST请求则是在get请求基础上，还支持了在请求头末尾空行后的二进制流传送数据</li>
 </ol>
-<h1 id="GiteeAPI使用有感"><a href="#GiteeAPI使用有感" class="headerlink" title="GiteeAPI使用有感"></a>GiteeAPI使用有感</h1><h2 id="官方信息初分析"><a href="#官方信息初分析" class="headerlink" title="官方信息初分析"></a>官方信息初分析</h2><p>官方API查看接口信息如下</p>
+<h1 id="GiteeAPI使用有感">GiteeAPI使用有感</h1>
+<h2 id="官方信息初分析">官方信息初分析</h2>
+<p>官方API查看接口信息如下</p>
 <ul>
-<li><p>API_URL：Post：<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/api/v5/repos/%7Bowner%7D/%7Brepo%7D/contents/%7Bpath%7D" >https://gitee.com/api/v5/repos/{owner}/{repo}/contents/{path}<i class="fas fa-external-link-alt"></i></a></p>
+<li>
+<p>API_URL：Post：<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/api/v5/repos/%7Bowner%7D/%7Brepo%7D/contents/%7Bpath%7D" >https://gitee.com/api/v5/repos/{owner}/{repo}/contents/{path}<i class="fas fa-external-link-alt"></i></a></p>
 </li>
-<li><p>必须参数详情表：</p>
+<li>
+<p>必须参数详情表：</p>
 <table>
 <thead>
 <tr>
@@ -278,7 +273,8 @@
 <th>Data Type</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>owner*</td>
 <td>仓库所属空间地址(企业、组织或个人的地址path)</td>
 <td>path</td>
@@ -308,16 +304,20 @@
 <td>formData</td>
 <td>string</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
 <li>首先请求类型为POST</li>
-<li>必须提交的参数有5个<ul>
-<li>{owner}、{repo}、{path}<ul>
+<li>必须提交的参数有5个
+<ul>
+<li>{owner}、{repo}、{path}
+<ul>
 <li>{xxx}，有花括号表示这些参数是用户输入的。像content不是输入参数，而是固定的。</li>
 <li>参数详情表中可以从的type属性看出是<strong>path</strong>类型，即通过URL路径传递的参数。</li>
 </ul>
 </li>
-<li>contents、message：<ul>
+<li>contents、message：
+<ul>
 <li>除了上面三个参数是通过URL路径传递的，这两个在POST请求中如何传递？从参数详情表中看出这两个参数是<strong>formData</strong>类型，属于表单数据。写代码时，如何把数据放入“表单”中传递？，原始代码发起请求，表单在哪？其实就是POST请求传输数据的载体。</li>
 </ul>
 </li>
@@ -326,14 +326,17 @@
 </ul>
 </li>
 </ul>
-<h2 id="测试与分析"><a href="#测试与分析" class="headerlink" title="测试与分析"></a>测试与分析</h2><h3 id="官方网页API测试"><a href="#官方网页API测试" class="headerlink" title="官方网页API测试"></a>官方网页API测试</h3><table>
+<h2 id="测试与分析">测试与分析</h2>
+<h3 id="官方网页API测试">官方网页API测试</h3>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
 <th>value</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>owner</td>
 <td>yihangdeng</td>
 </tr>
@@ -353,36 +356,45 @@
 <td>message*</td>
 <td>test</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
-<li><p>curl：测试结果</p>
-<p>  curl -X POST –header ‘Content-Type: application/json;charset=UTF-8’<br>  ‘<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/api/v5/repos/yihangdeng/net-resources/contents/%252FPersonnelDocument%252Ftest.txt&#39;" >https://gitee.com/api/v5/repos/yihangdeng/net-resources/contents/%252FPersonnelDocument%252Ftest.txt&#39;<i class="fas fa-external-link-alt"></i></a><br>  -d ‘{“content”:”AAAAAA”,”message”:”test”}’</p>
+<li>
+<p>curl：测试结果</p>
+<p>curl -X POST --header ‘Content-Type: application/json;charset=UTF-8’<br>
+‘<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/api/v5/repos/yihangdeng/net-resources/contents/%252FPersonnelDocument%252Ftest.txt" >https://gitee.com/api/v5/repos/yihangdeng/net-resources/contents/%2FPersonnelDocument%2Ftest.txt<i class="fas fa-external-link-alt"></i></a>’<br>
+-d ‘{“content”:“AAAAAA”,“message”:“test”}’</p>
 </li>
-<li><p>其实除验证上述分析外，从curl中能看出官方还没给出重要信息：</p>
+<li>
+<p>其实除验证上述分析外，从curl中能看出官方还没给出重要信息：</p>
 <ul>
-<li>已知信息：<ul>
+<li>已知信息：
+<ul>
 <li>请求类型Post</li>
 <li>通过URL传参的部分数据</li>
 </ul>
 </li>
-<li><strong>新信息</strong>：<ul>
-<li>从<code>&#39;&#123;&quot;content&quot;:&quot;AAAAAA&quot;,&quot;message&quot;:&quot;test&quot;&#125;&#39;</code>与<code>application/json;charset=UTF-8</code>中看到三个<code>formData</code>类型的数据是封装成JSON格式，且为UTF-8编码，发送出去的。</li>
+<li><strong>新信息</strong>：
+<ul>
+<li>从<code>'&#123;&quot;content&quot;:&quot;AAAAAA&quot;,&quot;message&quot;:&quot;test&quot;&#125;'</code>与<code>application/json;charset=UTF-8</code>中看到三个<code>formData</code>类型的数据是封装成JSON格式，且为UTF-8编码，发送出去的。</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="原始HTTP数据报分析"><a href="#原始HTTP数据报分析" class="headerlink" title="原始HTTP数据报分析"></a>原始HTTP数据报分析</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">https://gitee.com/api/v5/repos/yihangdeng/net-resources/contents/%252FPersonnelDocument%252Ftest.txt</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: gitee.com</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0</span><br><span class="line"><span class="attribute">Accept</span>: application/json, text/plain, */*</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate, br</span><br><span class="line"><span class="attribute">Content-Type</span>: application/json;charset=utf-8</span><br><span class="line"><span class="attribute">Content-Length</span>: 87</span><br><span class="line"><span class="attribute">Origin</span>: https://gitee.com</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Referer</span>: https://gitee.com/api/v5/swagger</span><br><span class="line"><span class="attribute">Cookie</span>: oschina_new_user=false; yp_riddler_id=a17b654c-c3b6-4da1-ae2e-f46b440c38a9; remote_way=http; Serve_State=true; user_locale=zh-CN; remember_user_token=BAhbCFsGaQNIl3BJIiIkMmEkMTAkY3p2b2UzbmhKYzJjZDQ0UGNwVS9NLgY6BkVUSSIXMTYxODI5NzIyNC44MjcwNTEyBjsARg%3D%3D--d098e954ed8786cfed3d584ca9a3187251d15ed2; gitee_user=true; gitee-session-n=RC9VMXJGVXFsWnI1RWhXL3phYyt1TDNEZlF1bENteE1VWjhhSmExMy81RlpVbnJaTW12amVQaWhyc3pBMis4bzVuN283L3VyV3g4TGJFc2xqZVdZdWF1aWtDSzN5dE5JZndmN2hMZVFTYm0rbkFubFh0ZFhCL1FBY3hXb093czFURGpNcnZuUWZ6U3RtNlBIa1gxVW9HdGVEcEtoK1NrZjlkQjIxM0VUOXYrRHMxbVNTS3VnTlJKVElINjNCelJQeWVRcjg2dlVPbGt0VGRFZm5NSkN1ZU5zNHNlc2gwS2IraksyQ25xTlI4Wm9lMEFERFdpbmduQjVlUUtnVVg2OTI5VmYwZ3o1dVQ1SGF0ZGhZTHgxOHFJUjYxNThEek5vMHV1Tlpvb1ZWN0N5UUc4SFhHM05FbGo2V2FlemlBNlN3dkx3UG14L3JLbFl6WEJjc2t1N2FtbVUvQjRpZXUzYWJZK2c5R2poWkxZPS0tYnFybmZDSU5BUnZJQzErdVF3K2V1dz09--0c976b2431be4a2c3d2b7f3369b18d5e67ffb1b9; tz=Asia%2FShanghai</span><br><span class="line"></span><br><span class="line">&#123;&quot;content&quot;:&quot;AAAAAA&quot;,&quot;message&quot;:&quot;test&quot;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><ol>
+<h2 id="原始HTTP数据报分析">原始HTTP数据报分析</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">https://gitee.com/api/v5/repos/yihangdeng/net-resources/contents/%252FPersonnelDocument%252Ftest.txt</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: gitee.com</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0</span><br><span class="line"><span class="attribute">Accept</span>: application/json, text/plain, */*</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate, br</span><br><span class="line"><span class="attribute">Content-Type</span>: application/json;charset=utf-8</span><br><span class="line"><span class="attribute">Content-Length</span>: 87</span><br><span class="line"><span class="attribute">Origin</span>: https://gitee.com</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Referer</span>: https://gitee.com/api/v5/swagger</span><br><span class="line"><span class="attribute">Cookie</span>: oschina_new_user=false; yp_riddler_id=a17b654c-c3b6-4da1-ae2e-f46b440c38a9; remote_way=http; Serve_State=true; user_locale=zh-CN; remember_user_token=BAhbCFsGaQNIl3BJIiIkMmEkMTAkY3p2b2UzbmhKYzJjZDQ0UGNwVS9NLgY6BkVUSSIXMTYxODI5NzIyNC44MjcwNTEyBjsARg%3D%3D--d098e954ed8786cfed3d584ca9a3187251d15ed2; gitee_user=true; gitee-session-n=RC9VMXJGVXFsWnI1RWhXL3phYyt1TDNEZlF1bENteE1VWjhhSmExMy81RlpVbnJaTW12amVQaWhyc3pBMis4bzVuN283L3VyV3g4TGJFc2xqZVdZdWF1aWtDSzN5dE5JZndmN2hMZVFTYm0rbkFubFh0ZFhCL1FBY3hXb093czFURGpNcnZuUWZ6U3RtNlBIa1gxVW9HdGVEcEtoK1NrZjlkQjIxM0VUOXYrRHMxbVNTS3VnTlJKVElINjNCelJQeWVRcjg2dlVPbGt0VGRFZm5NSkN1ZU5zNHNlc2gwS2IraksyQ25xTlI4Wm9lMEFERFdpbmduQjVlUUtnVVg2OTI5VmYwZ3o1dVQ1SGF0ZGhZTHgxOHFJUjYxNThEek5vMHV1Tlpvb1ZWN0N5UUc4SFhHM05FbGo2V2FlemlBNlN3dkx3UG14L3JLbFl6WEJjc2t1N2FtbVUvQjRpZXUzYWJZK2c5R2poWkxZPS0tYnFybmZDSU5BUnZJQzErdVF3K2V1dz09--0c976b2431be4a2c3d2b7f3369b18d5e67ffb1b9; tz=Asia%2FShanghai</span><br><span class="line"></span><br><span class="line">&#123;&quot;content&quot;:&quot;AAAAAA&quot;,&quot;message&quot;:&quot;test&quot;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结论">结论</h3>
+<ol>
 <li>Post请求，且{owner}、{repo}、{path}这三个参数通过URL的方式传送</li>
 <li>content、message 则以json格式，通过Post请求中最原始的空行后二进制数据传送</li>
 </ol>
 <hr>
 <ul>
-<li>注意：<ol>
-<li>像这种URL传递参数没有以?开头键值对方式(浏览器默认方式)传递形参(即只有值)的方式<pre><code>      参数顺序是有严格要求的，因为无法通过键值对的方式定位参数，只能固定参数的输入顺序</code></pre>
-</li>
+<li>注意：
+<ol>
+<li>像这种URL传递参数没有以?开头键值对方式(浏览器默认方式)传递形参(即只有值)的方式<br>
+参数顺序是有严格要求的，因为无法通过键值对的方式定位参数，只能固定参数的输入顺序</li>
 <li>像{path}这个参数，参数本身含 / 与中文，的特殊字符，在作为URL参数前一定要进行URL编码，编码类型具体看接口要求(一般UTF-8)</li>
 </ol>
 </li>
@@ -431,10 +443,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/06/03/JavaWeb%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/"
+                           href="/2021/06/03/%E5%8E%9F%E7%94%9FWeb%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">JavaWeb编程技术</span>
+                                <span class="post-nav-title-item">原生Web技术方案</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -558,7 +570,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">原始数据报分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fiddler%E6%8A%93%E5%8F%96%E6%9C%AC%E5%9C%B0%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">fiddler抓取本地包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%B1%BB%E5%9E%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">1.2.</span> <span class="nav-text">文本类型测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET"><span class="nav-number">1.2.1.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST"><span class="nav-number">1.2.2.</span> <span class="nav-text">POST</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">1.3.</span> <span class="nav-text">文件类型测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">POST</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92"><span class="nav-number">2.</span> <span class="nav-text">HTTP数据传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GiteeAPI%E4%BD%BF%E7%94%A8%E6%9C%89%E6%84%9F"><span class="nav-number">3.</span> <span class="nav-text">GiteeAPI使用有感</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E4%BF%A1%E6%81%AF%E5%88%9D%E5%88%86%E6%9E%90"><span class="nav-number">3.1.</span> <span class="nav-text">官方信息初分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%88%86%E6%9E%90"><span class="nav-number">3.2.</span> <span class="nav-text">测试与分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E7%BD%91%E9%A1%B5API%E6%B5%8B%E8%AF%95"><span class="nav-number">3.2.1.</span> <span class="nav-text">官方网页API测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8BHTTP%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%88%86%E6%9E%90"><span class="nav-number">3.3.</span> <span class="nav-text">原始HTTP数据报分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">3.3.1.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">原始数据报分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fiddler%E6%8A%93%E5%8F%96%E6%9C%AC%E5%9C%B0%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">fiddler抓取本地包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%B1%BB%E5%9E%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">1.2.</span> <span class="nav-text">文本类型测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET"><span class="nav-number">1.2.1.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST"><span class="nav-number">1.2.2.</span> <span class="nav-text">POST</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">1.3.</span> <span class="nav-text">文件类型测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">POST</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92"><span class="nav-number">2.</span> <span class="nav-text">HTTP数据传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GiteeAPI%E4%BD%BF%E7%94%A8%E6%9C%89%E6%84%9F"><span class="nav-number">3.</span> <span class="nav-text">GiteeAPI使用有感</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E4%BF%A1%E6%81%AF%E5%88%9D%E5%88%86%E6%9E%90"><span class="nav-number">3.1.</span> <span class="nav-text">官方信息初分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%88%86%E6%9E%90"><span class="nav-number">3.2.</span> <span class="nav-text">测试与分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E7%BD%91%E9%A1%B5API%E6%B5%8B%E8%AF%95"><span class="nav-number">3.2.1.</span> <span class="nav-text">官方网页API测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8BHTTP%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%88%86%E6%9E%90"><span class="nav-number">3.3.</span> <span class="nav-text">原始HTTP数据报分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">3.3.1.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>

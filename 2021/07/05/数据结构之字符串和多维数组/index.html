@@ -314,178 +314,221 @@ mjx-container[display="true"] + br {
 <ul>
 <li>《数据结构——从概念到C++实现》（第3版）- 王红梅 - 清华大学出版社</li>
 <li>《数据结构——从概念到Java实现》（第2版）- 王红梅 - 清华大学出版社</li>
-<li>《大话数据结构》（第1版）- 程杰 - 清华大学出版社 </li>
+<li>《大话数据结构》（第1版）- 程杰 - 清华大学出版社</li>
 </ul>
 </blockquote>
 <ul>
 <li><strong>知识结构思维导图</strong></li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705233810.png"></p>
-<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="串的定义"><a href="#串的定义" class="headerlink" title="串的定义"></a>串的定义</h2><p><strong>字符串</strong>（String，简称“串”），是n（n ≥ 0）个<strong>字符组成</strong>的<strong>有限序列</strong>，字符个数称字符串长度</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705233810.png" alt=""></p>
+<h1 id="字符串">字符串</h1>
+<h2 id="串的定义">串的定义</h2>
+<p><strong>字符串</strong>（String，简称“串”），是n（n ≥ 0）个<strong>字符组成</strong>的<strong>有限序列</strong>，字符个数称字符串长度</p>
 <ul>
-<li><strong>零</strong>个字符串称为<strong>空串</strong>(null string)即，“<strong> ‘’” </strong>”</li>
+<li><strong>零</strong>个字符串称为<strong>空串</strong>(null string)即，“<strong> ‘’" </strong>”</li>
 <li><strong>子串</strong>：字符串中任意个连续的字符组成的<strong>子序列</strong>称为该串的<strong>子串</strong></li>
 <li><strong>主串</strong>：包含子串的串称为主串</li>
 </ul>
-<h2 id="常见字符编码集"><a href="#常见字符编码集" class="headerlink" title="常见字符编码集"></a>常见字符编码集</h2><ul>
+<h2 id="常见字符编码集">常见字符编码集</h2>
+<ul>
 <li><strong>标准ASCII编码</strong>：用<strong>7位</strong>二进制数表示<strong>128个字符</strong> (可表示英语为主的语言)</li>
 <li><strong>扩展ASCII编码</strong>：用<strong>8位</strong>二进制数表示<strong>256个字符</strong> (可表示英语为主的语言和<strong>特殊字符</strong>)</li>
 <li><strong>Unicode编码</strong>：用<strong>16位</strong>二进制表示<strong>2<sup>16</sup>个字符，约6.5万多个字符</strong>(足以表示<strong>全世界成百上千种语言和文字</strong>)</li>
 </ul>
-<h2 id="串的比较"><a href="#串的比较" class="headerlink" title="串的比较"></a>串的比较</h2><ul>
+<h2 id="串的比较">串的比较</h2>
+<ul>
 <li>字符串的比较在计算机中默认以<strong>字母顺序从前往后，从小到大</strong>(ASCII码)</li>
 <li>比较时，从<strong>左往右挨个比较串中字符</strong></li>
-<li>串的比较可以分为两类讨论<ul>
+<li>串的比较可以分为两类讨论
+<ul>
 <li>等长字符串比较</li>
 <li>不等长字符串比较</li>
 </ul>
 </li>
 </ul>
-<h3 id="等长比较"><a href="#等长比较" class="headerlink" title="等长比较"></a>等长比较</h3><ul>
+<h3 id="等长比较">等长比较</h3>
+<ul>
 <li>等长指<strong>串长度相同</strong>的两个字符串之间比较，<strong>从前往后挨个字符比较，首先判断到大的为大</strong></li>
 <li>例如：”abcde &gt; abcce“</li>
 </ul>
-<h3 id="不等长比较"><a href="#不等长比较" class="headerlink" title="不等长比较"></a>不等长比较</h3><p>不等长指串的长度不同的两个字符串之间比较，又分为两种情况</p>
+<h3 id="不等长比较">不等长比较</h3>
+<p>不等长指串的长度不同的两个字符串之间比较，又分为两种情况</p>
 <ul>
-<li><strong>情况1</strong>：<strong>完全包含关系</strong>，即某个串只是比另一个串单纯地多出了几个字符，<strong>则长度大的字符串大</strong><ul>
+<li><strong>情况1</strong>：<strong>完全包含关系</strong>，即某个串只是比另一个串单纯地多出了几个字符，<strong>则长度大的字符串大</strong>
+<ul>
 <li>例如：“happy” &gt; “hap”，单纯多出“py”，属于完全包含关系</li>
 </ul>
 </li>
-<li><strong>情况2</strong>：<strong>非包含完全包含关系</strong>，则类似与等长比较方式，<strong>挨个字符比较，优先大者为大</strong><ul>
+<li><strong>情况2</strong>：<strong>非包含完全包含关系</strong>，则类似与等长比较方式，<strong>挨个字符比较，优先大者为大</strong>
+<ul>
 <li>例如：”happy &gt; happen“</li>
 </ul>
 </li>
 </ul>
-<h2 id="逻辑与存储结构"><a href="#逻辑与存储结构" class="headerlink" title="逻辑与存储结构"></a>逻辑与存储结构</h2><h3 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h3><ul>
+<h2 id="逻辑与存储结构">逻辑与存储结构</h2>
+<h3 id="逻辑结构">逻辑结构</h3>
+<ul>
 <li>有上述串的定义可知，串本质是一组<strong>有限字符序列</strong>，<strong>属于线性结构</strong></li>
 </ul>
-<h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><p>由于字符串在计算机中大量使用，一<strong>般都会选择顺序存储结构实现</strong>来节省开销</p>
+<h3 id="存储结构">存储结构</h3>
+<p>由于字符串在计算机中大量使用，一<strong>般都会选择顺序存储结构实现</strong>来节省开销</p>
 <ul>
-<li><p><strong>方式一</strong>：将字符从数组<strong>0号单元</strong>开始存储<strong>数据</strong>，最后一个单元存储串的长度</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705083424.png"></p>
+<li>
+<p><strong>方式一</strong>：将字符从数组<strong>0号单元</strong>开始存储<strong>数据</strong>，最后一个单元存储串的长度</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705083424.png" alt=""></p>
 </li>
-<li><p><strong>方式二</strong>：用数组<strong>0号单元</strong>存储串的<strong>长度</strong>，其他单元存储字符串（汇编常用）</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705083450.png"></p>
+<li>
+<p><strong>方式二</strong>：用数组<strong>0号单元</strong>存储串的<strong>长度</strong>，其他单元存储字符串（汇编常用）</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705083450.png" alt=""></p>
 </li>
-<li><p><strong>方式三</strong>：从数组<strong>0号单元</strong>开始存储<strong>数据</strong>，以特殊字符作为<strong>字符串结束符</strong>，如<code>'\0'</code>（高级语言常用），这种方式不能直接得到字符串长度，需遍历获得</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705083504.png"></p>
+<li>
+<p><strong>方式三</strong>：从数组<strong>0号单元</strong>开始存储<strong>数据</strong>，以特殊字符作为<strong>字符串结束符</strong>，如<code>'\0'</code>（高级语言常用），这种方式不能直接得到字符串长度，需遍历获得</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705083504.png" alt=""></p>
 </li>
 </ul>
-<h1 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h1><ul>
+<h1 id="模式匹配">模式匹配</h1>
+<ul>
 <li>在主串S中寻找子串T的过程称为<strong>模式匹配</strong>（pattern matching），T称为<strong>模式</strong>（pattern）</li>
 <li>一般模式匹配指返回匹配到的<strong>子串第一次出现的位置</strong></li>
 <li>模式匹配在计算机中使用频率非常高，因此算法性能要求尤为重要</li>
 </ul>
-<h2 id="BF算法"><a href="#BF算法" class="headerlink" title="BF算法"></a>BF算法</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<h2 id="BF算法">BF算法</h2>
+<h3 id="基本概念">基本概念</h3>
+<ul>
 <li><strong>BF算法</strong>，即暴力(Brute Force)算法，基本思想是暴力匹配、蛮力匹配</li>
 </ul>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ol>
+<h3 id="原理">原理</h3>
+<ol>
 <li>子串从主串的首位开始逐一字符匹配</li>
 <li>若子串中任意一个字符匹配失败，则整个子串从上一次主串匹配的位置的下一个位置开始重新匹配</li>
 <li>以此循环，直至存在子串的每一个字符均被匹配正确的情况</li>
 </ol>
 <hr>
 <ul>
-<li>示例：设主串S=”<strong>abcabcacb</strong>”，模式T=”<strong>abcac</strong>”，BF算法的匹配过程如下图所示</li>
+<li>示例：设主串S="<strong>abcabcacb</strong>”，模式T="<strong>abcac</strong>”，BF算法的匹配过程如下图所示</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705084703.png"></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><ul>
-<li><p>推荐BF实现代码，<strong>仅使用一个while循环实现</strong>，而且索引分工明确，操作清晰</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705084703.png" alt=""></p>
+<h3 id="代码实现">代码实现</h3>
+<ul>
+<li>
+<p>推荐BF实现代码，<strong>仅使用一个while循环实现</strong>，而且索引分工明确，操作清晰</p>
 <blockquote>
 <ul>
-<li><p>一般实现思路是双重for循环，代码复杂而且索引管理麻烦</p>
+<li>
+<p>一般实现思路是双重for循环，代码复杂而且索引管理麻烦</p>
 </li>
-<li><p>代码出处：《数据结构——从概念到Java实现》（第2版）- 王红梅 - 清华大学出版社</p>
+<li>
+<p>代码出处：《数据结构——从概念到Java实现》（第2版）- 王红梅 - 清华大学出版社</p>
 </li>
 </ul>
 </blockquote>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 基于BF算法实现的模式匹配</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> str   主串</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> substr    子串</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span>  返回子串在主串中第一次出现的位置，不存在返回-1</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">indexOfBf</span><span class="params">(String str,String substr)</span></span>{</span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>;      <span class="comment">//主串每次进行新一轮匹配的位置</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">0</span>;    <span class="comment">//i，主串匹配中的索引变化，j，子串匹配过程中索引变化</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//主串也参与循环判断条件能使主串长度 &lt; 子串长度，也可返回真确结果，即-1，找不到</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; str.length() &amp;&amp; j &lt; substr.length()){</span><br><span class="line">        <span class="keyword">if</span>(str.charAt(i) == substr.charAt(j)){</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        }<span class="keyword">else</span> {</span><br><span class="line">            start++;    <span class="comment">//主串回溯到上一次开始匹配位置，从下一个位置开始新一轮匹配</span></span><br><span class="line">            i = start;  <span class="comment">//为新一轮主串匹配索引变量i赋值</span></span><br><span class="line">            j = <span class="number">0</span>;      <span class="comment">//子串总是回溯到初始位置</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//若子串匹配了所有字符，则证明匹配成功，返回该轮此的主串索引</span></span><br><span class="line">    <span class="keyword">if</span>(j &gt;= substr.length()){</span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-<h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><ul>
+<h3 id="性能分析">性能分析</h3>
+<ul>
 <li>BF算法，设主存长度为n，子串长度为m。<strong>最坏情况下的时间复杂度</strong>为，<strong>O</strong>(<strong>n</strong> * <strong>m</strong>)</li>
 <li>BF算法性能低下的根本原因在于，<strong>主串每一次开始匹配的位置i，进行了不必要的回溯</strong></li>
 </ul>
-<h2 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<h2 id="KMP算法">KMP算法</h2>
+<h3 id="基本概念-2">基本概念</h3>
+<ul>
 <li>KMP算法是克努思（Knuth）、莫里斯（Morris）和普拉特（Pratt）同时设计的</li>
 <li>KMP是一种对BF算法很大改进的模式匹配算法</li>
 <li>改进的出发点在于<strong>主串的匹配位置不进行不必要的回溯</strong>。</li>
 </ul>
-<h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><ul>
+<h3 id="原理-2">原理</h3>
+<ul>
 <li>tips，下述原理说明默认字符串从<strong>数组下标为 1 开始存储</strong></li>
 </ul>
-<h4 id="KMP原理"><a href="#KMP原理" class="headerlink" title="KMP原理"></a>KMP原理</h4><ul>
+<h4 id="KMP原理">KMP原理</h4>
+<ul>
 <li>KMP算法的核心就是基于BF算法<strong>避免</strong>主串匹配位置<strong>一些不必要的回溯</strong></li>
-<li>这种 ” <strong>不必要的回溯</strong> “ 可以<strong>分为两种类型分析</strong><ul>
+<li>这种 ” <strong>不必要的回溯</strong> “ 可以<strong>分为两种类型分析</strong>
+<ul>
 <li>情况1：匹配的<strong>子串的字符各不相同</strong></li>
 <li>情况2：匹配的<strong>子串内存在相同子串</strong></li>
 </ul>
 </li>
-<li>实际应用是以上两种情况的结合体，可以将KMP算法总结为如下两句话：<ul>
+<li>实际应用是以上两种情况的结合体，可以将KMP算法总结为如下两句话：
+<ul>
 <li>子串的字符各不相同：”<strong>因为不同所以不同，跳过不同！</strong>“</li>
 <li>子串内存在相同子串：”<strong>因为相同所以相同，跳过相同！</strong>“</li>
 </ul>
 </li>
 </ul>
 <p><strong>注</strong>：分析每一种情况时，都是基于一定条件下分析，<strong>不要脱离了前提</strong></p>
-<h4 id="子串字符各不同"><a href="#子串字符各不同" class="headerlink" title="子串字符各不同"></a>子串字符各不同</h4><ul>
+<h4 id="子串字符各不同">子串字符各不同</h4>
+<ul>
 <li>情况1：子串的字符各不相同</li>
 <li>避免回溯原理：”<strong>因为不同所以不同，跳过不同！</strong>“</li>
 </ul>
 <hr>
 <ul>
-<li>设主串S=”abcdefgab”，子串T=”<strong>abcdex</strong>“（子串的字符各不相同），分别展示BF算法与KMP都优化</li>
+<li>设主串S=“abcdefgab”，子串T=“<strong>abcdex</strong>”（子串的字符各不相同），分别展示BF算法与KMP都优化</li>
 </ul>
-<h5 id="BF算法-1"><a href="#BF算法-1" class="headerlink" title="BF算法"></a>BF算法</h5><ul>
+<h5 id="BF算法-2">BF算法</h5>
+<ul>
 <li>采用BF算法，<strong>匹配6次的情况</strong></li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp-bf-ex01.png"></p>
-<h5 id="KMP优化"><a href="#KMP优化" class="headerlink" title="KMP优化"></a>KMP优化</h5><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp-bf-ex01.png" alt=""></p>
+<h5 id="KMP优化">KMP优化</h5>
+<ul>
 <li>由于<strong>子串内的字符各不相同</strong>，子串<strong>一旦出现不匹配</strong>，在此之后<strong>子串长度下的主串不可能匹配到一个完整的子串出来</strong></li>
 <li>因此<strong>KMP</strong>算法对上图BF算法的<strong>2、3、4、5</strong>步这些<strong>不必要的回溯</strong>进行了优化（省略）</li>
 <li>同样得匹配结果，KMP算法对比上述的BF算法<strong>仅需匹配2次</strong></li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp-bf-ex02.png"></p>
-<h4 id="子串内存在相同子串"><a href="#子串内存在相同子串" class="headerlink" title="子串内存在相同子串"></a>子串内存在相同子串</h4><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp-bf-ex02.png" alt=""></p>
+<h4 id="子串内存在相同子串">子串内存在相同子串</h4>
+<ul>
 <li>情况2：子串内存在相同子串</li>
 <li>避免回溯原理：”<strong>因为相同所以相同，跳过相同！</strong>“</li>
 </ul>
 <hr>
 <ul>
-<li>设主串S=”abcababca”，子串T=”<strong>abcabx</strong>“（子串内存在相同子串”<strong>ab</strong>“），分别展示BF算法与KMP都优化</li>
+<li>设主串S=“abcababca”，子串T=“<strong>abcabx</strong>”（子串内存在相同子串”<strong>ab</strong>“），分别展示BF算法与KMP都优化</li>
 </ul>
-<h5 id="BF算法-2"><a href="#BF算法-2" class="headerlink" title="BF算法"></a>BF算法</h5><ul>
+<h5 id="BF算法-3">BF算法</h5>
+<ul>
 <li>采用BF算法，的6次匹配结果</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp-bf-ex03.png"></p>
-<h5 id="KMP优化-1"><a href="#KMP优化-1" class="headerlink" title="KMP优化"></a>KMP优化</h5><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp-bf-ex03.png" alt=""></p>
+<h5 id="KMP优化-2">KMP优化</h5>
+<ul>
 <li>由于子串中存在相同部分子串，因此子串在每一次进行匹配的过程中，子串中相同部分的子串都在参与匹配</li>
-<li>在如果之前子串中的子串匹配<strong>成过或者不成功</strong>，<strong>都是跳过之前子串的子串</strong><ul>
+<li>在如果之前子串中的子串匹配<strong>成过或者不成功</strong>，<strong>都是跳过之前子串的子串</strong>
+<ul>
 <li><strong>子串中的子串成功过</strong>：下次就从跳过子串的子串匹配成功过的位置开始匹配<strong>剩余的部分</strong></li>
 <li><strong>子串中的子串刚好是匹配失败</strong>：下次就跳过子串的子串匹配失败的位置<strong>从头开始匹配子串</strong></li>
 </ul>
 </li>
-<li>，如上图的BF算法第一次匹配，子串数组下标的3、4的”ab”。则无需再对这部分相同的子串的部分子串匹配，即4、5步骤是没必要的，因为在第1步已经匹配过</li>
+<li>，如上图的BF算法第一次匹配，子串数组下标的3、4的"ab"。则无需再对这部分相同的子串的部分子串匹配，即4、5步骤是没必要的，因为在第1步已经匹配过</li>
 <li>KMP对于上图的BF算法优化后仅需2次匹配</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp-bf-ex04.png"></p>
-<h4 id="综合情况KMP匹配"><a href="#综合情况KMP匹配" class="headerlink" title="综合情况KMP匹配"></a>综合情况KMP匹配</h4><ul>
-<li>示例：设主串S=”abcababca”，子串T=”<strong>abcabx</strong>“，一下为基于BF算法KMP进行两步优化的过程</li>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/kmp-bf-ex04.png" alt=""></p>
+<h4 id="综合情况KMP匹配">综合情况KMP匹配</h4>
+<ul>
+<li>示例：设主串S=“abcababca”，子串T=“<strong>abcabx</strong>”，一下为基于BF算法KMP进行两步优化的过程</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705102723.png"></p>
-<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="next数组设计"><a href="#next数组设计" class="headerlink" title="next数组设计"></a>next数组设计</h4><ul>
-<li><p>观察上述的KMP算法实现过程，可以看出<strong>主串匹配位置i</strong>，在匹配过程中<strong>没有回溯过</strong></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705102723.png" alt=""></p>
+<h3 id="代码实现-2">代码实现</h3>
+<h4 id="next数组设计">next数组设计</h4>
+<ul>
+<li>
+<p>观察上述的KMP算法实现过程，可以看出<strong>主串匹配位置i</strong>，在匹配过程中<strong>没有回溯过</strong></p>
 </li>
-<li><p>而<strong>子串匹配位置j</strong>则通过不同情况进行<strong>回溯</strong>，主要<strong>根据子串本身结构</strong>（互不相同，存在相同部分）</p>
+<li>
+<p>而<strong>子串匹配位置j</strong>则通过不同情况进行<strong>回溯</strong>，主要<strong>根据子串本身结构</strong>（互不相同，存在相同部分）</p>
 <ul>
 <li>当子串没有任何重复的字符时：主串不回溯，子串匹配回溯到初始位置（上图的1）</li>
-<li>当子串中存在重复的字符串时：主串不回溯，<del>子串回溯到当前子串已匹配串中第一个重复子串的下一个位置(语句是正确的，只是不宜在此展开说明)</del>，根据子串重复程度进行回溯到重复字符串的下一个位置（上图的3）</li>
+<li>当子串中存在重复的字符串时：主串不回溯，<s>子串回溯到当前子串已匹配串中第一个重复子串的下一个位置(语句是正确的，只是不宜在此展开说明)</s>，根据子串重复程度进行回溯到重复字符串的下一个位置（上图的3）</li>
 </ul>
 </li>
-<li><p><strong>结论</strong>：<strong>主串不回溯，子串根据子串重复程度回溯，重复程度越低回溯越多</strong></p>
+<li>
+<p><strong>结论</strong>：<strong>主串不回溯，子串根据子串重复程度回溯，重复程度越低回溯越多</strong></p>
 </li>
-<li><p>为了便于KMP算法代码实现，设计一个专门用于记录<strong>子串在任意位置匹配失败情况下</strong>，<strong>该位置对应需子串回溯的位置数组</strong>，该数组称为 ” <strong>next数组</strong> “</p>
+<li>
+<p>为了便于KMP算法代码实现，设计一个专门用于记录<strong>子串在任意位置匹配失败情况下</strong>，<strong>该位置对应需子串回溯的位置数组</strong>，该数组称为 ” <strong>next数组</strong> “</p>
 <blockquote>
 <ul>
 <li>这种功能分离设计，使得KMP匹配过程的系处理的逻辑少很多</li>
@@ -495,30 +538,38 @@ mjx-container[display="true"] + br {
 </blockquote>
 </li>
 </ul>
-<h4 id="next数组结构"><a href="#next数组结构" class="headerlink" title="next数组结构"></a>next数组结构</h4><p>tips：以下简述的代码实现均以字符串从<strong>数组下标为 0 开始存储说明</strong></p>
-<h5 id="结构分析"><a href="#结构分析" class="headerlink" title="结构分析"></a>结构分析</h5><ul>
-<li><p><strong>next数组</strong>：专门用于记录<strong>子串在任意位置匹配失败情况下</strong>，<strong>该位置对应KMP思想需子串回溯的位置的数组</strong></p>
-</li>
-<li><p>next数组结构含义：<strong>next[ j ] = k</strong></p>
+<h4 id="next数组结构">next数组结构</h4>
+<p>tips：以下简述的代码实现均以字符串从<strong>数组下标为 0 开始存储说明</strong></p>
+<h5 id="结构分析">结构分析</h5>
 <ul>
-<li><strong>j</strong> ：<ul>
+<li>
+<p><strong>next数组</strong>：专门用于记录<strong>子串在任意位置匹配失败情况下</strong>，<strong>该位置对应KMP思想需子串回溯的位置的数组</strong></p>
+</li>
+<li>
+<p>next数组结构含义：<strong>next[ j ] = k</strong></p>
+<ul>
+<li><strong>j</strong> ：
+<ul>
 <li>表示在匹配过程中，出现子串不匹配时的子串索引位置，</li>
 <li>也可理解为当次匹配失败过程中，已经匹配通过的前部分子串的结束索引</li>
 </ul>
 </li>
-<li><strong>k</strong>：<ul>
+<li><strong>k</strong>：
+<ul>
 <li>以KMP算法两步优化原则，将当次匹配失败过程中的已经匹配通过的子串部分进行分析(主要寻找相同)，得出匹配失败位置j需要子串回溯的位置value</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h5 id="next功能示例"><a href="#next功能示例" class="headerlink" title="next功能示例"></a>next功能示例</h5><ul>
-<li>设存在子串T = “<strong>ababc</strong>“，子串匹配位置为 i ，next [ i ] = k<ul>
+<h5 id="next功能示例">next功能示例</h5>
+<ul>
+<li>设存在子串T = “<strong>ababc</strong>”，子串匹配位置为 i ，next [ i ] = k
+<ul>
 <li><strong>j = 0，已匹配子串 = “”，k = -1</strong>：索引0字符匹配失败，不存在已匹配的子串，无法挖掘隐含信息，不存在回溯，即 i 不变(这种特殊情况将k记录为-1)</li>
 <li><strong>j = 1，已匹配子串 = “a”，k = 0</strong>：索引1字符匹配失败，仅有一个字符无法挖掘隐含信息，若失败只能重写匹配，即回溯到子串初始位置，k = 0;</li>
 <li><strong>j = 2，已匹配子串 = “ab”，k = 0</strong>：索引2字符匹配失败，此时<strong>已匹配子串字符各不相同</strong>，若失败则不应该回溯到子串的初始位置，而应该跳过这两个字符，注意，这里跳过两个字符不是通过k = 2去定位回溯位置，而是<strong>通过主串不回溯</strong>，<strong>子串从0位置开始匹配来实现跳过这两个字符</strong>，<strong>因此k=0</strong></li>
-<li><strong>j = 3，已匹配子串 = “aba”，k = 1</strong>：索引3字符匹配失败，此时存在相同子串…..</li>
+<li><strong>j = 3，已匹配子串 = “aba”，k = 1</strong>：索引3字符匹配失败，此时存在相同子串…</li>
 <li><strong>j = 4，已匹配子串 = “ababc”，k = 2</strong>：索引2字符匹配失败，存在最大相同子串ab</li>
 </ul>
 </li>
@@ -527,195 +578,246 @@ mjx-container[display="true"] + br {
 <ul>
 <li><strong>为什么最大重复子串的长度的值就是子串回溯的位置值</strong>？</li>
 <li>因为子串需回溯的是就是<strong>第一个最大重复子串</strong>的<strong>下一个位置</strong>，而数组从0开始存储，因此最大重复子串长度的值刚好就是第一个出现最大重复子串结尾的下一个位置的值</li>
-<li>next指导下KMP算法示例图，同为模式T=”<strong>ababc</strong>“，则next数组的值为{<strong>-1,0,0,1,2</strong>}</li>
+<li>next指导下KMP算法示例图，同为模式T=“<strong>ababc</strong>”，则next数组的值为{<strong>-1,0,0,1,2</strong>}</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705141840.png"></p>
-<h4 id="next数组计算"><a href="#next数组计算" class="headerlink" title="next数组计算"></a>next数组计算</h4><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705141840.png" alt=""></p>
+<h4 id="next数组计算">next数组计算</h4>
+<ul>
 <li>next数组数值上体现的就是，子串中每个位置前的所有字符构成的子串存在<strong>最大重复子串</strong>的串的长度</li>
 </ul>
-<h5 id="计算原理"><a href="#计算原理" class="headerlink" title="计算原理"></a>计算原理</h5><ul>
+<h5 id="计算原理">计算原理</h5>
+<ul>
 <li>本文采用next数组计算规约如下</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705143250.png"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705143250.png" alt=""></p>
 <ul>
 <li><strong>公式推导示例</strong>（不常用）</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705143341.png"></p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705143341.png" alt=""></p>
 <ul>
 <li><strong>个人快速计算示例</strong>（自用，常用）</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705150417.png"></p>
-<h5 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h5><ul>
-<li><p>若按照next理论计算的思路编写代码，本人应该能写出时间复杂度为O(n<sup>2</sup>)的next计算代码</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705150417.png" alt=""></p>
+<h5 id="代码实现-3">代码实现</h5>
+<ul>
+<li>
+<p>若按照next理论计算的思路编写代码，本人应该能写出时间复杂度为O(n<sup>2</sup>)的next计算代码</p>
 </li>
-<li><p>但暂时还无法理解《大话数据结构》中O(n)复杂度实现的next计算的代码实现思路</p>
+<li>
+<p>但暂时还无法理解《大话数据结构》中O(n)复杂度实现的next计算的代码实现思路</p>
 <ul>
 <li>由于O(n)的next代码实现貌似，在求子串next数组的过程中再利用了已求得的next数组</li>
 <li>即上一个位置next数组求值的结果作为下一次求next值辅助，是非常复杂的</li>
 </ul>
 </li>
-<li><p>参考代码：以下以j = 0时候，k = -1，且字符串从数组0开始位置存储规约下O(n)next计算代码</p>
+<li>
+<p>参考代码：以下以j = 0时候，k = -1，且字符串从数组0开始位置存储规约下O(n)next计算代码</p>
 <ul>
 <li>基于《大话数据结构》实现逻辑，以上规约，的java实现版</li>
 </ul>
 <blockquote>
-<p>————————————————<br>版权声明：本文为CSDN博主「whattress」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43860800/article/details/103695079">https://blog.csdn.net/weixin_43860800/article/details/103695079<i class="fas fa-external-link-alt"></i></a></p>
+<p>————————————————<br>
+版权声明：本文为CSDN博主「whattress」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43860800/article/details/103695079">https://blog.csdn.net/weixin_43860800/article/details/103695079<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 用于生成部分匹配表next</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> sub 模式串</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] getNext(String sub) {</span><br><span class="line">    <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[sub.length()+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = -<span class="number">1</span>;</span><br><span class="line">    next[<span class="number">0</span>] = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;sub.length()){</span><br><span class="line">        <span class="keyword">if</span> (j==-<span class="number">1</span> || sub.charAt(i) == sub.charAt(j)){</span><br><span class="line">            next[++i] = ++j;</span><br><span class="line">        }<span class="keyword">else</span> {</span><br><span class="line">            j = next[j];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> next;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-<h4 id="next数组指引下的KMP匹配过程"><a href="#next数组指引下的KMP匹配过程" class="headerlink" title="next数组指引下的KMP匹配过程"></a>next数组指引下的KMP匹配过程</h4><p>next指导下KMP算法示例图，同为模式T=”<strong>ababc</strong>“，则next数组的值为{-1,0,0,1,2}</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705141840.png"></p>
-<h4 id="KMP代码实现"><a href="#KMP代码实现" class="headerlink" title="KMP代码实现"></a>KMP代码实现</h4><ul>
-<li><p>但暂时还无法理解《大话数据结构》中O(n)复杂度实现的next计算的代码实现思路</p>
+<h4 id="next数组指引下的KMP匹配过程">next数组指引下的KMP匹配过程</h4>
+<p>next指导下KMP算法示例图，同为模式T=“<strong>ababc</strong>”，则next数组的值为{-1,0,0,1,2}</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705141840.png" alt=""></p>
+<h4 id="KMP代码实现">KMP代码实现</h4>
+<ul>
+<li>
+<p>但暂时还无法理解《大话数据结构》中O(n)复杂度实现的next计算的代码实现思路</p>
 <blockquote>
 <p>参考代码：</p>
-<p>————————————————<br>版权声明：本文为CSDN博主「whattress」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43860800/article/details/103695079">https://blog.csdn.net/weixin_43860800/article/details/103695079<i class="fas fa-external-link-alt"></i></a></p>
+<p>————————————————<br>
+版权声明：本文为CSDN博主「whattress」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43860800/article/details/103695079">https://blog.csdn.net/weixin_43860800/article/details/103695079<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * KMP工具类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KMP</span> </span>{</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用于计算匹配的位置（从头到尾）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str 主串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> sub 模式串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">kmp</span><span class="params">(String str, String sub)</span> </span>{</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] next = getNext(sub);</span><br><span class="line">        <span class="keyword">while</span> (i &lt; str.length() &amp;&amp; j &lt; sub.length()){</span><br><span class="line">            <span class="keyword">if</span>(j == -<span class="number">1</span> || str.charAt(i) == sub.charAt(j)){</span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">            }<span class="keyword">else</span> {</span><br><span class="line">                j = next[j];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(j == sub.length())</span><br><span class="line">            <span class="keyword">return</span> i-j;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用于生成部分匹配表next</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> sub 模式串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] getNext(String sub) {</span><br><span class="line">        <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[sub.length()+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = -<span class="number">1</span>;</span><br><span class="line">        next[<span class="number">0</span>] = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;sub.length()){</span><br><span class="line">            <span class="keyword">if</span> (j==-<span class="number">1</span> || sub.charAt(i) == sub.charAt(j)){</span><br><span class="line">                next[++i] = ++j;</span><br><span class="line">            }<span class="keyword">else</span> {</span><br><span class="line">                j = next[j];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-<h4 id="性能分析-1"><a href="#性能分析-1" class="headerlink" title="性能分析"></a>性能分析</h4><ul>
+<h4 id="性能分析-2">性能分析</h4>
+<ul>
 <li>KMP算法的时间复杂度O(n + m)，n为主串长度，m为子串长度</li>
 </ul>
-<h4 id="KMP核心总结"><a href="#KMP核心总结" class="headerlink" title="KMP核心总结"></a>KMP核心总结</h4><ul>
+<h4 id="KMP核心总结">KMP核心总结</h4>
+<ul>
 <li>KMP算法核心思想是：”<strong>一次匹配原则</strong>“，即充分利用每一次匹配得出所有隐含信息，作为下次匹配的辅助信息，从而减少不必要的匹配过程</li>
 <li><strong>主串不回溯</strong>，<strong>子串根据子串重复程度回溯</strong>(根据next数组回溯)，重复程度越低回溯越多</li>
-<li>next数组记录的是<strong>子串每一个索引位置</strong>出现<strong>匹配失败</strong>是<strong>子串匹配索引应回溯的位置</strong><ul>
+<li>next数组记录的是<strong>子串每一个索引位置</strong>出现<strong>匹配失败</strong>是<strong>子串匹配索引应回溯的位置</strong>
+<ul>
 <li>next[j] = 0，表示不存在重复子串，主串不回溯，子串回溯到0</li>
 <li>next[j] &gt; 0，表示存在重复子串，且重复子串长度为next[j]，回溯位置为next[j]（数组从0开始）</li>
 </ul>
 </li>
-<li>KMP算法通过对子串在匹配过程每一个位置匹配失败时，<strong>已经匹配了的那一部分的子串进行优化分析</strong>，即根据<strong>已匹配子串的特性</strong>，<strong>挖掘</strong>出对应的<strong>隐含信息</strong>，并<strong>将其记录下来</strong>(next数组)，为<strong>下次匹配提供优化</strong><ul>
+<li>KMP算法通过对子串在匹配过程每一个位置匹配失败时，<strong>已经匹配了的那一部分的子串进行优化分析</strong>，即根据<strong>已匹配子串的特性</strong>，<strong>挖掘</strong>出对应的<strong>隐含信息</strong>，并<strong>将其记录下来</strong>(next数组)，为<strong>下次匹配提供优化</strong>
+<ul>
 <li>特性1，已匹配的部分子串的字符各不相同：”<strong>因为不同所以不同，跳过不同！</strong>“，主串不用回溯</li>
 <li>特性2，已匹配的部分子串内存在相同子串：”<strong>因为相同所以相同，跳过相同！</strong>“，隐含特性1，主串不回溯且子串只回溯到最大重复子串位置的下一个位置</li>
 </ul>
 </li>
 </ul>
-<h2 id="算法对比"><a href="#算法对比" class="headerlink" title="算法对比"></a>算法对比</h2><ul>
-<li><p><strong>BF算法</strong>：</p>
+<h2 id="算法对比">算法对比</h2>
+<ul>
+<li>
+<p><strong>BF算法</strong>：</p>
 <ul>
 <li><strong>主串回溯</strong>（总是回到上一次匹配的下一个位置），子串回溯</li>
 <li>时间复杂度O(n * m)，n为主串长度，m为子串长度</li>
 </ul>
 </li>
-<li><p><strong>KMP算法</strong>：</p>
+<li>
+<p><strong>KMP算法</strong>：</p>
 <ul>
 <li><strong>主串不回溯</strong>，子串根据子串重复程度回溯，重复程度越低回溯越多</li>
 <li>时间复杂度O(n + m)，n为主串长度，m为子串长度</li>
 </ul>
 </li>
 </ul>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="KMP算法改进"><a href="#KMP算法改进" class="headerlink" title="KMP算法改进"></a>KMP算法改进</h3><h1 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h1><h2 id="逻辑结构-1"><a href="#逻辑结构-1" class="headerlink" title="逻辑结构"></a>逻辑结构</h2><ul>
+<h2 id="扩展">扩展</h2>
+<h3 id="KMP算法改进">KMP算法改进</h3>
+<h1 id="多维数组">多维数组</h1>
+<h2 id="逻辑结构-2">逻辑结构</h2>
+<ul>
 <li><strong>数组</strong>（array）是由<strong>类型相同</strong>的数据元素构成的<strong>有序集合</strong></li>
 <li>每个数据元素称为一个数组元素，每个元素受<strong>线性关系约束</strong></li>
 </ul>
-<h2 id="存储结构与寻址"><a href="#存储结构与寻址" class="headerlink" title="存储结构与寻址"></a>存储结构与寻址</h2><h3 id="存储结构-1"><a href="#存储结构-1" class="headerlink" title="存储结构"></a>存储结构</h3><ul>
+<h2 id="存储结构与寻址">存储结构与寻址</h2>
+<h3 id="存储结构-2">存储结构</h3>
+<ul>
 <li><strong>数组</strong>是一种特殊的数据结构，一般要<strong>求能够随机存取</strong>，因此<strong>通常采用顺序存储结构</strong></li>
 <li>数组的基本操作：读操作、写操作</li>
 </ul>
-<h3 id="多维映射与寻址"><a href="#多维映射与寻址" class="headerlink" title="多维映射与寻址"></a>多维映射与寻址</h3><h4 id="多维映射"><a href="#多维映射" class="headerlink" title="多维映射"></a>多维映射</h4><ul>
+<h3 id="多维映射与寻址">多维映射与寻址</h3>
+<h4 id="多维映射">多维映射</h4>
+<ul>
 <li>由于<strong>内存单元是一维结构</strong>，因此顺序存储结构的<strong>多维数组</strong>需要通过计算地址<strong>映射到一维结构中</strong></li>
-<li>常用映射方式有两种<ul>
+<li>常用映射方式有两种
+<ul>
 <li><strong>按行优先</strong>（行序为主序）：先行后列</li>
 <li><strong>按列优先</strong>（列序为主序）：先列后行</li>
 </ul>
 </li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705213726.png"></p>
-<h4 id="寻址计算"><a href="#寻址计算" class="headerlink" title="寻址计算"></a>寻址计算</h4><h5 id="计算方法"><a href="#计算方法" class="headerlink" title="计算方法"></a>计算方法</h5><p>无论是多维数组映射一维内存，还是各种矩阵压缩算法，计算步骤一致</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705213726.png" alt=""></p>
+<h4 id="寻址计算">寻址计算</h4>
+<h5 id="计算方法">计算方法</h5>
+<p>无论是多维数组映射一维内存，还是各种矩阵压缩算法，计算步骤一致</p>
 <ol>
 <li>计算以当前数据增长方向的 i - 1 行/列（占满部分）所占数目（一般用数列计算）</li>
 <li>计算同一行/列相差的数目（最后的定位）</li>
 <li>两种相加就是最后隐射后的结果</li>
 </ol>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705214918.png"></p>
-<h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><p><strong>题目</strong>：<strong>数组A[0..5，0…6]的每个元素占5个字节，将其按列优先次序存储在起始地址为1000的内存单元中，则元素A[4，5]的地址是</strong>？</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705214918.png" alt=""></p>
+<h5 id="例题">例题</h5>
+<p><strong>题目</strong>：<strong>数组A[0…5，0…6]的每个元素占5个字节，将其按列优先次序存储在起始地址为1000的内存单元中，则元素A[4，5]的地址是</strong>？</p>
 <ul>
 <li><strong>答案</strong>：1170</li>
 <li><strong>解析</strong>：[（6 * 5 + 5）- 1 ] * 5 + 1000 = 1170，-1是因为除去第一个位置的地址</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705220618.png"></p>
-<h1 id="矩阵的压缩存储"><a href="#矩阵的压缩存储" class="headerlink" title="矩阵的压缩存储"></a>矩阵的压缩存储</h1><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705220618.png" alt=""></p>
+<h1 id="矩阵的压缩存储">矩阵的压缩存储</h1>
+<ul>
 <li>实际应用中，矩阵往往存在很多相同的值，有些还分布有一定规律</li>
 <li>因此可以对这种些类型的矩阵进行压缩存储，从而节省存储空间</li>
 <li>一般可压缩的，有一定规律的矩阵有，<strong>特殊矩阵</strong>和<strong>稀疏矩阵</strong></li>
 </ul>
-<h2 id="特殊矩阵"><a href="#特殊矩阵" class="headerlink" title="特殊矩阵"></a>特殊矩阵</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<h2 id="特殊矩阵">特殊矩阵</h2>
+<h3 id="概念">概念</h3>
+<ul>
 <li>特殊矩阵：具有很多<strong>相同值</strong>元素，且分布<strong>有规律</strong>的矩阵</li>
-<li>特殊矩阵一般又分为，<strong>对称矩阵、三角矩阵、对角矩阵</strong><ul>
+<li>特殊矩阵一般又分为，<strong>对称矩阵、三角矩阵、对角矩阵</strong>
+<ul>
 <li><strong>对称矩阵</strong>：矩阵中元素关于主对角线对称</li>
 <li><strong>三角矩阵</strong>（上三角/下三角）：有一<strong>三角部分的元素值是一样</strong>的（不含主对角线）</li>
 <li><strong>对角矩阵</strong>：除<strong>主对角线未中心的带状区域</strong>外，其他元素均为0</li>
 </ul>
 </li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5.png"></p>
-<h3 id="对称矩阵压缩存储"><a href="#对称矩阵压缩存储" class="headerlink" title="对称矩阵压缩存储"></a>对称矩阵压缩存储</h3><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5.png" alt=""></p>
+<h3 id="对称矩阵压缩存储">对称矩阵压缩存储</h3>
+<ul>
 <li><strong>对称矩阵</strong>：只需<strong>存储下三角部分</strong>（<strong>包括主对角线</strong>）</li>
 <li>存储下三角部分寻址计算示意图：</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705222014.png"></p>
-<h3 id="三角矩阵压缩存储"><a href="#三角矩阵压缩存储" class="headerlink" title="三角矩阵压缩存储"></a>三角矩阵压缩存储</h3><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705222014.png" alt=""></p>
+<h3 id="三角矩阵压缩存储">三角矩阵压缩存储</h3>
+<ul>
 <li><strong>三角矩阵</strong>：只需存储存储<strong>非一致数据</strong>的那部分三角（含主对角线）</li>
 <li>上三角矩阵存储寻址计算示意图</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705222828.png"></p>
-<h3 id="对角矩阵压缩存储"><a href="#对角矩阵压缩存储" class="headerlink" title="对角矩阵压缩存储"></a>对角矩阵压缩存储</h3><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705222828.png" alt=""></p>
+<h3 id="对角矩阵压缩存储">对角矩阵压缩存储</h3>
+<ul>
 <li><strong>对角矩阵</strong>：只需存储中间带状部分的数据</li>
 <li>对角矩阵压缩存储示意图</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705223017.png"></p>
-<h2 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/20210705223017.png" alt=""></p>
+<h2 id="稀疏矩阵">稀疏矩阵</h2>
+<h3 id="概念-2">概念</h3>
+<ul>
 <li>稀疏矩阵：<strong>有很多分布没有规律的零元素</strong></li>
-<li>因此<strong>存储非零元素</strong>时，需要用特定的数据结构<strong>记录每一个非零元素</strong>的<strong>位置和数据</strong><ul>
+<li>因此<strong>存储非零元素</strong>时，需要用特定的数据结构<strong>记录每一个非零元素</strong>的<strong>位置和数据</strong>
+<ul>
 <li>顺序存储结构：三元组顺序表</li>
 <li>链式存储结构：十字链表</li>
 </ul>
 </li>
 </ul>
-<h3 id="三元组顺序表"><a href="#三元组顺序表" class="headerlink" title="三元组顺序表"></a>三元组顺序表</h3><h4 id="结构实现"><a href="#结构实现" class="headerlink" title="结构实现"></a>结构实现</h4><h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><ul>
+<h3 id="三元组顺序表">三元组顺序表</h3>
+<h4 id="结构实现">结构实现</h4>
+<h5 id="属性">属性</h5>
+<ul>
 <li>三元组（非零元素）：<strong>行号</strong>（row）、<strong>列号</strong>（col）、<strong>非零元素值</strong>（item）</li>
 <li><strong>三元组顺序表</strong>：三元组、总行数（mu）、总列数（nu）、非零元素个数（tu）、数组容量</li>
 </ul>
-<h5 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h5><ul>
+<h5 id="代码实现-4">代码实现</h5>
+<ul>
 <li><strong>三元组</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Element</span></span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> row,col;	<span class="comment">//行号row，列号col</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> item;		<span class="comment">//非零元素值item</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><strong>三元组顺序表</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SparseMatrix</span></span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MAX_TERM = <span class="number">100</span>;	<span class="comment">//数组容量</span></span><br><span class="line">    <span class="keyword">private</span> Element[] list = <span class="keyword">new</span> Element[MAX_TERM];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mu,nu,tu;	<span class="comment">//总行数、总列数、非零元素个数</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-<h4 id="存储示例"><a href="#存储示例" class="headerlink" title="存储示例"></a>存储示例</h4><ul>
+<h4 id="存储示例">存储示例</h4>
+<ul>
 <li>稀疏矩阵三元组顺序存储对照图</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E4%B8%89%E5%85%83%E7%BB%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AD%98%E5%82%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png"></p>
-<h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h3><h4 id="结构实现-1"><a href="#结构实现-1" class="headerlink" title="结构实现"></a>结构实现</h4><ul>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E4%B8%89%E5%85%83%E7%BB%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AD%98%E5%82%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt=""></p>
+<h3 id="十字链表">十字链表</h3>
+<h4 id="结构实现-2">结构实现</h4>
+<ul>
 <li>十字链表基于三元组顺序表的基础实现，为每个<strong>三元组结构</strong>添加<strong>指向左边和下面的指针域</strong></li>
 <li>通过这些指针域链接起来的稀疏矩阵，即为十字链结构</li>
 </ul>
-<h5 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h5><ul>
+<h5 id="属性-2">属性</h5>
+<ul>
 <li>十字链表结点（新三元组）：<strong>element、right、down</strong></li>
 </ul>
-<h5 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h5><ul>
+<h5 id="代码实现-5">代码实现</h5>
+<ul>
 <li><strong>三元组</strong>（域三元组顺序表的三元组一致）</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Element</span></span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> row,col;	<span class="comment">//行号row，列号col</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> item;		<span class="comment">//非零元素值item</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><strong>十字链表结点</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrthNode</span></span>{</span><br><span class="line">    <span class="keyword">private</span> Element data;</span><br><span class="line">    <span class="keyword">private</span> OrthNode right,down;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-<h4 id="存储示例-1"><a href="#存储示例-1" class="headerlink" title="存储示例"></a>存储示例</h4><ul>
+<h4 id="存储示例-2">存储示例</h4>
+<ul>
 <li>十字链表存储稀疏矩阵示例图</li>
 </ul>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8%E5%AD%98%E5%82%A8%E5%AF%B9%E7%85%A7%E5%9B%BE.png"></p>
-<h2 id="扩展-1"><a href="#扩展-1" class="headerlink" title="扩展"></a>扩展</h2><h3 id="稀疏矩阵的转置运算"><a href="#稀疏矩阵的转置运算" class="headerlink" title="稀疏矩阵的转置运算"></a>稀疏矩阵的转置运算</h3><h3 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h3><h3 id="发纸牌"><a href="#发纸牌" class="headerlink" title="发纸牌"></a>发纸牌</h3><h3 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h3>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://gitee.com/yihangdeng/blogImage/raw/master/img/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8%E5%AD%98%E5%82%A8%E5%AF%B9%E7%85%A7%E5%9B%BE.png" alt=""></p>
+<h2 id="扩展-2">扩展</h2>
+<h3 id="稀疏矩阵的转置运算">稀疏矩阵的转置运算</h3>
+<h3 id="广义表">广义表</h3>
+<h3 id="发纸牌">发纸牌</h3>
+<h3 id="八皇后问题">八皇后问题</h3>
+
         </div>
 
         
@@ -886,7 +988,7 @@ mjx-container[display="true"] + br {
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">串的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E9%9B%86"><span class="nav-number">1.2.</span> <span class="nav-text">常见字符编码集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">1.3.</span> <span class="nav-text">串的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E9%95%BF%E6%AF%94%E8%BE%83"><span class="nav-number">1.3.1.</span> <span class="nav-text">等长比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E7%AD%89%E9%95%BF%E6%AF%94%E8%BE%83"><span class="nav-number">1.3.2.</span> <span class="nav-text">不等长比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.</span> <span class="nav-text">逻辑与存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.1.</span> <span class="nav-text">逻辑结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.2.</span> <span class="nav-text">存储结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="nav-number">2.</span> <span class="nav-text">模式匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BF%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">BF算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-number">2.1.4.</span> <span class="nav-text">性能分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">KMP原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E4%B8%B2%E5%AD%97%E7%AC%A6%E5%90%84%E4%B8%8D%E5%90%8C"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">子串字符各不同</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BF%E7%AE%97%E6%B3%95-1"><span class="nav-number">2.2.2.2.1.</span> <span class="nav-text">BF算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KMP%E4%BC%98%E5%8C%96"><span class="nav-number">2.2.2.2.2.</span> <span class="nav-text">KMP优化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E4%B8%B2%E5%86%85%E5%AD%98%E5%9C%A8%E7%9B%B8%E5%90%8C%E5%AD%90%E4%B8%B2"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">子串内存在相同子串</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BF%E7%AE%97%E6%B3%95-2"><span class="nav-number">2.2.2.3.1.</span> <span class="nav-text">BF算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KMP%E4%BC%98%E5%8C%96-1"><span class="nav-number">2.2.2.3.2.</span> <span class="nav-text">KMP优化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E6%83%85%E5%86%B5KMP%E5%8C%B9%E9%85%8D"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">综合情况KMP匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">next数组设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">next数组结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="nav-number">2.2.3.2.1.</span> <span class="nav-text">结构分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#next%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.2.3.2.2.</span> <span class="nav-text">next功能示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E8%AE%A1%E7%AE%97"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">next数组计算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.3.3.1.</span> <span class="nav-text">计算原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2"><span class="nav-number">2.2.3.3.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E6%8C%87%E5%BC%95%E4%B8%8B%E7%9A%84KMP%E5%8C%B9%E9%85%8D%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.3.4.</span> <span class="nav-text">next数组指引下的KMP匹配过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.2.3.5.</span> <span class="nav-text">KMP代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-1"><span class="nav-number">2.2.3.6.</span> <span class="nav-text">性能分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP%E6%A0%B8%E5%BF%83%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.3.7.</span> <span class="nav-text">KMP核心总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="nav-number">2.3.</span> <span class="nav-text">算法对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">2.4.</span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#KMP%E7%AE%97%E6%B3%95%E6%94%B9%E8%BF%9B"><span class="nav-number">2.4.1.</span> <span class="nav-text">KMP算法改进</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">多维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84-1"><span class="nav-number">3.1.</span> <span class="nav-text">逻辑结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%B8%8E%E5%AF%BB%E5%9D%80"><span class="nav-number">3.2.</span> <span class="nav-text">存储结构与寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">存储结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%98%A0%E5%B0%84%E4%B8%8E%E5%AF%BB%E5%9D%80"><span class="nav-number">3.2.2.</span> <span class="nav-text">多维映射与寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%98%A0%E5%B0%84"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">多维映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80%E8%AE%A1%E7%AE%97"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">寻址计算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.2.2.1.</span> <span class="nav-text">计算方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">3.2.2.2.2.</span> <span class="nav-text">例题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">4.</span> <span class="nav-text">矩阵的压缩存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5"><span class="nav-number">4.1.</span> <span class="nav-text">特殊矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">4.1.2.</span> <span class="nav-text">对称矩阵压缩存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E8%A7%92%E7%9F%A9%E9%98%B5%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">4.1.3.</span> <span class="nav-text">三角矩阵压缩存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%A7%92%E7%9F%A9%E9%98%B5%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">4.1.4.</span> <span class="nav-text">对角矩阵压缩存储</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="nav-number">4.2.</span> <span class="nav-text">稀疏矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%85%83%E7%BB%84%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-number">4.2.2.</span> <span class="nav-text">三元组顺序表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">结构实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">4.2.2.1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-3"><span class="nav-number">4.2.2.1.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">存储示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8"><span class="nav-number">4.2.3.</span> <span class="nav-text">十字链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0-1"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">结构实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7-1"><span class="nav-number">4.2.3.1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-4"><span class="nav-number">4.2.3.1.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">存储示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95-1"><span class="nav-number">4.3.</span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BD%AC%E7%BD%AE%E8%BF%90%E7%AE%97"><span class="nav-number">4.3.1.</span> <span class="nav-text">稀疏矩阵的转置运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E8%A1%A8"><span class="nav-number">4.3.2.</span> <span class="nav-text">广义表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E7%BA%B8%E7%89%8C"><span class="nav-number">4.3.3.</span> <span class="nav-text">发纸牌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="nav-number">4.3.4.</span> <span class="nav-text">八皇后问题</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">串的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E9%9B%86"><span class="nav-number">1.2.</span> <span class="nav-text">常见字符编码集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">1.3.</span> <span class="nav-text">串的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E9%95%BF%E6%AF%94%E8%BE%83"><span class="nav-number">1.3.1.</span> <span class="nav-text">等长比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E7%AD%89%E9%95%BF%E6%AF%94%E8%BE%83"><span class="nav-number">1.3.2.</span> <span class="nav-text">不等长比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.</span> <span class="nav-text">逻辑与存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.1.</span> <span class="nav-text">逻辑结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.2.</span> <span class="nav-text">存储结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="nav-number">2.</span> <span class="nav-text">模式匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BF%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">BF算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-number">2.1.4.</span> <span class="nav-text">性能分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-2"><span class="nav-number">2.2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86-2"><span class="nav-number">2.2.2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">KMP原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E4%B8%B2%E5%AD%97%E7%AC%A6%E5%90%84%E4%B8%8D%E5%90%8C"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">子串字符各不同</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BF%E7%AE%97%E6%B3%95-2"><span class="nav-number">2.2.2.2.1.</span> <span class="nav-text">BF算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KMP%E4%BC%98%E5%8C%96"><span class="nav-number">2.2.2.2.2.</span> <span class="nav-text">KMP优化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E4%B8%B2%E5%86%85%E5%AD%98%E5%9C%A8%E7%9B%B8%E5%90%8C%E5%AD%90%E4%B8%B2"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">子串内存在相同子串</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BF%E7%AE%97%E6%B3%95-3"><span class="nav-number">2.2.2.3.1.</span> <span class="nav-text">BF算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KMP%E4%BC%98%E5%8C%96-2"><span class="nav-number">2.2.2.3.2.</span> <span class="nav-text">KMP优化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E6%83%85%E5%86%B5KMP%E5%8C%B9%E9%85%8D"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">综合情况KMP匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2"><span class="nav-number">2.2.3.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">next数组设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">next数组结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="nav-number">2.2.3.2.1.</span> <span class="nav-text">结构分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#next%E5%8A%9F%E8%83%BD%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.2.3.2.2.</span> <span class="nav-text">next功能示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E8%AE%A1%E7%AE%97"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">next数组计算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.3.3.1.</span> <span class="nav-text">计算原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-3"><span class="nav-number">2.2.3.3.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#next%E6%95%B0%E7%BB%84%E6%8C%87%E5%BC%95%E4%B8%8B%E7%9A%84KMP%E5%8C%B9%E9%85%8D%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.3.4.</span> <span class="nav-text">next数组指引下的KMP匹配过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.2.3.5.</span> <span class="nav-text">KMP代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-2"><span class="nav-number">2.2.3.6.</span> <span class="nav-text">性能分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP%E6%A0%B8%E5%BF%83%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.3.7.</span> <span class="nav-text">KMP核心总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="nav-number">2.3.</span> <span class="nav-text">算法对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">2.4.</span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#KMP%E7%AE%97%E6%B3%95%E6%94%B9%E8%BF%9B"><span class="nav-number">2.4.1.</span> <span class="nav-text">KMP算法改进</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">多维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84-2"><span class="nav-number">3.1.</span> <span class="nav-text">逻辑结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E4%B8%8E%E5%AF%BB%E5%9D%80"><span class="nav-number">3.2.</span> <span class="nav-text">存储结构与寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-2"><span class="nav-number">3.2.1.</span> <span class="nav-text">存储结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%98%A0%E5%B0%84%E4%B8%8E%E5%AF%BB%E5%9D%80"><span class="nav-number">3.2.2.</span> <span class="nav-text">多维映射与寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%98%A0%E5%B0%84"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">多维映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80%E8%AE%A1%E7%AE%97"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">寻址计算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.2.2.1.</span> <span class="nav-text">计算方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">3.2.2.2.2.</span> <span class="nav-text">例题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">4.</span> <span class="nav-text">矩阵的压缩存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5"><span class="nav-number">4.1.</span> <span class="nav-text">特殊矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">4.1.2.</span> <span class="nav-text">对称矩阵压缩存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E8%A7%92%E7%9F%A9%E9%98%B5%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">4.1.3.</span> <span class="nav-text">三角矩阵压缩存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%A7%92%E7%9F%A9%E9%98%B5%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8"><span class="nav-number">4.1.4.</span> <span class="nav-text">对角矩阵压缩存储</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="nav-number">4.2.</span> <span class="nav-text">稀疏矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%85%83%E7%BB%84%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-number">4.2.2.</span> <span class="nav-text">三元组顺序表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">结构实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">4.2.2.1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-4"><span class="nav-number">4.2.2.1.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">存储示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8"><span class="nav-number">4.2.3.</span> <span class="nav-text">十字链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0-2"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">结构实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7-2"><span class="nav-number">4.2.3.1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-5"><span class="nav-number">4.2.3.1.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">存储示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95-2"><span class="nav-number">4.3.</span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BD%AC%E7%BD%AE%E8%BF%90%E7%AE%97"><span class="nav-number">4.3.1.</span> <span class="nav-text">稀疏矩阵的转置运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E8%A1%A8"><span class="nav-number">4.3.2.</span> <span class="nav-text">广义表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E7%BA%B8%E7%89%8C"><span class="nav-number">4.3.3.</span> <span class="nav-text">发纸牌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="nav-number">4.3.4.</span> <span class="nav-text">八皇后问题</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>
