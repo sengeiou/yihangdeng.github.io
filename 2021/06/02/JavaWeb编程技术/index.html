@@ -1357,11 +1357,17 @@
 <ol>
 <li><p>/ 若被<strong>浏览器解析</strong>（前端代码）：只定位到<strong>端口号</strong>，如 <code>http://ip:port/</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>斜杠<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>请求重定向</strong>：<code>response.sendRediect(“/”);</code> 把斜杠发送给<strong>浏览器解析</strong> <code>http://ip:port</code></p>
+</blockquote>
 </li>
-<li><p>/ 若被<strong>服务器解析</strong>（Servlet、web.xml、JSP）：定位到<strong>工程名</strong>，如 <code>http://ip:port/工程路径</code>对应WEB资源根目录(IDEA - web，eclipse - WebContent)</p>
-<ul>
-<li>特殊情况，<strong>重定向</strong>：<code>response.sendRediect(“/”);</code> 把斜杠发送给<strong>浏览器解析</strong> <code>http://ip:port</code></li>
-</ul>
+<li><p>/ 若被<strong>服务器解析</strong>（Servlet、web.xml）：定位到<strong>工程名</strong>，如 <code>http://ip:port/工程路径</code>对应WEB资源根目录(IDEA - web，eclipse - WebContent)</p>
+</li>
+<li><p><strong>特殊情况</strong>：JSP虽然是由服务器解析的，但是其绝对路径只定位到服务器，即<code>http://ip:port</code></p>
+<blockquote>
+<p>WEB工程名可通过<code>request.getContextPath();</code>方法获取，返回字符串为<code>&quot;/project&quot;</code></p>
+</blockquote>
 </li>
 </ol>
 <h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="需求驱动-3"><a href="#需求驱动-3" class="headerlink" title="需求驱动"></a>需求驱动</h2><p>前端想通过发送一个请求返回整个<strong>java处理过</strong>的<strong>HTML页面</strong>(动态页面)，而非PrintWriter返回的几个字符串，则传统的方式只能通过PrintWriter逐一打印出整个html代码，如下所示。</p>

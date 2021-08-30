@@ -27,6 +27,10 @@
   content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";
   counter-increment: detail;
 }
+.markdown-body h5:before {
+  content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(detail) " ";
+  counter-increment: detail;
+}
 .markdown-body blockquote {
   box-sizing: border-box;
   border-left: 5px solid var(--default-text-color);
