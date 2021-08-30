@@ -362,6 +362,9 @@ button {
 .markdown-body h3 {
   counter-reset: detail;
 }
+.markdown-body h4 {
+  counter-reset: sub-detail;
+}
 .markdown-body h1:before {
   content: counter(section) " ";
   counter-increment: section;
@@ -379,8 +382,8 @@ button {
   counter-increment: detail;
 }
 .markdown-body h5:before {
-  content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(detail) " ";
-  counter-increment: detail;
+  content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(sub-detail) " ";
+  counter-increment: sub-detail;
 }
 .markdown-body blockquote {
   box-sizing: border-box;

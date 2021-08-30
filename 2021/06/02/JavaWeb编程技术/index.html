@@ -175,12 +175,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>31.5k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>31.6k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>135 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>136 Mins</span>
         </span>
     
     
@@ -1364,7 +1364,11 @@
 </li>
 <li><p>/ 若被<strong>服务器解析</strong>（Servlet、web.xml）：定位到<strong>工程名</strong>，如 <code>http://ip:port/工程路径</code>对应WEB资源根目录(IDEA - web，eclipse - WebContent)</p>
 </li>
-<li><p><strong>特殊情况</strong>：JSP虽然是由服务器解析的，但是其绝对路径只定位到服务器，即<code>http://ip:port</code></p>
+<li><p><strong>JSP的不同情况</strong>：JSP本质均由服务器解析的，但是实际存在不同情况</p>
+<ul>
+<li>JSP页面的<strong>超链接</strong><code>&quot;/&quot;</code>，等同与HTML，其绝对路径只定位到服务器，即<code>http://ip:port</code></li>
+<li><strong>JSP标签</strong>上的<code>&quot;/&quot;</code>，如<code>&lt;jsp:forward page=&quot;/emps&quot;&gt;&lt;/jsp:forward&gt;</code>，则<strong>定位到工程名</strong></li>
+</ul>
 <blockquote>
 <p>WEB工程名可通过<code>request.getContextPath();</code>方法获取，返回字符串为<code>&quot;/project&quot;</code></p>
 </blockquote>
